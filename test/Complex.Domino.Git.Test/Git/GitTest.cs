@@ -73,7 +73,7 @@ namespace Complex.Domino.Git
 
             Git.CommitAll("Second revision");
 
-            var commits = Git.GetLog();
+            var commits = Git.ReadLog();
             Assert.AreEqual(2, commits.Count);
         }
     }

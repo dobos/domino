@@ -109,12 +109,12 @@ namespace Complex.Domino.Git
             GitWrapper.Call(this, args);
         }
 
-        public List<Commit> GetLog()
+        public List<Commit> ReadLog()
         {
-            return GetLog(null);
+            return ReadLog(null);
         }
 
-        public List<Commit> GetLog(string filename)
+        public List<Commit> ReadLog(string filename)
         {
             var args = new Arguments();
             var commits = new List<Commit>();
