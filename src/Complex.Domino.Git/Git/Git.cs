@@ -9,6 +9,10 @@ using System.Diagnostics;
 
 namespace Complex.Domino.Git
 {
+    /// <summary>
+    /// Implement a wrapper around the git command-line tool
+    /// with minimal functionality to support Domino.
+    /// </summary>
     public class Git
     {
         #region Static members
@@ -26,7 +30,7 @@ namespace Complex.Domino.Git
 
         private string binPath;
         private string repoPath;
-        private Author author;
+        private User author;
 
         #endregion
         #region Properties
@@ -43,7 +47,7 @@ namespace Complex.Domino.Git
             set { repoPath = value; }
         }
 
-        public Author Author
+        public User Author
         {
             get { return author; }
             set { author = value; }
@@ -67,7 +71,7 @@ namespace Complex.Domino.Git
         {
             this.binPath = Configuration.BinPath;
             this.repoPath = ".";
-            this.author = new Author();
+            this.author = new User();
         }
 
         #endregion
@@ -79,12 +83,7 @@ namespace Complex.Domino.Git
 
             args.Append("init");
 
-            CallGit(args);
-        }
-
-        public void Add(string filename)
-        {
-            throw new NotImplementedException();
+            GitWrapper.Call(this, args);
         }
 
         public void AddAll()
@@ -95,12 +94,7 @@ namespace Complex.Domino.Git
             args.Append("--all");
             args.Append(".");
 
-            CallGit(args);
-        }
-
-        public void Remove(string filename)
-        {
-            throw new NotImplementedException();
+            GitWrapper.Call(this, args);
         }
 
         public void CommitAll(string message)
@@ -112,7 +106,42 @@ namespace Complex.Domino.Git
             args.Append("--message", message);
             args.Append("--author", author.ToString());
 
-            CallGit(args);
+            GitWrapper.Call(this, args);
+        }
+
+        public List<Commit> GetLog()
+        {
+            return GetLog(null);
+        }
+
+        public List<Commit> GetLog(string filename)
+        {
+            var args = new Arguments();
+            var commits = new List<Commit>();
+
+            args.Append("log");
+            args.Append("--pretty", "raw");
+
+            // TODO: single file log
+
+            using (var w = GitWrapper.Start(this, args))
+            {
+                while (true)
+                {
+                    var commit = new Commit();
+
+                    if (commit.Read(w.Out))
+                    {
+                        commits.Add(commit);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return commits;
         }
 
         public Commit GetCurrentCommit()
@@ -123,36 +152,6 @@ namespace Complex.Domino.Git
         public void CheckOut(Commit commit)
         {
             throw new NotImplementedException();
-        }
-
-        #endregion
-        #region Process activation functions
-
-        private void CallGit(Arguments args)
-        {
-            var pinfo = new ProcessStartInfo()
-            {
-                FileName = Path.Combine(binPath, "git.exe"),
-                WorkingDirectory = repoPath,
-                Arguments = args.ToString(),
-
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-
-                CreateNoWindow = true,
-                UseShellExecute = false,
-                LoadUserProfile = false,
-            };
-
-            var proc = new Process()
-            {
-                StartInfo = pinfo,
-            };
-
-            proc.Start();
-
-            proc.WaitForExit();
         }
 
         #endregion

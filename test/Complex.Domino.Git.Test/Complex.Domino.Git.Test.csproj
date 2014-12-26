@@ -51,6 +51,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Git\TestBase.cs" />
+    <Compile Include="Git\UserTest.cs" />
+    <Compile Include="Git\CommitTest.cs" />
     <Compile Include="Git\GitConfigurationTest.cs" />
     <Compile Include="Git\GitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
