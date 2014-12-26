@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{07221B38-6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Complex.Domino.Git.Test", "test\Complex.Domino.Git.Test\Complex.Domino.Git.Test.csproj", "{A4DB1997-4AAE-4543-95B1-30EA04EEE15E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Complex.Domino.Lib", "src\Complex.Domino.Lib\Complex.Domino.Lib.csproj", "{A8A66B45-583A-4995-8C8F-A8A54A44D62A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{A4DB1997-4AAE-4543-95B1-30EA04EEE15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4DB1997-4AAE-4543-95B1-30EA04EEE15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4DB1997-4AAE-4543-95B1-30EA04EEE15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A66B45-583A-4995-8C8F-A8A54A44D62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A66B45-583A-4995-8C8F-A8A54A44D62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A66B45-583A-4995-8C8F-A8A54A44D62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A66B45-583A-4995-8C8F-A8A54A44D62A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FCAB1DBF-DF10-4DCD-A5D6-2835CCDDAE09} = {B3214315-592D-4137-A779-AA19ED4E899A}
+		{A8A66B45-583A-4995-8C8F-A8A54A44D62A} = {B3214315-592D-4137-A779-AA19ED4E899A}
 		{A4DB1997-4AAE-4543-95B1-30EA04EEE15E} = {07221B38-6CD1-4B35-B591-F8E1D8E61939}
 	EndGlobalSection
 EndGlobal
