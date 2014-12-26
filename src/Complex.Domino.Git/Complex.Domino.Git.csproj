@@ -33,6 +33,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Git\Arguments.cs" />
+    <Compile Include="Git\Author.cs" />
+    <Compile Include="Git\Commit.cs" />
     <Compile Include="Git\Git.cs" />
     <Compile Include="Git\GitConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

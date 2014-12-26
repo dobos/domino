@@ -26,6 +26,7 @@ namespace Complex.Domino.Git
 
         private string binPath;
         private string repoPath;
+        private Author author;
 
         #endregion
         #region Properties
@@ -40,6 +41,12 @@ namespace Complex.Domino.Git
         {
             get { return repoPath; }
             set { repoPath = value; }
+        }
+
+        public Author Author
+        {
+            get { return author; }
+            set { author = value; }
         }
 
         #endregion
@@ -60,6 +67,7 @@ namespace Complex.Domino.Git
         {
             this.binPath = Configuration.BinPath;
             this.repoPath = ".";
+            this.author = new Author();
         }
 
         #endregion
@@ -67,19 +75,66 @@ namespace Complex.Domino.Git
 
         public void Init()
         {
-            CallGit("init");
+            var args = new Arguments();
+
+            args.Append("init");
+
+            CallGit(args);
+        }
+
+        public void Add(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddAll()
+        {
+            var args = new Arguments();
+
+            args.Append("add");
+            args.Append("--all");
+            args.Append(".");
+
+            CallGit(args);
+        }
+
+        public void Remove(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CommitAll(string message)
+        {
+            var args = new Arguments();
+
+            args.Append("commit");
+            args.Append("--all");
+            args.Append("--message", message);
+            args.Append("--author", author.ToString());
+
+            CallGit(args);
+        }
+
+        public Commit GetCurrentCommit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CheckOut(Commit commit)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
         #region Process activation functions
 
-        private void CallGit(string arguments)
+        private void CallGit(Arguments args)
         {
             var pinfo = new ProcessStartInfo()
             {
                 FileName = Path.Combine(binPath, "git.exe"),
                 WorkingDirectory = repoPath,
-                Arguments = arguments,
+                Arguments = args.ToString(),
 
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
