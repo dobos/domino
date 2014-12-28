@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Complex.Domino.Web.Auth
+{
+    public partial class SignIn : System.Web.UI.Page
+    {
+        public static string GetUrl(string returnUrl)
+        {
+            return String.Format("~/Auth/SignIn.aspx?ReturnUrl={0}", returnUrl);
+        }
+
+        #region Event handlers
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            UpdateForm();
+        }
+
+        /// <summary>
+        /// Fires when the user clicks on the Sign in button after providing a
+        /// username and a password.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="args"></param>
+        protected void PasswordValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            // Attempt to log in with supplied username and password
+            args.IsValid = AuthenticateByForm();
+        }
+
+        /// <summary>
+        /// Fires when the user clicks on the Sign in button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Ok_Click(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+                RedirectAuthenticatedUser();
+            }
+        }
+
+        #endregion
+        #region Form update
+
+        private void UpdateForm()
+        {
+            //ResetLink.NavigateUrl = Jhu.Graywulf.Web.Auth.RequestReset.GetUrl(ReturnUrl);
+        }
+
+        #endregion
+        #region Authentication logic
+
+        /// <summary>
+        /// Authenticates a user coming in with a username and a password.
+        /// </summary>
+        private bool AuthenticateByForm()
+        {
+            // Try to authenticate the user.
+            // It might happen that the user is awaiting activation.
+            try
+            {
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private void RedirectAuthenticatedUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
+}

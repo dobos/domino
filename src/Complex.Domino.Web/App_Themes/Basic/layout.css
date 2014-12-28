@@ -1,0 +1,79 @@
+﻿/* layout */
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    margin: 0px;
+    background-color: #FFFFFF;
+    height: 100%;
+}
+
+form
+{
+    height: 100%;
+}
+
+div.layout
+{
+    display: block;
+}
+
+div#layoutTop
+{
+    background-color: #000000;
+    color: #FFFFFF;
+    height: 24px;
+    float: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 4px;
+    text-align: right;
+    vertical-align: central;
+}
+
+div#layoutLeft
+{
+    background-color: #999966;
+    color: #FFFFFF;
+    width: 300px;
+    height: 100%;
+    float: left;
+}
+
+div#layoutRight
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    height: 100%;
+    margin-left: 300px;
+}
+
+div#layoutBottom
+{
+    background-color: #000000;
+    color: #FFFFFF;
+    height: 150px;
+    float: none;
+}
+
+/* content */
+
+div#contentMenu
+{
+    padding: 24px;
+}
+
+div#contentMain
+{
+    padding: 24px;
+}
+
+div#contentFooter
+{
+    text-align: center;
+    padding: 24px;
+}

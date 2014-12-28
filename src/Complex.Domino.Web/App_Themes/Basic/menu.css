@@ -1,0 +1,109 @@
+﻿/* menu */
+
+/* first level */
+
+ul#menu
+{
+    list-style: none;
+    margin-left: -24px;
+}
+
+    ul#menu > li
+    {
+        margin-left: 8px;
+        margin-right: 40px;
+    }
+
+        ul#menu > li > a
+        {
+            float: left;
+        }
+
+        ul#menu > li:hover > ul
+        {
+            display: block;
+        }
+
+        ul#menu > li:hover
+        {
+        }
+
+        /* second level */
+
+        ul#menu > li > ul
+        {
+            margin: 20px 0px 0px -9px;
+            padding: 0px;
+            display: none;
+            position: absolute;
+            border: 8px solid #2d2d2d;
+            background-color: #2d2d2d;
+        }
+
+            ul#menu > li > ul > li
+            {
+                list-style-type: none;
+                margin: 0px 0px 4px 0px;
+                border: none;
+            }
+
+                ul#menu > li > ul > li > a
+                {
+                    display: block;
+                    text-decoration: none;
+                }
+
+                ul#menu > li > ul > li:hover > a
+                {
+                }
+
+                ul#menu > li > ul > li:hover > ul
+                {
+                    display: block;
+                }
+
+                /* third level */
+
+                ul#menu > li > ul > li > ul
+                {
+                    margin: -20px -1px 0px 90%;
+                    padding: 0px;
+                    display: none;
+                    position: absolute;
+                    border: 1px solid #dbdbdb;
+                }
+
+                    ul#menu > li > ul > li > ul > li
+                    {
+                        list-style-type: none;
+                        margin: 0px;
+                        border: none;
+                    }
+
+                        ul#menu > li > ul > li > ul > li > a
+                        {
+                            display: block;
+                            text-decoration: none;
+                        }
+
+                        ul#menu > li > ul > li > ul > li:hover > a
+                        {
+                        }
+
+                    /* deeper levels */
+
+                    ul#menu > li > ul > li > ul ul
+                    {
+                        display: none;
+                    }
+
+    ul#menu a
+    {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+        ul#menu a:hover
+        {
+            text-decoration: underline;
+        }

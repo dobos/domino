@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Domino.Master.cs" Inherits="Complex.Domino.Web.Domino" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Domino</title>
+    <meta charset="UTF-8" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="theForm" runat="server">
+        <div id="layoutTop" class="layout">
+            <asp:HyperLink runat="server" NavigateUrl="~/Auth/SignIn.aspx">Bejelentkezés</asp:HyperLink></div>
+        <div id="layoutLeft" class="layout">
+            <div id="contentMenu">
+                <domino:menu runat="server" id="Menu" />
+            </div>
+        </div>
+        <div id="layoutRight" class="layout">
+            <div id="contentTop"></div>
+            <div id="contentMain">
+                <asp:ContentPlaceHolder ID="main" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="contentBottom"></div>
+        </div>
+        <div id="layoutBottom" class="layout">
+            <div id="contentFooter">
+                footer comes here
+            </div>
+        </div>
+    </form>
+</body>
+</html>
