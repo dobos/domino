@@ -14,7 +14,7 @@ namespace Complex.Domino.Lib
         private string email;
         private string username;
         private string activationCode;
-        private byte[] passwordHash;
+        private string passwordHash;
 
         public string Email
         {
@@ -55,7 +55,7 @@ namespace Complex.Domino.Lib
             this.email = reader.GetString(reader.GetOrdinal("Email"));
             this.username = reader.GetString(reader.GetOrdinal("Username"));
             this.activationCode = reader.GetString(reader.GetOrdinal("ActivationCode"));
-            this.passwordHash = reader.GetSqlBytes(reader.GetOrdinal("PasswordHash")).Value;
+            this.passwordHash = reader.GetString(reader.GetOrdinal("PasswordHash"));
         }
 
         public void SetPassword(string password)
@@ -67,26 +67,15 @@ namespace Complex.Domino.Lib
         {
             var hash = HashPassword(password);
 
-            if (hash.Length != passwordHash.Length)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < hash.Length; i++)
-            {
-                if (hash[i] != passwordHash[i])
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return StringComparer.InvariantCulture.Compare(this.passwordHash, hash) == 0;
         }
 
-        private byte[] HashPassword(string password)
+        private string HashPassword(string password)
         {
             HashAlgorithm hashalg = new SHA512Managed();
-            return hashalg.ComputeHash(Encoding.Unicode.GetBytes(password));
+            var hash = hashalg.ComputeHash(Encoding.Unicode.GetBytes(password));
+
+            return Convert.ToBase64String(hash);
         }
     }
 }

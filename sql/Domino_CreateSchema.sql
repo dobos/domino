@@ -29,7 +29,7 @@ CREATE TABLE [dbo].[User]
 	[Email] nvarchar(150) NOT NULL,
 	[Username] nvarchar(50) NOT NULL,
 	[ActivationCode] nvarchar(50),
-	[PasswordHash] varbinary(1024),
+	[PasswordHash] varchar(1024),
 	
 	CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
 	(
@@ -108,7 +108,7 @@ CREATE TABLE [dbo].[Assignment]
 	[GradeType] int NOT NULL,
 	[GradeWeight] int NOT NULL,
 	
-	CONSTRAINT [PK_Course] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_Assignment] PRIMARY KEY CLUSTERED 
 	(
 		[ID] ASC
 	)

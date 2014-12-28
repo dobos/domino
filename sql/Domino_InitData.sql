@@ -1,3 +1,7 @@
+USE [Domino]
+
+-- Create contants
+
 INSERT [dbo].[RoleType]
 VALUES
 	(1, 'admin'),
@@ -10,6 +14,12 @@ VALUES
 	(2, 'osztályzat'),
 	(3, 'pont')
 	
+-- Create admin user
+	
 INSERT [dbo].[User]
 VALUES
-	(1, 'Administrator', 1, 1, 'admin@domino.org', NULL, '')
+	(1, 'Administrator', 1, 1, 'admin@domino.org', 'admin', NULL, 'passwordHash = "43phqQejhFkrk7ICvVjZlJFbhsgWcGHDF6M1r7ln5WujqVS3Cyautp1SfhO1glr1KrGIskraIKe9sxuhtHW03A=="')
+	
+INSERT [dbo].[UserRole]
+VALUES
+	(1, -1, 1)
