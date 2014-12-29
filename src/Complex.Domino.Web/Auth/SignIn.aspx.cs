@@ -76,9 +76,13 @@ namespace Complex.Domino.Web.Auth
             // It might happen that the user is awaiting activation.
             try
             {
-                var f = new UserFactory(DatabaseContext);
+                var u = new User(DatabaseContext);
+                u.SignIn(Username.Text, Password.Text);
 
-                var u = f.SignInUser(Username.Text, Password.Text);
+                if (!u.Enabled)
+                {
+                    throw Lib.Error.InvalidUsernameOrPassword();
+                }
 
                 SetUser(u);
 

@@ -234,11 +234,29 @@ namespace Complex.Domino.Lib
             }
         }
 
+        public void ExecuteCommandSingleObject<T>(SqlCommand cmd, T o)
+            where T : IDatabaseTableObject
+        {
+            PrepareCommand(cmd);
+
+            using (var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleRow))
+            {
+                dr.AsSingleObject<T>(o);
+            }
+        }
+
         public void ExecuteCommandNonQuery(SqlCommand cmd)
         {
             PrepareCommand(cmd);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public int ExecuteCommandScalar(SqlCommand cmd)
+        {
+            PrepareCommand(cmd);
+
+            return (int)cmd.ExecuteScalar();
         }
 
         public string[] SplitQuery(string sql)

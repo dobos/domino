@@ -1,5 +1,13 @@
 USE [Domino]
 
+GO
+
+
+IF OBJECT_ID (N'UserRoleType', N'U') IS NOT NULL
+DROP TABLE [dbo].[UserRoleType]
+
+GO
+
 CREATE TABLE [dbo].[UserRoleType]
 (
 	[ID] int NOT NULL,
@@ -10,6 +18,14 @@ CREATE TABLE [dbo].[UserRoleType]
 		ID ASC
 	)
 )
+
+GO
+
+
+IF OBJECT_ID (N'GradeType', N'U') IS NOT NULL
+DROP TABLE [dbo].[GradeType]
+
+GO
 
 CREATE TABLE [dbo].[GradeType]
 (
@@ -22,9 +38,17 @@ CREATE TABLE [dbo].[GradeType]
 	)
 )
 
+GO
+
+
+IF OBJECT_ID (N'User', N'U') IS NOT NULL
+DROP TABLE [dbo].[User]
+
+GO
+
 CREATE TABLE [dbo].[User]
 (
-	[ID] int NOT NULL,
+	[ID] int IDENTITY(1,1) NOT NULL,
 	[Name] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,

@@ -98,9 +98,13 @@ namespace Complex.Domino.Web
                 // we need to look up user details from the database
                 if (this.User.Identity.IsAuthenticated && Session[Constants.SessionUserID] == null)
                 {
-                    var f = new UserFactory(DatabaseContext);
+                    var u = new User(DatabaseContext);
+                    u.Load(this.User.Identity.Name);
 
-                    var u = f.GetUser(this.User.Identity.Name);
+                    if (!u.Enabled)
+                    {
+                        throw Lib.Error.InvalidUsernameOrPassword();
+                    }
 
                     SetUser(u);
                 }

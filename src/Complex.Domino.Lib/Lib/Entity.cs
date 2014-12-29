@@ -65,5 +65,36 @@ namespace Complex.Domino.Lib
             this.visible = reader.GetBoolean("Visible");
             this.enabled = reader.GetBoolean("Enabled");
         }
+
+        protected virtual void AppendCreateModifyCommandParameters(SqlCommand cmd)
+        {
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
+            cmd.Parameters.Add("@Visible", SqlDbType.Bit).Value = visible;
+            cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled;
+        }
+
+        public void Load()
+        {
+            Load(this.id);
+        }
+
+        public abstract void Load(int id);
+
+        public virtual void Save()
+        {
+            if (id > 0)
+            {
+                Modify();
+            }
+            else
+            {
+                Create();
+            }
+        }
+
+        protected abstract void Create();
+
+        protected abstract void Modify();
     }
 }
