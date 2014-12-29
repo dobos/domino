@@ -16,5 +16,28 @@ namespace Complex.Domino.Lib
                 u.SetPassword("alma");
             }
         }
+
+        [TestMethod]
+        public void LoadUserTest()
+        {
+            using (var context = Context.Create())
+            {
+                var u = new User(context);
+                u.Load(1);
+                u.Load();
+            }
+        }
+
+        [TestMethod]
+        public void UserRolesTest()
+        {
+            using (var context = Context.Create())
+            {
+                var u = new User(context);
+                u.Load(1);
+
+                Assert.IsTrue(u.IsInAdminRole());
+            }
+        }
     }
 }

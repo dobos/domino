@@ -16,6 +16,8 @@ namespace Complex.Domino.Lib
         private string activationCode;
         private string passwordHash;
 
+        private Dictionary<int, UserRole> roles;
+
         public string Email
         {
             get { return email; }
@@ -32,6 +34,19 @@ namespace Complex.Domino.Lib
         {
             get { return activationCode; }
             set { activationCode = value; }
+        }
+
+        public Dictionary<int, UserRole> Roles
+        {
+            get
+            {
+                if (roles == null)
+                {
+                    LoadRoles();
+                }
+
+                return roles;
+            }
         }
 
         public User()
@@ -51,6 +66,8 @@ namespace Complex.Domino.Lib
             this.username = null;
             this.activationCode = null;
             this.passwordHash = null;
+
+            this.roles = null;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -72,7 +89,7 @@ WHERE ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
             {
-                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
                 Context.ExecuteCommandSingleObject(cmd, this);
             }
@@ -186,6 +203,53 @@ WHERE (Email = @UsernameOrEmail OR Username = @UsernameOrEmail) AND
                 {
                     throw Error.InvalidUsernameOrPassword(ex);
                 }
+            }
+        }
+
+        #endregion
+        #region Role functions
+
+        public void LoadRoles()
+        {
+            roles = new Dictionary<int, UserRole>();
+
+            var sql = @"
+SELECT *
+FROM UserRole
+WHERE UserID = @UserID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = ID;
+
+                foreach (var role in Context.ExecuteCommandReader<UserRole>(cmd))
+                {
+                    roles.Add(role.CourseID, role);
+                }
+            }
+        }
+
+        public bool IsInAdminRole()
+        {
+            if (Roles.ContainsKey(Constants.AdminRoleCourseID))
+            {
+                return Roles[Constants.AdminRoleCourseID].RoleType == UserRoleType.Admin;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsInRole(int courseID, UserRoleType roleType)
+        {
+            if (Roles.ContainsKey(courseID))
+            {
+                return Roles[courseID].RoleType == roleType;
+            }
+            else
+            {
+                return false;
             }
         }
 

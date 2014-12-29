@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\Constants.cs" />
     <Compile Include="Lib\Context.cs" />
     <Compile Include="Lib\ContextObject.cs" />
-    <Compile Include="Lib\DataReaderEnumerator.cs" />
     <Compile Include="Lib\Entity.cs" />
     <Compile Include="Lib\Enum.cs" />
     <Compile Include="Lib\Error.cs" />
@@ -53,9 +53,11 @@
     </Compile>
     <Compile Include="Lib\IDatabaseTableObject.cs" />
     <Compile Include="Lib\NoResultsException.cs" />
+    <Compile Include="Lib\SqlDataReaderEnumerator.cs" />
     <Compile Include="Lib\SqlDataReaderExtensions.cs" />
     <Compile Include="Lib\User.cs" />
     <Compile Include="Lib\UserFactory.cs" />
+    <Compile Include="Lib\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

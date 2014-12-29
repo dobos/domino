@@ -67,7 +67,7 @@ CREATE TABLE [dbo].[UserRole]
 (
 	[UserID] int NOT NULL,
 	[CourseID] int NOT NULL,
-	[RoleID] int NOT NULL,
+	[RoleID] int NOT NULL,	
 	
 	CONSTRAINT [PK_UserRole] PRIMARY KEY CLUSTERED 
 	(
