@@ -211,7 +211,7 @@ namespace Complex.Domino.Lib
         {
             PrepareCommand(cmd);
 
-            var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.CloseConnection);
+            var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess);
 
             return dr.AsEnumerable<T>();
         }
