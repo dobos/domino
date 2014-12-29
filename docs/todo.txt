@@ -1,0 +1,59 @@
+features
+
+login as admin
+login as student
+create course
+create users
+- mass user create (from xls etc), password generator
+- university id
+assign course to student
+create assignments
+associate assignments with students
+- one by one
+- by course
+submit homework
+- handle versions
+upload individual files
+- filter by extension
+upload archives
+- extract and prevent reference to parent directories!
+send submission confirmation
+compile code
+test code, configurable compiler string
+test files per assignement
+code editor with ability to add remarks
+back-end features
+- create users
+- give points
+
+
+store files in git
+- one repo per course
+
+
+
+
+
+
+
+===============================================================
+git commands
+
+
+
+git init
+git add . --all
+git commit --all --message "First commit" --author=test
+git log test/valami.dat
+git log --follow test2.txt
+git checkout ac733bee2b1bfe20e28c0c250a825de69a870719
+git checkout master
+
+git blame test2.txt
+
+git branch
+
+git rev-parse HEAD
+
+
+git show
