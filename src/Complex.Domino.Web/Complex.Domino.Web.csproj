@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Default.aspx" />
+    <Content Include="Admin\UserList.aspx" />
     <Content Include="App_Themes\Basic\fonts.css" />
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />
@@ -83,6 +84,13 @@
     </Compile>
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserList.aspx.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserList.aspx.designer.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auth\Auth.master.cs">
       <DependentUpon>Auth.master</DependentUpon>
