@@ -12,7 +12,8 @@
 <body>
     <form id="theForm" runat="server">
         <div id="layoutTop" class="layout">
-            <asp:HyperLink runat="server" NavigateUrl="~/Auth/SignIn.aspx">Bejelentkezés</asp:HyperLink></div>
+            <domino:userstatus runat="server" id="UserStatus" />
+        </div>
         <div id="layoutLeft" class="layout">
             <div id="contentMenu">
                 <domino:menu runat="server" id="Menu" />

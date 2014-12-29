@@ -11,7 +11,18 @@ namespace Complex.Domino.Web.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            authenticatedPanel.Visible = Page.User.Identity.IsAuthenticated;
+            anonymousPanel.Visible = !Page.User.Identity.IsAuthenticated;
 
+            if (Page.User.Identity.IsAuthenticated)
+            {
+                Username.Text = Page.User.Identity.Name;
+                SignOut.NavigateUrl = Auth.SignOut.GetUrl(Page.Request.Url);
+            }
+            else
+            {
+                SignIn.NavigateUrl = Auth.SignIn.GetUrl(Page.Request.Url);
+            }
         }
     }
 }

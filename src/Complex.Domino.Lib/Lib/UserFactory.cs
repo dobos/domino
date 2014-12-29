@@ -21,13 +21,33 @@ namespace Complex.Domino.Lib
 
         }
 
+        public User GetUser(string username)
+        {
+            string sql = @"
+SELECT *
+FROM [User]
+WHERE Enabled = 1 AND Username = @Username";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
+
+                return Context.ExecuteCommandSingleObject<User>(cmd);
+            }
+        }
+
         public User SignInUser(string usernameOrEmail, string password)
         {
             var hash = User.HashPassword(password);
 
-            string sql = "spSignInUser";
+            string sql = @"
+SELECT *
+FROM [User]
+WHERE Enabled = 1 AND
+      (Email = @UsernameOrEmail OR Username = @UsernameOrEmail) AND
+	  PasswordHash = @PasswordHash";
 
-            using (var cmd = Context.CreateStoredProcedureCommand(sql))
+            using (var cmd = Context.CreateCommand(sql))
             {
                 cmd.Parameters.Add("@UsernameOrEmail", SqlDbType.NVarChar).Value = usernameOrEmail;
                 cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar).Value = hash;

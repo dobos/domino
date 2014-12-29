@@ -15,9 +15,7 @@ namespace Complex.Domino.Lib
 
         private bool isValid;
 
-        private int userId;
-        private UserRoleType userRole;
-        private string username;
+        private User user;
 
         private SqlConnection databaseConnection;
         private SqlTransaction databaseTransaction;
@@ -29,22 +27,10 @@ namespace Complex.Domino.Lib
             get { return ConfigurationManager.ConnectionStrings["Domino"].ConnectionString; }
         }
 
-        public int UserID
+        public User User
         {
-            get { return userId; }
-            set { userId = value; }
-        }
-
-        public UserRoleType UserRole
-        {
-            get { return userRole; }
-            set { userRole = value; }
-        }
-
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
+            get { return user; }
+            set { user = value; }
         }
 
         #region Contructors and initializers
@@ -62,8 +48,7 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.isValid = true;
-            this.userId = -1;
-            this.username = null;
+            this.user = null;
             this.databaseConnection = null;
             this.databaseTransaction = null;
         }
@@ -185,12 +170,22 @@ namespace Complex.Domino.Lib
         #endregion
         #region Command helpers
 
+        public SqlCommand CreateCommand(string sql)
+        {
+            var cmd = new SqlCommand()
+            {
+                CommandText = sql,
+                CommandType = CommandType.Text,
+            };
+
+            return cmd;
+        }
+
         public SqlCommand CreateStoredProcedureCommand(string sql)
         {
             var cmd = new SqlCommand()
             {
                 CommandText = sql,
-                CommandTimeout = 30,        // TODO: from settings
                 CommandType = CommandType.StoredProcedure,
             };
 
@@ -207,6 +202,8 @@ namespace Complex.Domino.Lib
 
             cmd.Connection = databaseConnection;
             cmd.Transaction = databaseTransaction;
+
+            cmd.CommandTimeout = 30;        // TODO: from settings
         }
 
         public IEnumerable<T> ExecuteCommandReader<T>(SqlCommand cmd)

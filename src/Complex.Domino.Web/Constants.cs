@@ -10,5 +10,7 @@ namespace Complex.Domino.Web
         public const string ReturnUrl = "ReturnUrl";
         public const string OriginalReferer = "OriginalReferer";
         public const string SessionException = "Complex.Domino.Web.SessionException";
+        public const string SessionUserID = "Complex.Domino.Web.SessionUserID";
+        public const string SessionUsername = "Complex.Domino.Web.SessionUsername";
     }
 }

@@ -62,6 +62,7 @@
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />
     <Content Include="Auth\SignIn.aspx" />
+    <Content Include="Auth\SignOut.aspx" />
     <Content Include="Controls\Menu.ascx" />
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="Auth\Auth.master.designer.cs">
       <DependentUpon>Auth.master</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\SignOut.aspx.cs">
+      <DependentUpon>SignOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auth\SignOut.aspx.designer.cs">
+      <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="Controls\Menu.ascx.cs">

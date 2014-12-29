@@ -18,6 +18,7 @@ namespace Complex.Domino.Lib
         public int ID
         {
             get { return id; }
+            set { id = value; }
         }
 
         public string Name

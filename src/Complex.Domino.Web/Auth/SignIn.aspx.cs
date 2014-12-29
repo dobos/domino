@@ -12,12 +12,19 @@ namespace Complex.Domino.Web.Auth
 {
     public partial class SignIn : PageBase
     {
-        public static string GetUrl(string returnUrl)
+        public static string GetUrl(Uri returnUrl)
         {
-            return String.Format("~/Auth/SignIn.aspx?ReturnUrl={0}", returnUrl);
+            return String.Format("~/Auth/SignIn.aspx?ReturnUrl={0}", HttpUtility.UrlEncode(returnUrl.ToString()));
         }
 
         #region Event handlers
+
+        protected override void OnLoad(EventArgs e)
+        {
+            BypassAuthentication();
+
+            base.OnLoad(e);
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -71,12 +78,16 @@ namespace Complex.Domino.Web.Auth
             {
                 var f = new UserFactory(DatabaseContext);
 
-                f.SignInUser(Username.Text, Password.Text);
+                var u = f.SignInUser(Username.Text, Password.Text);
+
+                SetUser(u);
 
                 return true;
             }
-            catch (SecurityException ex)
+            catch (SecurityException)
             {
+                ResetUser();
+
                 return false;
             }
         }
@@ -84,7 +95,7 @@ namespace Complex.Domino.Web.Auth
         private void RedirectAuthenticatedUser()
         {
             FormsAuthentication.RedirectFromLoginPage(
-                "",
+                DatabaseContext.User.Username,
                 Remember.Checked);
         }
 

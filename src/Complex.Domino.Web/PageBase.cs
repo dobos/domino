@@ -9,15 +9,16 @@ namespace Complex.Domino.Web
 {
     public class PageBase : Page
     {
+        private bool bypassAuthentication;
         private Context databaseContext;
 
         protected Context DatabaseContext
         {
-            get 
+            get
             {
                 EnsureContextExists();
 
-                return databaseContext; 
+                return databaseContext;
             }
         }
 
@@ -43,22 +44,69 @@ namespace Complex.Domino.Web
             get { return Request.QueryString[Constants.ReturnUrl] ?? ""; }
         }
 
+        protected void BypassAuthentication()
+        {
+            this.bypassAuthentication = true;
+        }
+
+        protected void SetUser(User u)
+        {
+            DatabaseContext.User = u;
+
+            Session[Constants.SessionUserID] = u.ID;
+            Session[Constants.SessionUsername] = u.Username;
+        }
+
+        protected void GetUser()
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        protected void ResetUser()
+        {
+            DatabaseContext.User = null;
+
+            Session[Constants.SessionUserID] = null;
+            Session[Constants.SessionUsername] = null;
+        }
+
         private void EnsureContextExists()
         {
             if (databaseContext == null)
             {
                 databaseContext = Complex.Domino.Lib.Context.Create();
+
+                databaseContext.User = new User(databaseContext)
+                {
+                    ID = (int)(Session[Constants.SessionUserID] ?? -1),
+                    Username = (string)Session[Constants.SessionUsername]
+                };
             }
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
-
             if (!IsPostBack && Request.UrlReferrer != null)
             {
                 OriginalReferer = Request.UrlReferrer.ToString();
             }
+
+            if (!bypassAuthentication)
+            {
+                // If the user hold a valid cookie but the session is new
+                // we need to look up user details from the database
+                if (this.User.Identity.IsAuthenticated && Session[Constants.SessionUserID] == null)
+                {
+                    var f = new UserFactory(DatabaseContext);
+
+                    var u = f.GetUser(this.User.Identity.Name);
+
+                    SetUser(u);
+                }
+            }
+
+            base.OnLoad(e);
         }
 
         protected override void OnError(EventArgs e)
@@ -90,7 +138,7 @@ namespace Complex.Domino.Web
                 databaseContext.Dispose();
                 databaseContext = null;
             }
-            
+
             base.OnUnload(e);
         }
     }
