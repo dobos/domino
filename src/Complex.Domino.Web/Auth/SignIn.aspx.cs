@@ -4,10 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
+using System.Security;
+using Complex.Domino.Lib;
 
 namespace Complex.Domino.Web.Auth
 {
-    public partial class SignIn : System.Web.UI.Page
+    public partial class SignIn : PageBase
     {
         public static string GetUrl(string returnUrl)
         {
@@ -66,9 +69,13 @@ namespace Complex.Domino.Web.Auth
             // It might happen that the user is awaiting activation.
             try
             {
+                var f = new UserFactory(DatabaseContext);
+
+                f.SignInUser(Username.Text, Password.Text);
+
                 return true;
             }
-            catch (Exception ex)
+            catch (SecurityException ex)
             {
                 return false;
             }
@@ -76,7 +83,9 @@ namespace Complex.Domino.Web.Auth
 
         private void RedirectAuthenticatedUser()
         {
-            throw new NotImplementedException();
+            FormsAuthentication.RedirectFromLoginPage(
+                "",
+                Remember.Checked);
         }
 
         #endregion

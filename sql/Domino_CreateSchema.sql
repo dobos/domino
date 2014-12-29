@@ -1,9 +1,11 @@
-CREATE TABLE [dbo].[RoleType]
+USE [Domino]
+
+CREATE TABLE [dbo].[UserRoleType]
 (
 	[ID] int NOT NULL,
 	[Name] nvarchar(50) NOT NULL,
 	
-	CONSTRAINT [PK_RoleType] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_UserRoleType] PRIMARY KEY CLUSTERED 
 	(
 		ID ASC
 	)
@@ -88,7 +90,13 @@ CREATE TABLE [dbo].[CourseGrade]
 (
 	[CourseID] int NOT NULL,
 	[StudentID] int NOT NULL,
-	[Grade] int
+	[Grade] int,
+	
+	CONSTRAINT [PK_CourseGrade] PRIMARY KEY CLUSTERED 
+	(
+		[CourseID] ASC,
+		[StudentID] ASC
+	)
 )
 
 CREATE TABLE [dbo].[Assignment]

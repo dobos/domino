@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Complex.Domino.Lib
 {
-    public enum RoleType
+    public enum UserRoleType
     {
         Admin = 1,
         Teacher = 2,

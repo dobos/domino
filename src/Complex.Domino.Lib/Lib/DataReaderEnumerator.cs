@@ -7,15 +7,6 @@ using System.Data.SqlClient;
 
 namespace Complex.Domino.Lib
 {
-    public static class DataReaderEnumerable
-    {
-        public static IEnumerable<T> AsEnumerable<T>(this SqlDataReader reader)
-            where T : IDatabaseTableObject, new()
-        {
-            return new DataReaderEnumerator<T>(reader);
-        }
-    }
-
     public class DataReaderEnumerator<T> : IEnumerable<T>, IEnumerator<T>
         where T : IDatabaseTableObject, new()
     {

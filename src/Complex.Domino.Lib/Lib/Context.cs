@@ -15,7 +15,8 @@ namespace Complex.Domino.Lib
 
         private bool isValid;
 
-        private int userid;
+        private int userId;
+        private UserRoleType userRole;
         private string username;
 
         private SqlConnection databaseConnection;
@@ -30,8 +31,14 @@ namespace Complex.Domino.Lib
 
         public int UserID
         {
-            get { return userid; }
-            set { userid = value; }
+            get { return userId; }
+            set { userId = value; }
+        }
+
+        public UserRoleType UserRole
+        {
+            get { return userRole; }
+            set { userRole = value; }
         }
 
         public string Username
@@ -44,6 +51,7 @@ namespace Complex.Domino.Lib
 
         private Context()
         {
+            InitializeMembers();
         }
 
         public static Context Create()
@@ -53,7 +61,8 @@ namespace Complex.Domino.Lib
 
         private void InitializeMembers()
         {
-            this.userid = -1;
+            this.isValid = true;
+            this.userId = -1;
             this.username = null;
             this.databaseConnection = null;
             this.databaseTransaction = null;
@@ -174,30 +183,64 @@ namespace Complex.Domino.Lib
         }
 
         #endregion
+        #region Command helpers
+
+        public SqlCommand CreateStoredProcedureCommand(string sql)
+        {
+            var cmd = new SqlCommand()
+            {
+                CommandText = sql,
+                CommandTimeout = 30,        // TODO: from settings
+                CommandType = CommandType.StoredProcedure,
+            };
+
+            return cmd;
+        }
+
+        #endregion
         #region Query execution helpers
 
-        public IEnumerable<T> ExecuteCommandReader<T>(SqlCommand cmd)
-            where T : IDatabaseTableObject, new()
+        private void PrepareCommand(SqlCommand cmd)
         {
             EnsureOpenConnection();
             EnsureOpenTransaction();
 
             cmd.Connection = databaseConnection;
             cmd.Transaction = databaseTransaction;
-            cmd.CommandTimeout = 30;        // *** TODO
+        }
+
+        public IEnumerable<T> ExecuteCommandReader<T>(SqlCommand cmd)
+            where T : IDatabaseTableObject, new()
+        {
+            PrepareCommand(cmd);
 
             var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.CloseConnection);
 
             return dr.AsEnumerable<T>();
         }
 
+        public T ExecuteCommandSingleObject<T>(SqlCommand cmd)
+            where T : IDatabaseTableObject, new()
+        {
+            PrepareCommand(cmd);
+
+            using (var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleRow))
+            {
+                var o = dr.AsSingleObject<T>();
+
+                if (o is ContextObject)
+                {
+                    ((ContextObject)(object)o).Context = this;
+                }
+
+                return o;
+            }
+        }
+
         public void ExecuteCommandNonQuery(SqlCommand cmd)
         {
-            EnsureOpenConnection();
-            EnsureOpenTransaction();
+            PrepareCommand(cmd);
 
-            cmd.Connection = databaseConnection;
-            cmd.Transaction = databaseTransaction;
             cmd.ExecuteNonQuery();
         }
 

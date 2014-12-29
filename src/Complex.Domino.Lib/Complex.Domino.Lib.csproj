@@ -41,11 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Lib\Context.cs" />
+    <Compile Include="Lib\ContextObject.cs" />
     <Compile Include="Lib\DataReaderEnumerator.cs" />
     <Compile Include="Lib\Entity.cs" />
     <Compile Include="Lib\Enum.cs" />
+    <Compile Include="Lib\Error.cs" />
+    <Compile Include="Lib\ErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Lib\IDatabaseTableObject.cs" />
+    <Compile Include="Lib\NoResultsException.cs" />
+    <Compile Include="Lib\SqlDataReaderExtensions.cs" />
     <Compile Include="Lib\User.cs" />
+    <Compile Include="Lib\UserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +63,12 @@
       <Project>{fcab1dbf-df10-4dcd-a5d6-2835ccddae09}</Project>
       <Name>Complex.Domino.Git</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Lib\ErrorMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

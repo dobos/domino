@@ -34,10 +34,15 @@ namespace Complex.Domino.Lib
             set { activationCode = value; }
         }
 
+        public User()
+        {
+            InitializeMembers();
+        }
+
         public User(Context context)
             :base(context)
         {
-
+            InitializeMembers();
         }
 
         private void InitializeMembers()
@@ -52,10 +57,10 @@ namespace Complex.Domino.Lib
         {
             base.LoadFromDataReader(reader);
 
-            this.email = reader.GetString(reader.GetOrdinal("Email"));
-            this.username = reader.GetString(reader.GetOrdinal("Username"));
-            this.activationCode = reader.GetString(reader.GetOrdinal("ActivationCode"));
-            this.passwordHash = reader.GetString(reader.GetOrdinal("PasswordHash"));
+            this.email = reader.GetString("Email");
+            this.username = reader.GetString("Username");
+            this.activationCode = reader.GetString("ActivationCode");
+            this.passwordHash = reader.GetString("PasswordHash");
         }
 
         public void SetPassword(string password)
@@ -70,7 +75,7 @@ namespace Complex.Domino.Lib
             return StringComparer.InvariantCulture.Compare(this.passwordHash, hash) == 0;
         }
 
-        private string HashPassword(string password)
+        internal static string HashPassword(string password)
         {
             HashAlgorithm hashalg = new SHA512Managed();
             var hash = hashalg.ComputeHash(Encoding.Unicode.GetBytes(password));
