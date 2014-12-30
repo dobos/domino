@@ -63,11 +63,17 @@ CREATE TABLE [dbo].[User]
 	)
 )
 
+
+IF OBJECT_ID (N'UserRole', N'U') IS NOT NULL
+DROP TABLE [dbo].[UserRole]
+
+GO
+
 CREATE TABLE [dbo].[UserRole]
 (
 	[UserID] int NOT NULL,
 	[CourseID] int NOT NULL,
-	[RoleID] int NOT NULL,	
+	[UserRoleType] int NOT NULL,	
 	
 	CONSTRAINT [PK_UserRole] PRIMARY KEY CLUSTERED 
 	(
@@ -75,6 +81,9 @@ CREATE TABLE [dbo].[UserRole]
 		[CourseID] ASC
 	)
 )
+
+GO
+
 
 CREATE TABLE [dbo].[Semester]
 (
