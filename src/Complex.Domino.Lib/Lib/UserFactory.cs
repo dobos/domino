@@ -20,5 +20,15 @@ namespace Complex.Domino.Lib
         {
 
         }
+
+        public IEnumerable<User> Find(int max, int from)
+        {
+            var sql = "SELECT * FROM [User]";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                return Context.ExecuteCommandReader<User>(cmd);
+            }
+        }
     }
 }

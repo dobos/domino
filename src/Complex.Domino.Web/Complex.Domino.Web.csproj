@@ -65,6 +65,7 @@
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
     <Content Include="Controls\Menu.ascx" />
+    <EmbeddedResource Include="Controls\MultiSelectGridView.js" />
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -114,6 +115,8 @@
     <Compile Include="Controls\Menu.ascx.designer.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MultiSelectGridView.cs" />
+    <Compile Include="Controls\SelectionField.cs" />
     <Compile Include="Controls\UserStatus.ascx.cs">
       <DependentUpon>UserStatus.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -164,6 +167,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Complex.Domino.Git\Complex.Domino.Git.csproj">
+      <Project>{fcab1dbf-df10-4dcd-a5d6-2835ccddae09}</Project>
+      <Name>Complex.Domino.Git</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Complex.Domino.Lib\Complex.Domino.Lib.csproj">
       <Project>{a8a66b45-583a-4995-8c8f-a8a54a44d62a}</Project>
       <Name>Complex.Domino.Lib</Name>

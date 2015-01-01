@@ -11,6 +11,7 @@
 </head>
 <body>
     <form id="theForm" runat="server">
+        <asp:ScriptManager runat="server" />
         <div id="layoutTop" class="layout">
             <domino:userstatus runat="server" id="UserStatus" />
         </div>
