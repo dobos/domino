@@ -1,0 +1,47 @@
+﻿table.form
+{
+    background-color: #F0F0F0;
+    width: 600px;
+    margin-bottom: 12px;
+}
+
+    table.form > tbody > tr
+    {
+
+    }
+
+        table.form > tbody > tr > td
+        {
+            height: 32px;
+            vertical-align: middle;
+        }
+
+            table.form > tbody > tr > td.label
+            {
+                width: 142px;
+                padding-left: 8px;
+            }
+
+            table.form > tbody > tr > td.field
+            {
+            }
+
+    table.form td.field > input[type=text]
+    {
+        width: 300px;
+    }
+
+    table.form > tfoot > tr > td
+    {
+        padding-top: 26px;
+        padding-bottom: 8px;
+        text-align: center;
+    }
+
+        table.form > tfoot > tr > td > input[type=submit]
+        {
+            height: 24px;
+            width: 100px;
+            margin-left: 12px;
+            margin-right: 12px;
+        }
