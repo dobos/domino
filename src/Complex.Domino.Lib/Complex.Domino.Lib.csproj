@@ -44,6 +44,7 @@
     <Compile Include="Lib\Context.cs" />
     <Compile Include="Lib\ContextObject.cs" />
     <Compile Include="Lib\Entity.cs" />
+    <Compile Include="Lib\EntityFactory.cs" />
     <Compile Include="Lib\Enum.cs" />
     <Compile Include="Lib\Error.cs" />
     <Compile Include="Lib\ErrorMessages.Designer.cs">

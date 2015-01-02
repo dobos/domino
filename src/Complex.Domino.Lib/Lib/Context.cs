@@ -170,26 +170,30 @@ namespace Complex.Domino.Lib
         #endregion
         #region Command helpers
 
+        public SqlCommand CreateCommand()
+        {
+            return new SqlCommand()
+            {
+                CommandType = CommandType.Text,
+            };
+        }
+
         public SqlCommand CreateCommand(string sql)
         {
-            var cmd = new SqlCommand()
+            return new SqlCommand()
             {
                 CommandText = sql,
                 CommandType = CommandType.Text,
             };
-
-            return cmd;
         }
 
         public SqlCommand CreateStoredProcedureCommand(string sql)
         {
-            var cmd = new SqlCommand()
+            return new SqlCommand()
             {
                 CommandText = sql,
                 CommandType = CommandType.StoredProcedure,
             };
-
-            return cmd;
         }
 
         #endregion

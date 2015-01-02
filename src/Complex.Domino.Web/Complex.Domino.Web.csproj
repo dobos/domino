@@ -58,8 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Default.aspx" />
+    <Content Include="Admin\UserForm.aspx" />
     <Content Include="Admin\UserList.aspx" />
     <Content Include="App_Themes\Basic\fonts.css" />
+    <Content Include="App_Themes\Basic\form.css" />
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />
     <Content Include="Auth\SignIn.aspx" />
@@ -85,6 +87,13 @@
     </Compile>
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserForm.aspx.cs">
+      <DependentUpon>UserForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserForm.aspx.designer.cs">
+      <DependentUpon>UserForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>

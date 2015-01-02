@@ -8,11 +8,10 @@
         SelectCountMethod="Count"
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
-        EnablePaging="true"
-        />
-    <domino:MultiSelectGridView id="userList" runat="server" datasourceid="userDataSource"
+        EnablePaging="true" />
+    <domino:multiselectgridview id="userList" runat="server" datasourceid="userDataSource"
         autogeneratecolumns="false" datakeynames="ID"
-        EnablePaging="true" PagerSettings-Mode="NumericFirstLast" PageSize="25">
+        allowPaging="true" pagersettings-mode="NumericFirstLast" pagesize="25">
         <Columns>
             <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField HeaderText="ID" DataField="ID" />
@@ -22,5 +21,8 @@
             <asp:BoundField HeaderText="User name" DataField="UserName" />
             <asp:BoundField HeaderText="E-mail" DataField="Email" />
         </Columns>
-    </domino:MultiSelectGridView>
+        <EmptyDataTemplate>
+            <p>No users match the query.</p>
+        </EmptyDataTemplate>
+    </domino:multiselectgridview>
 </asp:Content>
