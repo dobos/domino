@@ -1,0 +1,22 @@
+﻿div.toolbar
+{
+    padding: 8px;
+    background-color: #F0F0F0;
+    margin-bottom: 12px;
+}
+
+    div.toolbar a
+    {
+        display: inline-block;
+        min-width: 120px;
+        border: 1px solid #C0C0C0;
+        padding: 8px;
+        text-decoration: none;
+        color: #000000;
+        cursor: default;
+    }
+
+        div.toolbar a:hover
+        {
+            border: 1px solid #000000;
+        }
