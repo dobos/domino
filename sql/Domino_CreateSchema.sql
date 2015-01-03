@@ -85,14 +85,19 @@ CREATE TABLE [dbo].[UserRole]
 GO
 
 
+IF OBJECT_ID (N'Semester', N'U') IS NOT NULL
+DROP TABLE [dbo].[Semester]
+
+GO
+
 CREATE TABLE [dbo].[Semester]
 (
-	[ID] int NOT NULL,
+	[ID] int IDENTITY(1,1) NOT NULL,
 	[Name] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
-	[StartDate] datetime,
-	[EndDate] datetime,
+	[StartDate] datetime NOT NULL,
+	[EndDate] datetime NOT NULL,
 	
 	CONSTRAINT [PK_Semester] PRIMARY KEY CLUSTERED 
 	(
