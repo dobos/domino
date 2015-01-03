@@ -15,6 +15,8 @@ namespace Complex.Domino.Lib
         private bool? visible;
         private string orderBy;
 
+        protected abstract string TableName { get; }
+
         public string Name
         {
             get { return name; }
@@ -51,6 +53,51 @@ namespace Complex.Domino.Lib
             this.enabled = null;
             this.visible = null;
             this.orderBy = null;
+        }
+
+        public int Count()
+        {
+            using (var cmd = Context.CreateCommand())
+            {
+                string sql = @"
+SELECT COUNT(*) FROM [{0}]
+{1}";
+
+                var where = BuildWhereClause(cmd);
+
+                cmd.CommandText = String.Format(sql, TableName, where);
+
+                return Context.ExecuteCommandScalar(cmd);
+            }
+        }
+
+        protected IEnumerable<T> Find<T>(int max, int from)
+            where T : IDatabaseTableObject, new()
+        {
+            using (var cmd = Context.CreateCommand())
+            {
+                string sql = @"
+WITH q AS
+(
+    SELECT [{0}].*, ROW_NUMBER() OVER({1}) AS rn
+    FROM [{0}]
+    {2}
+)
+SELECT * FROM q
+WHERE rn BETWEEN @from AND @to
+{1}
+";
+
+                var where = BuildWhereClause(cmd);
+                var orderby = BuildOrderByClause();
+
+                cmd.CommandText = String.Format(sql, TableName, orderby, where);
+
+                cmd.Parameters.Add("@from", SqlDbType.Int).Value = from;
+                cmd.Parameters.Add("@to", SqlDbType.Int).Value = from + max;
+
+                return Context.ExecuteCommandReader<T>(cmd);
+            }
         }
 
         protected string BuildWhereClause(SqlCommand cmd)

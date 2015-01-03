@@ -13,6 +13,11 @@ namespace Complex.Domino.Lib
         private string email;
         private string username;
 
+        protected override string TableName
+        {
+            get { return "User"; }
+        }
+
         public string Email
         {
             get { return email; }
@@ -37,48 +42,9 @@ namespace Complex.Domino.Lib
             this.username = null;
         }
 
-        public int Count()
-        {
-            using (var cmd = Context.CreateCommand())
-            {
-                string sql = @"
-SELECT COUNT(*) FROM [User]
-{0}";
-
-                var where = BuildWhereClause(cmd);
-
-                cmd.CommandText = String.Format(sql, where);
-
-                return Context.ExecuteCommandScalar(cmd);
-            }
-        }
-
         public IEnumerable<User> Find(int max, int from)
         {
-            using (var cmd = Context.CreateCommand())
-            {
-                string sql = @"
-WITH q AS
-(
-    SELECT [User].*, ROW_NUMBER() OVER({0}) AS rn
-    FROM [User]
-    {1}
-)
-SELECT * FROM q
-WHERE rn BETWEEN @from AND @to
-{0}
-";
-
-                var where = BuildWhereClause(cmd);
-                var orderby = BuildOrderByClause();
-
-                cmd.CommandText = String.Format(sql, orderby, where);
-
-                cmd.Parameters.Add("@from", SqlDbType.Int).Value = from;
-                cmd.Parameters.Add("@to", SqlDbType.Int).Value = from + max;
-
-                return Context.ExecuteCommandReader<User>(cmd);
-            }
+            return base.Find<User>(max, from);
         }
 
         protected override void AppendWhereCriteria(StringBuilder sb, SqlCommand cmd)
