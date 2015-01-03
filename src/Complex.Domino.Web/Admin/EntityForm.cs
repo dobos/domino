@@ -53,6 +53,11 @@ namespace Complex.Domino.Web.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             CreateItem();
+
+            if (!IsPostBack)
+            {
+                UpdateForm();
+            }
         }
 
         protected void Ok_Click(object sender, EventArgs e)
