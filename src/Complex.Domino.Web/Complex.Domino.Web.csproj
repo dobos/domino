@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\SemesterList.aspx" />
+    <Content Include="Admin\SemesterForm.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\UserForm.aspx" />
     <Content Include="Admin\UserList.aspx" />
@@ -80,6 +82,23 @@
     </Compile>
     <Compile Include="Admin\Admin.master.designer.cs">
       <DependentUpon>Admin.master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EntityForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SemesterList.aspx.cs">
+      <DependentUpon>SemesterList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SemesterList.aspx.designer.cs">
+      <DependentUpon>SemesterList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SemesterForm.aspx.cs">
+      <DependentUpon>SemesterForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SemesterForm.aspx.designer.cs">
+      <DependentUpon>SemesterForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

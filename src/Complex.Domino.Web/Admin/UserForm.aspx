@@ -14,7 +14,7 @@
             </td>
         </tr>
         <tr>
-            <td class="lable">&nbsp;</td>
+            <td class="label">&nbsp;</td>
             <td class="field">
                 <asp:CheckBox ID="Enabled" runat="server" Text="Enabled" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:CheckBox ID="Visible" runat="server" Text="Visible" />
