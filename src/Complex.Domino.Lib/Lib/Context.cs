@@ -260,7 +260,9 @@ namespace Complex.Domino.Lib
         {
             PrepareCommand(cmd);
 
-            return (int)cmd.ExecuteScalar();
+            var res = cmd.ExecuteScalar();
+
+            return Convert.ToInt32(res);
         }
 
         public string[] SplitQuery(string sql)
