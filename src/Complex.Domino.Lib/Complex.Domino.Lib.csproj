@@ -54,6 +54,8 @@
     </Compile>
     <Compile Include="Lib\IDatabaseTableObject.cs" />
     <Compile Include="Lib\NoResultsException.cs" />
+    <Compile Include="Lib\Semester.cs" />
+    <Compile Include="Lib\SemesterFactory.cs" />
     <Compile Include="Lib\SqlDataReaderEnumerator.cs" />
     <Compile Include="Lib\SqlDataReaderExtensions.cs" />
     <Compile Include="Lib\User.cs" />

@@ -53,6 +53,12 @@ namespace Complex.Domino.Lib
             return reader.GetBoolean(o);
         }
 
+        public static DateTime GetDateTime(this SqlDataReader reader, string key)
+        {
+            var o = reader.GetOrdinal(key);
+            return reader.GetDateTime(o);
+        }
+
         public static string GetString(this SqlDataReader reader, string key)
         {
             var o = reader.GetOrdinal(key);
