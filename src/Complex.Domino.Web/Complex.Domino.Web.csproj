@@ -66,6 +66,7 @@
     <Content Include="App_Themes\Basic\form.css" />
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />
+    <Content Include="App_Themes\Basic\toolbar.css" />
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
     <Content Include="Controls\Menu.ascx" />
