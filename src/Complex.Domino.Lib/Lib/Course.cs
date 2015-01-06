@@ -122,13 +122,13 @@ SELECT @@IDENTITY
         protected override void Modify()
         {
             var sql = @"
-UPDATE [Semester]
+UPDATE [Course]
 SET SemesterID = @SemesterID,
     Name = @Name,
     Visible = @Visible,
     Enabled = @Enabled,
     StartDate = @StartDate,
-    EndDate = @EndDate
+    EndDate = @EndDate,
     Url = @Url,
     HtmlPage = @HtmlPage,
     GradeType = @GradeType
