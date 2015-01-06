@@ -215,7 +215,7 @@ namespace Complex.Domino.Lib
         {
             PrepareCommand(cmd);
 
-            var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess);
+            var dr = cmd.ExecuteReader();
 
             return dr.AsEnumerable<T>();
         }
@@ -225,7 +225,7 @@ namespace Complex.Domino.Lib
         {
             PrepareCommand(cmd);
 
-            using (var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleRow))
+            using (var dr = cmd.ExecuteReader(CommandBehavior.SingleRow))
             {
                 var o = dr.AsSingleObject<T>();
 
@@ -243,7 +243,7 @@ namespace Complex.Domino.Lib
         {
             PrepareCommand(cmd);
 
-            using (var dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleRow))
+            using (var dr = cmd.ExecuteReader(CommandBehavior.SingleRow))
             {
                 dr.AsSingleObject<T>(o);
             }
