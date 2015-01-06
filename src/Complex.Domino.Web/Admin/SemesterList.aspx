@@ -12,13 +12,17 @@
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
         EnablePaging="true" />
-    <domino:MultiSelectGridView id="semesterList" runat="server" datasourceid="semesterDataSource"
+    <domino:multiselectgridview id="semesterList" runat="server" datasourceid="semesterDataSource"
         autogeneratecolumns="false" datakeynames="ID"
-        allowPaging="true" pagersettings-mode="NumericFirstLast" pagesize="25">
+        allowpaging="true" pagersettings-mode="NumericFirstLast" pagesize="25">
         <Columns>
             <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField HeaderText="ID" DataField="ID" />
-            <asp:BoundField HeaderText="Name" DataField="Name" />
+            <asp:HyperLinkField
+                DataNavigateUrlFields="ID"
+                DataNavigateUrlFormatString="semester.aspx?ID={0}"
+                DataTextField="Name"
+                HeaderText="Name"/>
             <asp:BoundField HeaderText="Visible" DataField="Visible" />
             <asp:BoundField HeaderText="Enabled" DataField="Enabled" />
             <asp:BoundField HeaderText="Start date" DataField="StartDate" />
@@ -27,5 +31,5 @@
         <EmptyDataTemplate>
             <p>No semesters match the query.</p>
         </EmptyDataTemplate>
-    </domino:MultiSelectGridView>
+    </domino:multiselectgridview>
 </asp:Content>
