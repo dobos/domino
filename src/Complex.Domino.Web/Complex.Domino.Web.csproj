@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\CourseList.aspx" />
     <Content Include="Admin\Course.aspx" />
     <Content Include="Admin\Semester.aspx" />
     <Content Include="Admin\SemesterList.aspx" />
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="Admin\Admin.master.designer.cs">
       <DependentUpon>Admin.master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CourseList.aspx.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CourseList.aspx.designer.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Course.aspx.cs">
       <DependentUpon>Course.aspx</DependentUpon>
