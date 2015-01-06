@@ -62,10 +62,13 @@ namespace Complex.Domino.Web.Admin
 
         protected void Ok_Click(object sender, EventArgs e)
         {
-            SaveForm();
-            item.Save();
+            if (IsValid)
+            {
+                SaveForm();
+                item.Save();
 
-            Response.Redirect(OriginalReferer);
+                Response.Redirect(OriginalReferer);
+            }
         }
 
         protected void Cancel_Click(object sender, EventArgs e)

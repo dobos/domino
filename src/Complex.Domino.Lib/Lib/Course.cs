@@ -149,6 +149,7 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = startDate;
             cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = endDate;
             cmd.Parameters.Add("@Url", SqlDbType.NVarChar).Value = url;
+            cmd.Parameters.Add("@HtmlPage", SqlDbType.NVarChar).Value = htmlPage;
             cmd.Parameters.Add("@GradeType", SqlDbType.Int).Value = gradeType;
         }
     }

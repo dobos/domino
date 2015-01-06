@@ -42,7 +42,7 @@ namespace Complex.Domino.Lib
         }
 
         public EntityFactory(Context context)
-            :base(context)
+            : base(context)
         {
             InitializeMembers();
         }
@@ -84,14 +84,16 @@ WITH q AS
     {2}
 )
 SELECT * FROM q
-WHERE rn BETWEEN @from AND @to
-{1}
+{3}
+{2}
 ";
 
                 var where = BuildWhereClause(cmd);
                 var orderby = BuildOrderByClause();
 
-                cmd.CommandText = String.Format(sql, TableName, orderby, where);
+                var limit = from > 0 || max > 0 ? "WHERE rn BETWEEN @from AND @to" : "";
+
+                cmd.CommandText = String.Format(sql, TableName, orderby, where, limit);
 
                 cmd.Parameters.Add("@from", SqlDbType.Int).Value = from;
                 cmd.Parameters.Add("@to", SqlDbType.Int).Value = from + max;

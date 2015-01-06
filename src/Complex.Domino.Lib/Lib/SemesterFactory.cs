@@ -24,6 +24,11 @@ namespace Complex.Domino.Lib
 
         }
 
+        public IEnumerable<Semester> Find()
+        {
+            return Find(-1, -1);
+        }
+
         public IEnumerable<Semester> Find(int max, int from)
         {
             return base.Find<Semester>(max, from);
