@@ -63,6 +63,15 @@ CREATE TABLE [dbo].[User]
 	)
 )
 
+GO
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Username] ON [dbo].[User]
+(
+	[Username] ASC
+)
+
+GO
+
 
 IF OBJECT_ID (N'UserRole', N'U') IS NOT NULL
 DROP TABLE [dbo].[UserRole]
