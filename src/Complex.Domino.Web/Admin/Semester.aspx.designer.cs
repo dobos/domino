@@ -10,7 +10,7 @@
 namespace Complex.Domino.Web.Admin {
     
     
-    public partial class SemesterForm {
+    public partial class Semester {
         
         /// <summary>
         /// NameLabel control.

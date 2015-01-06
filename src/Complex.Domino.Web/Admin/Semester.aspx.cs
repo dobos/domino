@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Admin
 {
-    public partial class SemesterForm : EntityForm<Lib.Semester>
+    public partial class Semester : EntityForm<Lib.Semester>
     {
         public static string GetUrl()
         {
-            return "~/Admin/SemesterForm.aspx";
+            return "~/Admin/Semester.aspx";
         }
 
         protected override void UpdateForm()

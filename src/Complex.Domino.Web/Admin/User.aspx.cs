@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Admin
 {
-    public partial class UserForm : PageBase
+    public partial class User : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -57,10 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Semester.aspx" />
     <Content Include="Admin\SemesterList.aspx" />
-    <Content Include="Admin\SemesterForm.aspx" />
     <Content Include="Admin\Default.aspx" />
-    <Content Include="Admin\UserForm.aspx" />
+    <Content Include="Admin\User.aspx" />
     <Content Include="Admin\UserList.aspx" />
     <Content Include="App_Themes\Basic\fonts.css" />
     <Content Include="App_Themes\Basic\form.css" />
@@ -87,19 +87,19 @@
     <Compile Include="Admin\EntityForm.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Admin\Semester.aspx.cs">
+      <DependentUpon>Semester.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Semester.aspx.designer.cs">
+      <DependentUpon>Semester.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\SemesterList.aspx.cs">
       <DependentUpon>SemesterList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\SemesterList.aspx.designer.cs">
       <DependentUpon>SemesterList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\SemesterForm.aspx.cs">
-      <DependentUpon>SemesterForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\SemesterForm.aspx.designer.cs">
-      <DependentUpon>SemesterForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -108,12 +108,12 @@
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\UserForm.aspx.cs">
-      <DependentUpon>UserForm.aspx</DependentUpon>
+    <Compile Include="Admin\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\UserForm.aspx.designer.cs">
-      <DependentUpon>UserForm.aspx</DependentUpon>
+    <Compile Include="Admin\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>

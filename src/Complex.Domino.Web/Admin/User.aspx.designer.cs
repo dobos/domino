@@ -10,7 +10,7 @@
 namespace Complex.Domino.Web.Admin {
     
     
-    public partial class UserForm {
+    public partial class User {
         
         /// <summary>
         /// NameLabel control.

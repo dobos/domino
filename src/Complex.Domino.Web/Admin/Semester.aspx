@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeBehind="SemesterForm.aspx.cs" Inherits="Complex.Domino.Web.Admin.SemesterForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeBehind="SemesterForm.aspx.cs" Inherits="Complex.Domino.Web.Admin.Semester" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>New semester</h1>
