@@ -16,6 +16,7 @@ namespace Complex.Domino.Lib
 
     public enum GradeType : int
     {
+        Unknown = -1,
         Signature = 1,
         Grade = 2,
         Points = 3

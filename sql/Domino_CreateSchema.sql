@@ -105,9 +105,17 @@ CREATE TABLE [dbo].[Semester]
 	)
 )
 
+GO
+
+
+IF OBJECT_ID (N'Course', N'U') IS NOT NULL
+DROP TABLE [dbo].[Course]
+
+GO
+
 CREATE TABLE [dbo].[Course]
 (
-	[ID] int NOT NULL,
+	[ID] int IDENTITY(1,1) NOT NULL,
 	[SemesterID] int NOT NULL,
 	[Name] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
@@ -121,8 +129,20 @@ CREATE TABLE [dbo].[Course]
 	CONSTRAINT [PK_Course] PRIMARY KEY CLUSTERED 
 	(
 		[ID] ASC
+	),
+
+	CONSTRAINT [FK_Course_Semester] FOREIGN KEY
+	(
+		[SemesterID]
+	) 
+	REFERENCES [dbo].[Semester]
+	(
+		[ID]
 	)
 )
+
+GO
+
 
 CREATE TABLE [dbo].[CourseGrade]
 (
