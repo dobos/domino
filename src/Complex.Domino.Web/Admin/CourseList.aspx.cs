@@ -9,6 +9,11 @@ namespace Complex.Domino.Web.Admin
 {
     public partial class CourseList : PageBase
     {
+        public static string GetUrl()
+        {
+            return "~/Admin/CourseList.aspx";
+        }
+
         private Lib.CourseFactory searchObject;
 
         protected void Page_Load(object sender, EventArgs e)

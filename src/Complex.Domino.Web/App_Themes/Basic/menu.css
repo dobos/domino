@@ -16,7 +16,6 @@ ul#menu
 
         ul#menu > li > a
         {
-            float: left;
         }
 
         ul#menu > li:hover > ul
