@@ -7,21 +7,32 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Admin
 {
-    public partial class User : PageBase
+    public partial class User : EntityForm<Lib.User>
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public static string GetUrl()
         {
-
+            return "~/Admin/User.aspx";
         }
 
-        protected void Ok_Click(object sender, EventArgs e)
+        protected override void UpdateForm()
         {
+            base.UpdateForm();
 
+            Email.Text = Item.Email;
+            Username.Text = Item.Username;
         }
 
-        protected void Cancel_Click(object sender, EventArgs e)
+        protected override void SaveForm()
         {
-            Response.Redirect(OriginalReferer);
+            base.SaveForm();
+
+            Item.Email = Email.Text;
+            Item.Username = Username.Text;
+
+            if (!Item.IsExisting || !String.IsNullOrWhiteSpace(Password.Text))
+            {
+                Item.SetPassword(Password.Text);
+            }
         }
     }
 }

@@ -9,10 +9,16 @@ namespace Complex.Domino.Web.Admin
 {
     public partial class UserList : PageBase
     {
+        public static string GetUrl()
+        {
+            return "~/Admin/UserList.aspx";
+        }
+
         private Lib.UserFactory searchObject;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ToolbarCreate.NavigateUrl = Web.Admin.User.GetUrl();
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

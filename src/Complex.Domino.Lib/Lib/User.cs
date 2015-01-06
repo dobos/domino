@@ -154,7 +154,7 @@ WHERE ID = @ID";
 
             cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
             cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
-            cmd.Parameters.Add("@ActivationCode", SqlDbType.NVarChar).Value = activationCode;
+            cmd.Parameters.Add("@ActivationCode", SqlDbType.NVarChar).Value = (object)activationCode ?? DBNull.Value;
             cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar).Value = passwordHash;
         }
 

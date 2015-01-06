@@ -39,6 +39,11 @@ namespace Complex.Domino.Lib
             set { enabled = value; }
         }
 
+        public bool IsExisting
+        {
+            get { return id > 0; }
+        }
+
         protected Entity()
         {
             InitializeMembers();
@@ -83,7 +88,7 @@ namespace Complex.Domino.Lib
 
         public virtual void Save()
         {
-            if (id > 0)
+            if (IsExisting)
             {
                 Modify();
             }

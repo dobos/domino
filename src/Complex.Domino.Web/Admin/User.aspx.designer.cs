@@ -22,15 +22,6 @@ namespace Complex.Domino.Web.Admin {
         protected global::System.Web.UI.WebControls.Label NameLabel;
         
         /// <summary>
-        /// Name control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Name;
-        
-        /// <summary>
         /// NameRequiredValidator control.
         /// </summary>
         /// <remarks>
@@ -38,24 +29,6 @@ namespace Complex.Domino.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator NameRequiredValidator;
-        
-        /// <summary>
-        /// Enabled control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Enabled;
-        
-        /// <summary>
-        /// Visible control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Visible;
         
         /// <summary>
         /// EmailLabel control.
