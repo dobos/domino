@@ -210,8 +210,10 @@ WHERE (Email = @UsernameOrEmail OR Username = @UsernameOrEmail) AND
             roles = new Dictionary<int, UserRole>();
 
             var sql = @"
-SELECT *
+SELECT UserRole.*, Course.Name AS CourseName, Course.SemesterID, Semester.Name AS SemesterName
 FROM UserRole
+    INNER JOIN Course ON Course.ID = UserRole.CourseID
+    INNER JOIN Semester ON Semester.ID = Course.SemesterID
 WHERE UserID = @UserID";
 
             using (var cmd = Context.CreateCommand(sql))

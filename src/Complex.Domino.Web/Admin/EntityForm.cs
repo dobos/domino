@@ -50,6 +50,10 @@ namespace Complex.Domino.Web.Admin
             item.Visible = Visible.Checked;
         }
 
+        protected virtual void DataBindForm()
+        {
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CreateItem();
@@ -58,6 +62,11 @@ namespace Complex.Domino.Web.Admin
             {
                 UpdateForm();
             }
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            DataBindForm();
         }
 
         protected void Ok_Click(object sender, EventArgs e)

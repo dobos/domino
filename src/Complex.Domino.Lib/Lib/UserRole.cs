@@ -12,6 +12,9 @@ namespace Complex.Domino.Lib
     {
         private int userId;
         private int courseId;
+        private string courseName;
+        private int semesterId;
+        private string semesterName;
         private UserRoleType roleType;
 
         public int UserID
@@ -26,6 +29,21 @@ namespace Complex.Domino.Lib
             set { courseId = value; }
         }
 
+        public string CourseName
+        {
+            get { return courseName; }
+        }
+
+        public int SemesterID
+        {
+            get { return semesterId; }
+        }
+
+        public string SemesterName
+        {
+            get { return semesterName; }
+        }
+
         public UserRoleType RoleType
         {
             get { return roleType; }
@@ -36,6 +54,9 @@ namespace Complex.Domino.Lib
         {
             userId = reader.GetInt32("UserID");
             courseId = reader.GetInt32("CourseID");
+            courseName = reader.GetString("CourseName");
+            semesterId = reader.GetInt32("SemesterID");
+            semesterName = reader.GetString("SemesterName");
             roleType = (UserRoleType)reader.GetInt32("UserRoleType");
         }
     }

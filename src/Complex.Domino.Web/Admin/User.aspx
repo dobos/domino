@@ -79,9 +79,19 @@
             </asp:DropDownList>
             <asp:LinkButton runat="Server" ID="AddRole" Text="Add Role" OnClick="AddRole_Click" ValidationGroup="AddRole" />
         </div>
-        <domino:multiselectgridview runat="server" id="userRoleList">
+        <domino:multiselectgridview runat="server" id="userRoleList" autogeneratecolumns="false" datakeynames="UserID, CourseID">
         <Columns>
-            <asp:BoundField HeaderText="Role name"/>
+            <asp:HyperLinkField
+                DataNavigateUrlFields="SemesterID"
+                DataNavigateUrlFormatString="Semester.aspx?ID={0}"
+                DataTextField="SemesterName"
+                HeaderText="Semester"/>
+            <asp:HyperLinkField
+                DataNavigateUrlFields="CourseID"
+                DataNavigateUrlFormatString="Course.aspx?ID={0}"
+                DataTextField="CourseName"
+                HeaderText="Course"/>
+            <asp:BoundField HeaderText="Role" DataField="RoleType"/>
         </Columns>
         <EmptyDataTemplate>
             <p>User has no roles yet.</p>

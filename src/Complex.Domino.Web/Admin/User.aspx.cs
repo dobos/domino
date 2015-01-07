@@ -41,6 +41,17 @@ namespace Complex.Domino.Web.Admin
             }
         }
 
+        protected override void DataBindForm()
+        {
+            base.DataBindForm();
+
+            if (userRoleList.Visible)
+            {
+                userRoleList.DataSource = Item.Roles.Values;
+                userRoleList.DataBind();
+            }
+        }
+
         private void RefreshCourseList()
         {
             var f = new Lib.CourseFactory(DatabaseContext);
