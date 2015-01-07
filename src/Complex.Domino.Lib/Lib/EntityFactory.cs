@@ -85,7 +85,7 @@ WITH q AS
 )
 SELECT * FROM q
 {3}
-{2}
+{1}
 ";
 
                 var where = BuildWhereClause(cmd);
