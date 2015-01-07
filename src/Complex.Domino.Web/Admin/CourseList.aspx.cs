@@ -33,7 +33,11 @@ namespace Complex.Domino.Web.Admin
         {
             searchObject = new Lib.CourseFactory(DatabaseContext);
 
-            // TODO: set search criteria here
+            // Set search criteria
+            if (Request.QueryString[Constants.RequestSemesterID] != null)
+            {
+                searchObject.SemesterID = int.Parse(Request.QueryString[Constants.RequestSemesterID]);
+            }
 
             e.ObjectInstance = searchObject;
         }
