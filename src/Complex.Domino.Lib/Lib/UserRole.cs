@@ -17,16 +17,19 @@ namespace Complex.Domino.Lib
         public int UserID
         {
             get { return userId; }
+            set { userId = value; }
         }
 
         public int CourseID
         {
             get { return courseId; }
+            set { courseId = value; }
         }
 
         public UserRoleType RoleType
         {
             get { return roleType; }
+            set { roleType = value; }
         }
 
         public void LoadFromDataReader(SqlDataReader reader)

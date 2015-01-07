@@ -8,16 +8,16 @@
                 <asp:Label runat="server" ID="NameLabel" CssClass="required">Name:</asp:Label>
             </td>
             <td class="field">
-                <asp:TextBox ID="Name" runat="server"></asp:TextBox>
+                <asp:TextBox ID="Name" runat="server" ValidationGroup="User" />
                 <asp:RequiredFieldValidator ID="NameRequiredValidator" runat="server" Display="Dynamic"
-                    ErrorMessage="<br />Name is required" ControlToValidate="Name" />
+                    ErrorMessage="<br />Name is required" ControlToValidate="Name" ValidationGroup="User" />
             </td>
         </tr>
         <tr>
             <td class="label">&nbsp;</td>
             <td class="field">
-                <asp:CheckBox ID="Enabled" runat="server" Text="Enabled" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:CheckBox ID="Visible" runat="server" Text="Visible" />
+                <asp:CheckBox ID="Enabled" runat="server" Text="Enabled" ValidationGroup="User" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:CheckBox ID="Visible" runat="server" Text="Visible" ValidationGroup="User"/>
             </td>
         </tr>
         <tr>
@@ -25,10 +25,12 @@
                 <asp:Label runat="server" ID="EmailLabel" CssClass="required">E-mail address:</asp:Label>
             </td>
             <td class="field">
-                <asp:TextBox ID="Email" runat="server"></asp:TextBox>
+                <asp:TextBox ID="Email" runat="server" ValidationGroup="User" />
                 <asp:RequiredFieldValidator ID="EmailRequiredValidator" runat="server" Display="Dynamic"
-                    ErrorMessage="<br />E-mail address is required" ControlToValidate="Email" />
-                <asp:RegularExpressionValidator ID="EmailFormatValidator" runat="server" ControlToValidate="Email" Display="Dynamic" ErrorMessage="<br />Invalid format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                    ErrorMessage="<br />E-mail address is required" ControlToValidate="Email" ValidationGroup="User" />
+                <asp:RegularExpressionValidator ID="EmailFormatValidator" runat="server" 
+                    ControlToValidate="Email" Display="Dynamic" ErrorMessage="<br />Invalid format" 
+                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="User" />
             </td>
         </tr>
         <tr>
@@ -36,39 +38,57 @@
                 <asp:Label runat="server" ID="UsernameLabel" CssClass="required">User name:</asp:Label>
             </td>
             <td class="field">
-                <asp:TextBox ID="Username" runat="server" CssClass="FormField"></asp:TextBox>
+                <asp:TextBox ID="Username" runat="server" CssClass="FormField" ValidationGroup="User" />
                 <asp:RequiredFieldValidator ID="UsernameRequiredValidator" runat="server" Display="Dynamic"
-                    ErrorMessage="<br />User name is required" ControlToValidate="Username" />
+                    ErrorMessage="<br />User name is required" ControlToValidate="Username" ValidationGroup="User"/>
             </td>
         </tr>
     </table>
     <table class="form">
         <tr>
-            <td class="label"><asp:Label runat="server" ID="PasswordLabel">Password:</asp:Label></td>
-            <td class="field"><asp:TextBox runat="server" ID="Password" /></td>
+            <td class="label">
+                <asp:Label runat="server" ID="PasswordLabel">Password:</asp:Label></td>
+            <td class="field">
+                <asp:TextBox runat="server" ID="Password" ValidationGroup="User" /></td>
         </tr>
         <tr>
-            <td class="label"><asp:Label runat="server" ID="PasswordConfirmLabel">Confirmation:</asp:Label></td>
-            <td class="field"><asp:TextBox runat="server" ID="PasswordConfirm" /></td>
+            <td class="label">
+                <asp:Label runat="server" ID="PasswordConfirmLabel">Confirmation:</asp:Label></td>
+            <td class="field">
+                <asp:TextBox runat="server" ID="PasswordConfirm" ValidationGroup="User" /></td>
         </tr>
     </table>
-    <h2>User roles</h2>
-    <domino:MultiSelectGridView runat="server" id="userRoleList">
+    <div class="toolbar">
+        <asp:LinkButton runat="Server" ID="Ok" Text="OK" OnClick="Ok_Click" ValidationGroup="User" />
+        <asp:LinkButton runat="Server" ID="Cancel" Text="Cancel" OnClick="Cancel_Click" CausesValidation="False" />
+    </div>
+    <asp:Panel runat="server" ID="RolesPanel" Visible="false">
+        <h2>User roles</h2>
+        <div class="toolbar">
+            Role:
+            <asp:DropDownList runat="server" ID="RoleType" ValidationGroup="AddRole">
+                <asp:ListItem Value="Unknown" Text="(select role)" />
+                <asp:ListItem Value="Student" Text="Student" />
+                <asp:ListItem Value="Teacher" Text="Teacher" />
+                <asp:ListItem Value="Admin" Text="Admin" />
+            </asp:DropDownList>
+            Course:
+            <asp:DropDownList runat="server" ID="Course" AppendDataBoundItems="true"
+                DataTextField="Name" DataValueField="ID" ValidationGroup="AddRole">
+                <asp:ListItem Value="-1" Text="(select course)" />
+            </asp:DropDownList>
+            <asp:LinkButton runat="Server" ID="AddRole" Text="Add Role" OnClick="AddRole_Click" ValidationGroup="AddRole" />
+        </div>
+        <domino:multiselectgridview runat="server" id="userRoleList">
         <Columns>
             <asp:BoundField HeaderText="Role name"/>
         </Columns>
         <EmptyDataTemplate>
             <p>User has no roles yet.</p>
         </EmptyDataTemplate>
-    </domino:MultiSelectGridView>
-    <table class="form">
-        <tfoot>
-            <tr>
-                <td colspan="2">
-                    <asp:Button runat="Server" ID="Ok" Text="OK" OnClick="Ok_Click" />
-                    <asp:Button runat="Server" ID="Cancel" Text="Cancel" OnClick="Cancel_Click" CausesValidation="False" />
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+        </domino:multiselectgridview>
+        <div class="toolbar">
+            <asp:LinkButton runat="Server" ID="DeleteRole" Text="Delete Role" />
+        </div>
+    </asp:Panel>
 </asp:Content>

@@ -40,11 +40,7 @@ namespace Complex.Domino.Lib
         {
             get
             {
-                if (roles == null)
-                {
-                    LoadRoles();
-                }
-
+                EnsureRolesLoaded();
                 return roles;
             }
         }
@@ -227,6 +223,47 @@ WHERE UserID = @UserID";
                     roles.Add(role.CourseID, role);
                 }
             }
+        }
+
+        private void EnsureRolesLoaded()
+        {
+            if (roles == null)
+            {
+                LoadRoles();
+            }
+        }
+
+        public void AddRole(UserRole role)
+        {
+            if (role.UserID != this.ID)
+            {
+                throw Error.InvalidUserID();
+            }
+
+            EnsureRolesLoaded();
+
+            // TODO: check duplicates
+
+            var sql = @"
+INSERT UserRole
+    (UserID, CourseID, UserRoleType)
+VALUES
+    (@UserID, @CourseID, @UserRoleType)";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = ID;
+                cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = role.CourseID;
+                cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role.RoleType;
+
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+
+            roles.Add(role.CourseID, role);
+        }
+
+        public void DeleteRole(UserRole role)
+        {
         }
 
         public bool IsInAdminRole()

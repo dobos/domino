@@ -20,6 +20,12 @@ namespace Complex.Domino.Web.Admin
 
             Email.Text = Item.Email;
             Username.Text = Item.Username;
+
+            if (Item.IsExisting)
+            {
+                RolesPanel.Visible = true;
+                RefreshCourseList();
+            }
         }
 
         protected override void SaveForm()
@@ -33,6 +39,25 @@ namespace Complex.Domino.Web.Admin
             {
                 Item.SetPassword(Password.Text);
             }
+        }
+
+        private void RefreshCourseList()
+        {
+            var f = new Lib.CourseFactory(DatabaseContext);
+            Course.DataSource = f.Find().ToArray();
+            Course.DataBind();
+        }
+
+        protected void AddRole_Click(object sender, EventArgs e)
+        {
+            var role = new Lib.UserRole()
+            {
+                UserID = Item.ID,
+                CourseID = int.Parse(Course.SelectedValue),
+                RoleType = (Lib.UserRoleType)Enum.Parse(typeof(Lib.UserRoleType), RoleType.SelectedValue),
+            };
+
+            Item.AddRole(role);
         }
     }
 }

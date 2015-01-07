@@ -23,5 +23,10 @@ namespace Complex.Domino.Lib
         {
             return new SecurityException(ErrorMessages.InvalidUsernameOrPassword, inner);
         }
+
+        public static ArgumentException InvalidUserID()
+        {
+            return new ArgumentException(ErrorMessages.InvalidUserID);
+        }
     }
 }
