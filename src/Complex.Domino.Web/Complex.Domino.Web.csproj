@@ -76,6 +76,8 @@
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Teacher\Course.aspx" />
+    <Content Include="Teacher\CourseList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -99,9 +101,6 @@
     </Compile>
     <Compile Include="Admin\Course.aspx.designer.cs">
       <DependentUpon>Course.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\EntityForm.cs">
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Semester.aspx.cs">
       <DependentUpon>Semester.aspx</DependentUpon>
@@ -190,6 +189,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntityForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,6 +199,27 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teacher\Teacher.master.cs">
+      <DependentUpon>Teacher.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Teacher.master.designer.cs">
+      <DependentUpon>Teacher.master</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Course.aspx.cs">
+      <DependentUpon>Course.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Course.aspx.designer.cs">
+      <DependentUpon>Course.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CourseList.aspx.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CourseList.aspx.designer.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Util\UrlFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +227,8 @@
     <Content Include="Auth\Auth.master" />
     <Content Include="Admin\Admin.master" />
     <Content Include="Admin\Web.config" />
+    <Content Include="Teacher\Web.config" />
+    <Content Include="Teacher\Teacher.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -220,6 +245,9 @@
       <Project>{a8a66b45-583a-4995-8c8f-a8a54a44d62a}</Project>
       <Name>Complex.Domino.Lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Student\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
