@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Complex.Domino.Web.Admin
+namespace Complex.Domino.Web
 {
     public abstract class EntityForm<T> : PageBase
         where T : Lib.Entity, new()
     {
         private T item;
 
-        protected TextBox Name;
+        protected ITextControl Name;
         protected CheckBox Enabled;
         protected CheckBox Visible;
 
