@@ -11,7 +11,9 @@ namespace Complex.Domino.Lib
     public class Assignment : Entity, IDatabaseTableObject
     {
         private int semesterID;
+        private string semesterName;
         private int courseID;
+        private string courseName;
         private DateTime startDate;
         private DateTime endDate;
         private DateTime endDateSoft;
@@ -26,10 +28,20 @@ namespace Complex.Domino.Lib
             set { semesterID = value; }
         }
 
+        public string SemesterName
+        {
+            get { return semesterName; }
+        }
+
         public int CourseID
         {
             get { return courseID; }
             set { courseID = value; }
+        }
+
+        public string CourseName
+        {
+            get { return courseName; }
         }
         
         public DateTime StartDate
@@ -87,7 +99,9 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.semesterID = -1;
+            this.semesterName = null;
             this.courseID = -1;
+            this.courseName = null;
             this.startDate = new DateTime(DateTime.Now.Year, 1, 1);
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.endDateSoft = new DateTime(DateTime.Now.Year, 12, 31);
@@ -102,7 +116,9 @@ namespace Complex.Domino.Lib
             base.LoadFromDataReader(reader);
 
             this.semesterID = reader.GetInt32("SemesterID");
+            this.semesterName = reader.GetString("SemesterName");
             this.courseID = reader.GetInt32("CourseID");
+            this.courseName = reader.GetString("CourseName");
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
             this.endDateSoft = reader.GetDateTime("EndDateSoft");

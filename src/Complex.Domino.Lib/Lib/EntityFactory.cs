@@ -58,7 +58,7 @@ namespace Complex.Domino.Lib
             using (var cmd = Context.CreateCommand())
             {
                 string sql = @"
-SELECT COUNT(*) FROM {0}
+SELECT COUNT(*) FROM {0} AS entities
 {1}";
 
                 var where = BuildWhereClause(cmd);

@@ -18,7 +18,7 @@ namespace Complex.Domino.Web.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ToolbarCreate.NavigateUrl = Semester.GetUrl();
+            ToolbarCreate.NavigateUrl = Course.GetUrl();
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
