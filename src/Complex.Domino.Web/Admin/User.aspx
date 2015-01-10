@@ -81,6 +81,7 @@
         </div>
         <domino:multiselectgridview runat="server" id="userRoleList" autogeneratecolumns="false" datakeynames="UserID, CourseID">
         <Columns>
+            <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
             <asp:HyperLinkField
                 DataNavigateUrlFields="SemesterID"
                 DataNavigateUrlFormatString="Semester.aspx?ID={0}"
@@ -98,7 +99,8 @@
         </EmptyDataTemplate>
         </domino:multiselectgridview>
         <div class="toolbar">
-            <asp:LinkButton runat="Server" ID="DeleteRole" Text="Delete Role" />
+            <asp:LinkButton runat="Server" ID="DeleteRole" ValidationGroup="DeleteRole" Text="Delete Role" OnClick="DeleteRole_Click"
+                OnClientClick="return confirm('Are you sure you want to revoke the selected roles?')" />
         </div>
     </asp:Panel>
 </asp:Content>

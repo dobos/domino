@@ -265,10 +265,7 @@ VALUES
 
             using (var cmd = Context.CreateCommand(sql))
             {
-                cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = ID;
-                cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = role.CourseID;
-                cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role.RoleType;
-
+                AppendRoleParamters(cmd, role);
                 Context.ExecuteCommandNonQuery(cmd);
             }
 
@@ -277,6 +274,33 @@ VALUES
 
         public void DeleteRole(UserRole role)
         {
+            if (role.UserID != this.ID)
+            {
+                throw Error.InvalidUserID();
+            }
+
+            EnsureRolesLoaded();
+
+            // TODO: check existence
+
+            var sql = @"
+DELETE UserRole
+WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                AppendRoleParamters(cmd, role);
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+
+            roles.Remove(role.CourseID);
+        }
+
+        private void AppendRoleParamters(SqlCommand cmd, UserRole role)
+        {
+            cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = ID;
+            cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = role.CourseID;
+            cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role.RoleType;
         }
 
         public bool IsInAdminRole()

@@ -69,6 +69,30 @@ namespace Complex.Domino.Web.Admin
             };
 
             Item.AddRole(role);
+            Item.LoadRoles();
+
+            userRoleList.DataBind();
+        }
+
+        protected void DeleteRole_Click(object sender, EventArgs e)
+        {
+            foreach (string id in userRoleList.SelectedDataKeys)
+            {
+                var parts = id.Split('|');
+
+                var role = new Lib.UserRole()
+                {
+                    UserID = Item.ID,
+                    CourseID = int.Parse(parts[0]),
+                    RoleType = (Lib.UserRoleType)int.Parse(parts[1]),
+                };
+
+                Item.DeleteRole(role);
+            }
+
+            Item.LoadRoles();
+
+            userRoleList.DataBind();
         }
     }
 }
