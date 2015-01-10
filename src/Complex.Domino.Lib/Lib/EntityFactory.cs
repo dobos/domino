@@ -49,7 +49,7 @@ namespace Complex.Domino.Lib
         {
             this.name = null;
             this.enabled = null;
-            this.visible = null;
+            this.visible = true;
             this.orderBy = null;
         }
 
