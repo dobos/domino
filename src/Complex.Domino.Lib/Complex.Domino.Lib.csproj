@@ -43,6 +43,7 @@
     <Compile Include="Lib\Constants.cs" />
     <Compile Include="Lib\Context.cs" />
     <Compile Include="Lib\ContextObject.cs" />
+    <Compile Include="Lib\Assignment.cs" />
     <Compile Include="Lib\CourseFactory.cs" />
     <Compile Include="Lib\Course.cs" />
     <Compile Include="Lib\Entity.cs" />

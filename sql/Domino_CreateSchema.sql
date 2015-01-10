@@ -184,28 +184,46 @@ CREATE TABLE [dbo].[CourseGrade]
 	)
 )
 
+GO
+
+
+IF OBJECT_ID (N'Assignment', N'U') IS NOT NULL
+DROP TABLE [dbo].[Assignment]
+
+GO
+
 CREATE TABLE [dbo].[Assignment]
 (
-	[ID] int NOT NULL,
-	[SemesterID] int NOT NULL,
+	[ID] int IDENTITY(1,1) NOT NULL,
 	[CourseID] int NOT NULL,
-	[Ordinal] int NOT NULL,
 	[Name] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,	
 	[StartDate] datetime,
-	[DueDateSoft] datetime,
-	[DueDateHard] datetime,
+	[EndDate] datetime,
+	[EndDateSoft] datetime,
 	[Url] nvarchar(250),
 	[HtmlPage] nvarchar(max),
 	[GradeType] int NOT NULL,
-	[GradeWeight] int NOT NULL,
+	[GradeWeight] float NOT NULL,
 	
 	CONSTRAINT [PK_Assignment] PRIMARY KEY CLUSTERED 
 	(
 		[ID] ASC
-	)
+	),
+	
+	CONSTRAINT [FK_Assignment_Course] FOREIGN KEY
+	(
+		[CourseID]
+	) 
+	REFERENCES [dbo].[Course]
+	(
+		[ID]
+	),
 )
+
+GO
+
 
 CREATE TABLE [dbo].[AssignmentGrade]
 (
