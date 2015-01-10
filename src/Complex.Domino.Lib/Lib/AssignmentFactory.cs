@@ -88,20 +88,19 @@ INNER JOIN UserRole r
             if (semesterID > 0)
             {
                 AppendWhereCriterion(sb, "SemesterID = @SemesterID");
-
                 cmd.Parameters.Add("@SemesterID", System.Data.SqlDbType.Int).Value = semesterID;
             }
 
             if (courseID > 0)
             {
                 AppendWhereCriterion(sb, "CourseID = @CourseID");
-
                 cmd.Parameters.Add("@CourseID", System.Data.SqlDbType.Int).Value = courseID;
             }
 
             if (userID > 0)
             {
                 AppendWhereCriterion(sb, "UserID = @UserID");
+                cmd.Parameters.Add("@UserID", System.Data.SqlDbType.Int).Value = userID;
             }
         }
     }

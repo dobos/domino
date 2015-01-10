@@ -17,14 +17,9 @@
             <asp:BoundField HeaderText="ID" DataField="ID" />
             <asp:HyperLinkField
                 DataNavigateUrlFields="ID"
-                DataNavigateUrlFormatString="course.aspx?ID={0}"
+                DataNavigateUrlFormatString="assignmentlist.aspx?CourseID={0}"
                 DataTextField="Name"
                 HeaderText="Name"/>
-            <asp:BoundField HeaderText="Visible" DataField="Visible" />
-            <asp:BoundField HeaderText="Enabled" DataField="Enabled" />
-            <asp:BoundField HeaderText="Start date" DataField="StartDate" />
-            <asp:BoundField HeaderText="End date" DataField="EndDate" />
-            <asp:BoundField HeaderText="Grade type" DataField="GradeType" />
             <asp:HyperLinkField
                 DataNavigateUrlFields="Url"
                 DataNavigateUrlFormatString="{0}"
