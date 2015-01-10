@@ -62,6 +62,7 @@
     <Compile Include="Lib\SemesterFactory.cs" />
     <Compile Include="Lib\SqlDataReaderEnumerator.cs" />
     <Compile Include="Lib\SqlDataReaderExtensions.cs" />
+    <Compile Include="Lib\Submission.cs" />
     <Compile Include="Lib\User.cs" />
     <Compile Include="Lib\UserFactory.cs" />
     <Compile Include="Lib\UserRole.cs" />

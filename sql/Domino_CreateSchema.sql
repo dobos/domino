@@ -224,10 +224,13 @@ CREATE TABLE [dbo].[Assignment]
 
 GO
 
+IF OBJECT_ID (N'AssignmentGrade', N'U') IS NOT NULL
+DROP TABLE [dbo].[AssignmentGrade]
+
+GO
 
 CREATE TABLE [dbo].[AssignmentGrade]
 (
-	[CourseID] int NOT NULL,
 	[AssignmentID] int NOT NULL,
 	[StudentID] int NOT NULL,
 	[Grade] int NOT NULL,
@@ -237,22 +240,61 @@ CREATE TABLE [dbo].[AssignmentGrade]
 		[CourseID] ASC,
 		[AssignmentID] ASC,
 		[StudentID] ASC
-	)
+	),
+
+
 )
+
+GO
+
+IF OBJECT_ID (N'Submission', N'U') IS NOT NULL
+DROP TABLE [dbo].[Submission]
+
+GO
+
 
 CREATE TABLE [dbo].[Submission]
 (
-	[ID] int NOT NULL,
-	[CourseID] int NOT NULL,
+	[ID] int IDENTITY(1,1) NOT NULL,
 	[AssignmentID] int NOT NULL,
 	[StudentID] int NOT NULL,
-	[UserID] int NOT NULL,
+	[TeacherID] int NULL,
+	[Direction] int NOT NULL,
 	[Date] datetime NOT NULL,
-	[GitCommitHash] varchar(50) NOT NULL,
+	[GitCommitHash] varchar(50) NULL,
 	[Comments] nvarchar(max) NOT NULL,
 	
 	CONSTRAINT [PK_Submission] PRIMARY KEY CLUSTERED 
 	(
 		[ID] ASC
+	),
+
+	CONSTRAINT [FK_Submission_Assignment] FOREIGN KEY
+	(
+		AssignmentID
+	)
+	REFERENCES [dbo].[Assignment]
+	(
+		ID
+	),
+
+	CONSTRAINT [FK_Submission_Student] FOREIGN KEY
+	(
+		StudentID
+	)
+	REFERENCES [dbo].[User]
+	(
+		ID
+	),
+
+	CONSTRAINT [FK_Submission_Teacher] FOREIGN KEY
+	(
+		TeacherID
+	)
+	REFERENCES [dbo].[User]
+	(
+		ID
 	)
 )
+
+GO

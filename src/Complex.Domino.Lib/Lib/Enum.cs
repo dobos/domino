@@ -21,4 +21,11 @@ namespace Complex.Domino.Lib
         Grade = 2,
         Points = 3
     }
+
+    public enum SubmissionDirection
+    {
+        Unknown = -1,
+        StudentToTeacher = 1,
+        TeacherToStudent = 2,
+    }
 }
