@@ -47,6 +47,12 @@ namespace Complex.Domino.Lib
             return reader.GetInt32(o);
         }
 
+        public static double GetDouble(this SqlDataReader reader, string key)
+        {
+            var o = reader.GetOrdinal(key);
+            return reader.GetDouble(o);
+        }
+
         public static bool GetBoolean(this SqlDataReader reader, string key)
         {
             var o = reader.GetOrdinal(key);
