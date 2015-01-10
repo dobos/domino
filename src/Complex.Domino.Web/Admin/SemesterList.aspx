@@ -37,4 +37,9 @@
             <p>No semesters match the query.</p>
         </EmptyDataTemplate>
     </domino:multiselectgridview>
+    <div class="toolbar">
+        <asp:LinkButton runat="server" ID="Delete" Text="Delete" OnClick="Delete_Click" 
+            OnClientClick="return confirm('Are you sure you want to delete the selected items?')"
+            ValidationGroup="Delete" />
+    </div>
 </asp:Content>

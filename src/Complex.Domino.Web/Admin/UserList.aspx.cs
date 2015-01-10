@@ -37,5 +37,14 @@ namespace Complex.Domino.Web.Admin
 
             e.ObjectInstance = searchObject;
         }
+
+        protected void Delete_Click(object sender, EventArgs e)
+        {
+            foreach (int id in userList.SelectedDataKeys.Select(id => int.Parse(id)))
+            {
+                var user = new Lib.User(DatabaseContext);
+                user.Delete(id);
+            }
+        }
     }
 }
