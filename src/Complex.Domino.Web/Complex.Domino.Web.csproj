@@ -78,6 +78,7 @@
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Student\CourseList.aspx" />
     <Content Include="Teacher\Course.aspx" />
     <Content Include="Teacher\CourseList.aspx" />
     <Content Include="Web.config" />
@@ -215,6 +216,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\CourseList.aspx.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CourseList.aspx.designer.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Student.master.cs">
+      <DependentUpon>Student.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Student.master.designer.cs">
+      <DependentUpon>Student.master</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\Teacher.master.cs">
       <DependentUpon>Teacher.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -245,6 +260,7 @@
     <Content Include="Admin\Web.config" />
     <Content Include="Teacher\Web.config" />
     <Content Include="Teacher\Teacher.master" />
+    <Content Include="Student\Student.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -262,9 +278,7 @@
       <Name>Complex.Domino.Lib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Student\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

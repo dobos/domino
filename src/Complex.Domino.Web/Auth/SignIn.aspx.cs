@@ -84,6 +84,8 @@ namespace Complex.Domino.Web.Auth
                     throw Lib.Error.InvalidUsernameOrPassword();
                 }
 
+                u.LoadRoles();
+
                 SetUser(u);
 
                 return true;

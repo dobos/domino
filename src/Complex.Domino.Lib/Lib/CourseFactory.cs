@@ -10,6 +10,7 @@ namespace Complex.Domino.Lib
     {
         private int semesterID;
         private int userID;
+        private UserRoleType roleType;
 
         public int SemesterID
         {
@@ -23,6 +24,12 @@ namespace Complex.Domino.Lib
             set { userID = value; }
         }
 
+        public UserRoleType RoleType
+        {
+            get { return roleType; }
+            set { roleType = value; }
+        }
+
         public CourseFactory(Context context)
             :base(context)
         {
@@ -33,6 +40,7 @@ namespace Complex.Domino.Lib
         {
             this.semesterID = -1;
             this.userID = -1;
+            this.roleType = UserRoleType.Unknown;
         }
 
         public IEnumerable<Course> Find()
@@ -72,13 +80,19 @@ INNER JOIN UserRole r
             if (semesterID > 0)
             {
                 AppendWhereCriterion(sb, "SemesterID = @SemesterID");
-
                 cmd.Parameters.Add("@SemesterID", System.Data.SqlDbType.Int).Value = semesterID;
             }
 
             if (userID > 0)
             {
                 AppendWhereCriterion(sb, "UserID = @UserID");
+                cmd.Parameters.Add("@UserID", System.Data.SqlDbType.Int).Value = userID;
+
+                if (roleType != UserRoleType.Unknown)
+                {
+                    AppendWhereCriterion(sb, "UserRoleType = @UserRoleType");
+                    cmd.Parameters.Add("@UserRoleType", System.Data.SqlDbType.Int).Value = (int)roleType;
+                }
             }
         }
     }

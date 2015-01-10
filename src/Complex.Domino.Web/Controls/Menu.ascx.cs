@@ -11,9 +11,14 @@ namespace Complex.Domino.Web.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Semesters.NavigateUrl = Admin.SemesterList.GetUrl();
-            Courses.NavigateUrl = Admin.CourseList.GetUrl();
-            Users.NavigateUrl = Admin.UserList.GetUrl();
+            AdminUsers.NavigateUrl = Admin.UserList.GetUrl();
+            AdminSemesters.NavigateUrl = Admin.SemesterList.GetUrl();
+            AdminCourses.NavigateUrl = Admin.CourseList.GetUrl();
+            AdminAssignments.NavigateUrl = Admin.AssignmentList.GetUrl();
+
+            TeacherCourses.NavigateUrl = Teacher.CourseList.GetUrl();
+
+            StudentCourses.NavigateUrl = Student.CourseList.GetUrl();
         }
     }
 }

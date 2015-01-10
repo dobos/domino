@@ -2,22 +2,21 @@
 <h1>&nbsp;</h1>
 admin menu
 <ul class="menu">
-    <li><asp:HyperLink runat="server" ID="Semesters">semesters</asp:HyperLink></li>
-    <li><asp:HyperLink runat="server" ID="Courses">courses</asp:HyperLink></li>
-    <li><asp:HyperLink runat="server" ID="Users">users</asp:HyperLink></li>
+    <li><asp:HyperLink runat="server" ID="AdminUsers">users</asp:HyperLink></li>
+    <li><asp:HyperLink runat="server" ID="AdminSemesters">semesters</asp:HyperLink></li>
+    <li><asp:HyperLink runat="server" ID="AdminCourses">courses</asp:HyperLink></li>
+    <li><asp:HyperLink runat="server" ID="AdminAssignments">assignments</asp:HyperLink></li>
 </ul>
 teacher menu
 <ul class="menu">
     <li>semesters</li>
-    <li>courses</li>
-    <li>assignments</li>
+    <li><asp:HyperLink runat="server" ID="TeacherCourses">courses</asp:HyperLink></li>
     <li>students</li>
     <li>submission</li>
 </ul>
 student menu
 <ul class="menu">
-    <li>semesters</li>
-    <li>courses</li>
+    <li><asp:HyperLink runat="server" ID="StudentCourses">courses</asp:HyperLink></li>
     <li>assignments</li>
     <li>submissions</li>
 </ul>

@@ -13,30 +13,57 @@ namespace Complex.Domino.Web.Controls {
     public partial class Menu {
         
         /// <summary>
-        /// Semesters control.
+        /// AdminUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink Semesters;
+        protected global::System.Web.UI.WebControls.HyperLink AdminUsers;
         
         /// <summary>
-        /// Courses control.
+        /// AdminSemesters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink Courses;
+        protected global::System.Web.UI.WebControls.HyperLink AdminSemesters;
         
         /// <summary>
-        /// Users control.
+        /// AdminCourses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink Users;
+        protected global::System.Web.UI.WebControls.HyperLink AdminCourses;
+        
+        /// <summary>
+        /// AdminAssignments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink AdminAssignments;
+        
+        /// <summary>
+        /// TeacherCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink TeacherCourses;
+        
+        /// <summary>
+        /// StudentCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink StudentCourses;
     }
 }

@@ -49,26 +49,24 @@ namespace Complex.Domino.Web
             this.bypassAuthentication = true;
         }
 
-        protected void SetUser(User u)
+        protected void SetUser(User user)
         {
-            DatabaseContext.User = u;
+            DatabaseContext.User = user;
 
-            Session[Constants.SessionUserID] = u.ID;
-            Session[Constants.SessionUsername] = u.Username;
+            Session[Constants.SessionUser] = user;
         }
 
-        protected void GetUser()
+        protected User GetUser()
         {
-            // TODO
-            throw new NotImplementedException();
+            var user = (User)Session[Constants.SessionUser];
+            return user;
         }
 
         protected void ResetUser()
         {
             DatabaseContext.User = null;
 
-            Session[Constants.SessionUserID] = null;
-            Session[Constants.SessionUsername] = null;
+            Session[Constants.SessionUser] = null;
         }
 
         private void EnsureContextExists()
@@ -77,11 +75,11 @@ namespace Complex.Domino.Web
             {
                 databaseContext = Complex.Domino.Lib.Context.Create();
 
-                databaseContext.User = new User(databaseContext)
+                databaseContext.User = GetUser();
+                if (databaseContext.User != null)
                 {
-                    ID = (int)(Session[Constants.SessionUserID] ?? -1),
-                    Username = (string)Session[Constants.SessionUsername]
-                };
+                    databaseContext.User.Context = databaseContext;
+                }
             }
         }
 
@@ -96,7 +94,7 @@ namespace Complex.Domino.Web
             {
                 // If the user hold a valid cookie but the session is new
                 // we need to look up user details from the database
-                if (this.User.Identity.IsAuthenticated && Session[Constants.SessionUserID] == null)
+                if (this.User.Identity.IsAuthenticated && Session[Constants.SessionUser] == null)
                 {
                     var u = new User(DatabaseContext);
                     u.Load(this.User.Identity.Name);
