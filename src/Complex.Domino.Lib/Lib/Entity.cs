@@ -101,5 +101,12 @@ namespace Complex.Domino.Lib
         protected abstract void Create();
 
         protected abstract void Modify();
+
+        public void Delete()
+        {
+            Delete(this.id);
+        }
+
+        public abstract void Delete(int id);
     }
 }

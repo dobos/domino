@@ -108,5 +108,16 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = startDate;
             cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = endDate;
         }
+
+        public override void Delete(int id)
+        {
+            var sql = "DELETE Semester WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
     }
 }

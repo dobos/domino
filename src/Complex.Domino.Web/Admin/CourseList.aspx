@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeBehind="CourseList.aspx.cs" Inherits="Complex.Domino.Web.Admin.CourseList" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <h1>All semesters</h1>
+    <h1>All courses</h1>
     <div class="toolbar">
         <asp:HyperLink runat="server" ID="ToolbarCreate" Text="Create Course" />
     </div>
@@ -38,4 +38,9 @@
             <p>No semesters match the query.</p>
         </EmptyDataTemplate>
     </domino:multiselectgridview>
+    <div class="toolbar">
+        <asp:LinkButton runat="server" ID="Delete" Text="Delete" OnClick="Delete_Click" 
+            OnClientClick="return confirm('Are you sure you want to delete the selected items?')"
+            ValidationGroup="Delete" />
+    </div>
 </asp:Content>

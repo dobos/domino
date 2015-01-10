@@ -154,6 +154,17 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar).Value = passwordHash;
         }
 
+        public override void Delete(int id)
+        {
+            var sql = "DELETE [User] WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
+
         #region Password functions
 
         public void SetPassword(string password)

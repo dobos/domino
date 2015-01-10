@@ -152,5 +152,16 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@HtmlPage", SqlDbType.NVarChar).Value = htmlPage;
             cmd.Parameters.Add("@GradeType", SqlDbType.Int).Value = gradeType;
         }
+
+        public override void Delete(int id)
+        {
+            var sql = "DELETE Course WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
     }
 }
