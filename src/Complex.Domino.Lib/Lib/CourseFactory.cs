@@ -9,6 +9,7 @@ namespace Complex.Domino.Lib
     public class CourseFactory : EntityFactory
     {
         private int semesterID;
+        private int userID;
 
         public int SemesterID
         {
@@ -16,9 +17,10 @@ namespace Complex.Domino.Lib
             set { semesterID = value; }
         }
 
-        protected override string TableName
+        public int UserID
         {
-            get { return "Course"; }
+            get { return userID; }
+            set { userID = value; }
         }
 
         public CourseFactory(Context context)
@@ -30,6 +32,7 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.semesterID = -1;
+            this.userID = -1;
         }
 
         public IEnumerable<Course> Find()
@@ -42,6 +45,26 @@ namespace Complex.Domino.Lib
             return base.Find<Course>(max, from);
         }
 
+        protected override string GetTableQuery()
+        {
+            var needRoles = false;
+
+            needRoles |= userID > 0;
+
+            if (needRoles)
+            {
+                return @"
+(SELECT c.*, r.UserID, r.UserRoleType
+FROM Course c
+INNER JOIN UserRole r
+    ON c.ID = r.CourseID)";
+            }
+            else
+            {
+                return "Course";
+            }
+        }
+
         protected override void AppendWhereCriteria(StringBuilder sb, System.Data.SqlClient.SqlCommand cmd)
         {
             base.AppendWhereCriteria(sb, cmd);
@@ -51,6 +74,11 @@ namespace Complex.Domino.Lib
                 AppendWhereCriterion(sb, "SemesterID = @SemesterID");
 
                 cmd.Parameters.Add("@SemesterID", System.Data.SqlDbType.Int).Value = semesterID;
+            }
+
+            if (userID > 0)
+            {
+                AppendWhereCriterion(sb, "UserID = @UserID");
             }
         }
     }

@@ -13,11 +13,6 @@ namespace Complex.Domino.Lib
         private string email;
         private string username;
 
-        protected override string TableName
-        {
-            get { return "User"; }
-        }
-
         public string Email
         {
             get { return email; }
@@ -45,6 +40,11 @@ namespace Complex.Domino.Lib
         public IEnumerable<User> Find(int max, int from)
         {
             return base.Find<User>(max, from);
+        }
+
+        protected override string GetTableQuery()
+        {
+            return "[User]";
         }
 
         protected override void AppendWhereCriteria(StringBuilder sb, SqlCommand cmd)

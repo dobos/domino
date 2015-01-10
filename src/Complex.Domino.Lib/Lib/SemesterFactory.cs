@@ -8,11 +8,6 @@ namespace Complex.Domino.Lib
 {
     public class SemesterFactory : EntityFactory
     {
-        protected override string TableName
-        {
-            get { return "Semester"; }
-        }
-
         public SemesterFactory(Context context)
             :base(context)
         {
@@ -32,6 +27,11 @@ namespace Complex.Domino.Lib
         public IEnumerable<Semester> Find(int max, int from)
         {
             return base.Find<Semester>(max, from);
+        }
+
+        protected override string GetTableQuery()
+        {
+            return "Semester";
         }
     }
 }

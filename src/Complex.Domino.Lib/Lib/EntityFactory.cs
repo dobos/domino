@@ -15,8 +15,6 @@ namespace Complex.Domino.Lib
         private bool? visible;
         private string orderBy;
 
-        protected abstract string TableName { get; }
-
         public string Name
         {
             get { return name; }
@@ -60,12 +58,13 @@ namespace Complex.Domino.Lib
             using (var cmd = Context.CreateCommand())
             {
                 string sql = @"
-SELECT COUNT(*) FROM [{0}]
+SELECT COUNT(*) FROM {0}
 {1}";
 
                 var where = BuildWhereClause(cmd);
+                var tableQuery = GetTableQuery();
 
-                cmd.CommandText = String.Format(sql, TableName, where);
+                cmd.CommandText = String.Format(sql, GetTableQuery(), where);
 
                 return Context.ExecuteCommandScalar(cmd);
             }
@@ -79,8 +78,8 @@ SELECT COUNT(*) FROM [{0}]
                 string sql = @"
 WITH q AS
 (
-    SELECT [{0}].*, ROW_NUMBER() OVER({1}) AS rn
-    FROM [{0}]
+    SELECT entities.*, ROW_NUMBER() OVER({1}) AS rn
+    FROM {0} AS entities
     {2}
 )
 SELECT * FROM q
@@ -93,7 +92,9 @@ SELECT * FROM q
 
                 var limit = from > 0 || max > 0 ? "WHERE rn BETWEEN @from AND @to" : "";
 
-                cmd.CommandText = String.Format(sql, TableName, orderby, where, limit);
+                var table = GetTableQuery();
+
+                cmd.CommandText = String.Format(sql, table, orderby, where, limit);
 
                 cmd.Parameters.Add("@from", SqlDbType.Int).Value = from;
                 cmd.Parameters.Add("@to", SqlDbType.Int).Value = from + max;
@@ -101,6 +102,8 @@ SELECT * FROM q
                 return Context.ExecuteCommandReader<T>(cmd);
             }
         }
+
+        protected abstract string GetTableQuery();
 
         protected string BuildWhereClause(SqlCommand cmd)
         {
