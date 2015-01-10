@@ -14,6 +14,30 @@ VALUES
 	(2, 'osztályzat'),
 	(3, 'pont')
 	
+
+-- Create dummy semester for admin
+
+SET IDENTITY_INSERT [dbo].[Semester] ON
+
+INSERT [dbo].[Semester]
+	(ID, Name, Visible, Enabled, StartDate, EndDate)
+VALUES
+	(-1, 'admin', 0, 0, '2015-01-01', '2015-01-01')
+
+SET IDENTITY_INSERT [dbo].[Semester] OFF
+
+-- Create dummy course for admin
+
+SET IDENTITY_INSERT [dbo].[Course] ON
+
+INSERT [dbo].[Course]
+	(ID, SemesterID, Name, Visible, Enabled, StartDate, EndDate, Url, HtmlPage, GradeType)
+VALUES
+	(-1, -1, 'admin', 0, 0, '2015-01-01', '2015-01-01', NULL, NULL, -1)
+
+SET IDENTITY_INSERT [dbo].[Course] OFF
+
+GO
 	
 -- Create admin user
 	

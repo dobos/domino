@@ -88,6 +88,24 @@ CREATE TABLE [dbo].[UserRole]
 	(
 		[UserID] ASC,
 		[CourseID] ASC
+	),
+
+	CONSTRAINT [FK_UserRole_User] FOREIGN KEY
+	(
+		[UserID]
+	) 
+	REFERENCES [dbo].[User]
+	(
+		[ID]
+	),
+
+	CONSTRAINT [FK_UserRole_Course] FOREIGN KEY
+	(
+		[CourseID]
+	) 
+	REFERENCES [dbo].[Course]
+	(
+		[ID]
 	)
 )
 
