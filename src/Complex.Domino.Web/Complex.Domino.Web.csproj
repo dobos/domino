@@ -73,10 +73,10 @@
     <Content Include="App_Themes\Basic\toolbar.css" />
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
-    <Content Include="Controls\FileList.ascx" />
+    <Content Include="Controls\FileBrowser.ascx" />
     <Content Include="Controls\Menu.ascx" />
     <EmbeddedResource Include="Controls\MultiSelectGridView.js" />
-    <Content Include="Controls\MultiSelectListView.js" />
+    <EmbeddedResource Include="Controls\MultiSelectListView.js" />
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -174,12 +174,12 @@
       <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="Controls\FileList.ascx.cs">
-      <DependentUpon>FileList.ascx</DependentUpon>
+    <Compile Include="Controls\FileBrowser.ascx.cs">
+      <DependentUpon>FileBrowser.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\FileList.ascx.designer.cs">
-      <DependentUpon>FileList.ascx</DependentUpon>
+    <Compile Include="Controls\FileBrowser.ascx.designer.cs">
+      <DependentUpon>FileBrowser.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\Menu.ascx.cs">
       <DependentUpon>Menu.ascx</DependentUpon>

@@ -88,7 +88,7 @@ namespace Complex.Domino.Web.Controls
 
         public IEnumerable<ScriptReference> GetScriptReferences()
         {
-            yield return new ScriptReference("Herschel.Ws.Controls.MultiSelectListView.js", "Herschel.Ws");
+            yield return new ScriptReference("Complex.Domino.Web.Controls.MultiSelectListView.js", "Complex.Domino.Web");
         }
 
         protected override void Render(HtmlTextWriter writer)

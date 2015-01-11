@@ -1,0 +1,255 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.IO;
+
+namespace Complex.Domino.Web.Controls
+{
+    public partial class FileBrowser : System.Web.UI.UserControl
+    {
+        private string basePath;
+
+        public string BasePath
+        {
+            get { return basePath; }
+            set { basePath = value; }
+        }
+
+        public string RelativePath
+        {
+            get { return (string)ViewState["RelativePath"] ?? ""; }
+            set { ViewState["RelativePath"] = value; }
+        }
+
+        public bool ShowDirectories
+        {
+            get { return (bool)(ViewState["ShowDirectories"] ?? true); }
+            set { ViewState["ShowDirectories"] = value; }
+        }
+
+        public bool ShowHidden
+        {
+            get { return (bool)(ViewState["ShowHidden"] ?? false); }
+            set { ViewState["ShowHidden"] = value; }
+        }
+
+        public string ShownExtensions
+        {
+            get { return (string)ViewState["ShownExtensions"] ?? ""; }
+            set { ViewState["ShownExtensions"] = value; }
+        }
+
+        public bool AllowSelection
+        {
+            get { return (bool)(ViewState["AllowSelection"] ?? true); }
+            set { ViewState["AllowSelection"] = value; }
+        }
+
+        public bool AllowUpload
+        {
+            get { return (bool)(ViewState["AllowUpload"] ?? true); }
+            set { ViewState["AllowUpload"] = value; }
+        }
+
+        public bool AllowDownload
+        {
+            get { return (bool)(ViewState["AllowDownload"] ?? true); }
+            set { ViewState["AllowDownload"] = value; }
+        }
+
+        public bool AllowDelete
+        {
+            get { return (bool)(ViewState["AllowDelete"] ?? true); }
+            set { ViewState["AllowDelete"] = value; }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void directoryList_ItemCreated(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                var di = (DirectoryInfo)((ListViewDataItem)e.Item).DataItem;
+
+                if (di != null)
+                {
+                    var name = (LinkButton)e.Item.FindControl("name");
+
+                    var relpath = MakePathRelative(BasePath, di.FullName);
+
+                    if (relpath == String.Empty)
+                    {
+                        name.Text = "~";
+                    }
+                    else
+                    {
+                        name.Text = di.Name;
+                    }
+
+                    name.CommandArgument = relpath;
+                }
+            }
+        }
+
+        protected void directoryList_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            var dir = (string)e.CommandArgument;
+            this.RelativePath = dir;
+        }
+
+        protected void fileList_ItemCreated(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                var fi = (FileInfo)((ListViewDataItem)e.Item).DataItem;
+
+                if (fi != null)
+                {
+                    var select = (CheckBox)e.Item.FindControl(fileList.SelectionCheckboxID);
+                    var icon = (Image)e.Item.FindControl("icon");
+                    var name = (LinkButton)e.Item.FindControl("name");
+                    var size = (Label)e.Item.FindControl("size");
+
+                    select.Visible = AllowSelection;
+
+                    name.Text = fi.Name;
+                    name.CommandArgument = fi.Name;
+
+                    if ((fi.Attributes & FileAttributes.Directory) == 0)
+                    {
+                        size.Text = fi.Length.ToString();
+                    }
+                }
+            }
+        }
+
+        protected void fileList_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            var filename = (string)e.CommandArgument;
+            var path = Path.Combine(BasePath, RelativePath, filename);
+
+            // If it's a directory, handle event and change current dir
+            var fi = new FileInfo(path);
+
+            if ((fi.Attributes & FileAttributes.Directory) != 0)
+            {
+                this.RelativePath = Path.Combine(this.RelativePath, filename);
+            }
+            else
+            {
+                // Propage event to control
+                // TODO
+            }
+        }
+
+
+
+        private DirectoryInfo[] GetDirectories()
+        {
+            var parts = RelativePath.Split(new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries);
+
+            var dirs = new DirectoryInfo[parts.Length + 1];
+            var dir = BasePath;
+            
+            dirs[0] = new DirectoryInfo(dir);
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                dir = Path.Combine(dir, parts[i]);
+                dirs[i + 1] = new DirectoryInfo(dir);
+            }
+
+            return dirs;
+        }
+
+        private FileInfo[] GetFiles()
+        {
+            var extensions = new HashSet<string>(
+                ShownExtensions.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries),
+                StringComparer.InvariantCultureIgnoreCase);
+
+            var dir = Path.Combine(BasePath, RelativePath);
+            var entries = Directory.GetFileSystemEntries(dir);
+
+            var files = new List<FileInfo>();
+
+            foreach (var entry in entries)
+            {
+                var fi = new FileInfo(entry);
+
+                // Filter out directories, if necessary
+                if ((fi.Attributes & FileAttributes.Directory) != 0 && !ShowDirectories)
+                {
+                    continue;
+                }
+
+                // Filter out hidden files, if necessary
+                if (((fi.Attributes & FileAttributes.Hidden) != 0 || fi.Name.StartsWith("."))
+                    && !ShowHidden)
+                {
+                    continue;
+                }
+
+                // Filter out files with invalid extension
+                if ((fi.Attributes & FileAttributes.Directory) == 0 &&
+                    extensions.Count > 0 &&
+                    !extensions.Contains(fi.Extension))
+                {
+                    continue;
+                }
+
+                files.Add(fi);
+            }
+
+            return files.ToArray();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            directoryList.DataSource = GetDirectories();
+            directoryList.DataBind();
+
+            fileList.DataSource = GetFiles();
+            fileList.DataBind();
+
+            base.OnLoad(e);
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+
+            directoryList.DataSource = GetDirectories();
+            directoryList.DataBind();
+
+            fileList.DataSource = GetFiles();
+            fileList.DataBind();
+        }
+
+        private string MakePathRelative(string basePath, string path)
+        {
+            basePath = Path.GetFullPath(basePath);
+            path = Path.GetFullPath(path);
+
+            if (!path.StartsWith(basePath, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new ArgumentException("Path is outside base directory");  // TODO
+            }
+
+            if (path.Length < basePath.Length)
+            {
+                throw new ArgumentException("Cannot reference directory outside base path");    // TODO
+            }
+
+            var relpath = path.Substring(basePath.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
+            return relpath;
+        }
+    }
+}
