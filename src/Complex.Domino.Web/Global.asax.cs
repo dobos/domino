@@ -16,10 +16,19 @@ namespace Complex.Domino.Web
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery",
                 new ScriptResourceDefinition
                 {
-                    Path = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js",
-                    DebugPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.js",
-                    CdnPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js",
-                    CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.js"
+                    Path = "~/Scripts/jquery-1.11.2/jquery.min.js",
+                    DebugPath = "~/Scripts/jquery-1.11.2/jquery.js",
+                    CdnPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js",
+                    CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js"
+                });
+
+            ScriptManager.ScriptResourceMapping.AddDefinition("jquery-ui",
+                new ScriptResourceDefinition
+                {
+                    Path = "~/Scripts/jquery-ui-1.11.2/jquery-ui.min.js",
+                    DebugPath = "~/Scripts/jquery-ui-1.11.2/jquery-ui.js",
+                    CdnPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.min.js",
+                    CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.js",
                 });
         }
 

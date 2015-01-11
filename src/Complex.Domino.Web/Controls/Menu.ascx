@@ -17,6 +17,6 @@ teacher menu
 student menu
 <ul class="menu">
     <li><asp:HyperLink runat="server" ID="StudentCourses">courses</asp:HyperLink></li>
-    <li>assignments</li>
+    <li><asp:HyperLink runat="server" ID="StudentAssignments">assignments</asp:HyperLink></li>
     <li>submissions</li>
 </ul>

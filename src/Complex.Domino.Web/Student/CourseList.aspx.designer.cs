@@ -28,6 +28,6 @@ namespace Complex.Domino.Web.Student {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Complex.Domino.Web.Controls.MultiSelectGridView courseList;
+        protected global::System.Web.UI.WebControls.ListView courseList;
     }
 }
