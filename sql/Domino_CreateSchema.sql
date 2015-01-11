@@ -41,6 +41,87 @@ CREATE TABLE [dbo].[GradeType]
 GO
 
 
+IF OBJECT_ID (N'Semester', N'U') IS NOT NULL
+DROP TABLE [dbo].[Semester]
+
+GO
+
+CREATE TABLE [dbo].[Semester]
+(
+	[ID] int IDENTITY(1,1) NOT NULL,
+	[Name] nvarchar(250) NOT NULL,
+	[Visible] bit NOT NULL,
+	[Enabled] bit NOT NULL,
+	[Comments] nvarchar(max) NOT NULL,
+	[StartDate] datetime NOT NULL,
+	[EndDate] datetime NOT NULL,
+	
+	CONSTRAINT [PK_Semester] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	)
+)
+
+GO
+
+
+IF OBJECT_ID (N'Course', N'U') IS NOT NULL
+DROP TABLE [dbo].[Course]
+
+GO
+
+CREATE TABLE [dbo].[Course]
+(
+	[ID] int IDENTITY(1,1) NOT NULL,
+	[SemesterID] int NOT NULL,
+	[Name] nvarchar(250) NOT NULL,
+	[Visible] bit NOT NULL,
+	[Enabled] bit NOT NULL,
+	[Comments] nvarchar(max) NOT NULL,
+	[StartDate] datetime,
+	[EndDate] datetime,
+	[Url] nvarchar(250),
+	[GradeType] int NOT NULL,
+	
+	CONSTRAINT [PK_Course] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	),
+
+	CONSTRAINT [FK_Course_Semester] FOREIGN KEY
+	(
+		[SemesterID]
+	) 
+	REFERENCES [dbo].[Semester]
+	(
+		[ID]
+	)
+)
+
+GO
+
+
+IF OBJECT_ID (N'CourseGrade', N'U') IS NOT NULL
+DROP TABLE [dbo].[CourseGrade]
+
+GO
+
+CREATE TABLE [dbo].[CourseGrade]
+(
+	[CourseID] int NOT NULL,
+	[StudentID] int NOT NULL,
+	[Grade] int,
+	
+	CONSTRAINT [PK_CourseGrade] PRIMARY KEY CLUSTERED 
+	(
+		[CourseID] ASC,
+		[StudentID] ASC
+	)
+)
+
+GO
+
+
 IF OBJECT_ID (N'User', N'U') IS NOT NULL
 DROP TABLE [dbo].[User]
 
@@ -52,6 +133,7 @@ CREATE TABLE [dbo].[User]
 	[Name] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
+	[Comments] nvarchar(max) NOT NULL,
 	[Email] nvarchar(150) NOT NULL,
 	[Username] nvarchar(50) NOT NULL,
 	[ActivationCode] nvarchar(50),
@@ -112,80 +194,6 @@ CREATE TABLE [dbo].[UserRole]
 GO
 
 
-IF OBJECT_ID (N'Semester', N'U') IS NOT NULL
-DROP TABLE [dbo].[Semester]
-
-GO
-
-CREATE TABLE [dbo].[Semester]
-(
-	[ID] int IDENTITY(1,1) NOT NULL,
-	[Name] nvarchar(250) NOT NULL,
-	[Visible] bit NOT NULL,
-	[Enabled] bit NOT NULL,
-	[StartDate] datetime NOT NULL,
-	[EndDate] datetime NOT NULL,
-	
-	CONSTRAINT [PK_Semester] PRIMARY KEY CLUSTERED 
-	(
-		[ID] ASC
-	)
-)
-
-GO
-
-
-IF OBJECT_ID (N'Course', N'U') IS NOT NULL
-DROP TABLE [dbo].[Course]
-
-GO
-
-CREATE TABLE [dbo].[Course]
-(
-	[ID] int IDENTITY(1,1) NOT NULL,
-	[SemesterID] int NOT NULL,
-	[Name] nvarchar(250) NOT NULL,
-	[Visible] bit NOT NULL,
-	[Enabled] bit NOT NULL,
-	[StartDate] datetime,
-	[EndDate] datetime,
-	[Url] nvarchar(250),
-	[HtmlPage] nvarchar(max),
-	[GradeType] int NOT NULL,
-	
-	CONSTRAINT [PK_Course] PRIMARY KEY CLUSTERED 
-	(
-		[ID] ASC
-	),
-
-	CONSTRAINT [FK_Course_Semester] FOREIGN KEY
-	(
-		[SemesterID]
-	) 
-	REFERENCES [dbo].[Semester]
-	(
-		[ID]
-	)
-)
-
-GO
-
-
-CREATE TABLE [dbo].[CourseGrade]
-(
-	[CourseID] int NOT NULL,
-	[StudentID] int NOT NULL,
-	[Grade] int,
-	
-	CONSTRAINT [PK_CourseGrade] PRIMARY KEY CLUSTERED 
-	(
-		[CourseID] ASC,
-		[StudentID] ASC
-	)
-)
-
-GO
-
 
 IF OBJECT_ID (N'Assignment', N'U') IS NOT NULL
 DROP TABLE [dbo].[Assignment]
@@ -199,11 +207,11 @@ CREATE TABLE [dbo].[Assignment]
 	[Name] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,	
+	[Comments] nvarchar(max) NOT NULL,
 	[StartDate] datetime,
 	[EndDate] datetime,
 	[EndDateSoft] datetime,
 	[Url] nvarchar(250),
-	[HtmlPage] nvarchar(max),
 	[GradeType] int NOT NULL,
 	[GradeWeight] float NOT NULL,
 	
@@ -237,12 +245,9 @@ CREATE TABLE [dbo].[AssignmentGrade]
 	
 	CONSTRAINT [PK_AssignmentGrade] PRIMARY KEY CLUSTERED 
 	(
-		[CourseID] ASC,
 		[AssignmentID] ASC,
 		[StudentID] ASC
-	),
-
-
+	)
 )
 
 GO
@@ -260,9 +265,12 @@ CREATE TABLE [dbo].[Submission]
 	[StudentID] int NOT NULL,
 	[TeacherID] int NULL,
 	[Direction] int NOT NULL,
+	[Name] nvarchar(250) NOT NULL,
+	[Visible] bit NOT NULL,
+	[Enabled] bit NOT NULL,
+	[Comments] nvarchar(max) NOT NULL,
 	[Date] datetime NOT NULL,
 	[GitCommitHash] varchar(50) NULL,
-	[Comments] nvarchar(max) NOT NULL,
 	
 	CONSTRAINT [PK_Submission] PRIMARY KEY CLUSTERED 
 	(

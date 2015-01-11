@@ -14,6 +14,7 @@ namespace Complex.Domino.Lib
         private string name;
         private bool visible;
         private bool enabled;
+        private string comments;
 
         public int ID
         {
@@ -39,6 +40,12 @@ namespace Complex.Domino.Lib
             set { enabled = value; }
         }
 
+        public string Comments
+        {
+            get { return comments; }
+            set { comments = value; }
+        }
+
         public bool IsExisting
         {
             get { return id > 0; }
@@ -58,9 +65,10 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.id = -1;
-            this.name = null;
+            this.name = String.Empty;
             this.visible = true;
             this.enabled = true;
+            this.comments = String.Empty;
         }
 
         public virtual void LoadFromDataReader(SqlDataReader reader)
@@ -69,6 +77,7 @@ namespace Complex.Domino.Lib
             this.name = reader.GetString("Name");
             this.visible = reader.GetBoolean("Visible");
             this.enabled = reader.GetBoolean("Enabled");
+            this.comments = reader.GetString("Comments");
         }
 
         protected virtual void AppendCreateModifyCommandParameters(SqlCommand cmd)
@@ -77,6 +86,7 @@ namespace Complex.Domino.Lib
             cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
             cmd.Parameters.Add("@Visible", SqlDbType.Bit).Value = visible;
             cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled;
+            cmd.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
         }
 
         public void Load()

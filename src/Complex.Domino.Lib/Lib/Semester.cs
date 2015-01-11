@@ -69,9 +69,9 @@ WHERE ID = @ID";
         {
             var sql = @"
 INSERT [Semester]
-    (Name, Visible, Enabled, StartDate, EndDate)
+    (Name, Visible, Enabled, Comments, StartDate, EndDate)
 VALUES
-    (@Name, @Visible, @Enabled, @StartDate, @EndDate)
+    (@Name, @Visible, @Enabled, @Comments, @StartDate, @EndDate)
 
 SELECT @@IDENTITY
 ";
@@ -90,6 +90,7 @@ UPDATE [Semester]
 SET Name = @Name,
     Visible = @Visible,
     Enabled = @Enabled,
+    Comments = @Comments,
     StartDate = @StartDate,
     EndDate = @EndDate
 WHERE ID = @ID";

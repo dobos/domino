@@ -23,7 +23,6 @@ namespace Complex.Domino.Lib
         private SubmissionDirection direction;
         private DateTime date;
         private string gitCommitHash;
-        private string comments;
 
         public int SemesterID
         {
@@ -96,12 +95,6 @@ namespace Complex.Domino.Lib
             set { gitCommitHash = value; }
         }
 
-        public string Comments
-        {
-            get { return comments; }
-            set { comments = value; }
-        }
-
         public Submission()
         {
             InitializeMembers();
@@ -128,7 +121,6 @@ namespace Complex.Domino.Lib
             this.direction = SubmissionDirection.Unknown;
             this.date = new DateTime(2015, 1, 1);
             this.gitCommitHash = null;
-            this.comments = null;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -148,7 +140,6 @@ namespace Complex.Domino.Lib
             this.direction = (SubmissionDirection)reader.GetInt32("Direction");
             this.date = reader.GetDateTime("Date");
             this.gitCommitHash = reader.GetString("GitCommitHash");
-            this.comments = reader.GetString("Comments");
         }
 
         public override void Load(int id)
@@ -176,11 +167,11 @@ WHERE ID = @ID";
         {
             var sql = @"
 INSERT [Submission]
-    (AssignmentID, StudentID, TeacherID, Direction, Name, Visible, Enabled,
-     Date, GitCommitHash, Comments)
+    (AssignmentID, StudentID, TeacherID, Direction, Name, Visible, Enabled, Comments
+     Date, GitCommitHash)
 VALUES
-    (@AssignmentID, @StudentID, @TeacherID, @Direction, @Name, @Visible, @Enabled,
-     @Date, @GitCommitHash, @Comments)
+    (@AssignmentID, @StudentID, @TeacherID, @Direction, @Name, @Visible, @Enabled, @Comments,
+     @Date, @GitCommitHash)
 
 SELECT @@IDENTITY
 ";
@@ -203,9 +194,9 @@ SET AssignmentID = @AssignmentID,
     Name = @Name,
     Visible = @Visible,
     Enabled = @Enabled,
+    Comments = @Comments,
     Date = @Date,
-    GitCommitHash = @GitCommitHash,
-    Comments = @Comments
+    GitCommitHash = @GitCommitHash
 WHERE ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
@@ -225,7 +216,6 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@Direction", SqlDbType.Int).Value = (int)direction;
             cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = Date;
             cmd.Parameters.Add("@GitCommitHash", SqlDbType.NVarChar).Value = gitCommitHash;
-            cmd.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
         }
 
         public override void Delete(int id)

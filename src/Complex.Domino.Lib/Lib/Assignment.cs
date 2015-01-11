@@ -18,7 +18,6 @@ namespace Complex.Domino.Lib
         private DateTime endDate;
         private DateTime endDateSoft;
         private string url;
-        private string htmlPage;
         private GradeType gradeType;
         private double gradeWeigth;
 
@@ -61,16 +60,11 @@ namespace Complex.Domino.Lib
             get { return endDateSoft; }
             set { endDateSoft = value; }
         }
+
         public string Url
         {
             get { return url; }
             set { url = value; }
-        }
-
-        public string HtmlPage
-        {
-            get { return htmlPage; }
-            set { htmlPage = value; }
         }
 
         public GradeType GradeType
@@ -106,7 +100,6 @@ namespace Complex.Domino.Lib
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.endDateSoft = new DateTime(DateTime.Now.Year, 12, 31);
             this.url = String.Empty;
-            this.htmlPage = String.Empty;
             this.gradeType = Lib.GradeType.Unknown;
             this.gradeWeigth = 1.0;
         }
@@ -123,7 +116,6 @@ namespace Complex.Domino.Lib
             this.endDate = reader.GetDateTime("EndDate");
             this.endDateSoft = reader.GetDateTime("EndDateSoft");
             this.url = reader.GetString("Url");
-            this.htmlPage = reader.GetString("HtmlPage");
             this.gradeType = (Lib.GradeType)reader.GetInt32("GradeType");
             this.gradeWeigth = reader.GetDouble("GradeWeight");
         }
@@ -147,11 +139,11 @@ WHERE ID = @ID";
         {
             var sql = @"
 INSERT [Assignment]
-    (CourseID, Name, Visible, Enabled,
-     StartDate, EndDate, EndDateSoft, Url, HtmlPage, GradeType, GradeWeight)
+    (CourseID, Name, Visible, Enabled, Comments,
+     StartDate, EndDate, EndDateSoft, Url, GradeType, GradeWeight)
 VALUES
-    (@CourseID, @Name, @Visible, @Enabled,
-     @StartDate, @EndDate, @EndDateSoft, @Url, @HtmlPage, @GradeType, @GradeWeight)
+    (@CourseID, @Name, @Visible, @Enabled, @Comments,
+     @StartDate, @EndDate, @EndDateSoft, @Url, @GradeType, @GradeWeight)
 
 SELECT @@IDENTITY
 ";
@@ -171,11 +163,11 @@ SET CourseID = @CourseID,
     Name = @Name,
     Visible = @Visible,
     Enabled = @Enabled,
+    Comments = @Comments,
     StartDate = @StartDate,
     EndDate = @EndDate,
     EndDateSoft = @EndDateSoft,
     Url = @Url,
-    HtmlPage = @HtmlPage,
     GradeType = @GradeType,
     GradeWeight = @GradeWeight
 WHERE ID = @ID";
@@ -196,7 +188,6 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = endDate;
             cmd.Parameters.Add("@EndDateSoft", SqlDbType.DateTime).Value = endDateSoft;
             cmd.Parameters.Add("@Url", SqlDbType.NVarChar).Value = url;
-            cmd.Parameters.Add("@HtmlPage", SqlDbType.NVarChar).Value = htmlPage;
             cmd.Parameters.Add("@GradeType", SqlDbType.Int).Value = gradeType;
             cmd.Parameters.Add("@GradeWeight", SqlDbType.Float).Value = gradeWeigth;
         }

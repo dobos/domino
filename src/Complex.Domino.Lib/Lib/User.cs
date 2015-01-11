@@ -110,9 +110,9 @@ WHERE Username = @Username";
         {
             var sql = @"
 INSERT [User]
-    (Name, Visible, Enabled, Email, Username, ActivationCode, PasswordHash)
+    (Name, Visible, Enabled, Comments, Email, Username, ActivationCode, PasswordHash)
 VALUES
-    (@Name, @Visible, @Enabled, @Email, @Username, @ActivationCode, @PasswordHash)
+    (@Name, @Visible, @Enabled, @Comments, @Email, @Username, @ActivationCode, @PasswordHash)
 
 SELECT @@IDENTITY
 ";
@@ -131,6 +131,7 @@ UPDATE [User]
 SET Name = @Name,
     Visible = @Visible,
     Enabled = @Enabled,
+    Comments = @Comments,
     Email = @Email,
     Username = @Username,
     ActivationCode = @ActivationCode,

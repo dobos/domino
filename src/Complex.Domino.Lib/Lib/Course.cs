@@ -14,7 +14,6 @@ namespace Complex.Domino.Lib
         private DateTime startDate;
         private DateTime endDate;
         private string url;
-        private string htmlPage;
         private GradeType gradeType;
 
         public int SemesterID
@@ -41,12 +40,6 @@ namespace Complex.Domino.Lib
             set { url = value; }
         }
 
-        public string HtmlPage
-        {
-            get { return htmlPage; }
-            set { htmlPage = value; }
-        }
-
         public GradeType GradeType
         {
             get { return gradeType; }
@@ -70,7 +63,6 @@ namespace Complex.Domino.Lib
             this.startDate = new DateTime(DateTime.Now.Year, 1, 1);
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.url = String.Empty;
-            this.htmlPage = String.Empty;
             this.gradeType = Lib.GradeType.Unknown;
         }
 
@@ -82,7 +74,6 @@ namespace Complex.Domino.Lib
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
             this.url = reader.GetString("Url");
-            this.htmlPage = reader.GetString("HtmlPage");
             this.gradeType = (Lib.GradeType)reader.GetInt32("GradeType");
         }
 
@@ -105,9 +96,9 @@ WHERE ID = @ID";
         {
             var sql = @"
 INSERT [Course]
-    (SemesterID, Name, Visible, Enabled, StartDate, EndDate, Url, HtmlPage, GradeType)
+    (SemesterID, Name, Visible, Enabled, Comments, StartDate, EndDate, Url, GradeType)
 VALUES
-    (@SemesterID, @Name, @Visible, @Enabled, @StartDate, @EndDate, @Url, @HtmlPage, @GradeType)
+    (@SemesterID, @Name, @Visible, @Enabled, @Comments, @StartDate, @EndDate, @Url, @GradeType)
 
 SELECT @@IDENTITY
 ";
@@ -127,10 +118,10 @@ SET SemesterID = @SemesterID,
     Name = @Name,
     Visible = @Visible,
     Enabled = @Enabled,
+    Comments = @Comments,
     StartDate = @StartDate,
     EndDate = @EndDate,
     Url = @Url,
-    HtmlPage = @HtmlPage,
     GradeType = @GradeType
 WHERE ID = @ID";
 
@@ -149,7 +140,6 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = startDate;
             cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = endDate;
             cmd.Parameters.Add("@Url", SqlDbType.NVarChar).Value = url;
-            cmd.Parameters.Add("@HtmlPage", SqlDbType.NVarChar).Value = htmlPage;
             cmd.Parameters.Add("@GradeType", SqlDbType.Int).Value = gradeType;
         }
 
