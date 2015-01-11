@@ -26,6 +26,13 @@ namespace Complex.Domino.Web
             get { return item; }
         }
 
+        protected EntityForm()
+        {
+            this.Name = new TextBox();
+            this.Enabled = new CheckBox();
+            this.Visible = new CheckBox();
+        }
+
         protected void CreateItem()
         {
             item = new T()
@@ -45,6 +52,7 @@ namespace Complex.Domino.Web
             Name.Text = item.Name;
             Enabled.Checked = item.Enabled;
             Visible.Checked = item.Visible;
+            // TODO: add comments
         }
 
         protected virtual void SaveForm()
@@ -52,6 +60,7 @@ namespace Complex.Domino.Web
             item.Name = Name.Text;
             item.Enabled = Enabled.Checked;
             item.Visible = Visible.Checked;
+            // TODO: add comments
         }
 
         protected virtual void DataBindForm()
