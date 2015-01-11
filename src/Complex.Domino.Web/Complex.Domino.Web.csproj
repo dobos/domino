@@ -73,8 +73,10 @@
     <Content Include="App_Themes\Basic\toolbar.css" />
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
+    <Content Include="Controls\FileList.ascx" />
     <Content Include="Controls\Menu.ascx" />
     <EmbeddedResource Include="Controls\MultiSelectGridView.js" />
+    <Content Include="Controls\MultiSelectListView.js" />
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -172,6 +174,13 @@
       <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="Controls\FileList.ascx.cs">
+      <DependentUpon>FileList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FileList.ascx.designer.cs">
+      <DependentUpon>FileList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Menu.ascx.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,6 +189,8 @@
       <DependentUpon>Menu.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\MultiSelectGridView.cs" />
+    <Compile Include="Controls\MultiSelectHelper.cs" />
+    <Compile Include="Controls\MultiSelectListView.cs" />
     <Compile Include="Controls\SelectionField.cs" />
     <Compile Include="Controls\UserStatus.ascx.cs">
       <DependentUpon>UserStatus.ascx</DependentUpon>
