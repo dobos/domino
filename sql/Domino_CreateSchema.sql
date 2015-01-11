@@ -3,11 +3,6 @@ USE [Domino]
 GO
 
 
-IF OBJECT_ID (N'UserRoleType', N'U') IS NOT NULL
-DROP TABLE [dbo].[UserRoleType]
-
-GO
-
 CREATE TABLE [dbo].[UserRoleType]
 (
 	[ID] int NOT NULL,
@@ -22,11 +17,6 @@ CREATE TABLE [dbo].[UserRoleType]
 GO
 
 
-IF OBJECT_ID (N'GradeType', N'U') IS NOT NULL
-DROP TABLE [dbo].[GradeType]
-
-GO
-
 CREATE TABLE [dbo].[GradeType]
 (
 	[ID] int NOT NULL,
@@ -40,11 +30,6 @@ CREATE TABLE [dbo].[GradeType]
 
 GO
 
-
-IF OBJECT_ID (N'Semester', N'U') IS NOT NULL
-DROP TABLE [dbo].[Semester]
-
-GO
 
 CREATE TABLE [dbo].[Semester]
 (
@@ -64,11 +49,6 @@ CREATE TABLE [dbo].[Semester]
 
 GO
 
-
-IF OBJECT_ID (N'Course', N'U') IS NOT NULL
-DROP TABLE [dbo].[Course]
-
-GO
 
 CREATE TABLE [dbo].[Course]
 (
@@ -101,11 +81,6 @@ CREATE TABLE [dbo].[Course]
 GO
 
 
-IF OBJECT_ID (N'CourseGrade', N'U') IS NOT NULL
-DROP TABLE [dbo].[CourseGrade]
-
-GO
-
 CREATE TABLE [dbo].[CourseGrade]
 (
 	[CourseID] int NOT NULL,
@@ -118,12 +93,6 @@ CREATE TABLE [dbo].[CourseGrade]
 		[StudentID] ASC
 	)
 )
-
-GO
-
-
-IF OBJECT_ID (N'User', N'U') IS NOT NULL
-DROP TABLE [dbo].[User]
 
 GO
 
@@ -151,12 +120,6 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Username] ON [dbo].[User]
 (
 	[Username] ASC
 )
-
-GO
-
-
-IF OBJECT_ID (N'UserRole', N'U') IS NOT NULL
-DROP TABLE [dbo].[UserRole]
 
 GO
 
@@ -193,13 +156,6 @@ CREATE TABLE [dbo].[UserRole]
 
 GO
 
-
-
-IF OBJECT_ID (N'Assignment', N'U') IS NOT NULL
-DROP TABLE [dbo].[Assignment]
-
-GO
-
 CREATE TABLE [dbo].[Assignment]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
@@ -232,10 +188,6 @@ CREATE TABLE [dbo].[Assignment]
 
 GO
 
-IF OBJECT_ID (N'AssignmentGrade', N'U') IS NOT NULL
-DROP TABLE [dbo].[AssignmentGrade]
-
-GO
 
 CREATE TABLE [dbo].[AssignmentGrade]
 (
@@ -249,11 +201,6 @@ CREATE TABLE [dbo].[AssignmentGrade]
 		[StudentID] ASC
 	)
 )
-
-GO
-
-IF OBJECT_ID (N'Submission', N'U') IS NOT NULL
-DROP TABLE [dbo].[Submission]
 
 GO
 
