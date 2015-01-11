@@ -47,14 +47,5 @@ namespace Complex.Domino.Web.Student
 
             e.ObjectInstance = searchObject;
         }
-
-        protected void Delete_Click(object sender, EventArgs e)
-        {
-            foreach (int id in assignmentList.SelectedDataKeys.Select(id => int.Parse(id)))
-            {
-                var assignment = new Lib.Assignment(DatabaseContext);
-                assignment.Delete(id);
-            }
-        }
     }
 }

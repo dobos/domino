@@ -9,36 +9,18 @@
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
         EnablePaging="true" />
-    <domino:multiselectgridview id="assignmentList" runat="server" datasourceid="assignmentDataSource"
-        autogeneratecolumns="false" datakeynames="ID"
-        allowpaging="true" pagersettings-mode="NumericFirstLast" pagesize="25">
-        <Columns>
-            <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
-            <asp:BoundField HeaderText="ID" DataField="ID" />
-            <asp:HyperLinkField
-                DataNavigateUrlFields="CourseID"
-                DataNavigateUrlFormatString="course.aspx?ID={0}"
-                DataTextField="CourseName"
-                HeaderText="Course"/>
-            <asp:HyperLinkField
-                DataNavigateUrlFields="ID"
-                DataNavigateUrlFormatString="assignment.aspx?ID={0}"
-                DataTextField="Name"
-                HeaderText="Name"/>
-            <asp:BoundField HeaderText="Visible" DataField="Visible" />
-            <asp:BoundField HeaderText="Enabled" DataField="Enabled" />
-            <asp:BoundField HeaderText="Start date" DataField="StartDate" />
-            <asp:BoundField HeaderText="End date" DataField="EndDate" />
-            <asp:BoundField HeaderText="Grade type" DataField="GradeType" />
-            <asp:BoundField HeaderText="Grade weight" DataField="GradeWeight" />
-            <asp:HyperLinkField
-                DataNavigateUrlFields="Url"
-                DataNavigateUrlFormatString="{0}"
-                Text="URL"
-                HeaderText="Url"/>
-        </Columns>
-        <EmptyDataTemplate>
-            <p>No assignments match the query.</p>
-        </EmptyDataTemplate>
-    </domino:multiselectgridview>
+    <asp:ListView runat="server" ID="assignmentList" DataSourceID="assignmentDataSource">
+        <LayoutTemplate>
+            <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+        </LayoutTemplate>
+        <ItemTemplate>
+            <div>
+                <p>Assigment <%# Eval("Name") %></p>
+                <p>Course: <%# Eval("CourseName") %></p>
+                <p>Semester: <%# Eval("SemesterName") %></p>
+                <a href="SubmissionList.aspx?AssignmentID=<%# Eval("ID") %>">view submissions</a>
+                <a >new submission</a>
+            </div>
+        </ItemTemplate>
+    </asp:ListView>
 </asp:Content>
