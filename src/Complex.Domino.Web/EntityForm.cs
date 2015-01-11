@@ -14,7 +14,12 @@ namespace Complex.Domino.Web
 
         protected ITextControl Name;
         protected CheckBox Enabled;
-        protected CheckBox Visible;
+        protected new CheckBox Visible;
+
+        protected int ID
+        {
+            get { return Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestID], -1); }
+        }
 
         protected T Item
         {
@@ -25,10 +30,9 @@ namespace Complex.Domino.Web
         {
             item = new T()
             {
+                ID = ID,
                 Context = DatabaseContext
             };
-
-            item.ID = int.Parse(Request["ID"] ?? "0");
 
             if (item.ID > 0)
             {
@@ -54,7 +58,7 @@ namespace Complex.Domino.Web
         {
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             CreateItem();
 
@@ -62,11 +66,15 @@ namespace Complex.Domino.Web
             {
                 UpdateForm();
             }
+
+            base.OnLoad(e);
         }
 
-        protected void Page_PreRender(object sender, EventArgs e)
+        protected override void OnPreRender(EventArgs e)
         {
             DataBindForm();
+
+            base.OnPreRender(e);
         }
 
         protected void Ok_Click(object sender, EventArgs e)

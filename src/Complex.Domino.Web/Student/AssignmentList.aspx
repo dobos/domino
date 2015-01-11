@@ -19,7 +19,7 @@
                 <p>Course: <%# Eval("CourseName") %></p>
                 <p>Semester: <%# Eval("SemesterName") %></p>
                 <a href="SubmissionList.aspx?AssignmentID=<%# Eval("ID") %>">view submissions</a>
-                <a >new submission</a>
+                <a href="Submission.aspx?AssignmentID=<%# Eval("ID") %>">new submission</a>
             </div>
         </ItemTemplate>
     </asp:ListView>

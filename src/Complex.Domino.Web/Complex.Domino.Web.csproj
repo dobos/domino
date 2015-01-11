@@ -81,6 +81,7 @@
     <Content Include="Student\AssignmentList.aspx" />
     <Content Include="Student\SubmissionList.aspx" />
     <Content Include="Student\CourseList.aspx" />
+    <Content Include="Student\Submission.aspx" />
     <Content Include="Teacher\Course.aspx" />
     <Content Include="Teacher\CourseList.aspx" />
     <Content Include="Web.config" />
@@ -246,6 +247,13 @@
     <Compile Include="Student\Student.master.designer.cs">
       <DependentUpon>Student.master</DependentUpon>
     </Compile>
+    <Compile Include="Student\Submission.aspx.cs">
+      <DependentUpon>Submission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Submission.aspx.designer.cs">
+      <DependentUpon>Submission.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\Teacher.master.cs">
       <DependentUpon>Teacher.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -268,6 +276,7 @@
       <DependentUpon>CourseList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Util\UrlFormatter.cs" />
+    <Compile Include="Util\UrlParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Domino.Master" />
