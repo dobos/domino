@@ -14,5 +14,6 @@ namespace Complex.Domino.Web
 
         public const string RequestSemesterID = "SemesterID";
         public const string RequestCourseID = "CourseID";
+        public const string RequestAssignmentID = "AssignmentID";
     }
 }

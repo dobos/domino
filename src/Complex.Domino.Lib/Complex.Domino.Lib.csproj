@@ -45,6 +45,7 @@
     <Compile Include="Lib\ContextObject.cs" />
     <Compile Include="Lib\Assignment.cs" />
     <Compile Include="Lib\AssignmentFactory.cs" />
+    <Compile Include="Lib\SubmissionFactory.cs" />
     <Compile Include="Lib\CourseFactory.cs" />
     <Compile Include="Lib\Course.cs" />
     <Compile Include="Lib\Entity.cs" />
