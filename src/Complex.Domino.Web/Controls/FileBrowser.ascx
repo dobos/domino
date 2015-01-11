@@ -43,17 +43,19 @@
     <asp:LinkButton runat="server" Text="Download" />
     <asp:LinkButton runat="server" Text="Delete" />
 </div>
-<h2>Upload files</h2>
-<table class="form">
-    <tr>
-        <td class="label">
-            <asp:Label runat="server" ID="UploadedFileLabel" Text="File:" />
-        </td>
-        <td class="field">
-            <input type="file" runat="server" id="UploadedFile" />
-        </td>
-    </tr>
-</table>
-<div class="toolbar">
-    <asp:LinkButton runat="server" Text="Upload" />
-</div>
+<asp:Panel runat="server" ID="uploadPanel">
+    <h2>Upload files</h2>
+    <table class="form">
+        <tr>
+            <td class="label">
+                <asp:Label runat="server" ID="UploadedFileLabel" Text="File:" />
+            </td>
+            <td class="field">
+                <input type="file" runat="server" id="UploadedFile" />
+            </td>
+        </tr>
+    </table>
+    <div class="toolbar">
+        <asp:LinkButton runat="server" Text="Upload" ID="Upload" OnClick="Upload_Click" />
+    </div>
+</asp:Panel>

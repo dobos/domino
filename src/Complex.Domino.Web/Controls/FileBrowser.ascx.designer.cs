@@ -31,6 +31,15 @@ namespace Complex.Domino.Web.Controls {
         protected global::Complex.Domino.Web.Controls.MultiSelectListView fileList;
         
         /// <summary>
+        /// uploadPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel uploadPanel;
+        
+        /// <summary>
         /// UploadedFileLabel control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace Complex.Domino.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputFile UploadedFile;
+        
+        /// <summary>
+        /// Upload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Upload;
     }
 }

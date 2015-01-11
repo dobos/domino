@@ -36,10 +36,16 @@ namespace Complex.Domino.Web.Controls
             set { ViewState["ShowHidden"] = value; }
         }
 
-        public string ShownExtensions
+        public string AllowedExtensions
         {
-            get { return (string)ViewState["ShownExtensions"] ?? ""; }
-            set { ViewState["ShownExtensions"] = value; }
+            get { return (string)ViewState["AllowedExtensions"] ?? ""; }
+            set { ViewState["AllowedExtensions"] = value; }
+        }
+
+        public string AllowedArchiveExtensions
+        {
+            get { return (string)ViewState["AllowedArchiveExtensions"] ?? ".zip|.tar.gz"; }
+            set { ViewState["AllowedArchiveExtensions"] = value; }
         }
 
         public bool AllowSelection
@@ -68,7 +74,7 @@ namespace Complex.Domino.Web.Controls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            uploadPanel.Visible = AllowUpload;
         }
 
         protected void directoryList_ItemCreated(object sender, ListViewItemEventArgs e)
@@ -148,7 +154,26 @@ namespace Complex.Domino.Web.Controls
             }
         }
 
+        protected void Upload_Click(object sender, EventArgs e)
+        {
+            var filename = Path.GetFileName(UploadedFile.PostedFile.FileName);
 
+            bool archive;
+            string archiveExtension;
+
+            VerifyUploadedFile(filename, out archive, out archiveExtension);
+
+            // If not an archive, simply save file to directory
+            if (!archive)
+            {
+                UploadedFile.PostedFile.SaveAs(Path.Combine(BasePath, RelativePath, filename));
+            }
+            else
+            {
+                // Extract files from archive
+                throw new NotImplementedException();
+            }
+        }
 
         private DirectoryInfo[] GetDirectories()
         {
@@ -156,7 +181,7 @@ namespace Complex.Domino.Web.Controls
 
             var dirs = new DirectoryInfo[parts.Length + 1];
             var dir = BasePath;
-            
+
             dirs[0] = new DirectoryInfo(dir);
 
             for (int i = 0; i < parts.Length; i++)
@@ -171,7 +196,7 @@ namespace Complex.Domino.Web.Controls
         private FileInfo[] GetFiles()
         {
             var extensions = new HashSet<string>(
-                ShownExtensions.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries),
+                AllowedExtensions.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries),
                 StringComparer.InvariantCultureIgnoreCase);
 
             var dir = Path.Combine(BasePath, RelativePath);
@@ -250,6 +275,47 @@ namespace Complex.Domino.Web.Controls
             var relpath = path.Substring(basePath.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
 
             return relpath;
+        }
+
+        private void VerifyUploadedFile(string filename, out bool archive, out string archiveExtension)
+        {
+            var extensions = new HashSet<string>(
+                AllowedExtensions.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries),
+                StringComparer.InvariantCultureIgnoreCase);
+
+            var archives = new HashSet<string>(
+                AllowedArchiveExtensions.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries),
+                StringComparer.InvariantCultureIgnoreCase);
+
+            // Certain extensions might contain dots so we need this loop
+            archive = false;
+            archiveExtension = null;
+            var found = extensions.Count == 0;
+
+            foreach (var ext in extensions)
+            {
+                if (filename.EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            foreach (var ext in archives)
+            {
+                if (filename.EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    found = true;
+                    archive = true;
+                    archiveExtension = ext;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                throw new Exception("Invalid file format.");        // TODO
+            }
         }
     }
 }
