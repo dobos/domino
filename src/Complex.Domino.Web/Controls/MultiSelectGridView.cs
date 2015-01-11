@@ -32,11 +32,6 @@ namespace Complex.Domino.Web.Controls
             this.helper = new MultiSelectHelper(this);
         }
 
-        private string GetKey(DataKey key)
-        {
-            return helper.GetKey(key);
-        }
-
         protected override System.Collections.ICollection CreateColumns(PagedDataSource dataSource, bool useDataSource)
         {
             var columns = base.CreateColumns(dataSource, useDataSource);

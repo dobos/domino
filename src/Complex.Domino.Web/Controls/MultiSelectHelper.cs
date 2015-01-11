@@ -9,7 +9,16 @@ namespace Complex.Domino.Web.Controls
 {
     class MultiSelectHelper
     {
+        private class DataItem
+        {
+            public string Key { get; set; }
+            public ICheckBoxControl CheckBox { get; set; }
+            public Control SelectionElement { get; set; }
+        }
+
         protected const string ViewStateSelectedDataKeys = "SelectedDataKeys";
+        protected const string DefaultSelectionCheckboxID = "selectionCheckbox";
+        protected const string DefaultSelectionElementID = "selectionElement";
 
         private WebControl control;
         private StateBag viewState;
@@ -19,6 +28,24 @@ namespace Complex.Domino.Web.Controls
         {
             get { return (ListSelectionMode)(viewState["SelectionMode"] ?? ListSelectionMode.Multiple); }
             set { viewState["SelectionMode"] = value; }
+        }
+
+        public string SelectionCheckboxID
+        {
+            get { return (string)(viewState["SelectionCheckboxID"] ?? DefaultSelectionCheckboxID); }
+            set { viewState["SelectionCheckboxID"] = value; }
+        }
+
+        public string SelectionElementID
+        {
+            get { return (string)(viewState["SelectionElementID"] ?? DefaultSelectionElementID); }
+            set { viewState["SelectionElementID"] = value; }
+        }
+
+        public string CssClassSelected
+        {
+            get { return (string)(viewState["CssClassSelected"]); }
+            set { viewState["CssClassSelected"] = value; }
         }
 
         public HashSet<string> SelectedDataKeys
@@ -84,9 +111,9 @@ namespace Complex.Domino.Web.Controls
             return res;
         }
 
-        private Dictionary<string, ICheckBoxControl> GetCheckboxes()
+        private Dictionary<string, DataItem> GetDataItems()
         {
-            var checkboxes = new Dictionary<string, ICheckBoxControl>();
+            var items = new Dictionary<string, DataItem>();
 
             if (control is MultiSelectGridView)
             {
@@ -97,19 +124,33 @@ namespace Complex.Domino.Web.Controls
                     var key = GetKey(gv.DataKeys[row.RowIndex]);
                     var cb = (CheckBox)row.FindControl(SelectionField.DefaultSelectionCheckBoxID);
 
-                    checkboxes.Add(key, cb);
+                    var item = new DataItem()
+                    {
+                        Key = key,
+                        CheckBox = cb,
+                    };
+
+                    items.Add(key, item);
                 }
             }
             else if (control is MultiSelectListView)
             {
                 var lv = (MultiSelectListView)control;
 
-                foreach (ListViewItem item in lv.Items)
+                foreach (ListViewItem li in lv.Items)
                 {
-                    var key = GetKey(lv.DataKeys[item.DisplayIndex]);
-                    var cb = (ICheckBoxControl)item.FindControl(lv.SelectionCheckboxID);
+                    var key = GetKey(lv.DataKeys[li.DisplayIndex]);
+                    var cb = (ICheckBoxControl)li.FindControl(lv.SelectionCheckboxID);
+                    var se = li.FindControl(SelectionElementID);
 
-                    checkboxes.Add(key, cb);
+                    var item = new DataItem()
+                    {
+                        Key = key,
+                        CheckBox = cb,
+                        SelectionElement = se,
+                    };
+
+                    items.Add(key, item);
                 }
             }
             else
@@ -117,16 +158,16 @@ namespace Complex.Domino.Web.Controls
                 throw new NotImplementedException();
             }
 
-            return checkboxes;
+            return items;
         }
 
         public void SelectAll(bool select)
         {
             if (select)
             {
-                var checkboxes = GetCheckboxes();
+                var items = GetDataItems();
 
-                foreach (var key in checkboxes.Keys)
+                foreach (var key in items.Keys)
                 {
                     if (!selectedDataKeys.Contains(key))
                     {
@@ -142,15 +183,15 @@ namespace Complex.Domino.Web.Controls
 
         public void SaveSelection()
         {
-            var checkboxes = GetCheckboxes();
+            var items = GetDataItems();
 
-            foreach (var key in checkboxes.Keys)
+            foreach (var key in items.Keys)
             {
-                var cb = checkboxes[key];
+                var item = items[key];
 
-                if (cb != null)
+                if (item.CheckBox != null)
                 {
-                    if (cb.Checked && !selectedDataKeys.Contains(key))
+                    if (item.CheckBox.Checked && !selectedDataKeys.Contains(key))
                     {
                         selectedDataKeys.Add(key);
 
@@ -160,7 +201,7 @@ namespace Complex.Domino.Web.Controls
                         }
                     }
 
-                    if (!cb.Checked && selectedDataKeys.Contains(key))
+                    if (!item.CheckBox.Checked && selectedDataKeys.Contains(key))
                     {
                         selectedDataKeys.Remove(key);
                     }
@@ -172,19 +213,33 @@ namespace Complex.Domino.Web.Controls
         {
             if (selectedDataKeys != null)
             {
-                var checkboxes = GetCheckboxes();
+                var items = GetDataItems();
 
-                foreach (var key in checkboxes.Keys)
+                foreach (var key in items.Keys)
                 {
-                    var cb = checkboxes[key];
+                    var item = items[key];
                     var selected = selectedDataKeys.Contains(key);
 
-                    if (cb != null)
+                    if (item.CheckBox != null)
                     {
-                        cb.Checked = selected;
+                        item.CheckBox.Checked = selected;
+                    }
+
+                    var se = item.SelectionElement as IAttributeAccessor;
+
+                    if (se != null && selected)
+                    {
+                        var cls = se.GetAttribute("class");
+                        if (cls == null)
+                        {
+                            se.SetAttribute("class", CssClassSelected);
+                        }
+                        else if (cls.IndexOf(CssClassSelected) < 0)
+                        {
+                            se.SetAttribute("class", cls + " " + CssClassSelected);
+                        }
                     }
                 }
-
             }
         }
 
