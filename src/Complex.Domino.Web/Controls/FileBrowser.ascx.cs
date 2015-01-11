@@ -72,6 +72,12 @@ namespace Complex.Domino.Web.Controls
             set { ViewState["AllowDelete"] = value; }
         }
 
+        public bool AllowEdit
+        {
+            get { return (bool)(ViewState["AllowEdit"] ?? true); }
+            set { ViewState["AllowEdit"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             uploadPanel.Visible = AllowUpload;
@@ -117,10 +123,16 @@ namespace Complex.Domino.Web.Controls
 
                 if (fi != null)
                 {
+                    var dir = (fi.Attributes & FileAttributes.Directory) != 0;
+
                     var select = (CheckBox)e.Item.FindControl(fileList.SelectionCheckboxID);
                     var icon = (Image)e.Item.FindControl("icon");
                     var name = (LinkButton)e.Item.FindControl("name");
                     var size = (Label)e.Item.FindControl("size");
+                    var delete = (LinkButton)e.Item.FindControl("delete");
+                    var download = (LinkButton)e.Item.FindControl("download");
+                    var view = (LinkButton)e.Item.FindControl("view");
+                    var edit = (LinkButton)e.Item.FindControl("edit");
 
                     select.Visible = AllowSelection;
 
@@ -131,7 +143,37 @@ namespace Complex.Domino.Web.Controls
                     {
                         size.Text = fi.Length.ToString();
                     }
+
+                    delete.Visible = AllowDelete;
+                    delete.CommandArgument = fi.Name;
+
+                    download.Visible = AllowDownload;
+                    download.CommandArgument = fi.Name;
+
+                    view.Visible = !dir;
+                    view.CommandArgument = fi.Name;
+
+                    edit.Visible = !dir && AllowEdit;
+                    edit.CommandArgument = fi.Name;
                 }
+            }
+        }
+
+        protected void fileList_ItemDeleting(object sender, ListViewDeleteEventArgs e)
+        {
+            var filename = (string)e.Keys[0];
+
+            var fi = new FileInfo(Path.Combine(BasePath, RelativePath, filename));
+
+            // TODO: check if it's inside base
+
+            if ((fi.Attributes & FileAttributes.Directory) != 0)
+            {
+                ForceDeleteDirectory(fi.FullName);
+            }
+            else
+            {
+                fi.Delete();
             }
         }
 
@@ -315,6 +357,21 @@ namespace Complex.Domino.Web.Controls
             if (!found)
             {
                 throw new Exception("Invalid file format.");        // TODO
+            }
+        }
+
+        protected void ForceDeleteDirectory(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                var directory = new DirectoryInfo(path) { Attributes = FileAttributes.Normal };
+
+                foreach (var info in directory.GetFileSystemInfos("*", SearchOption.AllDirectories))
+                {
+                    info.Attributes = FileAttributes.Normal;
+                }
+
+                directory.Delete(true);
             }
         }
     }

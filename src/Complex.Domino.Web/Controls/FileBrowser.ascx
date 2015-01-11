@@ -14,29 +14,22 @@
     </ItemSeparatorTemplate>
 </asp:ListView>
 <domino:multiselectlistview runat="server" id="fileList" datakeynames="Name"
-    onitemcreated="fileList_ItemCreated" onitemcommand="fileList_ItemCommand">
+    onitemcreated="fileList_ItemCreated" onitemcommand="fileList_ItemCommand"
+    onItemDeleting="fileList_ItemDeleting">
     <layouttemplate>
-        <table>
-            <thead>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Name</td>
-                    <td>Size</td>
-                </tr>
-            </thead>
-            <tbody>
-                <asp:PlaceHolder runat="server" ID="itemPlaceholder" />        
-            </tbody>
-        </table>
+        <asp:PlaceHolder runat="server" ID="itemPlaceholder" />        
     </layouttemplate>
     <itemtemplate>
-        <tr>
-            <td><asp:CheckBox runat="server" ID="selectionCheckbox" /></td>
-            <td><asp:Image ID="icon" runat="server" Width="16px" Height="16px" /></td>
-            <td><asp:LinkButton ID="name" runat="server" /></td>
-            <td><asp:Label ID="size" runat="server" /></td>
-        </tr>
+        <div>
+            <asp:CheckBox runat="server" ID="selectionCheckbox" />
+            <asp:Image ID="icon" runat="server" Width="16px" Height="16px" />
+            <asp:LinkButton ID="name" runat="server" CommandName="edit" />
+            <asp:Label ID="size" runat="server" />
+            <asp:LinkButton runat="server" Text="delete" ID="delete" CommandName="delete" />
+            <asp:LinkButton runat="server" Text="download" ID="download" CommandName="download" />
+            <asp:LinkButton runat="server" Text="view" ID="view" CommandName="view" />
+            <asp:LinkButton runat="server" Text="edit" ID="edit" CommandName="edit" />
+        </div>
     </itemtemplate>
 </domino:multiselectlistview>
 <div class="toolbar">
