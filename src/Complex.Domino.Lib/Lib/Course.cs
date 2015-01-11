@@ -11,6 +11,7 @@ namespace Complex.Domino.Lib
     public class Course : Entity, IDatabaseTableObject
     {
         private int semesterID;
+        private string semesterName;
         private DateTime startDate;
         private DateTime endDate;
         private string url;
@@ -20,6 +21,11 @@ namespace Complex.Domino.Lib
         {
             get { return semesterID; }
             set { semesterID = value; }
+        }
+
+        public string SemesterName
+        {
+            get { return semesterName; }
         }
 
         public DateTime StartDate
@@ -60,6 +66,7 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.semesterID = -1;
+            this.semesterName = null;
             this.startDate = new DateTime(DateTime.Now.Year, 1, 1);
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.url = String.Empty;
@@ -71,6 +78,7 @@ namespace Complex.Domino.Lib
             base.LoadFromDataReader(reader);
 
             this.semesterID = reader.GetInt32("SemesterID");
+            this.semesterName = reader.GetString("SemesterName");
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
             this.url = reader.GetString("Url");
@@ -80,8 +88,9 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT *
-FROM [Course]
+SELECT c.*, s.Name SemesterName
+FROM [Course] c
+INNER JOIN [Semester] s ON s.ID = c.SemesterID
 WHERE ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
