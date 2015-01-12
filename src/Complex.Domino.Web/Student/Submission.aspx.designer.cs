@@ -20,5 +20,23 @@ namespace Complex.Domino.Web.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Complex.Domino.Web.Controls.FileBrowser fileBrowser;
+        
+        /// <summary>
+        /// OK control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton OK;
+        
+        /// <summary>
+        /// Cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Cancel;
     }
 }

@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FileBrowser.ascx.cs" Inherits="Complex.Domino.Web.Controls.FileBrowser" %>
-<h1>File list</h1>
 <asp:Label runat="server" Text="Current directory:" />
 <asp:ListView runat="server" ID="directoryList" OnItemCreated="directoryList_ItemCreated"
     OnItemCommand="directoryList_ItemCommand">
@@ -37,18 +36,9 @@
     <asp:LinkButton runat="server" Text="Delete" />
 </div>
 <asp:Panel runat="server" ID="uploadPanel">
-    <h2>Upload files</h2>
-    <table class="form">
-        <tr>
-            <td class="label">
-                <asp:Label runat="server" ID="UploadedFileLabel" Text="File:" />
-            </td>
-            <td class="field">
-                <input type="file" runat="server" id="UploadedFile" />
-            </td>
-        </tr>
-    </table>
     <div class="toolbar">
+        <asp:Label runat="server" ID="UploadedFileLabel" Text="Upload File:" />
+        <input type="file" runat="server" id="UploadedFile" />
         <asp:LinkButton runat="server" Text="Upload" ID="Upload" OnClick="Upload_Click" />
     </div>
 </asp:Panel>

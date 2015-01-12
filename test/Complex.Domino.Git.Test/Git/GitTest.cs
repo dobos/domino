@@ -54,7 +54,7 @@ namespace Complex.Domino.Git
         [TestMethod]
         public void ThoroughTest()
         {
-            Git.Init();
+            Git.Init(false);
 
             Assert.IsTrue(Directory.Exists(Path.Combine(TestRepoPath, ".git")));
 

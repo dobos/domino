@@ -167,7 +167,7 @@ WHERE ID = @ID";
         {
             var sql = @"
 INSERT [Submission]
-    (AssignmentID, StudentID, TeacherID, Direction, Name, Visible, Enabled, Comments
+    (AssignmentID, StudentID, TeacherID, Direction, Name, Visible, Enabled, Comments,
      Date, GitCommitHash)
 VALUES
     (@AssignmentID, @StudentID, @TeacherID, @Direction, @Name, @Visible, @Enabled, @Comments,

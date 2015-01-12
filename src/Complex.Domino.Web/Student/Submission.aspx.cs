@@ -9,6 +9,7 @@ namespace Complex.Domino.Web.Student
 {
     public partial class Submission : EntityForm<Lib.Submission>
     {
+        protected Lib.GitWrapper git;
         protected Lib.Assignment assignment;
 
         protected int AssignmentID
@@ -21,16 +22,31 @@ namespace Complex.Domino.Web.Student
             assignment = new Lib.Assignment(DatabaseContext);
             assignment.Load(AssignmentID);
 
-            var wrapper = new Lib.GitWrapper()
+            git = new Lib.GitWrapper()
             {
                 SessionGuid = SessionGuid,
                 User = DatabaseContext.User,
                 Assignment = assignment,
             };
 
-            wrapper.EnsureAssignmentExists();
+            if (!IsPostBack)
+            {
+                git.EnsureAssignmentExists();
+            }
 
-            fileBrowser.BasePath = wrapper.GetAssignmentPath();
+            fileBrowser.BasePath = git.GetAssignmentPath();
+        }
+
+        protected override void SaveForm()
+        {
+            base.SaveForm();
+
+            // Commit changes into git
+            Item.StudentID = DatabaseContext.User.ID;
+            Item.AssignmentID = assignment.ID;
+            Item.Date = DateTime.UtcNow;
+            Item.Direction = Lib.SubmissionDirection.StudentToTeacher;
+            Item.GitCommitHash = git.CommitSubmission();
         }
     }
 }

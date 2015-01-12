@@ -24,9 +24,13 @@ namespace Complex.Domino.Git
             }
         }
 
-        public static void Call(Git git, Arguments args)
+        public static string Call(Git git, Arguments args)
         {
-            using (var w = Start(git, args)) { }
+            using (var wrapper = Start(git, args)) 
+            {
+                var output = wrapper.process.StandardOutput.ReadToEnd();
+                return output;
+            }
         }
 
         public static GitWrapper Start(Git git, Arguments args)
@@ -70,7 +74,7 @@ namespace Complex.Domino.Git
 
             process.Close();
 
-            if (!String.IsNullOrEmpty(error) && error.Contains("error"))
+            if (!String.IsNullOrEmpty(error) && (error.Contains("error") || error.Contains("fatal")))
             {
                 throw new GitException(error);
             }

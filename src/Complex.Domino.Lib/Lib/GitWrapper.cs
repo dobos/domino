@@ -35,6 +35,20 @@ namespace Complex.Domino.Lib
         {
         }
 
+        private Git.Git CreateGit(string repoPath)
+        {
+            var git = new Git.Git(repoPath)
+            {
+                Author = new Git.User()
+                {
+                    Name = user.Username,
+                    Email = String.Format(user.Email)
+                }
+            };
+
+            return git;
+        }
+
         public string GetRepoPath()
         {
             return Path.Combine(
@@ -84,14 +98,22 @@ namespace Complex.Domino.Lib
             }
 
             // If directory exists it still has to contain a .git folder
-            dir = Path.Combine(dir, ".git");
+            var temp = Path.Combine(dir, ".git");
 
-            if (!Directory.Exists(dir))
+            if (Directory.Exists(dir))
             {
-                return false;
+                return true;
             }
 
-            return true;
+            // Or a file named "HEAD" if it's a bare repo
+            temp = Path.Combine(dir, "HEAD");
+
+            if (File.Exists(temp))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public void InitializeRepo()
@@ -100,9 +122,9 @@ namespace Complex.Domino.Lib
 
             Directory.CreateDirectory(dir);
 
-            var git = new Git.Git(dir);
+            var git = CreateGit(dir);
 
-            git.Init();
+            git.Init(true);
         }
 
         public void InitializeScratch()
@@ -112,15 +134,18 @@ namespace Complex.Domino.Lib
 
             Directory.CreateDirectory(scratchdir);
 
-            var git = new Git.Git(scratchdir);
-
+            var git = CreateGit(scratchdir);
             git.Clone(repodir);
+
+            // Set variables required for commit
+            // These values will be overwritten at commit
+            git.Config("user.email", user.Email, false);
+            git.Config("user.name", user.Username, false);
         }
 
         public void InitializeAssignment()
         {
             var dir = GetAssignmentPath();
-
             Directory.CreateDirectory(dir);
         }
 
@@ -151,6 +176,21 @@ namespace Complex.Domino.Lib
             {
                 InitializeAssignment();
             }
+        }
+
+        public string CommitSubmission()
+        {
+            var scratchdir = GetScratchPath();
+            
+            var dir = GetAssignmentPath();
+
+            var git = CreateGit(scratchdir);
+
+            git.AddAll();
+            git.CommitAll("just a commit of everything");
+            git.PushAll("origin");
+
+            return git.GetHeadCommit().Hash;
         }
     }
 }

@@ -77,11 +77,33 @@ namespace Complex.Domino.Git
         #endregion
         #region Git wrapper functions
 
-        public void Init()
+        public void Init(bool bare)
         {
             var args = new Arguments();
 
             args.Append("init");
+
+            if (bare)
+            {
+                args.Append("--bare");
+            }
+
+            GitWrapper.Call(this, args);
+        }
+
+        public void Config(string variable, string value, bool global)
+        {
+            var args = new Arguments();
+
+            args.Append("config");
+
+            if (global)
+            {
+                args.Append("--global");
+            }
+
+            args.Append(variable);
+            args.Append(value);
 
             GitWrapper.Call(this, args);
         }
@@ -144,21 +166,43 @@ namespace Complex.Domino.Git
             return commits;
         }
 
-        public Commit GetCurrentCommit()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Clone(string remotePath)
         {
             var args = new Arguments();
 
             args.Append("clone");
-            args.Append("--quiet");
             args.Append(remotePath);
             args.Append(repoPath);
 
             GitWrapper.Call(this, args);
+        }
+
+        public void PushAll(string remote)
+        {
+            var args = new Arguments();
+
+            args.Append("push");
+            args.Append("--all");
+            args.Append(remote);
+
+            GitWrapper.Call(this, args);
+        }
+
+        public Commit GetHeadCommit()
+        {
+            var args = new Arguments();
+
+            args.Append("rev-parse");
+            args.Append("HEAD");
+
+            var hash = GitWrapper.Call(this, args);
+
+            return new Commit()
+            {
+                Author = author,
+                Date = DateTime.UtcNow,
+                Hash = hash
+            };
         }
 
         #endregion
