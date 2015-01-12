@@ -149,9 +149,16 @@ namespace Complex.Domino.Git
             throw new NotImplementedException();
         }
 
-        public void CheckOut(Commit commit)
+        public void Clone(string remotePath)
         {
-            throw new NotImplementedException();
+            var args = new Arguments();
+
+            args.Append("clone");
+            args.Append("--quiet");
+            args.Append(remotePath);
+            args.Append(repoPath);
+
+            GitWrapper.Call(this, args);
         }
 
         #endregion

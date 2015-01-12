@@ -23,7 +23,7 @@
         <div>
             <asp:CheckBox runat="server" ID="selectionCheckbox" />
             <asp:Image ID="icon" runat="server" Width="16px" Height="16px" />
-            <asp:LinkButton ID="name" runat="server" CommandName="edit" />
+            <asp:LinkButton ID="name" runat="server" CommandName="click" />
             <asp:Label ID="size" runat="server" />
             <asp:LinkButton runat="server" Text="delete" ID="delete" CommandName="delete" />
             <asp:LinkButton runat="server" Text="download" ID="download" CommandName="download" />

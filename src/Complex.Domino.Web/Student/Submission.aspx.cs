@@ -9,6 +9,7 @@ namespace Complex.Domino.Web.Student
 {
     public partial class Submission : EntityForm<Lib.Submission>
     {
+        protected Lib.Assignment assignment;
 
         protected int AssignmentID
         {
@@ -17,7 +18,19 @@ namespace Complex.Domino.Web.Student
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            fileBrowser.BasePath = Lib.DominoConfiguration.Instance.ScratchPath;
+            assignment = new Lib.Assignment(DatabaseContext);
+            assignment.Load(AssignmentID);
+
+            var wrapper = new Lib.GitWrapper()
+            {
+                SessionGuid = SessionGuid,
+                User = DatabaseContext.User,
+                Assignment = assignment,
+            };
+
+            wrapper.EnsureAssignmentExists();
+
+            fileBrowser.BasePath = wrapper.GetAssignmentPath();
         }
     }
 }

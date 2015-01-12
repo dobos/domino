@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace Complex.Domino.Lib
 {

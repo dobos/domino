@@ -46,6 +46,7 @@
     <Compile Include="Lib\Assignment.cs" />
     <Compile Include="Lib\AssignmentFactory.cs" />
     <Compile Include="Lib\DominoConfiguration.cs" />
+    <Compile Include="Lib\GitWrapper.cs" />
     <Compile Include="Lib\SubmissionFactory.cs" />
     <Compile Include="Lib\CourseFactory.cs" />
     <Compile Include="Lib\Course.cs" />

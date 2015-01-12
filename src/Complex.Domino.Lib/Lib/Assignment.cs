@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Complex.Domino.Lib
 {
@@ -123,9 +124,11 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT *
-FROM [Assignment]
-WHERE ID = @ID";
+SELECT a.*, c.Name CourseName, s.ID SemesterID, s.Name SemesterName
+FROM [Assignment] a
+INNER JOIN [Course] c ON c.ID = a.CourseID
+INNER JOIN [Semester] s ON s.ID = c.SemesterID
+WHERE a.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
             {

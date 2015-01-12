@@ -45,7 +45,7 @@ namespace Complex.Domino.Git
 
                 CreateNoWindow = true,
                 UseShellExecute = false,
-                LoadUserProfile = false,
+                LoadUserProfile = true,
             };
 
             wrapper.process = new Process()
@@ -70,7 +70,7 @@ namespace Complex.Domino.Git
 
             process.Close();
 
-            if (!String.IsNullOrEmpty(error))
+            if (!String.IsNullOrEmpty(error) && error.Contains("error"))
             {
                 throw new GitException(error);
             }

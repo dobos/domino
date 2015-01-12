@@ -34,7 +34,7 @@ namespace Complex.Domino.Web
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session[Constants.SessionGuid] = new Guid();
+            Session[Constants.SessionGuid] = Guid.NewGuid().ToString("D");
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

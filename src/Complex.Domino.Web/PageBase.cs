@@ -22,6 +22,11 @@ namespace Complex.Domino.Web
             }
         }
 
+        public string SessionGuid
+        {
+            get { return (string)Session[Constants.SessionGuid]; }
+        }
+
         public string OriginalReferer
         {
             get { return (string)(ViewState[Constants.OriginalReferer] ?? String.Empty); }
