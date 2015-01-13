@@ -44,7 +44,15 @@ namespace Complex.Domino.Lib
         public static int GetInt32(this SqlDataReader reader, string key)
         {
             var o = reader.GetOrdinal(key);
-            return reader.GetInt32(o);
+
+            if (reader.IsDBNull(o))
+            {
+                return -1;
+            }
+            else
+            {
+                return reader.GetInt32(o);
+            }
         }
 
         public static double GetDouble(this SqlDataReader reader, string key)
