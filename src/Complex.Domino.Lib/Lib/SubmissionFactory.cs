@@ -51,20 +51,20 @@ namespace Complex.Domino.Lib
             this.studentID = -1;
         }
 
-        public IEnumerable<Assignment> Find()
+        public IEnumerable<Submission> Find()
         {
             return Find(-1, -1);
         }
 
-        public IEnumerable<Assignment> Find(int max, int from)
+        public IEnumerable<Submission> Find(int max, int from)
         {
-            return base.Find<Assignment>(max, from);
+            return base.Find<Submission>(max, from);
         }
 
         protected override string GetTableQuery()
         {
             var from = @"
-(SELECT s.*, a.Name AssignmentName, c.ID CourseID, c.Name CourseName, s.ID SemesterID, s.Name SemesterName,
+(SELECT s.*, a.Name AssignmentName, c.ID CourseID, c.Name CourseName, r.ID SemesterID, r.Name SemesterName,
        student.Name StudentName, teacher.Name TeacherName
 FROM [Submission] s
 INNER JOIN [Assignment] a ON a.ID = s.AssignmentID

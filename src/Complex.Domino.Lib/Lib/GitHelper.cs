@@ -12,6 +12,7 @@ namespace Complex.Domino.Lib
         private string sessionGuid;
         private User user;
         private Assignment assignment;
+        private Submission submission;
 
         public string SessionGuid
         {
@@ -31,8 +32,23 @@ namespace Complex.Domino.Lib
             set { assignment = value; }
         }
 
+        public Submission Submission
+        {
+            get { return submission; }
+            set { submission = value; }
+        }
+
         public GitHelper()
         {
+            InitializeMembers();
+        }
+
+        private void InitializeMembers()
+        {
+            this.sessionGuid = null;
+            this.user = null;
+            this.assignment = null;
+            this.submission = null;
         }
 
         private Git.Git CreateGit(string repoPath)
@@ -221,10 +237,9 @@ namespace Complex.Domino.Lib
         public Git.Commit CommitSubmission(string commitMessage)
         {
             var scratchdir = GetScratchPath();
-            
-            var dir = GetAssignmentPath();
-
             var git = CreateGit(scratchdir);
+
+            var dir = GetAssignmentPath();
 
             // Add all/remove all files that have changed under assignment
             // directory in the working tree of the student
@@ -243,6 +258,16 @@ namespace Complex.Domino.Lib
             git.Push("origin", true);
 
             return git.ReadLog(null, 1)[0];
+        }
+
+        public void CheckOutSubmission()
+        {
+            EnsureScratchExists();
+
+            var scratchdir = GetScratchPath();
+            var git = CreateGit(scratchdir);
+
+            git.CheckOut(submission.GitCommitHash);
         }
     }
 }

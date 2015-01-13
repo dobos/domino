@@ -13,13 +13,13 @@ namespace Complex.Domino.Web.Student {
     public partial class Submission {
         
         /// <summary>
-        /// newSubmissionPanel control.
+        /// emptyPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel newSubmissionPanel;
+        protected global::System.Web.UI.WebControls.Panel emptyPanel;
         
         /// <summary>
         /// NewSubmissionKeep control.
@@ -40,13 +40,13 @@ namespace Complex.Domino.Web.Student {
         protected global::System.Web.UI.WebControls.LinkButton NewSubmissionEmpty;
         
         /// <summary>
-        /// uploadSubmissionPanel control.
+        /// filesPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel uploadSubmissionPanel;
+        protected global::System.Web.UI.WebControls.Panel filesPanel;
         
         /// <summary>
         /// fileBrowser control.

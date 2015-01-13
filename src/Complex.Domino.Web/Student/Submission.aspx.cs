@@ -22,7 +22,15 @@ namespace Complex.Domino.Web.Student
             // A submission is always associated with an assignment, load it
 
             assignment = new Lib.Assignment(DatabaseContext);
-            assignment.Load(AssignmentID);
+
+            if (Item.IsExisting)
+            {
+                assignment.Load(Item.AssignmentID);
+            }
+            else
+            {
+                assignment.Load(AssignmentID);
+            }
 
             // Initialize the git helper class with current session info
 
@@ -31,41 +39,59 @@ namespace Complex.Domino.Web.Student
                 SessionGuid = SessionGuid,
                 User = DatabaseContext.User,
                 Assignment = assignment,
+                Submission = Item,
             };
 
-            if (!IsPostBack)
-            {
-                // If this a first time visit to the page the user can choose whether to
-                // keep existing files in the submission folder or delete them
-
-                // Make sure the git repo is checked out, the assigment exists
-                // and it is the tip of the branch
-                git.EnsureAssignmentExists();
-
-                if (git.IsAssignmentEmpty())
-                {
-                    SwitchViewToUpload();
-                }
-            }
-
-            fileBrowser.BasePath = git.GetAssignmentPath();
+            fileBrowser.BasePath = git.GetAssignmentPath();            
         }
 
         protected void NewSubmissionKeep_Click(object sender, EventArgs e)
         {
-            SwitchViewToUpload();
+            SwitchViewToFiles();
         }
 
         protected void NewSubmissionEmpty_Click(object sender, EventArgs e)
         {
             git.EmptyAssignment();
-            SwitchViewToUpload();
+            SwitchViewToFiles();
         }
 
-        private void SwitchViewToUpload()
+        private void SwitchViewToFiles()
         {
-            newSubmissionPanel.Visible = false;
-            uploadSubmissionPanel.Visible = true;
+            emptyPanel.Visible = false;
+            filesPanel.Visible = true;
+        }
+
+        protected override void UpdateForm()
+        {
+            base.UpdateForm();
+
+            fileBrowser.AllowDelete = !Item.IsExisting;
+            fileBrowser.AllowEdit = !Item.IsExisting;
+            fileBrowser.AllowUpload = !Item.IsExisting;
+
+            if (Item.IsExisting)
+            {
+                // Check out the current submission to view files
+                // TODO: might need to be replace with smarter solution
+                // that read file contents from git directly
+                git.CheckOutSubmission();
+
+                SwitchViewToFiles();
+            }
+            else
+            {
+                // Make sure the git repo is checked out, the assigment exists
+                // and it is the tip of the branch
+                git.EnsureAssignmentExists();
+
+                // If this a first time visit to the page the user can choose whether to
+                // keep existing files in the submission folder or delete them
+                if (git.IsAssignmentEmpty())
+                {
+                    SwitchViewToFiles();
+                }
+            }
         }
 
         protected override void SaveForm()

@@ -145,7 +145,7 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT s.*, a.Name AssignmentName, c.ID CourseID, c.Name CourseName, s.ID SemesterID, s.Name SemesterName,
+SELECT s.*, a.Name AssignmentName, c.ID CourseID, c.Name CourseName, r.ID SemesterID, r.Name SemesterName,
        student.Name StudentName, teacher.Name TeacherName
 FROM [Submission] s
 INNER JOIN [Assignment] a ON a.ID = s.AssignmentID
@@ -153,7 +153,7 @@ INNER JOIN [Course] c ON c.ID = a.CourseID
 INNER JOIN [Semester] r ON r.ID = c.SemesterID
 INNER JOIN [User] student ON student.ID = s.StudentID
 LEFT OUTER JOIN [User] teacher ON teacher.ID = s.TeacherID
-WHERE ID = @ID";
+WHERE s.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
             {
