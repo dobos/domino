@@ -71,12 +71,12 @@ namespace Complex.Domino.Web
         {
             CreateItem();
 
+            base.OnLoad(e);
+
             if (!IsPostBack)
             {
                 UpdateForm();
             }
-
-            base.OnLoad(e);
         }
 
         protected override void OnPreRender(EventArgs e)
