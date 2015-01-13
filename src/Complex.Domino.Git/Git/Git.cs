@@ -191,15 +191,16 @@ namespace Complex.Domino.Git
 
         public List<Commit> ReadLog()
         {
-            return ReadLog(null);
+            return ReadLog(null, -1);
         }
 
-        public List<Commit> ReadLog(string filename)
+        public List<Commit> ReadLog(string filename, int maxCount)
         {
             var args = new Arguments();
             var commits = new List<Commit>();
 
             args.Append("log");
+            args.AppendIfTrue(maxCount > 0, "--max-count", maxCount.ToString());
             args.Append("--pretty", "raw");
 
             // TODO: single file log
@@ -236,23 +237,6 @@ namespace Complex.Domino.Git
             args.Append("branch");
 
             GitWrapper.Call(this, args);
-        }
-
-        public Commit GetHeadCommit()
-        {
-            var args = new Arguments();
-
-            args.Append("rev-parse");
-            args.Append("HEAD");
-
-            var hash = GitWrapper.Call(this, args);
-
-            return new Commit()
-            {
-                Author = author,
-                Date = DateTime.UtcNow,
-                Hash = hash
-            };
         }
 
         #endregion

@@ -18,6 +18,8 @@ namespace Complex.Domino.Git
         private DateTime date;
         private string message;
 
+        // TODO: maybe add committer, tree, parent etc.
+
         public string Hash
         {
             get { return hash; }
