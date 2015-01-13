@@ -34,11 +34,19 @@ namespace Complex.Domino.Git
             Append(key + "=" + QuoteValue(value));
         }
 
-        public void AppendIfTrue(bool value, string argument)
+        public void AppendIfTrue(bool logical, string argument)
         {
-            if (value)
+            if (logical)
             {
                 Append(argument);
+            }
+        }
+
+        public void AppendIfTrue(bool logical, string argument, string value)
+        {
+            if (logical)
+            {
+                Append(argument, value);
             }
         }
 
