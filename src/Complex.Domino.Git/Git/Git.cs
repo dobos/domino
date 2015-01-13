@@ -77,30 +77,47 @@ namespace Complex.Domino.Git
         #endregion
         #region Git wrapper functions
 
+        /// <summary>
+        /// Initializes a git repository.
+        /// </summary>
+        /// <param name="bare"></param>
         public void Init(bool bare)
         {
             var args = new Arguments();
 
             args.Append("init");
-
-            if (bare)
-            {
-                args.Append("--bare");
-            }
+            args.AppendIfTrue(bare, "--bare");
 
             GitWrapper.Call(this, args);
         }
 
+        /// <summary>
+        /// Clones a remote repository locally
+        /// </summary>
+        /// <param name="remotePath"></param>
+        public void Clone(string remotePath)
+        {
+            var args = new Arguments();
+
+            args.Append("clone");
+            args.Append(remotePath);
+            args.Append(repoPath);
+
+            GitWrapper.Call(this, args);
+        }
+
+        /// <summary>
+        /// Sets variables in git config files
+        /// </summary>
+        /// <param name="variable"></param>
+        /// <param name="value"></param>
+        /// <param name="global"></param>
         public void Config(string variable, string value, bool global)
         {
             var args = new Arguments();
 
             args.Append("config");
-
-            if (global)
-            {
-                args.Append("--global");
-            }
+            args.AppendIfTrue(global, "--global");
 
             args.Append(variable);
             args.Append(value);
@@ -108,27 +125,68 @@ namespace Complex.Domino.Git
             GitWrapper.Call(this, args);
         }
 
-        public void AddAll()
+        /// <summary>
+        /// Adds files to the index.
+        /// </summary>
+        public void Add(string path, bool all)
         {
             var args = new Arguments();
 
             args.Append("add");
-            args.Append("--all");
-            args.Append(".");
+            args.AppendIfTrue(all, "--all");
+            args.Append(path);
 
             GitWrapper.Call(this, args);
         }
 
-        public void CommitAll(string message)
+        /// <summary>
+        /// Commits changes
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="all"></param>
+        public void Commit(string message, bool all)
         {
             var args = new Arguments();
 
             args.Append("commit");
-            args.Append("--all");
+            args.AppendIfTrue(all, "--all");
             args.Append("--message", message);
             args.Append("--author", author.ToString());
 
             GitWrapper.Call(this, args);
+        }
+
+        /// <summary>
+        /// Pushes changes to a remote repository
+        /// </summary>
+        /// <param name="remote"></param>
+        /// <param name="all"></param>
+        public void Push(string remote, bool all)
+        {
+            var args = new Arguments();
+
+            args.Append("push");
+            args.AppendIfTrue(all, "--all");
+            args.AppendIfNotNull(remote);
+
+            GitWrapper.Call(this, args);
+        }
+
+        public void Fetch(bool all)
+        {
+            var args = new Arguments();
+
+            args.Append("fetch");
+            args.AppendIfTrue(all, "--all");
+        }
+
+        public void Reset(string branch, bool hard)
+        {
+            var args = new Arguments();
+
+            args.Append("reset");
+            args.AppendIfTrue(hard, "--hard");
+            args.AppendIfNotNull(branch);
         }
 
         public List<Commit> ReadLog()
@@ -166,24 +224,16 @@ namespace Complex.Domino.Git
             return commits;
         }
 
-        public void Clone(string remotePath)
+        public void Pull()
         {
-            var args = new Arguments();
-
-            args.Append("clone");
-            args.Append(remotePath);
-            args.Append(repoPath);
-
-            GitWrapper.Call(this, args);
         }
 
-        public void PushAll(string remote)
+        public void CheckOut(string branch)
         {
             var args = new Arguments();
 
-            args.Append("push");
-            args.Append("--all");
-            args.Append(remote);
+            args.Append("checkout");
+            args.Append("branch");
 
             GitWrapper.Call(this, args);
         }

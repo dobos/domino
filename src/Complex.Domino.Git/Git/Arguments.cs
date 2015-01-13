@@ -34,6 +34,22 @@ namespace Complex.Domino.Git
             Append(key + "=" + QuoteValue(value));
         }
 
+        public void AppendIfTrue(bool value, string argument)
+        {
+            if (value)
+            {
+                Append(argument);
+            }
+        }
+
+        public void AppendIfNotNull(string value)
+        {
+            if (!String.IsNullOrWhiteSpace(value))
+            {
+                Append(value);
+            }
+        }
+
         private string QuoteValue(string value)
         {
             if (value.IndexOf(' ') >= 0)

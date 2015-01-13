@@ -143,6 +143,29 @@ namespace Complex.Domino.Lib
             git.Config("user.name", user.Username, false);
         }
 
+        public void CheckoutScratchTip()
+        {
+            var scratchdir = GetScratchPath();
+            var git = CreateGit(scratchdir);
+
+            // Fetch all modifications from remote to scratch and
+            // then make sure we're at the tip of the branch
+            git.Fetch(true);
+
+            // First try to check out the master branch. If it fails,
+            // there are changes in the current repo that might need to
+            // merged but couldn't be done automatically. In this case
+            // we simply reset and throw away changes.
+            try
+            {
+                git.CheckOut("master");
+            }
+            catch (Git.GitException)
+            {
+                git.Reset("origin/master", true);
+            }
+        }
+
         public void InitializeAssignment()
         {
             var dir = GetAssignmentPath();
@@ -171,11 +194,24 @@ namespace Complex.Domino.Lib
         public void EnsureAssignmentExists()
         {
             EnsureScratchExists();
+            CheckoutScratchTip();
 
             if (!IsAssignmentInitialized())
             {
                 InitializeAssignment();
             }
+        }
+
+        public bool IsAssignmentEmpty()
+        {
+            var dir = GetAssignmentPath();
+            return Directory.GetFileSystemEntries(dir).Length == 0;
+        }
+
+        public void EmptyAssignment()
+        {
+            var dir = GetAssignmentPath();
+            Util.IO.ForceEmptyDirectory(dir);
         }
 
         public string CommitSubmission()
@@ -186,9 +222,9 @@ namespace Complex.Domino.Lib
 
             var git = CreateGit(scratchdir);
 
-            git.AddAll();
-            git.CommitAll("just a commit of everything");
-            git.PushAll("origin");
+            git.Add(".", true);
+            git.Commit("just a commit of everything", true);       // TODO
+            git.Push("origin", true);
 
             return git.GetHeadCommit().Hash;
         }

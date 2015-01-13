@@ -19,8 +19,12 @@ namespace Complex.Domino.Web.Student
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // A submission is always associated with an assignment, load it
+
             assignment = new Lib.Assignment(DatabaseContext);
             assignment.Load(AssignmentID);
+
+            // Initialize the git helper class with current session info
 
             git = new Lib.GitHelper()
             {
@@ -31,10 +35,37 @@ namespace Complex.Domino.Web.Student
 
             if (!IsPostBack)
             {
+                // If this a first time visit to the page the user can choose whether to
+                // keep existing files in the submission folder or delete them
+
+                // Make sure the git repo is checked out, the assigment exists
+                // and it is the tip of the branch
                 git.EnsureAssignmentExists();
+
+                if (git.IsAssignmentEmpty())
+                {
+                    SwitchViewToUpload();
+                }
             }
 
             fileBrowser.BasePath = git.GetAssignmentPath();
+        }
+
+        protected void NewSubmissionKeep_Click(object sender, EventArgs e)
+        {
+            SwitchViewToUpload();
+        }
+
+        protected void NewSubmissionEmpty_Click(object sender, EventArgs e)
+        {
+            git.EmptyAssignment();
+            SwitchViewToUpload();
+        }
+
+        private void SwitchViewToUpload()
+        {
+            newSubmissionPanel.Visible = false;
+            uploadSubmissionPanel.Visible = true;
         }
 
         protected override void SaveForm()

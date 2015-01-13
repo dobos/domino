@@ -38,7 +38,7 @@ namespace Complex.Domino.Git
             // Create directory for empty repo
             var repopath = TestRepoPath;
 
-            ForceDeleteDirectory(repopath);
+            Util.IO.ForceDeleteDirectory(repopath);
 
             Directory.CreateDirectory(repopath);
         }
@@ -48,7 +48,7 @@ namespace Complex.Domino.Git
         {
             var repopath = TestRepoPath;
 
-            ForceDeleteDirectory(repopath);
+            Domino.Util.IO.ForceDeleteDirectory(repopath);
         }
 
         [TestMethod]
@@ -63,15 +63,15 @@ namespace Complex.Domino.Git
                 Path.Combine(TestRepoPath, "test.txt"),
                 "This is the first revision");
 
-            Git.AddAll();
-            Git.CommitAll("First revision");
+            Git.Add(".", true);
+            Git.Commit("First revision", true);
 
             // Modify file
             File.WriteAllText(
                 Path.Combine(TestRepoPath, "test.txt"),
                 "This is the second revision");
 
-            Git.CommitAll("Second revision");
+            Git.Commit("Second revision", true);
 
             var commits = Git.ReadLog();
             Assert.AreEqual(2, commits.Count);
