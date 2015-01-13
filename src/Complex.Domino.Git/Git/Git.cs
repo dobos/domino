@@ -234,7 +234,7 @@ namespace Complex.Domino.Git
             var args = new Arguments();
 
             args.Append("checkout");
-            args.Append("branch");
+            args.Append(branch);
 
             GitWrapper.Call(this, args);
         }
