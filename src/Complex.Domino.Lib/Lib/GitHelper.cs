@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Complex.Domino.Lib
 {
-    public class GitWrapper
+    public class GitHelper
     {
         private string sessionGuid;
         private User user;
@@ -31,7 +31,7 @@ namespace Complex.Domino.Lib
             set { assignment = value; }
         }
 
-        public GitWrapper()
+        public GitHelper()
         {
         }
 

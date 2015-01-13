@@ -9,7 +9,7 @@ namespace Complex.Domino.Web.Student
 {
     public partial class Submission : EntityForm<Lib.Submission>
     {
-        protected Lib.GitWrapper git;
+        protected Lib.GitHelper git;
         protected Lib.Assignment assignment;
 
         protected int AssignmentID
@@ -22,7 +22,7 @@ namespace Complex.Domino.Web.Student
             assignment = new Lib.Assignment(DatabaseContext);
             assignment.Load(AssignmentID);
 
-            git = new Lib.GitWrapper()
+            git = new Lib.GitHelper()
             {
                 SessionGuid = SessionGuid,
                 User = DatabaseContext.User,
