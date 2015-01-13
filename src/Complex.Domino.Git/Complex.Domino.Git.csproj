@@ -54,6 +54,7 @@
     <Compile Include="Git\GitException.cs" />
     <Compile Include="Git\GitWrapper.cs" />
     <Compile Include="Git\User.cs" />
+    <Compile Include="Util\IO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,19 +9,5 @@ namespace Complex.Domino.Git
 {
     public class TestBase
     {
-        protected void ForceDeleteDirectory(string path)
-        {
-            if (Directory.Exists(path))
-            {
-                var directory = new DirectoryInfo(path) { Attributes = FileAttributes.Normal };
-
-                foreach (var info in directory.GetFileSystemInfos("*", SearchOption.AllDirectories))
-                {
-                    info.Attributes = FileAttributes.Normal;
-                }
-
-                directory.Delete(true);
-            }
-        }
     }
 }
