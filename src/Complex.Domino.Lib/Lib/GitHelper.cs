@@ -214,7 +214,11 @@ namespace Complex.Domino.Lib
             Util.IO.ForceEmptyDirectory(dir);
         }
 
-        public string CommitSubmission()
+        /// <summary>
+        /// Commits a submission and pushed it to origin
+        /// </summary>
+        /// <returns></returns>
+        public Git.Commit CommitSubmission(string commitMessage)
         {
             var scratchdir = GetScratchPath();
             
@@ -222,11 +226,23 @@ namespace Complex.Domino.Lib
 
             var git = CreateGit(scratchdir);
 
-            git.Add(".", true);
-            git.Commit("just a commit of everything", true);       // TODO
+            // Add all/remove all files that have changed under assignment
+            // directory in the working tree of the student
+            git.Add(dir, true);
+
+            // Commit changes
+            git.Commit(commitMessage, true);
+
+            // Try to simply push the commit to origin
+            
+            // TODO: It might have happend though, that the origin is now
+            // ahead. This is a rare case whan another submission has just
+            // happened. In this case, we might just force-push changes but
+            // that's dangerous... better throw an exception.
+
             git.Push("origin", true);
 
-            return git.GetHeadCommit().Hash;
+            return git.ReadLog(null, 1)[0];
         }
     }
 }

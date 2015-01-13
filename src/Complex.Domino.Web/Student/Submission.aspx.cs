@@ -73,11 +73,13 @@ namespace Complex.Domino.Web.Student
             base.SaveForm();
 
             // Commit changes into git
+            var commit = git.CommitSubmission("comments");  // TODO: use comments
+
             Item.StudentID = DatabaseContext.User.ID;
             Item.AssignmentID = assignment.ID;
-            Item.Date = DateTime.UtcNow;
             Item.Direction = Lib.SubmissionDirection.StudentToTeacher;
-            Item.GitCommitHash = git.CommitSubmission();
+            Item.Date = commit.Date;
+            Item.GitCommitHash = commit.Hash;
         }
     }
 }
