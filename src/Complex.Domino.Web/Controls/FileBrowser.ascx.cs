@@ -169,7 +169,7 @@ namespace Complex.Domino.Web.Controls
 
             if ((fi.Attributes & FileAttributes.Directory) != 0)
             {
-                ForceDeleteDirectory(fi.FullName);
+                Complex.Domino.Util.IO.ForceDeleteDirectory(fi.FullName);
             }
             else
             {
@@ -279,12 +279,8 @@ namespace Complex.Domino.Web.Controls
 
         protected override void OnLoad(EventArgs e)
         {
-            directoryList.DataSource = GetDirectories();
-            directoryList.DataBind();
-
-            fileList.DataSource = GetFiles();
-            fileList.DataBind();
-
+            DataBindAll();
+                
             base.OnLoad(e);
         }
 
@@ -292,11 +288,22 @@ namespace Complex.Domino.Web.Controls
         {
             base.OnPreRender(e);
 
-            directoryList.DataSource = GetDirectories();
-            directoryList.DataBind();
+            DataBindAll();
+        }
 
-            fileList.DataSource = GetFiles();
-            fileList.DataBind();
+        private void DataBindAll()
+        {
+            if (directoryList.Visible)
+            {
+                directoryList.DataSource = GetDirectories();
+                directoryList.DataBind();
+            }
+
+            if (fileList.Visible)
+            {
+                fileList.DataSource = GetFiles();
+                fileList.DataBind();
+            }
         }
 
         private string MakePathRelative(string basePath, string path)
@@ -357,21 +364,6 @@ namespace Complex.Domino.Web.Controls
             if (!found)
             {
                 throw new Exception("Invalid file format.");        // TODO
-            }
-        }
-
-        protected void ForceDeleteDirectory(string path)
-        {
-            if (Directory.Exists(path))
-            {
-                var directory = new DirectoryInfo(path) { Attributes = FileAttributes.Normal };
-
-                foreach (var info in directory.GetFileSystemInfos("*", SearchOption.AllDirectories))
-                {
-                    info.Attributes = FileAttributes.Normal;
-                }
-
-                directory.Delete(true);
             }
         }
     }
