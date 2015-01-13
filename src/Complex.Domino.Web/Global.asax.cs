@@ -30,11 +30,14 @@ namespace Complex.Domino.Web
                     CdnPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.min.js",
                     CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.js",
                 });
+
+            CleanUpScratch(null);
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
             Session[Constants.SessionGuid] = Guid.NewGuid().ToString("D");
+            CleanUpScratch((string)Session[Constants.SessionGuid]);
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
@@ -54,12 +57,25 @@ namespace Complex.Domino.Web
 
         protected void Session_End(object sender, EventArgs e)
         {
-
+            Complex.Domino.Util.IO.ForceEmptyDirectory((string)Session[Constants.SessionGuid]);
         }
 
         protected void Application_End(object sender, EventArgs e)
         {
+            CleanUpScratch(null);
+        }
 
+        private void CleanUpScratch(string subdir)
+        {
+            // Clean up scratch repos
+            var scratchdir = Lib.DominoConfiguration.Instance.ScratchPath;
+
+            if (subdir != null)
+            {
+                scratchdir = System.IO.Path.Combine(scratchdir, subdir);
+            }
+
+            //Complex.Domino.Util.IO.ForceEmptyDirectory(scratchdir);
         }
     }
 }
