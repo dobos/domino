@@ -20,3 +20,41 @@
         {
             border: 1px solid #000000;
         }
+
+a.fullbar {
+    display: block;
+    width: 600px;
+    height: 64px;
+    background-color: #FFFFFF;
+    border: 1px solid #808080;
+    border-radius: 8px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    color: #000000;
+    text-decoration: none;
+}
+
+    a.fullbar:hover {
+        background-color: #EEEECC;
+    }
+
+    a.fullbar img {
+        float: left;
+        width: 48px;
+        height: 48px;
+        margin-left: 8px;
+        margin-top: 8px;
+        margin-right: 32px;
+    }
+
+    a.fullbar h1 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    a.fullbar p {
+        font-size: 14px;
+        margin: 0px;
+    }

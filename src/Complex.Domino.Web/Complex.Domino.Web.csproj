@@ -81,6 +81,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Student\AssignmentList.aspx" />
+    <Content Include="Student\Default.aspx" />
     <Content Include="Student\SubmissionList.aspx" />
     <Content Include="Student\CourseList.aspx" />
     <Content Include="Student\Submission.aspx" />
@@ -236,6 +237,13 @@
     </Compile>
     <Compile Include="Student\AssignmentList.aspx.designer.cs">
       <DependentUpon>AssignmentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\SubmissionList.aspx.cs">
       <DependentUpon>SubmissionList.aspx</DependentUpon>
