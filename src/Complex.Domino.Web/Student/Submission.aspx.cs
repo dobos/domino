@@ -9,6 +9,11 @@ namespace Complex.Domino.Web.Student
 {
     public partial class Submission : EntityForm<Lib.Submission>
     {
+        public static string GetUrl(int id)
+        {
+            return String.Format("~/Student/Submission.aspx?id={0}", id);
+        }
+
         protected Lib.GitHelper git;
         protected Lib.Assignment assignment;
 

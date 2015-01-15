@@ -14,6 +14,11 @@ namespace Complex.Domino.Web.Student
             return "~/Student/Assignments.aspx";
         }
 
+        public static string GetUrl(int courseID)
+        {
+            return String.Format("~/Student/Assignments.aspx?courseID={0}", courseID);
+        }
+
         private Lib.AssignmentFactory searchObject;
 
         protected void Page_Load(object sender, EventArgs e)

@@ -9,6 +9,11 @@ namespace Complex.Domino.Web.Student
 {
     public partial class Default : System.Web.UI.Page
     {
+        public static string GetUrl()
+        {
+            return "~/Student";
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CoursesLink.NavigateUrl = Courses.GetUrl();

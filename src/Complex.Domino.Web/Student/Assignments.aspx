@@ -14,13 +14,12 @@
             <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
         </LayoutTemplate>
         <ItemTemplate>
-            <div>
-                <p>Assigment <%# Eval("Name") %></p>
-                <p>Course: <%# Eval("CourseName") %></p>
-                <p>Semester: <%# Eval("SemesterName") %></p>
-                <a href="SubmissionList.aspx?AssignmentID=<%# Eval("ID") %>">view submissions</a>
-                <a href="Submission.aspx?AssignmentID=<%# Eval("ID") %>">new submission</a>
-            </div>
+            <asp:HyperLink runat="server" CssClass="fullbar" ID="SubmissionsLink"
+                NavigateUrl='<%# Complex.Domino.Web.Student.Submissions.GetUrl((int)Eval("ID")) %>'>
+                <asp:Image ID="Image1" runat="server" SkinID="AssignmentIcon" />
+                <h1>Assigment <%# Eval("Name") %></h1>
+                <p>Course: <%# Eval("CourseName") %> | Semester: <%# Eval("SemesterName") %></p>
+            </asp:HyperLink>
         </ItemTemplate>
     </asp:ListView>
 </asp:Content>
