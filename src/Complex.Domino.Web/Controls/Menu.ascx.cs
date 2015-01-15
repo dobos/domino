@@ -18,9 +18,9 @@ namespace Complex.Domino.Web.Controls
 
             TeacherCourses.NavigateUrl = Teacher.CourseList.GetUrl();
 
-            StudentCourses.NavigateUrl = Student.CourseList.GetUrl();
-            StudentAssignments.NavigateUrl = Student.AssignmentList.GetUrl();
-            StudentSubmissions.NavigateUrl = Student.SubmissionList.GetUrl();
+            StudentCourses.NavigateUrl = Student.Courses.GetUrl();
+            StudentAssignments.NavigateUrl = Student.Assignments.GetUrl();
+            StudentSubmissions.NavigateUrl = Student.Submissions.GetUrl();
         }
     }
 }

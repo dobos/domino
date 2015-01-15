@@ -10,7 +10,7 @@
 namespace Complex.Domino.Web.Student {
     
     
-    public partial class CourseList {
+    public partial class Courses {
         
         /// <summary>
         /// courseDataSource control.

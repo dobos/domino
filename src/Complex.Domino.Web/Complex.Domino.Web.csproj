@@ -80,11 +80,11 @@
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Student\AssignmentList.aspx" />
+    <Content Include="Student\Assignments.aspx" />
+    <Content Include="Student\Courses.aspx" />
     <Content Include="Student\Default.aspx" />
-    <Content Include="Student\SubmissionList.aspx" />
-    <Content Include="Student\CourseList.aspx" />
     <Content Include="Student\Submission.aspx" />
+    <Content Include="Student\Submissions.aspx" />
     <Content Include="Teacher\Course.aspx" />
     <Content Include="Teacher\CourseList.aspx" />
     <Content Include="Web.config" />
@@ -231,12 +231,19 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student\AssignmentList.aspx.cs">
-      <DependentUpon>AssignmentList.aspx</DependentUpon>
+    <Compile Include="Student\Assignments.aspx.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Student\AssignmentList.aspx.designer.cs">
-      <DependentUpon>AssignmentList.aspx</DependentUpon>
+    <Compile Include="Student\Assignments.aspx.designer.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Courses.aspx.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Courses.aspx.designer.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -244,20 +251,6 @@
     </Compile>
     <Compile Include="Student\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Student\SubmissionList.aspx.cs">
-      <DependentUpon>SubmissionList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Student\SubmissionList.aspx.designer.cs">
-      <DependentUpon>SubmissionList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Student\CourseList.aspx.cs">
-      <DependentUpon>CourseList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Student\CourseList.aspx.designer.cs">
-      <DependentUpon>CourseList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Student.master.cs">
       <DependentUpon>Student.master</DependentUpon>
@@ -272,6 +265,13 @@
     </Compile>
     <Compile Include="Student\Submission.aspx.designer.cs">
       <DependentUpon>Submission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Submissions.aspx.cs">
+      <DependentUpon>Submissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Submissions.aspx.designer.cs">
+      <DependentUpon>Submissions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\Teacher.master.cs">
       <DependentUpon>Teacher.master</DependentUpon>

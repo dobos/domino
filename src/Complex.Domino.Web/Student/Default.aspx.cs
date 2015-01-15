@@ -11,9 +11,9 @@ namespace Complex.Domino.Web.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CoursesLink.NavigateUrl = CourseList.GetUrl();
-            AssignmentsLink.NavigateUrl = AssignmentList.GetUrl();
-            SubmissionsLink.NavigateUrl = SubmissionList.GetUrl();
+            CoursesLink.NavigateUrl = Courses.GetUrl();
+            AssignmentsLink.NavigateUrl = Assignments.GetUrl();
+            SubmissionsLink.NavigateUrl = Submissions.GetUrl();
         }
     }
 }

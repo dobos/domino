@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student/Student.master" AutoEventWireup="true" CodeBehind="SubmissionList.aspx.cs" Inherits="Complex.Domino.Web.Student.SubmissionList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student/Student.master" AutoEventWireup="true" CodeBehind="Submissions.aspx.cs" Inherits="Complex.Domino.Web.Student.Submissions" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>All submissions</h1>

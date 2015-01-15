@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student/Student.master" AutoEventWireup="true" CodeBehind="AssignmentList.aspx.cs" Inherits="Complex.Domino.Web.Student.AssignmentList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student/Student.master" AutoEventWireup="true" CodeBehind="Assignments.aspx.cs" Inherits="Complex.Domino.Web.Student.Assignments" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>All assignments</h1>
