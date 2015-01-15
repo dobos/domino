@@ -305,6 +305,7 @@
     <Content Include="Teacher\Web.config" />
     <Content Include="Teacher\Teacher.master" />
     <Content Include="Student\Student.master" />
+    <Content Include="App_Themes\Basic\icons.skin" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -324,6 +325,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Themes\Basic\Icons\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
