@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Admin
 {
-    public partial class Semester : EntityForm<Lib.Semester>
+    public partial class Semester : EntityPage<Lib.Semester>
     {
         public static string GetUrl()
         {

@@ -73,6 +73,7 @@
     <Content Include="App_Themes\Basic\toolbar.css" />
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
+    <Content Include="Controls\EntityForm.ascx" />
     <Content Include="Controls\FileBrowser.ascx" />
     <Content Include="Controls\Menu.ascx" />
     <EmbeddedResource Include="Controls\MultiSelectGridView.js" />
@@ -178,6 +179,13 @@
       <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="Controls\EntityForm.ascx.cs">
+      <DependentUpon>EntityForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\EntityForm.ascx.designer.cs">
+      <DependentUpon>EntityForm.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FileBrowser.ascx.cs">
       <DependentUpon>FileBrowser.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -224,7 +232,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EntityForm.cs">
+    <Compile Include="EntityPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Global.asax.cs">

@@ -7,15 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web
 {
-    public abstract class EntityForm<T> : PageBase
+    public abstract class EntityPage<T> : PageBase
         where T : Lib.Entity, new()
     {
         private T item;
-
-        protected ITextControl Name;
-        protected ITextControl Description;
-        protected CheckBox Enabled;
-        protected new CheckBox Visible;
+        protected Controls.EntityForm entityForm;
 
         protected new int ID
         {
@@ -27,11 +23,8 @@ namespace Complex.Domino.Web
             get { return item; }
         }
 
-        protected EntityForm()
+        protected EntityPage()
         {
-            this.Name = new TextBox();
-            this.Enabled = new CheckBox();
-            this.Visible = new CheckBox();
         }
 
         protected virtual void CreateItem()
@@ -50,18 +43,11 @@ namespace Complex.Domino.Web
 
         protected virtual void UpdateForm()
         {
-            Name.Text = item.Name;
-            Enabled.Checked = item.Enabled;
-            Visible.Checked = item.Visible;
-            // TODO: add comments
+            entityForm.UpdateForm(item);
         }
 
         protected virtual void SaveForm()
         {
-            item.Name = Name.Text;
-            item.Enabled = Enabled.Checked;
-            item.Visible = Visible.Checked;
-            // TODO: add comments
         }
 
         protected virtual void DataBindForm()

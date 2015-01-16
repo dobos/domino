@@ -1,26 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeBehind="SemesterForm.aspx.cs" Inherits="Complex.Domino.Web.Admin.Semester" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeBehind="Semester.aspx.cs" Inherits="Complex.Domino.Web.Admin.Semester" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <h1>New semester</h1>
-    <table class="form">
-        <tr>
-            <td class="label">
-                <asp:Label runat="server" ID="NameLabel" CssClass="required">Name:</asp:Label>
-            </td>
-            <td class="field">
-                <asp:TextBox ID="Name" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="NameRequiredValidator" runat="server" Display="Dynamic"
-                    ErrorMessage="<br />Name is required" ControlToValidate="Name" />
-            </td>
-        </tr>
-        <tr>
-            <td class="label">&nbsp;</td>
-            <td class="field">
-                <asp:CheckBox ID="Enabled" runat="server" Text="Enabled" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:CheckBox ID="Visible" runat="server" Text="Visible" />
-            </td>
-        </tr>
-    </table>
+    <domino:EntityForm runat="server" ID="entityForm" />
     <table class="form">
         <tr>
             <td class="label">

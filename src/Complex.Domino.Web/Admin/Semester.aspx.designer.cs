@@ -13,24 +13,6 @@ namespace Complex.Domino.Web.Admin {
     public partial class Semester {
         
         /// <summary>
-        /// NameLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NameLabel;
-        
-        /// <summary>
-        /// NameRequiredValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator NameRequiredValidator;
-        
-        /// <summary>
         /// StartDateLabel control.
         /// </summary>
         /// <remarks>
