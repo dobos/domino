@@ -15,39 +15,20 @@ namespace Complex.Domino.Web.Student
         }
 
         protected Lib.GitHelper git;
-        protected Lib.Assignment assignment;
-
-        protected int AssignmentID
-        {
-            get { return Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestAssignmentID]); }
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // A submission is always associated with an assignment, load it
-
-            assignment = new Lib.Assignment(DatabaseContext);
-
-            if (Item.IsExisting)
-            {
-                assignment.Load(Item.AssignmentID);
-            }
-            else
-            {
-                assignment.Load(AssignmentID);
-            }
-
             // Initialize the git helper class with current session info
 
             git = new Lib.GitHelper()
             {
                 SessionGuid = SessionGuid,
                 User = DatabaseContext.User,
-                Assignment = assignment,
+                Assignment = Item.Assignment,
                 Submission = Item,
             };
 
-            fileBrowser.BasePath = git.GetAssignmentPath();            
+            fileBrowser.BasePath = git.GetAssignmentPath();
         }
 
         protected void NewSubmissionKeep_Click(object sender, EventArgs e)
@@ -65,6 +46,13 @@ namespace Complex.Domino.Web.Student
         {
             emptyPanel.Visible = false;
             filesPanel.Visible = true;
+        }
+
+        protected override void CreateItem()
+        {
+            base.CreateItem();
+
+            Item.Assignment.ID = Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestAssignmentID]);
         }
 
         protected override void UpdateForm()
@@ -106,11 +94,10 @@ namespace Complex.Domino.Web.Student
             // Commit changes into git
             var commit = git.CommitSubmission("comments");  // TODO: use comments
 
-            Item.StudentID = DatabaseContext.User.ID;
-            Item.AssignmentID = assignment.ID;
+            Item.Student.ID = DatabaseContext.User.ID;
             Item.Direction = Lib.SubmissionDirection.StudentToTeacher;
             Item.Date = commit.Date;
-            Item.GitCommitHash = commit.Hash;
+            Item.Name = commit.Hash;
         }
     }
 }

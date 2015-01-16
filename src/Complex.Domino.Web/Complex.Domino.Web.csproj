@@ -83,10 +83,13 @@
     <Content Include="Student\Assignments.aspx" />
     <Content Include="Student\Courses.aspx" />
     <Content Include="Student\Default.aspx" />
+    <Content Include="Student\Student.master" />
     <Content Include="Student\Submission.aspx" />
     <Content Include="Student\Submissions.aspx" />
     <Content Include="Teacher\Course.aspx" />
     <Content Include="Teacher\CourseList.aspx" />
+    <Content Include="Teacher\Teacher.master" />
+    <Content Include="Teacher\Web.config" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -273,13 +276,6 @@
     <Compile Include="Student\Submissions.aspx.designer.cs">
       <DependentUpon>Submissions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\Teacher.master.cs">
-      <DependentUpon>Teacher.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Teacher\Teacher.master.designer.cs">
-      <DependentUpon>Teacher.master</DependentUpon>
-    </Compile>
     <Compile Include="Teacher\Course.aspx.cs">
       <DependentUpon>Course.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -294,6 +290,13 @@
     <Compile Include="Teacher\CourseList.aspx.designer.cs">
       <DependentUpon>CourseList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\Teacher.master.cs">
+      <DependentUpon>Teacher.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Teacher.master.designer.cs">
+      <DependentUpon>Teacher.master</DependentUpon>
+    </Compile>
     <Compile Include="Util\UrlFormatter.cs" />
     <Compile Include="Util\UrlParser.cs" />
   </ItemGroup>
@@ -302,9 +305,6 @@
     <Content Include="Auth\Auth.master" />
     <Content Include="Admin\Admin.master" />
     <Content Include="Admin\Web.config" />
-    <Content Include="Teacher\Web.config" />
-    <Content Include="Teacher\Teacher.master" />
-    <Content Include="Student\Student.master" />
     <Content Include="App_Themes\Basic\icons.skin" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

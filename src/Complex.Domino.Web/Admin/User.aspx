@@ -5,12 +5,22 @@
     <table class="form">
         <tr>
             <td class="label">
-                <asp:Label runat="server" ID="NameLabel" CssClass="required">Name:</asp:Label>
+                <asp:Label runat="server" ID="NameLabel" CssClass="required">User name:</asp:Label>
             </td>
             <td class="field">
                 <asp:TextBox ID="Name" runat="server" ValidationGroup="User" />
                 <asp:RequiredFieldValidator ID="NameRequiredValidator" runat="server" Display="Dynamic"
-                    ErrorMessage="<br />Name is required" ControlToValidate="Name" ValidationGroup="User" />
+                    ErrorMessage="<br />Username is required" ControlToValidate="Name" ValidationGroup="User" />
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <asp:Label runat="server" ID="DescriptionLabel" CssClass="required">Name:</asp:Label>
+            </td>
+            <td class="field">
+                <asp:TextBox ID="Description" runat="server" ValidationGroup="User" />
+                <asp:RequiredFieldValidator ID="DescriptionRequiredValidator" runat="server" Display="Dynamic"
+                    ErrorMessage="<br />Name is required" ControlToValidate="Description" ValidationGroup="User" />
             </td>
         </tr>
         <tr>

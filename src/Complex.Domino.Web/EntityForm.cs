@@ -13,10 +13,11 @@ namespace Complex.Domino.Web
         private T item;
 
         protected ITextControl Name;
+        protected ITextControl Description;
         protected CheckBox Enabled;
         protected new CheckBox Visible;
 
-        protected int ID
+        protected new int ID
         {
             get { return Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestID], -1); }
         }
@@ -33,7 +34,7 @@ namespace Complex.Domino.Web
             this.Visible = new CheckBox();
         }
 
-        protected void CreateItem()
+        protected virtual void CreateItem()
         {
             item = new T()
             {

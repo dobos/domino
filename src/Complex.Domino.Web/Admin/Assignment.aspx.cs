@@ -20,7 +20,7 @@ namespace Complex.Domino.Web.Admin
 
             RefreshCourseList();
 
-            Course.SelectedValue = Item.CourseID.ToString();
+            Course.SelectedValue = Item.Course.ID.ToString();
             StartDate.Text = Item.StartDate.ToString();
             EndDate.Text = Item.EndDate.ToString();
             EndDateSoft.Text = Item.EndDateSoft.ToString();
@@ -34,7 +34,7 @@ namespace Complex.Domino.Web.Admin
         {
             base.SaveForm();
 
-            Item.CourseID = int.Parse(Course.SelectedValue);
+            Item.Course.ID = int.Parse(Course.SelectedValue);
             Item.StartDate = DateTime.Parse(StartDate.Text);
             Item.EndDate = DateTime.Parse(EndDate.Text);
             Item.EndDateSoft = DateTime.Parse(EndDateSoft.Text);

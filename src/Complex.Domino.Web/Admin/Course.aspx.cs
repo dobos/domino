@@ -20,7 +20,7 @@ namespace Complex.Domino.Web.Admin
 
             RefreshSemesterList();
 
-            Semester.SelectedValue = Item.SemesterID.ToString();
+            Semester.SelectedValue = Item.Semester.Description;
             StartDate.Text = Item.StartDate.ToString();
             EndDate.Text = Item.EndDate.ToString();
             Url.Text = Item.Url;
@@ -32,7 +32,7 @@ namespace Complex.Domino.Web.Admin
         {
             base.SaveForm();
 
-            Item.SemesterID = int.Parse(Semester.SelectedValue);
+            Item.Semester.ID = int.Parse(Semester.SelectedValue);
             Item.StartDate = DateTime.Parse(StartDate.Text);
             Item.EndDate = DateTime.Parse(EndDate.Text);
             Item.Url = Url.Text;

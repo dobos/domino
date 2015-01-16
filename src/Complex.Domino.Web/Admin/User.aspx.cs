@@ -19,7 +19,6 @@ namespace Complex.Domino.Web.Admin
             base.UpdateForm();
 
             Email.Text = Item.Email;
-            Username.Text = Item.Username;
 
             if (Item.IsExisting)
             {
@@ -33,7 +32,6 @@ namespace Complex.Domino.Web.Admin
             base.SaveForm();
 
             Item.Email = Email.Text;
-            Item.Username = Username.Text;
 
             if (!Item.IsExisting || !String.IsNullOrWhiteSpace(Password.Text))
             {

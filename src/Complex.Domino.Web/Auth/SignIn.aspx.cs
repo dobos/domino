@@ -101,7 +101,7 @@ namespace Complex.Domino.Web.Auth
         private void RedirectAuthenticatedUser()
         {
             FormsAuthentication.RedirectFromLoginPage(
-                DatabaseContext.User.Username,
+                DatabaseContext.User.Name,
                 Remember.Checked);
         }
 
