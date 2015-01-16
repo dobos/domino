@@ -20,21 +20,13 @@ namespace Complex.Domino.Lib
 
         public string Email
         {
-            get
-            {
-                EnsureLoaded();
-                return email;
-            }
+            get { return email; }
             set { email = value; }
         }
 
         public string ActivationCode
         {
-            get
-            {
-                EnsureLoaded();
-                return activationCode;
-            }
+            get { return activationCode; }
             set { activationCode = value; }
         }
 
@@ -96,7 +88,7 @@ WHERE ID = @ID";
             var sql = @"
 SELECT *
 FROM [User]
-WHERE Name = @Username";
+WHERE Name = @Name";
 
             using (var cmd = Context.CreateCommand(sql))
             {

@@ -27,51 +27,31 @@ namespace Complex.Domino.Lib
 
         public string Name
         {
-            get
-            {
-                EnsureLoaded();
-                return name;
-            }
+            get { return name; }
             set { name = value; }
         }
 
         public string Description
         {
-            get
-            {
-                EnsureLoaded();
-                return description;
-            }
+            get { return description; }
             set { description = value; }
         }
 
         public bool Visible
         {
-            get
-            {
-                EnsureLoaded();
-                return visible;
-            }
+            get { return visible; }
             set { visible = value; }
         }
 
         public bool Enabled
         {
-            get
-            {
-                EnsureLoaded();
-                return enabled;
-            }
+            get { return enabled; }
             set { enabled = value; }
         }
 
         public string Comments
         {
-            get
-            {
-                EnsureLoaded();
-                return comments;
-            }
+            get { return comments; }
             set { comments = value; }
         }
 
@@ -111,12 +91,14 @@ namespace Complex.Domino.Lib
             this.visible = reader.GetBoolean("Visible");
             this.enabled = reader.GetBoolean("Enabled");
             this.comments = reader.GetString("Comments");
+
+            isLoaded = true;
         }
 
         protected void GetInsertColumnsScript(out string columns, out string values)
         {
-            columns = "Name, Description, Visible, Enabled, Comments,";
-            values = "@Name, @Description, @Visible, @Enabled, @Comments,";
+            columns = "Name, Description, Visible, Enabled, Comments";
+            values = "@Name, @Description, @Visible, @Enabled, @Comments";
         }
 
         protected void GetUpdateColumnsScript(out string columns)
@@ -125,7 +107,7 @@ namespace Complex.Domino.Lib
     Description = @Description,
     Visible = @Visible,
     Enabled = @Enabled,
-    Comments = @Comments,";
+    Comments = @Comments";
         }
 
         protected virtual void AppendCreateModifyCommandParameters(SqlCommand cmd)
@@ -136,14 +118,6 @@ namespace Complex.Domino.Lib
             cmd.Parameters.Add("@Visible", SqlDbType.Bit).Value = visible;
             cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled;
             cmd.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
-        }
-
-        protected void EnsureLoaded()
-        {
-            if (!isLoaded && IsExisting)
-            {
-                Load();
-            }
         }
 
         public void Load()

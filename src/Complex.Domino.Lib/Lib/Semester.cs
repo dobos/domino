@@ -15,21 +15,13 @@ namespace Complex.Domino.Lib
 
         public DateTime StartDate
         {
-            get
-            {
-                EnsureLoaded();
-                return startDate;
-            }
+            get { return startDate; }
             set { startDate = value; }
         }
 
         public DateTime EndDate
         {
-            get
-            {
-                EnsureLoaded();
-                return endDate;
-            }
+            get { return endDate; }
             set { endDate = value; }
         }
 

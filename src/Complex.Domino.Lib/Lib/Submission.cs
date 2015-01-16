@@ -10,44 +10,77 @@ namespace Complex.Domino.Lib
 {
     public class Submission : Entity, IDatabaseTableObject
     {
-        private Assignment assignment;
-        private User student;
-        private User teacher;
+        private int semesterID;
+        private string semesterName;
+        private int courseID;
+        private string courseName;
+        private int assignmentID;
+        private string assignmentName;
+        private int studentID;
+        private string studentName;
+        private int teacherID;
+        private string teacherName;
         private SubmissionDirection direction;
         private DateTime date;
 
-        public Assignment Assignment
+        public int SemesterID
         {
-            get { return assignment; }
+            get { return semesterID; }
         }
 
-        public User Student
+        public string SemesterName
         {
-            get { return student; }
+            get { return semesterName; }
         }
 
-        public User Teacher
+        public int CourseID
         {
-            get { return teacher; }
+            get { return courseID; }
+        }
+
+        public string CourseName
+        {
+            get { return courseName; }
+        }
+
+        public int AssignmentID
+        {
+            get { return assignmentID; }
+            set { assignmentID = value; }
+        }
+
+        public string AssignmentName
+        {
+            get { return assignmentName; }
+        }
+
+        public int StudentID
+        {
+            get { return studentID; }
+            set { studentID = value; }
+        }
+
+        public string StudentName
+        {
+            get { return studentName; }
+            set { studentName = value; }
+        }
+
+        public int TeacherID
+        {
+            get { return teacherID; }
+            set { teacherID = value; }
         }
 
         public SubmissionDirection Direction
         {
-            get
-            {
-                EnsureLoaded();
-                return direction;
-            }
+            get { return direction; }
             set { direction = value; }
         }
 
         public DateTime Date
         {
-            get
-            {
-                EnsureLoaded();
-                return date;
-            }
+            get { return date; }
             set { date = value; }
         }
 
@@ -64,9 +97,16 @@ namespace Complex.Domino.Lib
 
         private void InitializeMembers()
         {
-            this.assignment = new Assignment(this.Context);
-            this.student = new User();
-            this.teacher = new User();
+            this.semesterID = -1;
+            this.semesterName = null;
+            this.courseID = -1;
+            this.courseName = null;
+            this.assignmentID = -1;
+            this.assignmentName = null;
+            this.studentID = -1;
+            this.studentName = null;
+            this.teacherID = -1;
+            this.teacherName = null;
             this.direction = SubmissionDirection.Unknown;
             this.date = new DateTime(2015, 1, 1);
         }
@@ -75,9 +115,16 @@ namespace Complex.Domino.Lib
         {
             base.LoadFromDataReader(reader);
 
-            this.assignment.ID = reader.GetInt32("AssignmentID");
-            this.student.ID = reader.GetInt32("StudentID");
-            this.teacher.ID = reader.GetInt32("TeacherID");
+            this.semesterID = reader.GetInt32("SemesterID");
+            this.semesterName = reader.GetString("SemesterName");
+            this.courseID = reader.GetInt32("CourseID");
+            this.courseName = reader.GetString("CourseName");
+            this.assignmentID = reader.GetInt32("AssignmentID");
+            this.assignmentName = reader.GetString("AssignmentName");
+            this.studentID = reader.GetInt32("StudentID");
+            this.studentName = reader.GetString("StudentName");
+            this.teacherID = reader.GetInt32("TeacherID");
+            this.teacherName = reader.GetString("TeacherName");
             this.direction = (SubmissionDirection)reader.GetInt32("Direction");
             this.date = reader.GetDateTime("Date");
         }
@@ -85,8 +132,14 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT s.*
+SELECT s.*, r.ID SemesterID, r.Name SemesterName, c.ID CourseID, c.Name CourseName, a.Name AssignmentName,
+       student.Name StudentName, teacher.Name TeacherName
 FROM [Submission] s
+INNER JOIN [Assigment] a ON a.ID = s.AssignmentID
+INNER JOIN [Course] c ON c.ID = a.CourseID
+INNER JOIN [Semester] r ON r.ID = c.SemesterID
+INNER JOIN [User] student ON student.ID = s.StudentID
+LEFT OUTER JOIN [User] teacher ON teacher.ID = s.TeacherID
 WHERE s.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
@@ -143,9 +196,9 @@ WHERE ID = @ID";
         {
             base.AppendCreateModifyCommandParameters(cmd);
 
-            cmd.Parameters.Add("@AssignmentID", SqlDbType.Int).Value = assignment.ID;
-            cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = student.ID;
-            cmd.Parameters.Add("@TeacherID", SqlDbType.Int).Value = teacher.ID > 0 ? (object)teacher.ID : DBNull.Value;
+            cmd.Parameters.Add("@AssignmentID", SqlDbType.Int).Value = assignmentID;
+            cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
+            cmd.Parameters.Add("@TeacherID", SqlDbType.Int).Value = teacherID > 0 ? (object)teacherID : DBNull.Value;
             cmd.Parameters.Add("@Direction", SqlDbType.Int).Value = (int)direction;
             cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = Date;
         }

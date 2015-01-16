@@ -11,7 +11,10 @@ namespace Complex.Domino.Lib
 {
     public class Assignment : Entity, IDatabaseTableObject
     {
-        private Course course;
+        private int semesterID;
+        private string semesterName;
+        private int courseID;
+        private string courseName;
         private DateTime startDate;
         private DateTime endDate;
         private DateTime endDateSoft;
@@ -19,68 +22,60 @@ namespace Complex.Domino.Lib
         private GradeType gradeType;
         private double gradeWeigth;
 
-        public Course Course
+        public int SemesterID
         {
-            get { return course; }
+            get { return semesterID; }
+        }
+
+        public string SemesterName
+        {
+            get { return semesterName; }
+        }
+
+        public int CourseID
+        {
+            get { return courseID; }
+            set { courseID = value; }
+        }
+
+        public string CourseName
+        {
+            get { return courseName; }
         }
 
         public DateTime StartDate
         {
-            get
-            {
-                EnsureLoaded();
-                return startDate;
-            }
+            get { return startDate; }
             set { startDate = value; }
         }
 
         public DateTime EndDate
         {
-            get
-            {
-                EnsureLoaded();
-                return endDate;
-            }
+            get { return endDate; }
             set { endDate = value; }
         }
 
         public DateTime EndDateSoft
         {
-            get
-            {
-                EnsureLoaded();
-                return endDateSoft;
-            }
+            get { return endDateSoft; }
             set { endDateSoft = value; }
         }
 
         public string Url
         {
-            get
-            {
-                EnsureLoaded();
-                return url;
-            }
+            get { return url; }
             set { url = value; }
         }
 
         public GradeType GradeType
         {
-            get
-            {
-                EnsureLoaded();
-                return gradeType;
-            }
+            get { return gradeType; }
             set { gradeType = value; }
         }
 
         public double GradeWeight
         {
-            get
-            {
-                EnsureLoaded();
-                return gradeWeigth;
-            }
+            get { return gradeWeigth; }
             set { gradeWeigth = value; }
         }
 
@@ -97,7 +92,10 @@ namespace Complex.Domino.Lib
 
         private void InitializeMembers()
         {
-            this.course = new Course(this.Context);
+            this.semesterID = -1;
+            this.semesterName = null;
+            this.courseID = -1;
+            this.courseName = null;
             this.startDate = new DateTime(DateTime.Now.Year, 1, 1);
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.endDateSoft = new DateTime(DateTime.Now.Year, 12, 31);
@@ -110,7 +108,10 @@ namespace Complex.Domino.Lib
         {
             base.LoadFromDataReader(reader);
 
-            this.course.ID = reader.GetInt32("CourseID");
+            this.semesterID = reader.GetInt32("SemesterID");
+            this.semesterName = reader.GetString("SemesterName");
+            this.courseID = reader.GetInt32("CourseID");
+            this.courseName = reader.GetString("CourseName");
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
             this.endDateSoft = reader.GetDateTime("EndDateSoft");
@@ -122,8 +123,10 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT a.*
+SELECT a.*, c.Name CourseName, r.ID SemesterID, r.Name SemesterName
 FROM [Assignment] a
+INNER JOIN [Course] c ON c.ID = a.CourseID
+INNER JOIN [Semester] r ON r.ID = c.SemesterID
 WHERE a.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
@@ -182,7 +185,7 @@ WHERE ID = @ID";
         {
             base.AppendCreateModifyCommandParameters(cmd);
 
-            cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = course.ID;
+            cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseID;
             cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = startDate;
             cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = endDate;
             cmd.Parameters.Add("@EndDateSoft", SqlDbType.DateTime).Value = endDateSoft;

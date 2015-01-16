@@ -84,8 +84,8 @@ namespace Complex.Domino.Lib
         {
             return Path.Combine(
                 GetScratchPath(),
-                assignment.Course.Semester.Name,
-                assignment.Course.Name,
+                assignment.SemesterName,
+                assignment.CourseName,
                 assignment.Name);
         }
 
