@@ -13,7 +13,6 @@ namespace Complex.Domino.Lib
     public class User : Entity, IDatabaseTableObject
     {
         private string email;
-        private string username;
         private string activationCode;
         private string passwordHash;
 
@@ -21,19 +20,21 @@ namespace Complex.Domino.Lib
 
         public string Email
         {
-            get { return email; }
+            get
+            {
+                EnsureLoaded();
+                return email;
+            }
             set { email = value; }
-        }
-
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
         }
 
         public string ActivationCode
         {
-            get { return activationCode; }
+            get
+            {
+                EnsureLoaded();
+                return activationCode;
+            }
             set { activationCode = value; }
         }
 
@@ -52,7 +53,7 @@ namespace Complex.Domino.Lib
         }
 
         public User(Context context)
-            :base(context)
+            : base(context)
         {
             InitializeMembers();
         }
@@ -60,7 +61,6 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.email = null;
-            this.username = null;
             this.activationCode = null;
             this.passwordHash = null;
 
@@ -72,7 +72,6 @@ namespace Complex.Domino.Lib
             base.LoadFromDataReader(reader);
 
             this.email = reader.GetString("Email");
-            this.username = reader.GetString("Username");
             this.activationCode = reader.GetString("ActivationCode");
             this.passwordHash = reader.GetString("PasswordHash");
         }
@@ -92,31 +91,33 @@ WHERE ID = @ID";
             }
         }
 
-        public void Load(string username)
+        public void Load(string name)
         {
             var sql = @"
 SELECT *
 FROM [User]
-WHERE Username = @Username";
+WHERE Name = @Username";
 
             using (var cmd = Context.CreateCommand(sql))
             {
-                cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
 
                 Context.ExecuteCommandSingleObject(cmd, this);
             }
         }
 
-        protected override void Create()
+        protected override void Create(string columns, string values)
         {
             var sql = @"
 INSERT [User]
-    (Name, Visible, Enabled, Comments, Email, Username, ActivationCode, PasswordHash)
+    ({0}, Email, ActivationCode, PasswordHash)
 VALUES
-    (@Name, @Visible, @Enabled, @Comments, @Email, @Username, @ActivationCode, @PasswordHash)
+    ({1}, @Email, @Username, @ActivationCode, @PasswordHash)
 
 SELECT @@IDENTITY
 ";
+
+            sql = String.Format(sql, columns, values);
 
             using (var cmd = Context.CreateCommand(sql))
             {
@@ -125,19 +126,17 @@ SELECT @@IDENTITY
             }
         }
 
-        protected override void Modify()
+        protected override void Modify(string columns)
         {
             var sql = @"
 UPDATE [User]
-SET Name = @Name,
-    Visible = @Visible,
-    Enabled = @Enabled,
-    Comments = @Comments,
+SET {0}
     Email = @Email,
-    Username = @Username,
     ActivationCode = @ActivationCode,
     PasswordHash = @PasswordHash
 WHERE ID = @ID";
+
+            sql = String.Format(sql, columns);
 
             using (var cmd = Context.CreateCommand(sql))
             {
@@ -151,7 +150,6 @@ WHERE ID = @ID";
             base.AppendCreateModifyCommandParameters(cmd);
 
             cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
-            cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
             cmd.Parameters.Add("@ActivationCode", SqlDbType.NVarChar).Value = (object)activationCode ?? DBNull.Value;
             cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar).Value = passwordHash;
         }
@@ -189,19 +187,19 @@ WHERE ID = @ID";
             return Convert.ToBase64String(hash);
         }
 
-        public void SignIn(string usernameOrEmail, string password)
+        public void SignIn(string nameOrEmail, string password)
         {
             var hash = User.HashPassword(password);
 
             string sql = @"
 SELECT *
 FROM [User]
-WHERE (Email = @UsernameOrEmail OR Username = @UsernameOrEmail) AND
+WHERE (Email = @NameOrEmail OR Name = @NameOrEmail) AND
 	  PasswordHash = @PasswordHash";
 
             using (var cmd = Context.CreateCommand(sql))
             {
-                cmd.Parameters.Add("@UsernameOrEmail", SqlDbType.NVarChar).Value = usernameOrEmail;
+                cmd.Parameters.Add("@NameOrEmail", SqlDbType.NVarChar).Value = nameOrEmail;
                 cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar).Value = hash;
 
                 try

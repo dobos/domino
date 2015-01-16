@@ -34,10 +34,12 @@ GO
 CREATE TABLE [dbo].[Semester]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
-	[Name] nvarchar(250) NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
+
 	[StartDate] datetime NOT NULL,
 	[EndDate] datetime NOT NULL,
 	
@@ -54,10 +56,12 @@ CREATE TABLE [dbo].[Course]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
 	[SemesterID] int NOT NULL,
-	[Name] nvarchar(250) NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
+
 	[StartDate] datetime,
 	[EndDate] datetime,
 	[Url] nvarchar(250),
@@ -99,12 +103,13 @@ GO
 CREATE TABLE [dbo].[User]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
-	[Name] nvarchar(250) NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
+
 	[Email] nvarchar(150) NOT NULL,
-	[Username] nvarchar(50) NOT NULL,
 	[ActivationCode] nvarchar(50),
 	[PasswordHash] varchar(1024),
 	
@@ -116,9 +121,9 @@ CREATE TABLE [dbo].[User]
 
 GO
 
-CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Username] ON [dbo].[User]
+CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Name] ON [dbo].[User]
 (
-	[Username] ASC
+	[Name] ASC
 )
 
 GO
@@ -160,10 +165,12 @@ CREATE TABLE [dbo].[Assignment]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
 	[CourseID] int NOT NULL,
-	[Name] nvarchar(250) NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,	
 	[Comments] nvarchar(max) NOT NULL,
+
 	[StartDate] datetime,
 	[EndDate] datetime,
 	[EndDateSoft] datetime,
@@ -212,12 +219,13 @@ CREATE TABLE [dbo].[Submission]
 	[StudentID] int NOT NULL,
 	[TeacherID] int NULL,
 	[Direction] int NOT NULL,
-	[Name] nvarchar(250) NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
-	[Date] datetime NOT NULL,
-	[GitCommitHash] varchar(50) NULL,
+
+	[Date] datetime NOT NULL
 	
 	CONSTRAINT [PK_Submission] PRIMARY KEY CLUSTERED 
 	(

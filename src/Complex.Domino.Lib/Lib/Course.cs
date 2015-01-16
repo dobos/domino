@@ -10,45 +10,54 @@ namespace Complex.Domino.Lib
 {
     public class Course : Entity, IDatabaseTableObject
     {
-        private int semesterID;
-        private string semesterName;
+        private Semester semester;
         private DateTime startDate;
         private DateTime endDate;
         private string url;
         private GradeType gradeType;
 
-        public int SemesterID
+        public Semester Semester
         {
-            get { return semesterID; }
-            set { semesterID = value; }
-        }
-
-        public string SemesterName
-        {
-            get { return semesterName; }
+            get { return semester; }
         }
 
         public DateTime StartDate
         {
-            get { return startDate; }
+            get
+            {
+                EnsureLoaded();
+                return startDate;
+            }
             set { startDate = value; }
         }
 
         public DateTime EndDate
         {
-            get { return endDate; }
+            get
+            {
+                EnsureLoaded();
+                return endDate;
+            }
             set { endDate = value; }
         }
 
         public string Url
         {
-            get { return url; }
+            get
+            {
+                EnsureLoaded();
+                return url;
+            }
             set { url = value; }
         }
 
         public GradeType GradeType
         {
-            get { return gradeType; }
+            get
+            {
+                EnsureLoaded();
+                return gradeType;
+            }
             set { gradeType = value; }
         }
 
@@ -65,8 +74,7 @@ namespace Complex.Domino.Lib
 
         private void InitializeMembers()
         {
-            this.semesterID = -1;
-            this.semesterName = null;
+            this.semester = new Semester(this.Context);
             this.startDate = new DateTime(DateTime.Now.Year, 1, 1);
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.url = String.Empty;
@@ -77,8 +85,7 @@ namespace Complex.Domino.Lib
         {
             base.LoadFromDataReader(reader);
 
-            this.semesterID = reader.GetInt32("SemesterID");
-            this.semesterName = reader.GetString("SemesterName");
+            this.semester.ID = reader.GetInt32("SemesterID");
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
             this.url = reader.GetString("Url");
@@ -88,9 +95,8 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT c.*, s.Name SemesterName
+SELECT c.*
 FROM [Course] c
-INNER JOIN [Semester] s ON s.ID = c.SemesterID
 WHERE ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
@@ -101,16 +107,18 @@ WHERE ID = @ID";
             }
         }
 
-        protected override void Create()
+        protected override void Create(string columns, string values)
         {
             var sql = @"
 INSERT [Course]
-    (SemesterID, Name, Visible, Enabled, Comments, StartDate, EndDate, Url, GradeType)
+    (SemesterID, {0}, StartDate, EndDate, Url, GradeType)
 VALUES
-    (@SemesterID, @Name, @Visible, @Enabled, @Comments, @StartDate, @EndDate, @Url, @GradeType)
+    (@SemesterID, {1}, @StartDate, @EndDate, @Url, @GradeType)
 
 SELECT @@IDENTITY
 ";
+
+            sql = String.Format(sql, columns, values);
 
             using (var cmd = Context.CreateCommand(sql))
             {
@@ -119,20 +127,19 @@ SELECT @@IDENTITY
             }
         }
 
-        protected override void Modify()
+        protected override void Modify(string columns)
         {
             var sql = @"
 UPDATE [Course]
 SET SemesterID = @SemesterID,
-    Name = @Name,
-    Visible = @Visible,
-    Enabled = @Enabled,
-    Comments = @Comments,
+    {0},
     StartDate = @StartDate,
     EndDate = @EndDate,
     Url = @Url,
     GradeType = @GradeType
 WHERE ID = @ID";
+
+            sql = String.Format(sql, columns);
 
             using (var cmd = Context.CreateCommand(sql))
             {
@@ -145,7 +152,7 @@ WHERE ID = @ID";
         {
             base.AppendCreateModifyCommandParameters(cmd);
 
-            cmd.Parameters.Add("@SemesterID", SqlDbType.Int).Value = semesterID;
+            cmd.Parameters.Add("@SemesterID", SqlDbType.Int).Value = semester.ID;
             cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = startDate;
             cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = endDate;
             cmd.Parameters.Add("@Url", SqlDbType.NVarChar).Value = url;

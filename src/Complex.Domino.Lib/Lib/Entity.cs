@@ -10,8 +10,11 @@ namespace Complex.Domino.Lib
 {
     public abstract class Entity : ContextObject, IDatabaseTableObject
     {
+        private bool isLoaded;
+
         private int id;
         private string name;
+        private string description;
         private bool visible;
         private bool enabled;
         private string comments;
@@ -24,25 +27,51 @@ namespace Complex.Domino.Lib
 
         public string Name
         {
-            get { return name; }
+            get
+            {
+                EnsureLoaded();
+                return name;
+            }
             set { name = value; }
+        }
+
+        public string Description
+        {
+            get
+            {
+                EnsureLoaded();
+                return description;
+            }
+            set { description = value; }
         }
 
         public bool Visible
         {
-            get { return visible; }
+            get
+            {
+                EnsureLoaded();
+                return visible;
+            }
             set { visible = value; }
         }
 
         public bool Enabled
         {
-            get { return enabled; }
+            get
+            {
+                EnsureLoaded();
+                return enabled;
+            }
             set { enabled = value; }
         }
 
         public string Comments
         {
-            get { return comments; }
+            get
+            {
+                EnsureLoaded();
+                return comments;
+            }
             set { comments = value; }
         }
 
@@ -57,15 +86,18 @@ namespace Complex.Domino.Lib
         }
 
         protected Entity(Context context)
-            :base(context)
+            : base(context)
         {
             InitializeMembers();
         }
 
         private void InitializeMembers()
         {
+            this.isLoaded = false;
+
             this.id = -1;
             this.name = String.Empty;
+            this.description = String.Empty;
             this.visible = true;
             this.enabled = true;
             this.comments = String.Empty;
@@ -75,18 +107,43 @@ namespace Complex.Domino.Lib
         {
             this.id = reader.GetInt32("ID");
             this.name = reader.GetString("Name");
+            this.description = reader.GetString("Description");
             this.visible = reader.GetBoolean("Visible");
             this.enabled = reader.GetBoolean("Enabled");
             this.comments = reader.GetString("Comments");
+        }
+
+        protected void GetInsertColumnsScript(out string columns, out string values)
+        {
+            columns = "Name, Description, Visible, Enabled, Comments,";
+            values = "@Name, @Description, @Visible, @Enabled, @Comments,";
+        }
+
+        protected void GetUpdateColumnsScript(out string columns)
+        {
+            columns = @"Name = @Name,
+    Description = @Description,
+    Visible = @Visible,
+    Enabled = @Enabled,
+    Comments = @Comments,";
         }
 
         protected virtual void AppendCreateModifyCommandParameters(SqlCommand cmd)
         {
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
             cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
+            cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = description;
             cmd.Parameters.Add("@Visible", SqlDbType.Bit).Value = visible;
             cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled;
             cmd.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
+        }
+
+        protected void EnsureLoaded()
+        {
+            if (!isLoaded && IsExisting)
+            {
+                Load();
+            }
         }
 
         public void Load()
@@ -100,17 +157,21 @@ namespace Complex.Domino.Lib
         {
             if (IsExisting)
             {
-                Modify();
+                string columns;
+                GetUpdateColumnsScript(out columns);
+                Modify(columns);
             }
             else
             {
-                Create();
+                string columns, values;
+                GetInsertColumnsScript(out columns, out values);
+                Create(columns, values);
             }
         }
 
-        protected abstract void Create();
+        protected abstract void Create(string columns, string values);
 
-        protected abstract void Modify();
+        protected abstract void Modify(string columns);
 
         public void Delete()
         {

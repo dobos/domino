@@ -15,13 +15,21 @@ namespace Complex.Domino.Lib
 
         public DateTime StartDate
         {
-            get { return startDate; }
+            get
+            {
+                EnsureLoaded();
+                return startDate;
+            }
             set { startDate = value; }
         }
 
         public DateTime EndDate
         {
-            get { return endDate; }
+            get
+            {
+                EnsureLoaded();
+                return endDate;
+            }
             set { endDate = value; }
         }
 
@@ -31,7 +39,7 @@ namespace Complex.Domino.Lib
         }
 
         public Semester(Context context)
-            :base(context)
+            : base(context)
         {
             InitializeMembers();
         }
@@ -62,19 +70,21 @@ WHERE ID = @ID";
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
                 Context.ExecuteCommandSingleObject(cmd, this);
-            } 
+            }
         }
 
-        protected override void Create()
+        protected override void Create(string columns, string values)
         {
             var sql = @"
 INSERT [Semester]
-    (Name, Visible, Enabled, Comments, StartDate, EndDate)
+    ({0}, StartDate, EndDate)
 VALUES
-    (@Name, @Visible, @Enabled, @Comments, @StartDate, @EndDate)
+    ({1}, @StartDate, @EndDate)
 
 SELECT @@IDENTITY
 ";
+
+            sql = String.Format(sql, columns, values);
 
             using (var cmd = Context.CreateCommand(sql))
             {
@@ -83,17 +93,16 @@ SELECT @@IDENTITY
             }
         }
 
-        protected override void Modify()
+        protected override void Modify(string columns)
         {
             var sql = @"
 UPDATE [Semester]
-SET Name = @Name,
-    Visible = @Visible,
-    Enabled = @Enabled,
-    Comments = @Comments,
+SET {0}
     StartDate = @StartDate,
     EndDate = @EndDate
 WHERE ID = @ID";
+
+            sql = String.Format(sql, columns);
 
             using (var cmd = Context.CreateCommand(sql))
             {

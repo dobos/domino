@@ -57,7 +57,7 @@ namespace Complex.Domino.Lib
             {
                 Author = new Git.User()
                 {
-                    Name = user.Username,
+                    Name = user.Name,
                     Email = String.Format(user.Email)
                 }
             };
@@ -69,7 +69,7 @@ namespace Complex.Domino.Lib
         {
             return Path.Combine(
                 DominoConfiguration.Instance.RepositoriesPath,
-                user.Username);
+                user.Name);
         }
 
         public string GetScratchPath()
@@ -77,15 +77,16 @@ namespace Complex.Domino.Lib
             return Path.Combine(
                 DominoConfiguration.Instance.ScratchPath,
                 sessionGuid,
-                user.Username);
+                user.Name);
         }
 
         public string GetAssignmentPath()
         {
             return Path.Combine(
                 GetScratchPath(),
-                assignment.CourseID.ToString(),
-                assignment.ID.ToString());
+                assignment.Course.Semester.Name,
+                assignment.Course.Name,
+                assignment.Name);
         }
 
         public bool IsRepoInitialized()
@@ -156,7 +157,7 @@ namespace Complex.Domino.Lib
             // Set variables required for commit
             // These values will be overwritten at commit
             git.Config("user.email", user.Email, false);
-            git.Config("user.name", user.Username, false);
+            git.Config("user.name", user.Name, false);
         }
 
         public void CheckoutScratchTip()
