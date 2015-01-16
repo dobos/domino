@@ -13,7 +13,7 @@ namespace Complex.Domino.Web.Controls
         {
             AdminUsers.NavigateUrl = Admin.Users.GetUrl();
             AdminSemesters.NavigateUrl = Admin.Semesters.GetUrl();
-            AdminCourses.NavigateUrl = Admin.CourseList.GetUrl();
+            AdminCourses.NavigateUrl = Admin.Courses.GetUrl();
             AdminAssignments.NavigateUrl = Admin.Assignments.GetUrl();
 
             TeacherCourses.NavigateUrl = Teacher.CourseList.GetUrl();
