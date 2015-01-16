@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Assignment.aspx" />
-    <Content Include="Admin\AssignmentList.aspx" />
+    <Content Include="Admin\Assignments.aspx" />
     <Content Include="Admin\CourseList.aspx" />
     <Content Include="Admin\Course.aspx" />
     <Content Include="Admin\Semester.aspx" />
@@ -108,12 +108,12 @@
     <Compile Include="Admin\Assignment.aspx.designer.cs">
       <DependentUpon>Assignment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AssignmentList.aspx.cs">
-      <DependentUpon>AssignmentList.aspx</DependentUpon>
+    <Compile Include="Admin\Assignments.aspx.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AssignmentList.aspx.designer.cs">
-      <DependentUpon>AssignmentList.aspx</DependentUpon>
+    <Compile Include="Admin\Assignments.aspx.designer.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\CourseList.aspx.cs">
       <DependentUpon>CourseList.aspx</DependentUpon>

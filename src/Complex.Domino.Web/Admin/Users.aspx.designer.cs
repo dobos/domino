@@ -10,7 +10,7 @@
 namespace Complex.Domino.Web.Admin {
     
     
-    public partial class UserList {
+    public partial class Users {
         
         /// <summary>
         /// ToolbarCreate control.

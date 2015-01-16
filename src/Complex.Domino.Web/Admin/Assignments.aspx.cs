@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Admin
 {
-    public partial class AssignmentList : PageBase
+    public partial class Assignments : PageBase
     {
         public static string GetUrl()
         {
-            return "~/Admin/AssignmentList.aspx";
+            return "~/Admin/Assignments.aspx";
         }
 
         private Lib.AssignmentFactory searchObject;

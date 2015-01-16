@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeBehind="SemesterList.aspx.cs" Inherits="Complex.Domino.Web.Admin.SemesterList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeBehind="Semesters.aspx.cs" Inherits="Complex.Domino.Web.Admin.Semesters" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>All semesters</h1>
@@ -29,7 +29,7 @@
             <asp:BoundField HeaderText="End date" DataField="EndDate" />
             <asp:HyperLinkField
                 DataNavigateUrlFields="ID"
-                DataNavigateUrlFormatString="CourseList.aspx?SemesterID={0}"
+                DataNavigateUrlFormatString="courses.aspx?SemesterID={0}"
                 Text="courses"
                 HeaderText="Courses"/>
         </Columns>

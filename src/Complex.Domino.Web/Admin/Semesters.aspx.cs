@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Admin
 {
-    public partial class SemesterList : PageBase
+    public partial class Semesters : PageBase
     {
         public static string GetUrl()
         {
-            return "~/Admin/SemesterList.aspx";
+            return "~/Admin/Semesters.aspx";
         }
 
         private Lib.SemesterFactory searchObject;

@@ -10,7 +10,7 @@
 namespace Complex.Domino.Web.Admin {
     
     
-    public partial class SemesterList {
+    public partial class Assignments {
         
         /// <summary>
         /// ToolbarCreate control.
@@ -22,22 +22,22 @@ namespace Complex.Domino.Web.Admin {
         protected global::System.Web.UI.WebControls.HyperLink ToolbarCreate;
         
         /// <summary>
-        /// semesterDataSource control.
+        /// assignmentDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource semesterDataSource;
+        protected global::System.Web.UI.WebControls.ObjectDataSource assignmentDataSource;
         
         /// <summary>
-        /// semesterList control.
+        /// assignmentList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Complex.Domino.Web.Controls.MultiSelectGridView semesterList;
+        protected global::Complex.Domino.Web.Controls.MultiSelectGridView assignmentList;
         
         /// <summary>
         /// Delete control.
