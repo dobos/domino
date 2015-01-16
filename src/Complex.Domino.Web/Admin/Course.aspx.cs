@@ -20,11 +20,10 @@ namespace Complex.Domino.Web.Admin
 
             RefreshSemesterList();
 
-            Semester.SelectedValue = Item.Semester.Description;
+            Semester.SelectedValue = Item.SemesterID.ToString();
             StartDate.Text = Item.StartDate.ToString();
             EndDate.Text = Item.EndDate.ToString();
             Url.Text = Item.Url;
-            // TODO = Item.HtmlPage;
             GradeType.SelectedValue = Item.GradeType.ToString();
         }
 
@@ -32,11 +31,10 @@ namespace Complex.Domino.Web.Admin
         {
             base.SaveForm();
 
-            Item.Semester.ID = int.Parse(Semester.SelectedValue);
+            Item.SemesterID = int.Parse(Semester.SelectedValue);
             Item.StartDate = DateTime.Parse(StartDate.Text);
             Item.EndDate = DateTime.Parse(EndDate.Text);
             Item.Url = Url.Text;
-            // Item.HtmlPage = // TODO
             Item.GradeType = (Lib.GradeType)Enum.Parse(typeof(Lib.GradeType), GradeType.SelectedValue);
         }
 

@@ -19,6 +19,11 @@
             <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField HeaderText="ID" DataField="ID" />
             <asp:HyperLinkField
+                DataNavigateUrlFields="SemesterID"
+                DataNavigateUrlFormatString="courselist.aspx?semesterID={0}"
+                DataTextField="SemesterName"
+                HeaderText="Semester"/>
+            <asp:HyperLinkField
                 DataNavigateUrlFields="ID"
                 DataNavigateUrlFormatString="course.aspx?ID={0}"
                 DataTextField="Name"

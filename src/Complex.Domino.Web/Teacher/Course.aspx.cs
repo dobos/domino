@@ -18,7 +18,7 @@ namespace Complex.Domino.Web.Teacher
         {
             base.UpdateForm();
 
-            Semester.Text = Item.Semester.Description;
+            Semester.Text = Item.SemesterName;
             StartDate.Text = Item.StartDate.ToString();
             EndDate.Text = Item.EndDate.ToString();
             Url.Text = Item.Url;

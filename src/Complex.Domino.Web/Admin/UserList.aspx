@@ -22,11 +22,11 @@
             <asp:HyperLinkField
                 DataNavigateUrlFields="ID"
                 DataNavigateUrlFormatString="User.aspx?ID={0}"
-                DataTextField="Username"
+                DataTextField="Name"
                 HeaderText="User name"/>
-            <asp:BoundField HeaderText="Name" DataField="Name" />
-            <asp:BoundField HeaderText="V" DataField="Visible" />
-            <asp:BoundField HeaderText="E" DataField="Enabled" />
+            <asp:BoundField HeaderText="Name" DataField="Description" />
+            <asp:BoundField HeaderText="Visible" DataField="Visible" />
+            <asp:BoundField HeaderText="Enabled" DataField="Enabled" />
             <asp:BoundField HeaderText="E-mail" DataField="Email" />
         </Columns>
         <EmptyDataTemplate>

@@ -20,12 +20,11 @@ namespace Complex.Domino.Web.Admin
 
             RefreshCourseList();
 
-            Course.SelectedValue = Item.Course.ID.ToString();
+            Course.SelectedValue = Item.CourseID.ToString();
             StartDate.Text = Item.StartDate.ToString();
             EndDate.Text = Item.EndDate.ToString();
             EndDateSoft.Text = Item.EndDateSoft.ToString();
             Url.Text = Item.Url;
-            // TODO = Item.HtmlPage;
             GradeType.SelectedValue = Item.GradeType.ToString();
             GradeWeight.Text = Item.GradeWeight.ToString();
         }
@@ -34,12 +33,11 @@ namespace Complex.Domino.Web.Admin
         {
             base.SaveForm();
 
-            Item.Course.ID = int.Parse(Course.SelectedValue);
+            Item.CourseID = int.Parse(Course.SelectedValue);
             Item.StartDate = DateTime.Parse(StartDate.Text);
             Item.EndDate = DateTime.Parse(EndDate.Text);
             Item.EndDateSoft = DateTime.Parse(EndDateSoft.Text);
             Item.Url = Url.Text;
-            // Item.HtmlPage = // TODO
             Item.GradeType = (Lib.GradeType)Enum.Parse(typeof(Lib.GradeType), GradeType.SelectedValue);
             Item.GradeWeight = double.Parse(GradeWeight.Text);
         }

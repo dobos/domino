@@ -104,7 +104,7 @@ WHERE Name = @Name";
 INSERT [User]
     ({0}, Email, ActivationCode, PasswordHash)
 VALUES
-    ({1}, @Email, @Username, @ActivationCode, @PasswordHash)
+    ({1}, @Email, @ActivationCode, @PasswordHash)
 
 SELECT @@IDENTITY
 ";

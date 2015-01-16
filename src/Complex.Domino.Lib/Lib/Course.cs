@@ -23,6 +23,11 @@ namespace Complex.Domino.Lib
             set { semesterID = value; }
         }
 
+        public string SemesterName
+        {
+            get { return semesterName; }
+        }
+
         public DateTime StartDate
         {
             get { return startDate; }

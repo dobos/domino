@@ -48,6 +48,7 @@ namespace Complex.Domino.Web
 
         protected virtual void SaveForm()
         {
+            entityForm.SaveForm(item);
         }
 
         protected virtual void DataBindForm()
