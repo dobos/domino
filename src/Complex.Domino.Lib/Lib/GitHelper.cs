@@ -268,7 +268,7 @@ namespace Complex.Domino.Lib
             var scratchdir = GetScratchPath();
             var git = CreateGit(scratchdir);
 
-            git.CheckOut(submission.GitCommitHash);
+            git.CheckOut(submission.Name);
         }
     }
 }

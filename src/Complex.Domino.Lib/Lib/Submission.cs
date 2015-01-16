@@ -15,7 +15,6 @@ namespace Complex.Domino.Lib
         private User teacher;
         private SubmissionDirection direction;
         private DateTime date;
-        private string gitCommitHash;
 
         public Assignment Assignment
         {
@@ -52,16 +51,6 @@ namespace Complex.Domino.Lib
             set { date = value; }
         }
 
-        public string GitCommitHash
-        {
-            get
-            {
-                EnsureLoaded();
-                return gitCommitHash;
-            }
-            set { gitCommitHash = value; }
-        }
-
         public Submission()
         {
             InitializeMembers();
@@ -80,7 +69,6 @@ namespace Complex.Domino.Lib
             this.teacher = new User();
             this.direction = SubmissionDirection.Unknown;
             this.date = new DateTime(2015, 1, 1);
-            this.gitCommitHash = null;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -92,7 +80,6 @@ namespace Complex.Domino.Lib
             this.teacher.ID = reader.GetInt32("TeacherID");
             this.direction = (SubmissionDirection)reader.GetInt32("Direction");
             this.date = reader.GetDateTime("Date");
-            this.gitCommitHash = reader.GetString("GitCommitHash");
         }
 
         public override void Load(int id)
@@ -161,7 +148,6 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@TeacherID", SqlDbType.Int).Value = teacher.ID > 0 ? (object)teacher.ID : DBNull.Value;
             cmd.Parameters.Add("@Direction", SqlDbType.Int).Value = (int)direction;
             cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = Date;
-            cmd.Parameters.Add("@GitCommitHash", SqlDbType.NVarChar).Value = gitCommitHash;
         }
 
         public override void Delete(int id)
