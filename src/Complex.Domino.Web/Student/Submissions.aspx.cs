@@ -21,8 +21,17 @@ namespace Complex.Domino.Web.Student
 
         private Lib.SubmissionFactory searchObject;
 
+        protected int AssignmentID
+        {
+            get
+            {
+                return Util.UrlParser.ParseInt(Request.QueryString["assignmentID"], -1);
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            NewSubmission.NavigateUrl = Submission.GetUrl(AssignmentID, -1);
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

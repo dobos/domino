@@ -314,6 +314,7 @@
     <Content Include="Admin\Admin.master" />
     <Content Include="Admin\Web.config" />
     <Content Include="App_Themes\Basic\icons.skin" />
+    <Content Include="App_Themes\Basic\buttons.skin" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -333,6 +334,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Themes\Basic\Buttons\" />
     <Folder Include="App_Themes\Basic\Icons\" />
   </ItemGroup>
   <PropertyGroup>

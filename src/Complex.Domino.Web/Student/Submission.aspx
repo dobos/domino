@@ -20,9 +20,16 @@
     <asp:Panel runat="server" ID="filesPanel" Visible="false">
         <h1>Upload your files</h1>
         <domino:filebrowser runat="server" id="fileBrowser" />
-        <div class="toolbar">
-            <asp:LinkButton runat="server" ID="OK" OnClick="Ok_Click" Text="Submit" />
-            <asp:LinkButton runat="server" ID="Cancel" OnClick="Cancel_Click" Text="Cancel" CausesValidation="false" />
-        </div>
+        <domino:EntityForm runat="server" id="entityForm" />
+        <toolbar class="form">
+            <asp:LinkButton runat="server" ID="OK" OnClick="Ok_Click">
+                <asp:Image runat="server" SkinID="OkButton" />
+                <p>Submit</p>
+            </asp:LinkButton>
+            <asp:LinkButton runat="server" ID="Cancel" OnClick="Cancel_Click" CausesValidation="false">
+                <asp:Image runat="server" SkinID="CancelButton" />
+                <p>Cancel</p>
+            </asp:LinkButton>
+        </toolbar>
     </asp:Panel>
 </asp:Content>

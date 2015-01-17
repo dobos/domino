@@ -9,9 +9,28 @@ namespace Complex.Domino.Web.Student
 {
     public partial class Submission : EntityPage<Lib.Submission>
     {
-        public static string GetUrl(int id)
+
+        public static string GetUrl(int assignmentID, int submissionID)
         {
-            return String.Format("~/Student/Submission.aspx?id={0}", id);
+            var url = "~/Student/Submission.aspx";
+            var query = "";
+
+            if (assignmentID > 0)
+            {
+                query += "&assignmentID=" + assignmentID.ToString();
+            }
+
+            if (submissionID > 0)
+            {
+                query += "&id=" + submissionID.ToString();
+            }
+
+            if (query.Length > 0)
+            {
+                url += "?" + query.Substring(1);
+            }
+
+            return url;
         }
 
         private Lib.Assignment assignment;
@@ -22,7 +41,7 @@ namespace Complex.Domino.Web.Student
             // Initialize the git helper class with current session info
 
             assignment = new Lib.Assignment(DatabaseContext);
-            assignment.Load(Item.ID);
+            assignment.Load(Item.AssignmentID);
 
             git = new Lib.GitHelper()
             {

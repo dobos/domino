@@ -1,25 +1,61 @@
-﻿div.toolbar
-{
-    padding: 8px;
-    background-color: #F0F0F0;
-    margin-bottom: 12px;
+﻿toolbar {
+    display: block;
+    margin-bottom: 8px;
 }
 
-    div.toolbar a
-    {
+    toolbar a {
         display: inline-block;
         min-width: 120px;
+        height: 25px;
         border: 1px solid #C0C0C0;
-        padding: 8px;
+        border-radius: 8px;
+        padding: 4px;
         text-decoration: none;
         color: #000000;
-        cursor: default;
     }
 
-        div.toolbar a:hover
-        {
+        toolbar a:hover {
             border: 1px solid #000000;
         }
+
+        toolbar a p {
+            font-size: 14px;
+            margin-top: -5px;
+            margin-right: 12px;
+        }
+
+        toolbar a img {
+            float: left;
+            width: 24px;
+            height: 24px;
+            margin-left: 4px;
+            margin-top: 0px;
+            margin-right: 20px;
+            vertical-align: middle;
+        }
+
+    toolbar.form {
+        width: 632px;
+        text-align: center;
+    }
+
+        toolbar.form a {
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+
+    toolbar.right {
+        text-align: right;
+    }
+
+        toolbar.right a {
+            margin-left: 4px;
+        }
+
+    toolbar.button {
+        display: inline-block;
+        margin-bottom: 0px;
+    }
 
 a.fullbar {
     display: block;

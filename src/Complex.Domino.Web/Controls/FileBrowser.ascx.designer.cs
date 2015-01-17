@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Controls {
     public partial class FileBrowser {
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// directoryList control.
         /// </summary>
         /// <remarks>
@@ -20,15 +29,6 @@ namespace Complex.Domino.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView directoryList;
-        
-        /// <summary>
-        /// fileList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Complex.Domino.Web.Controls.MultiSelectListView fileList;
         
         /// <summary>
         /// uploadPanel control.
@@ -65,5 +65,14 @@ namespace Complex.Domino.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Upload;
+        
+        /// <summary>
+        /// fileList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Complex.Domino.Web.Controls.MultiSelectListView fileList;
     }
 }

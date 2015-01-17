@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EntityForm.ascx.cs" Inherits="Complex.Domino.Web.Controls.EntityForm" %>
-<h1><asp:Label runat="server" ID="FormTitle" /></h1>
+<h1>
+    <asp:Label runat="server" ID="FormTitle" /></h1>
+<div class="frame">
     <table class="form">
         <tr>
             <td class="label">
@@ -39,3 +41,4 @@
             </td>
         </tr>
     </table>
+</div>
