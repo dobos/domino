@@ -47,25 +47,31 @@
                 onitemcreated="fileList_ItemCreated" onitemcommand="fileList_ItemCommand"
                 onitemdeleting="fileList_ItemDeleting">
                 <layouttemplate>
-                    <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                    <table>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                    </table>
                 </layouttemplate>
                 <itemtemplate>
-                    <item>
-                        <span style="float:left">
-                            <asp:CheckBox runat="server" ID="selectionCheckbox" />
-                            <asp:Image ID="icon" runat="server" SkinID="UnknownFileIcon" />
-                        </span>
-                        <span>
-                            <h1><asp:LinkButton ID="name" runat="server" CommandName="click" /></h1>
-                            <p><asp:Label ID="size" runat="server" /></p>
-                        </span>
+                        <tr>
+                            <td class="icon">
+                                <asp:CheckBox runat="server" ID="selectionCheckbox" />
+                                <asp:Image ID="icon" runat="server" SkinID="UnknownFileIcon" />
+                            </td>
+                            <td class="text">
+                                <h1><asp:LinkButton ID="name" runat="server" CommandName="click" /></h1>
+                                <p><asp:Label ID="size" runat="server" /></p>
+                            </td>
+                            <td class="buttons">
+                                <img src="/domino/App_Themes/Basic/Buttons/View.png" />
+                                <img src="/domino/App_Themes/Basic/Buttons/Edit.png" />
+                            </td>
+                        </tr>
                         <span style="display: none;">
                             <asp:LinkButton runat="server" Text="delete" ID="delete" CommandName="delete" />
                             <asp:LinkButton runat="server" Text="download" ID="download" CommandName="download" />
                             <asp:LinkButton runat="server" Text="view" ID="view" CommandName="view" />
                             <asp:LinkButton runat="server" Text="edit" ID="edit" CommandName="edit" />
                         </span>
-                    </item>
                 </itemtemplate>
                 <EmptyItemTemplate>
                 No files have been uploaded so far.

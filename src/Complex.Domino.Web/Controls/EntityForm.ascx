@@ -2,8 +2,8 @@
 <h1>
     <asp:Label runat="server" ID="FormTitle" /></h1>
 <div class="frame">
-    <table class="form">
-        <tr>
+    <table class="form" runat="server">
+        <tr runat="server" id="NameRow">
             <td class="label">
                 <asp:Label runat="server" ID="NameLabel" CssClass="required" Text="Name:" />
             </td>
@@ -16,7 +16,7 @@
                     ValidationExpression="[a-zA-Z0-9\-_]+" ValidationGroup="Entity" />
             </td>
         </tr>
-        <tr>
+        <tr runat="server" id="DescriptionRow">
             <td class="label">
                 <asp:Label runat="server" ID="DescriptionLabel" Text="Description:" />
             </td>
@@ -24,7 +24,7 @@
                 <asp:TextBox ID="Description" runat="server" MaxLength="250" ValidationGroup="Entity" />
             </td>
         </tr>
-        <tr>
+        <tr runat="server" id="OptionsRow">
             <td class="label">&nbsp;</td>
             <td class="field">
                 <asp:CheckBox ID="Enabled" runat="server" Text="Enabled" ValidationGroup="Entity" />
@@ -32,7 +32,7 @@
                 <asp:CheckBox ID="Visible" runat="server" Text="Visible" ValidationGroup="Entity" />
             </td>
         </tr>
-        <tr>
+        <tr runat="server" id="CommentsRow">
             <td class="label">
                 <asp:Label runat="server" ID="CommentsLabel" Text="Comments:" />
             </td>

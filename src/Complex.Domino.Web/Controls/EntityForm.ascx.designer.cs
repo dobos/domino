@@ -22,6 +22,15 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.Label FormTitle;
         
         /// <summary>
+        /// NameRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow NameRow;
+        
+        /// <summary>
         /// NameLabel control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator NameFormatValidator;
         
         /// <summary>
+        /// DescriptionRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow DescriptionRow;
+        
+        /// <summary>
         /// DescriptionLabel control.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,15 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.TextBox Description;
         
         /// <summary>
+        /// OptionsRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow OptionsRow;
+        
+        /// <summary>
         /// Enabled control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,15 @@ namespace Complex.Domino.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox Visible;
+        
+        /// <summary>
+        /// CommentsRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow CommentsRow;
         
         /// <summary>
         /// CommentsLabel control.

@@ -20,7 +20,8 @@
     <asp:Panel runat="server" ID="filesPanel" Visible="false">
         <h1>Upload your files</h1>
         <domino:filebrowser runat="server" id="fileBrowser" />
-        <domino:EntityForm runat="server" id="entityForm" />
+        <domino:EntityForm runat="server" id="entityForm"
+            NameVisible="false" DescriptionVisible="false" OptionsVisible="false" />
         <toolbar class="form">
             <asp:LinkButton runat="server" ID="OK" OnClick="Ok_Click">
                 <asp:Image runat="server" SkinID="OkButton" />

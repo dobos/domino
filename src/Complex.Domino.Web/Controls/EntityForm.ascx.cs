@@ -9,6 +9,30 @@ namespace Complex.Domino.Web.Controls
 {
     public partial class EntityForm : System.Web.UI.UserControl
     {
+        public bool NameVisible
+        {
+            get { return NameRow.Visible; }
+            set { NameRow.Visible = value; }
+        }
+
+        public bool DescriptionVisible
+        {
+            get { return DescriptionRow.Visible; }
+            set { DescriptionRow.Visible = value; }
+        }
+
+        public bool OptionsVisible
+        {
+            get { return OptionsRow.Visible; }
+            set { OptionsRow.Visible = value; }
+        }
+
+        public bool CommentsVisible
+        {
+            get { return CommentsRow.Visible; }
+            set { CommentsRow.Visible = value; }
+        }
+
         public void UpdateForm(Lib.Entity item)
         {
             Name.Text = item.Name;
