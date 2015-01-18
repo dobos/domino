@@ -18,13 +18,17 @@
                 padding-bottom: 4px;
             }
 
-    table.form td.field > input[type=text], table.form td.field > input[type=file] {
+    table.form td.field > input[type=text],
+    table.form td.field > input[type=file],
+    table.form td.field > field {
+        display: inline-block;
         width: 300px;
         border: 1px solid #C0C0C0;
         background-color: #FFFFFF;
         border-radius: 6px;
         padding: 4px;
         font-size: 16px;
+        overflow: hidden;
     }
 
         table.form td.field > input[type=text]:hover {
@@ -57,7 +61,8 @@ div.frame {
     padding-right: 16px;
 }
 
-div.list {
+list {
+    display: block;
     width: 584px;
     background-color: #FFFFFF;
     border: 1px solid #C0C0C0;
@@ -67,11 +72,57 @@ div.list {
     padding: 8px;
 }
 
-    div.list:hover {
+    list:hover {
         border: 1px solid #000000;
     }
 
-    div.list div.scroll {
+    list scroll {
+        display: block;
         overflow-y: scroll;
         height: 120px;
     }
+
+    list item {
+        display: block;
+        height: 32px;
+        background-color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        border-radius: 8px;
+        padding-left: 4px;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+
+        list item:hover {
+            border: 1px solid #C0C0C0;
+            background-color: #FFFFFF;
+            border-radius: 6px;
+        }
+
+        list item input[type="checkbox"] {
+            float:left;
+            margin-top: 9px;
+        }
+
+        list item img {
+            float:left;
+            width: 16px;
+            height: 16px;
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+
+        list item h1 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left: 56px;
+        }
+
+        list item p {
+            font-size: 12px;
+            margin-top: -2px;
+            line-height: 17px;
+            margin-left: 56px;
+        }

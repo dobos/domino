@@ -66,6 +66,7 @@
     <Content Include="Admin\Semesters.aspx" />
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="App_Themes\Basic\FileIcons\Unknown.png" />
     <Content Include="App_Themes\Basic\fonts.css" />
     <Content Include="App_Themes\Basic\form.css" />
     <Content Include="App_Themes\Basic\layout.css" />
@@ -315,6 +316,7 @@
     <Content Include="Admin\Web.config" />
     <Content Include="App_Themes\Basic\icons.skin" />
     <Content Include="App_Themes\Basic\buttons.skin" />
+    <Content Include="App_Themes\Basic\fileicons.skin" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
