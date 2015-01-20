@@ -48,7 +48,7 @@
             </table>
         </div>
         <h2>Uploaded files</h2>
-        <domino:filebrowser runat="server" id="fileBrowser" allowSelect="false" />
+        <domino:filebrowser runat="server" id="fileBrowser" allowSelection="false" />
         <domino:EntityForm runat="server" id="entityForm"
             NameVisible="false" DescriptionVisible="false" OptionsVisible="false" />
         <toolbar class="form">
