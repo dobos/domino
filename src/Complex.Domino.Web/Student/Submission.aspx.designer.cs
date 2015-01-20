@@ -49,6 +49,60 @@ namespace Complex.Domino.Web.Student {
         protected global::System.Web.UI.WebControls.Panel filesPanel;
         
         /// <summary>
+        /// SemesterLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SemesterLabel;
+        
+        /// <summary>
+        /// SemesterDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SemesterDescription;
+        
+        /// <summary>
+        /// CourseLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CourseLabel;
+        
+        /// <summary>
+        /// CourseDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CourseDescription;
+        
+        /// <summary>
+        /// AssignmentLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AssignmentLabel;
+        
+        /// <summary>
+        /// AssignmentDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AssignmentDescription;
+        
+        /// <summary>
         /// fileBrowser control.
         /// </summary>
         /// <remarks>

@@ -82,6 +82,16 @@ namespace Complex.Domino.Web.Student
         {
             base.UpdateForm();
 
+            var semester = new Lib.Semester(DatabaseContext);
+            semester.Load(assignment.SemesterID);
+
+            var course = new Lib.Course(DatabaseContext);
+            course.Load(assignment.CourseID);
+
+            this.SemesterDescription.Text = semester.Description;
+            this.CourseDescription.Text = course.Description;
+            this.AssignmentDescription.Text = assignment.Description;
+
             fileBrowser.AllowDelete = !Item.IsExisting;
             fileBrowser.AllowEdit = !Item.IsExisting;
             fileBrowser.AllowUpload = !Item.IsExisting;

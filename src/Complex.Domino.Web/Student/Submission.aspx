@@ -18,8 +18,37 @@
         </p>
     </asp:Panel>
     <asp:Panel runat="server" ID="filesPanel" Visible="false">
-        <h1>Upload your files</h1>
-        <domino:filebrowser runat="server" id="fileBrowser" />
+        <h1>New submission</h1>
+        <div class="frame">
+            <table class="form">
+                <tr>
+                    <td class="label">
+                        <asp:Label runat="server" ID="SemesterLabel" Text="Semester:" />
+                    </td>
+                    <td class="field">
+                        <asp:Label runat="server" ID="SemesterDescription" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <asp:Label runat="server" ID="CourseLabel" Text="Course:" />
+                    </td>
+                    <td class="field">
+                        <asp:Label runat="server" ID="CourseDescription" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <asp:Label runat="server" ID="AssignmentLabel" Text="Assignment:" />
+                    </td>
+                    <td class="field">
+                        <asp:Label runat="server" ID="AssignmentDescription" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <h2>Uploaded files</h2>
+        <domino:filebrowser runat="server" id="fileBrowser" allowSelect="false" />
         <domino:EntityForm runat="server" id="entityForm"
             NameVisible="false" DescriptionVisible="false" OptionsVisible="false" />
         <toolbar class="form">
