@@ -190,22 +190,91 @@ namespace Complex.Domino.Web.Controls
 
         protected void Upload_Click(object sender, EventArgs e)
         {
-            var filename = Path.GetFileName(UploadedFile.PostedFile.FileName);
+            if (!String.IsNullOrWhiteSpace(UploadedFile.PostedFile.FileName))
+            {
+                var filename = Path.GetFileName(UploadedFile.PostedFile.FileName);
 
+                bool archive;
+                string archiveExtension;
+
+                // TODO: copy this to validator
+                if (VerifyUploadedFile(filename, out archive, out archiveExtension))
+                {
+                    // If not an archive, simply save file to directory
+                    if (!archive)
+                    {
+                        UploadedFile.PostedFile.SaveAs(Path.Combine(BasePath, RelativePath, filename));
+                    }
+                    else
+                    {
+                        // Extract files from archive
+                        ExtractArchive(archiveExtension, UploadedFile.PostedFile.InputStream);
+                    }
+                }
+            }
+        }
+
+        private void ExtractArchive(string archiveExtension, Stream input)
+        {
+            if (StringComparer.InvariantCultureIgnoreCase.Compare(archiveExtension, ".zip") == 0)
+            {
+                var archive = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(input);
+                ICSharpCode.SharpZipLib.Zip.ZipEntry entry;
+
+                while ((entry = archive.GetNextEntry()) != null)
+                {
+                    if (entry.CanDecompress && entry.IsFile)
+                    {
+                        ExtractFile(entry.Name, entry.Size, archive);
+                    }
+                }
+            }
+        }
+
+        private void ExtractFile(string fileName, long size, Stream input)
+        {
+            // Relative path should not reference parent directories
+            if (fileName.Contains(".."))
+            {
+                throw new InvalidOperationException("Files cannot reference parent directories");
+            }
+
+            // Verify file format
             bool archive;
             string archiveExtension;
 
-            VerifyUploadedFile(filename, out archive, out archiveExtension);
+            if (VerifyUploadedFile(fileName, out archive, out archiveExtension))
+            {
+                // Archives are automatically ignored
+                if (archive)
+                {
+                    return;
+                }
 
-            // If not an archive, simply save file to directory
-            if (!archive)
-            {
-                UploadedFile.PostedFile.SaveAs(Path.Combine(BasePath, RelativePath, filename));
-            }
-            else
-            {
-                // Extract files from archive
-                throw new NotImplementedException();
+                var buffer = new byte[0x10000];     // 65k
+                var path = Path.Combine(basePath, RelativePath, fileName);
+                var dir = Path.GetDirectoryName(path);
+
+                // Create folder
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
+                using (var output = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    while (size > 0)
+                    {
+                        var res = input.Read(buffer, 0, buffer.Length);
+
+                        if (res > 0)
+                        {
+                            output.Write(buffer, 0, res);
+                        }
+
+                        size -= res;
+                    }
+                }
             }
         }
 
@@ -272,7 +341,7 @@ namespace Complex.Domino.Web.Controls
         protected override void OnLoad(EventArgs e)
         {
             DataBindAll();
-                
+
             base.OnLoad(e);
         }
 
@@ -318,7 +387,7 @@ namespace Complex.Domino.Web.Controls
             return relpath;
         }
 
-        private void VerifyUploadedFile(string filename, out bool archive, out string archiveExtension)
+        private bool VerifyUploadedFile(string filename, out bool archive, out string archiveExtension)
         {
             var extensions = new HashSet<string>(
                 AllowedExtensions.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries),
@@ -337,8 +406,7 @@ namespace Complex.Domino.Web.Controls
             {
                 if (filename.EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    found = true;
-                    break;
+                    return true;
                 }
             }
 
@@ -349,14 +417,11 @@ namespace Complex.Domino.Web.Controls
                     found = true;
                     archive = true;
                     archiveExtension = ext;
-                    break;
+                    return true;
                 }
             }
 
-            if (!found)
-            {
-                throw new Exception("Invalid file format.");        // TODO
-            }
+            return found;
         }
     }
 }
