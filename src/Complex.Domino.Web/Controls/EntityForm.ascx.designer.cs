@@ -139,6 +139,15 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.Label CommentsLabel;
         
         /// <summary>
+        /// CommentsRow2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow CommentsRow2;
+        
+        /// <summary>
         /// Comments control.
         /// </summary>
         /// <remarks>

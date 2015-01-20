@@ -20,7 +20,8 @@
 
     table.form td.field > input[type=text],
     table.form td.field > input[type=file],
-    table.form td.field > field {
+    table.form td.field > field,
+    table.form td.field > textarea {
         display: inline-block;
         width: 300px;
         border: 1px solid #C0C0C0;
@@ -31,7 +32,14 @@
         overflow: hidden;
     }
 
-        table.form td.field > input[type=text]:hover {
+    table.form td.field > textarea {
+        width: 590px;
+        height: 100px;
+    }
+
+        table.form td.field > input[type=text]:hover,
+        table.form td.field > input[type=file]:hover,
+        table.form td.field > textarea:hover {
             border: 1px solid #000000;
         }
 

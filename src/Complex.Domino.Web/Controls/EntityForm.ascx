@@ -36,8 +36,11 @@
             <td class="label">
                 <asp:Label runat="server" ID="CommentsLabel" Text="Comments:" />
             </td>
-            <td class="field">
-                <asp:TextBox runat="server" ID="Comments" ValidationGroup="Entity" />
+            <td class="field"></td>
+        </tr>
+        <tr runat="server" id="CommentsRow2">
+            <td colspan="2" class="field">
+                <asp:TextBox runat="server" ID="Comments" TextMode="MultiLine" ValidationGroup="Entity" />
             </td>
         </tr>
     </table>
