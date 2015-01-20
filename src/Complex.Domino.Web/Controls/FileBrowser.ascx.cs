@@ -44,7 +44,7 @@ namespace Complex.Domino.Web.Controls
 
         public string AllowedArchiveExtensions
         {
-            get { return (string)ViewState["AllowedArchiveExtensions"] ?? ".zip|.tar.gz"; }
+            get { return (string)ViewState["AllowedArchiveExtensions"] ?? ".zip|.tar.gz|.tar.bz2"; }
             set { ViewState["AllowedArchiveExtensions"] = value; }
         }
 
@@ -218,15 +218,44 @@ namespace Complex.Domino.Web.Controls
         {
             if (StringComparer.InvariantCultureIgnoreCase.Compare(archiveExtension, ".zip") == 0)
             {
-                var archive = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(input);
-                ICSharpCode.SharpZipLib.Zip.ZipEntry entry;
+                ExtractZipFiles(input);
+            }
+            else if (StringComparer.InvariantCultureIgnoreCase.Compare(archiveExtension, ".tar.gz") == 0)
+            {
+                var tar = new ICSharpCode.SharpZipLib.GZip.GZipInputStream(input);
+                ExtractTarFiles(tar);
+            }
+            else if (StringComparer.InvariantCultureIgnoreCase.Compare(archiveExtension, ".tar.bz2") == 0)
+            {
+                var tar = new ICSharpCode.SharpZipLib.BZip2.BZip2InputStream(input);
+                ExtractTarFiles(tar);
+            }
+        }
 
-                while ((entry = archive.GetNextEntry()) != null)
+        private void ExtractZipFiles(Stream input)
+        {
+            var archive = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(input);
+            ICSharpCode.SharpZipLib.Zip.ZipEntry entry;
+
+            while ((entry = archive.GetNextEntry()) != null)
+            {
+                if (entry.CanDecompress && entry.IsFile)
                 {
-                    if (entry.CanDecompress && entry.IsFile)
-                    {
-                        ExtractFile(entry.Name, entry.Size, archive);
-                    }
+                    ExtractFile(entry.Name, entry.Size, archive);
+                }
+            }
+        }
+
+        private void ExtractTarFiles(Stream input)
+        {
+            var archive = new ICSharpCode.SharpZipLib.Tar.TarInputStream(input);
+            ICSharpCode.SharpZipLib.Tar.TarEntry entry;
+
+            while ((entry = archive.GetNextEntry()) != null)
+            {
+                if (!entry.IsDirectory)
+                {
+                    ExtractFile(entry.Name.Replace('/', '\\'), entry.Size, archive);
                 }
             }
         }
