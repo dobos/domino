@@ -129,10 +129,8 @@ namespace Complex.Domino.Web.Controls
                     var icon = (Image)e.Item.FindControl("icon");
                     var name = (LinkButton)e.Item.FindControl("name");
                     var size = (Label)e.Item.FindControl("size");
-                    var delete = (LinkButton)e.Item.FindControl("delete");
-                    var download = (LinkButton)e.Item.FindControl("download");
-                    var view = (LinkButton)e.Item.FindControl("view");
-                    var edit = (LinkButton)e.Item.FindControl("edit");
+                    var view = (HyperLink)e.Item.FindControl("view");
+                    var edit = (HyperLink)e.Item.FindControl("edit");
 
                     select.Visible = AllowSelection;
 
@@ -144,17 +142,11 @@ namespace Complex.Domino.Web.Controls
                         size.Text = fi.Length.ToString();
                     }
 
-                    delete.Visible = AllowDelete;
-                    delete.CommandArgument = fi.Name;
-
-                    download.Visible = AllowDownload;
-                    download.CommandArgument = fi.Name;
-
                     view.Visible = !dir;
-                    view.CommandArgument = fi.Name;
+                    view.NavigateUrl = Files.View.GetUrl(MakePathRelative(basePath, fi.FullName));
 
                     edit.Visible = !dir && AllowEdit;
-                    edit.CommandArgument = fi.Name;
+                    //edit.CommandArgument = fi.Name;
                 }
             }
         }

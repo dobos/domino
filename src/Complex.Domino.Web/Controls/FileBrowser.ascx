@@ -45,7 +45,7 @@
         <scroll style="height:140px">
             <domino:multiselectlistview runat="server" id="fileList" datakeynames="Name"
                 onitemcreated="fileList_ItemCreated" onitemcommand="fileList_ItemCommand"
-                onitemdeleting="fileList_ItemDeleting">
+                onitemdeleting="fileList_ItemDeleting" On>
                 <layouttemplate>
                     <table>
                         <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
@@ -62,16 +62,14 @@
                                 <p><asp:Label ID="size" runat="server" /></p>
                             </td>
                             <td class="buttons">
-                                <img src="/domino/App_Themes/Basic/Buttons/View.png" />
-                                <img src="/domino/App_Themes/Basic/Buttons/Edit.png" />
+                                <asp:HyperLink runat="server" ID="view">
+                                    <asp:Image runat="server" SkinID="ViewButton" />
+                                </asp:HyperLink>
+                                <asp:HyperLink runat="server" ID="edit">
+                                    <asp:Image runat="server" SkinID="EditButton" />
+                                </asp:HyperLink>
                             </td>
                         </tr>
-                        <span style="display: none;">
-                            <asp:LinkButton runat="server" Text="delete" ID="delete" CommandName="delete" />
-                            <asp:LinkButton runat="server" Text="download" ID="download" CommandName="download" />
-                            <asp:LinkButton runat="server" Text="view" ID="view" CommandName="view" />
-                            <asp:LinkButton runat="server" Text="edit" ID="edit" CommandName="edit" />
-                        </span>
                 </itemtemplate>
                 <EmptyItemTemplate>
                 No files have been uploaded so far.

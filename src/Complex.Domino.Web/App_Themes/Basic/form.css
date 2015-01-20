@@ -87,29 +87,30 @@ list {
         padding: 0px;
     }
 
-    list table tr {
-        display: block;
-        height: 32px;
-        background-color: #FFFFFF;
-        border: 1px solid #FFFFFF;
-        border-radius: 8px;
-        padding-left: 4px;
-        margin-right: 8px;
+        list table tr {
+            display: block;
+            height: 32px;
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 8px;
+            padding-left: 4px;
+            margin-right: 8px;
+        }
+
+            list table tr:hover {
+                border: 1px solid #C0C0C0;
+                background-color: #FFFFFF;
+                border-radius: 6px;
+            }
+
+    list td.icon {
+        width: 56px;
+        vertical-align: top;
+        padding-top: 7px;
     }
 
-        list table tr:hover {
-            border: 1px solid #C0C0C0;
-            background-color: #FFFFFF;
-            border-radius: 6px;
-        }
-
-        list td.icon {
-            vertical-align:top;
-            padding-top: 7px;
-        }
-
         list td.icon input[type="checkbox"] {
-            float:left;
+            float: left;
         }
 
         list td.icon img {
@@ -119,33 +120,34 @@ list {
             margin-top: 1px;
         }
 
-        list td.text {
-            width: 440px;
-            overflow: hidden;
-        }
+    list td.text {
+        width: 440px;
+        overflow: hidden;
+    }
 
-        list h1 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-top: 0px;
-            margin-bottom: 0px;
-            margin-left: 10px;
-        }
+    list h1 {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 10px;
+    }
 
-        list p {
-            font-size: 12px;
-            margin-top: -2px;
-            line-height: 17px;
-            margin-left: 10px;
-        }
+    list p {
+        font-size: 12px;
+        margin-top: -2px;
+        line-height: 17px;
+        margin-left: 10px;
+    }
 
-        list td.buttons {
-            text-align: right;
-            vertical-align: top;
-            width: 56px;
-            padding-top: 8px;
-        }
+    list td.buttons {
+        text-align: right;
+        vertical-align: top;
+        width: 128px;
+        padding-right: 8px;
+        padding-top: 7px;
+    }
 
-            list td.buttons img {
-                margin-left: 8px;
-            }
+        list td.buttons img {
+            margin-left: 8px;
+        }

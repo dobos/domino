@@ -81,6 +81,7 @@
     <EmbeddedResource Include="Controls\MultiSelectListView.js" />
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
+    <Content Include="Files\View.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Student\Assignments.aspx" />
     <Content Include="Student\Courses.aspx" />
@@ -194,6 +195,7 @@
     <Compile Include="Controls\FileBrowser.ascx.designer.cs">
       <DependentUpon>FileBrowser.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FileBrowserEventArgs.cs" />
     <Compile Include="Controls\Menu.ascx.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -235,6 +237,20 @@
     </Compile>
     <Compile Include="EntityPage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\View.aspx.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\View.aspx.designer.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\Files.master.cs">
+      <DependentUpon>Files.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\Files.master.designer.cs">
+      <DependentUpon>Files.master</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,6 +333,7 @@
     <Content Include="App_Themes\Basic\icons.skin" />
     <Content Include="App_Themes\Basic\buttons.skin" />
     <Content Include="App_Themes\Basic\fileicons.skin" />
+    <Content Include="Files\Files.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

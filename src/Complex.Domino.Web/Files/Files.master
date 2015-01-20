@@ -1,0 +1,6 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Domino.Master" AutoEventWireup="true" CodeBehind="Files.master.cs" Inherits="Complex.Domino.Web.Files.Master" %>
+
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="main">
+    <asp:ContentPlaceHolder ID="main" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
