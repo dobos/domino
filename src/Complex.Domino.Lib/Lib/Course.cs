@@ -91,7 +91,7 @@ namespace Complex.Domino.Lib
 SELECT c.*, r.Name SemesterName
 FROM [Course] c
 INNER JOIN [Semester] r ON r.ID = c.SemesterID
-WHERE ID = @ID";
+WHERE c.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
             {
