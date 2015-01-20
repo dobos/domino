@@ -131,6 +131,7 @@ namespace Complex.Domino.Web.Controls
                     var size = (Label)e.Item.FindControl("size");
                     var view = (HyperLink)e.Item.FindControl("view");
                     var edit = (HyperLink)e.Item.FindControl("edit");
+                    var delete = (LinkButton)e.Item.FindControl("delete");
 
                     select.Visible = AllowSelection;
 
@@ -147,6 +148,9 @@ namespace Complex.Domino.Web.Controls
 
                     edit.Visible = !dir && AllowEdit;
                     //edit.CommandArgument = fi.Name;
+
+                    delete.Visible = AllowDelete;
+                    delete.CommandArgument = fi.Name;
                 }
             }
         }
@@ -158,6 +162,7 @@ namespace Complex.Domino.Web.Controls
             var fi = new FileInfo(Path.Combine(BasePath, RelativePath, filename));
 
             // TODO: check if it's inside base
+
 
             if ((fi.Attributes & FileAttributes.Directory) != 0)
             {
@@ -174,17 +179,22 @@ namespace Complex.Domino.Web.Controls
             var filename = (string)e.CommandArgument;
             var path = Path.Combine(BasePath, RelativePath, filename);
 
-            // If it's a directory, handle event and change current dir
-            var fi = new FileInfo(path);
+            switch (e.CommandName)
+            {
+                case "click":
+                    // If it's a directory, handle event and change current dir
+                    var fi = new FileInfo(path);
 
-            if ((fi.Attributes & FileAttributes.Directory) != 0)
-            {
-                this.RelativePath = Path.Combine(this.RelativePath, filename);
-            }
-            else
-            {
-                // Propage event to control
-                // TODO
+                    if ((fi.Attributes & FileAttributes.Directory) != 0)
+                    {
+                        this.RelativePath = Path.Combine(this.RelativePath, filename);
+                    }
+                    else
+                    {
+                        // Propage event to control
+                        // TODO
+                    }
+                    break;
             }
         }
 

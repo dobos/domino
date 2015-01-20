@@ -24,10 +24,18 @@ namespace Complex.Domino.Util
         {
             var directory = new DirectoryInfo(path) { Attributes = FileAttributes.Normal };
 
-            foreach (var info in directory.GetFileSystemInfos("*", SearchOption.AllDirectories))
+            foreach (var info in directory.GetFileSystemInfos("*", SearchOption.TopDirectoryOnly))
             {
                 info.Attributes = FileAttributes.Normal;
-                info.Delete();
+
+                if ((info.Attributes & FileAttributes.Directory) != 0)
+                {
+                    ForceDeleteDirectory(info.FullName);
+                }
+                else
+                {
+                    info.Delete();
+                }
             }
         }
     }

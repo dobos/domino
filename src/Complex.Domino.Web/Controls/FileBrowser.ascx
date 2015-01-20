@@ -68,6 +68,9 @@
                                 <asp:HyperLink runat="server" ID="edit">
                                     <asp:Image runat="server" SkinID="EditButton" />
                                 </asp:HyperLink>
+                                <asp:LinkButton runat="server" ID="delete" CommandName="delete">
+                                    <asp:Image ID="Image1" runat="server" SkinID="DelsmlButton" />
+                                </asp:LinkButton>
                             </td>
                         </tr>
                 </itemtemplate>
