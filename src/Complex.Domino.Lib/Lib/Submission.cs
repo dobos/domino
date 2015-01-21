@@ -135,7 +135,7 @@ namespace Complex.Domino.Lib
 SELECT s.*, r.ID SemesterID, r.Name SemesterName, c.ID CourseID, c.Name CourseName, a.Name AssignmentName,
        student.Name StudentName, teacher.Name TeacherName
 FROM [Submission] s
-INNER JOIN [Assigment] a ON a.ID = s.AssignmentID
+INNER JOIN [Assignment] a ON a.ID = s.AssignmentID
 INNER JOIN [Course] c ON c.ID = a.CourseID
 INNER JOIN [Semester] r ON r.ID = c.SemesterID
 INNER JOIN [User] student ON student.ID = s.StudentID
@@ -154,9 +154,9 @@ WHERE s.ID = @ID";
         {
             var sql = @"
 INSERT [Submission]
-    (AssignmentID, StudentID, TeacherID, Direction, {0}, Date, GitCommitHash)
+    (AssignmentID, StudentID, TeacherID, Direction, {0}, Date)
 VALUES
-    (@AssignmentID, @StudentID, @TeacherID, @Direction, {1}, @Date, @GitCommitHash)
+    (@AssignmentID, @StudentID, @TeacherID, @Direction, {1}, @Date)
 
 SELECT @@IDENTITY
 ";
@@ -179,8 +179,7 @@ SET AssignmentID = @AssignmentID,
     TeacherID = @TeacherID,
     Direction = @Direction,
     {0},
-    Date = @Date,
-    GitCommitHash = @GitCommitHash
+    Date = @Date
 WHERE ID = @ID";
 
             sql = String.Format(sql, columns);
