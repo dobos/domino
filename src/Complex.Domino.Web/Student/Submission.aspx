@@ -8,14 +8,19 @@
             submission are available. Do you want to keep these or start from
             an empty folder?
         </p>
-        <p>
-            <asp:LinkButton runat="server" ValidationGroup="NewSubmission" ID="NewSubmissionKeep"
-                OnClick="NewSubmissionKeep_Click"
-                Text="Keep files" />
-            <asp:LinkButton runat="server" ValidationGroup="NewSubmission" ID="NewSubmissionEmpty"
-                OnClick="NewSubmissionEmpty_Click"
-                Text="Start with empty folder" />
-        </p>
+
+            <asp:LinkButton CssClass="fullbar" runat="server" ValidationGroup="NewSubmission" ID="NewSubmissionKeep"
+                OnClick="NewSubmissionKeep_Click">
+                <asp:Image runat="server" SkinID="KeepUploadsIcon" />
+                <h1>Keep files</h1>
+                <p>Please verify your files before submission.</p>
+            </asp:LinkButton>
+            <asp:LinkButton CssClass="fullbar" runat="server" ValidationGroup="NewSubmission" ID="NewSubmissionEmpty"
+                OnClick="NewSubmissionEmpty_Click">
+                <asp:Image runat="server" SkinID="DeleteUploadsIcon" />
+                <h1>Delete files</h1>
+                <p>Start with empty folder and upload files again.</p>
+            </asp:LinkButton>
     </asp:Panel>
     <asp:Panel runat="server" ID="filesPanel" Visible="false">
         <h1>New submission</h1>
