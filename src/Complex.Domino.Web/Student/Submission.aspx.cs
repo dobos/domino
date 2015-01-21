@@ -36,6 +36,11 @@ namespace Complex.Domino.Web.Student
         private Lib.Assignment assignment;
         protected Lib.GitHelper git;
 
+        protected new int AssigmentID
+        {
+            get { return Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestAssignmentID]); }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // Initialize the git helper class with current session info
@@ -75,7 +80,7 @@ namespace Complex.Domino.Web.Student
         {
             base.CreateItem();
 
-            Item.AssignmentID = Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestAssignmentID]);
+            Item.AssignmentID = this.AssigmentID;
         }
 
         protected override void UpdateForm()
@@ -125,7 +130,7 @@ namespace Complex.Domino.Web.Student
             base.SaveForm();
 
             // Commit changes into git
-            var commit = git.CommitSubmission("comments");  // TODO: use comments
+            var commit = git.CommitSubmission(Item.Comments);  // TODO: use comments
 
             Item.StudentID = DatabaseContext.User.ID;
             Item.Direction = Lib.SubmissionDirection.StudentToTeacher;

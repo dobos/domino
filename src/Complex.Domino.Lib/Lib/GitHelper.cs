@@ -268,7 +268,11 @@ namespace Complex.Domino.Lib
             var scratchdir = GetScratchPath();
             var git = CreateGit(scratchdir);
 
+            // Check-out branch but also reset it, in case it was checked out
+            // already but has changed.
+
             git.CheckOut(submission.Name);
+            git.Reset(submission.Name, true);
         }
     }
 }
