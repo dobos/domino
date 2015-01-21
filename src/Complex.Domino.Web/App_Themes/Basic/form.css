@@ -20,6 +20,7 @@
 
     table.form td.field > input[type=text],
     table.form td.field > input[type=file],
+    table.form td.field > input[type=password],
     table.form td.field > field,
     table.form td.field > textarea {
         display: inline-block;
@@ -39,6 +40,7 @@
 
         table.form td.field > input[type=text]:hover,
         table.form td.field > input[type=file]:hover,
+        table.form td.field > input[type=password]:hover,
         table.form td.field > textarea:hover {
             border: 1px solid #000000;
         }
