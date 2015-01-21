@@ -178,6 +178,8 @@ namespace Complex.Domino.Git
 
             args.Append("fetch");
             args.AppendIfTrue(all, "--all");
+
+            GitWrapper.Call(this, args);
         }
 
         public void Reset(string branch, bool hard)
@@ -187,6 +189,8 @@ namespace Complex.Domino.Git
             args.Append("reset");
             args.AppendIfTrue(hard, "--hard");
             args.AppendIfNotNull(branch);
+
+            GitWrapper.Call(this, args);
         }
 
         public List<Commit> ReadLog()
