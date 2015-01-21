@@ -82,8 +82,12 @@ namespace Complex.Domino.Lib
 
         public string GetAssignmentPath()
         {
+            return Path.Combine(GetScratchPath(), GetAssignmentPrefixPath());
+        }
+
+        public string GetAssignmentPrefixPath()
+        {
             return Path.Combine(
-                GetScratchPath(),
                 assignment.SemesterName,
                 assignment.CourseName,
                 assignment.Name);
@@ -250,7 +254,7 @@ namespace Complex.Domino.Lib
             git.Commit(commitMessage, true);
 
             // Try to simply push the commit to origin
-            
+
             // TODO: It might have happend though, that the origin is now
             // ahead. This is a rare case whan another submission has just
             // happened. In this case, we might just force-push changes but

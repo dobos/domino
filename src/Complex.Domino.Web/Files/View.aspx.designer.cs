@@ -11,5 +11,32 @@ namespace Complex.Domino.Web.Files {
     
     
     public partial class View {
+        
+        /// <summary>
+        /// ImagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ImagePanel;
+        
+        /// <summary>
+        /// ImageView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImageView;
+        
+        /// <summary>
+        /// CodePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel CodePanel;
     }
 }

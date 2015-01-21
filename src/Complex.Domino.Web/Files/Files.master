@@ -1,6 +1,18 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Domino.Master" AutoEventWireup="true" CodeBehind="Files.master.cs" Inherits="Complex.Domino.Web.Files.Master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Files.master.cs" Inherits="Complex.Domino.Web.Files.Master" %>
 
-<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="main">
-    <asp:ContentPlaceHolder ID="main" runat="server">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Domino</title>
+    <meta charset="UTF-8" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-</asp:Content>
+</head>
+<body>
+    <form id="theForm" runat="server">
+        <asp:ScriptManager runat="server" />
+        <asp:ContentPlaceHolder runat="server" ID="main" />
+    </form>
+</body>
+</html>

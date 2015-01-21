@@ -18,6 +18,12 @@ namespace Complex.Domino.Web.Controls
             set { basePath = value; }
         }
 
+        public string PrefixPath
+        {
+            get { return (string)ViewState["PrefixPath"] ?? ""; }
+            set { ViewState["PrefixPath"] = value; }
+        }
+
         public string RelativePath
         {
             get { return (string)ViewState["RelativePath"] ?? ""; }
@@ -144,7 +150,7 @@ namespace Complex.Domino.Web.Controls
                     }
 
                     view.Visible = !dir;
-                    view.NavigateUrl = Files.View.GetUrl(MakePathRelative(basePath, fi.FullName));
+                    view.NavigateUrl = Files.View.GetUrl(Path.Combine(PrefixPath, MakePathRelative(basePath, fi.FullName)));
 
                     edit.Visible = !dir && AllowEdit;
                     //edit.CommandArgument = fi.Name;

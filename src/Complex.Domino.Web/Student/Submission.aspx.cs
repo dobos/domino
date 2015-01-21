@@ -56,6 +56,7 @@ namespace Complex.Domino.Web.Student
                 Submission = Item,
             };
 
+            fileBrowser.PrefixPath = git.GetAssignmentPrefixPath();
             fileBrowser.BasePath = git.GetAssignmentPath();
         }
 

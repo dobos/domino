@@ -241,6 +241,11 @@
     <Compile Include="EntityPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Files\Download.ashx.cs">
+      <DependentUpon>Download.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileCategory.cs" />
+    <Compile Include="Files\FileTypes.cs" />
     <Compile Include="Files\View.aspx.cs">
       <DependentUpon>View.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,6 +260,7 @@
     <Compile Include="Files\Files.master.designer.cs">
       <DependentUpon>Files.master</DependentUpon>
     </Compile>
+    <Compile Include="Files\FileType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -338,6 +344,7 @@
     <Content Include="App_Themes\Basic\fileicons.skin" />
     <Content Include="Files\Files.master" />
     <Content Include="packages.config" />
+    <Content Include="Files\Download.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
