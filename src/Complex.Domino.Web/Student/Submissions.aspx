@@ -2,12 +2,12 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>All submissions</h1>
-    <div class="toolbar">
-        <asp:HyperLink runat="server" ID="NewSubmission" CssClass="button">
+    <toolbar>
+        <asp:HyperLink runat="server" ID="NewSubmission">
             <asp:Image runat="server" SkinID="NewSubmissionButton" />
             <p>New submission</p>
         </asp:HyperLink>
-    </div>
+    </toolbar>
     <asp:ObjectDataSource runat="server" ID="submissionDataSource" DataObjectTypeName="Complex.Domino.Lib.Submission"
         OnObjectCreating="submissionDataSource_ObjectCreating" TypeName="Complex.Domino.Lib.SubmissionFactory"
         SelectMethod="Find"
