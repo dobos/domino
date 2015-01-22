@@ -9,6 +9,7 @@ namespace Complex.Domino.Web.Files
     {
         Unknown,
         Code,
+        Document,
         Image,
     }
 }

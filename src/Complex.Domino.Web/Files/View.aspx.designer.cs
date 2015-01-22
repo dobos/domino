@@ -38,5 +38,32 @@ namespace Complex.Domino.Web.Files {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel CodePanel;
+        
+        /// <summary>
+        /// CodeView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Complex.Domino.Web.Controls.CodeMirror CodeView;
+        
+        /// <summary>
+        /// DownloadPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel DownloadPanel;
+        
+        /// <summary>
+        /// DownloadLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink DownloadLink;
     }
 }

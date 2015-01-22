@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using Complex.Domino.Lib;
 
 namespace Complex.Domino.Web.Files
 {
@@ -24,20 +25,36 @@ namespace Complex.Domino.Web.Files
         {
             // TODO: this is just a quick solution, fix this later
 
+            var guid = (string)Session[Constants.SessionGuid];
+            var username = ((Lib.User)Session[Constants.SessionUser]).Name;
             var filename = this.FileName;
             var extension = Path.GetExtension(filename);
             var type = FileTypes.GetFileTypeByExtension(extension);
 
-            switch (type.Category)
+            var path = Path.Combine(
+                DominoConfiguration.Instance.ScratchPath,
+                guid,
+                username,
+                filename);
+
+            if (type != null)
             {
-                case FileCategory.Image:
-                    ImageView.ImageUrl = Download.GetUrl(filename);
-                    ImagePanel.Visible = true;
-                    break;
-                case FileCategory.Code:
-                    throw new NotImplementedException();
-                default:
-                    throw new NotImplementedException();
+                switch (type.Category)
+                {
+                    case FileCategory.Image:
+                        ImageView.ImageUrl = Download.GetUrl(filename);
+                        ImagePanel.Visible = true;
+                        break;
+                    case FileCategory.Code:
+                        CodePanel.Visible = true;
+                        CodeView.Text = File.ReadAllText(path);
+                        CodeView.Mode = type.MimeType;
+                        break;
+                    default:
+                        DownloadLink.NavigateUrl = Download.GetUrl(filename);
+                        DownloadPanel.Visible = true;
+                        break;
+                }
             }
         }
 

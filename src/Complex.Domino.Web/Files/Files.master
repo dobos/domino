@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Files.master.cs" Inherits="Complex.Domino.Web.Files.Master" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
@@ -12,7 +12,27 @@
 <body>
     <form id="theForm" runat="server">
         <asp:ScriptManager runat="server" />
-        <asp:ContentPlaceHolder runat="server" ID="main" />
+                <table id="layout">
+            <tr>
+                <td id="layoutTop">
+                    <domino:userstatus runat="server" id="UserStatus" />
+                </td>
+            </tr>
+            <tr>
+                <td id="layoutRight">
+                    <div id="contentTop"></div>
+                    <div id="contentMain">
+                        <asp:ContentPlaceHolder runat="server" ID="main" />
+                    </div>
+                    <div id="contentBottom"></div>
+                </td>
+            </tr>
+        </table>
+        <div id="layoutBottom">
+            <div id="contentFooter">
+                footer comes here
+            </div>
+        </div>
     </form>
 </body>
 </html>

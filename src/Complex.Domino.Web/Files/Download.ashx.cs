@@ -26,7 +26,14 @@ namespace Complex.Domino.Web.Files
             var extension = Path.GetExtension(filename);
             var type = FileTypes.GetFileTypeByExtension(extension);
 
-            context.Response.ContentType = type.MimeType;
+            if (type != null)
+            {
+                context.Response.ContentType = type.MimeType;
+            }
+            else
+            {
+                context.Response.ContentType = System.Net.Mime.MediaTypeNames.Application.Octet;
+            }
 
             var path = Path.Combine(
                 DominoConfiguration.Instance.ScratchPath,
