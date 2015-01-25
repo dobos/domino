@@ -50,12 +50,28 @@ namespace Complex.Domino.Lib
             InitializeMembers();
         }
 
+        public User(User old)
+            : base(old)
+        {
+            CopyMembers(old);
+        }
+
         private void InitializeMembers()
         {
             this.email = null;
             this.activationCode = null;
             this.passwordHash = null;
 
+            this.roles = null;
+        }
+
+        private void CopyMembers(User old)
+        {
+            this.email = old.email;
+            this.activationCode = old.activationCode;
+            this.passwordHash = old.passwordHash;
+
+            // TODO
             this.roles = null;
         }
 
@@ -122,7 +138,7 @@ SELECT @@IDENTITY
         {
             var sql = @"
 UPDATE [User]
-SET {0}
+SET {0},
     Email = @Email,
     ActivationCode = @ActivationCode,
     PasswordHash = @PasswordHash

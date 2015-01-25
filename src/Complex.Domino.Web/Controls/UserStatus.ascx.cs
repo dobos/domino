@@ -17,6 +17,7 @@ namespace Complex.Domino.Web.Controls
             if (Page.User.Identity.IsAuthenticated)
             {
                 Username.Text = Page.User.Identity.Name;
+                Username.NavigateUrl = Auth.User.GetUrl(Page.Request.Url);
                 SignOut.NavigateUrl = Auth.SignOut.GetUrl(Page.Request.Url);
             }
             else
