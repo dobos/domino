@@ -18,9 +18,9 @@
                 padding-bottom: 4px;
             }
 
-    table.form td.field > input[type="text"],
-    table.form td.field > input[type="file"],
-    table.form td.field > input[type="password"],
+    table.form td.field > input[type='text'],
+    table.form td.field > input[type='file'],
+    table.form td.field > input[type='password'],
     table.form td.field > field,
     table.form td.field > textarea {
         display: inline-block;
@@ -38,11 +38,18 @@
         height: 100px;
     }
 
-        table.form td.field > input[type="text"]:hover,
-        table.form td.field > input[type="file"]:hover,
-        table.form td.field > input[type="password"]:hover,
+
+        table.form td.field > input[type='text']:hover,
+        table.form td.field > input[type='file']:hover,
+        table.form td.field > input[type='password']:hover,
         table.form td.field > textarea:hover {
             border: 1px solid #000000;
+        }
+
+        table.form td.field > input[readonly]:hover,
+        table.form td.field > input[readonly='readonly']:hover,
+        table.form td.field > textarea:hover {
+            border: 1px solid #C0C0C0;
         }
 
     table.form > tfoot > tr > td {
@@ -51,7 +58,7 @@
         text-align: center;
     }
 
-        table.form > tfoot > tr > td > input[type="submit"] {
+        table.form > tfoot > tr > td > input[type='submit'] {
             height: 24px;
             width: 100px;
             margin-left: 12px;
@@ -119,7 +126,7 @@ list {
         padding-top: 7px;
     }
 
-        list td.icon input[type="checkbox"] {
+        list td.icon input[type='checkbox'] {
             float: left;
         }
 
