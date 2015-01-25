@@ -4,6 +4,9 @@
 # Project-specific
 App_Data/Repos/
 App_Data/Scratch/
+data/
+src/Complex.Domino.Web/Scripts
+
 
 # User-specific files
 *.suo
