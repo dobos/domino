@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Auth
 {
-    public partial class Auth : System.Web.UI.MasterPage
+    public partial class Master : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

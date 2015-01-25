@@ -21,6 +21,9 @@ namespace Complex.Domino.Web.Controls
             StudentMenu.NavigateUrl = Student.Default.GetUrl();
             StudentCourses.NavigateUrl = Student.Courses.GetUrl();
             StudentAssignments.NavigateUrl = Student.Assignments.GetUrl();
+
+            UserAccount.NavigateUrl = Auth.User.GetUrl(Page.Request.Url);
+            UserPassword.NavigateUrl = Auth.ChangePassword.GetUrl(Page.Request.Url);
         }
     }
 }

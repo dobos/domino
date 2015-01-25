@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Domino.Master" AutoEventWireup="true" CodeBehind="Auth.master.cs" Inherits="Complex.Domino.Web.Auth.Auth" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/Domino.Master" AutoEventWireup="true" CodeBehind="Auth.master.cs" Inherits="Complex.Domino.Web.Auth.Master" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="main">
     <asp:ContentPlaceHolder ID="main" runat="server">

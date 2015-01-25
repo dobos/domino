@@ -7,55 +7,82 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Complex.Domino.Web.Admin {
+namespace Complex.Domino.Web.Auth {
     
     
-    public partial class User {
+    public partial class ChangePassword {
         
         /// <summary>
-        /// EmailLabel control.
+        /// OldPasswordLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EmailLabel;
+        protected global::System.Web.UI.WebControls.Label OldPasswordLabel;
         
         /// <summary>
-        /// Email control.
+        /// OldPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox OldPassword;
         
         /// <summary>
-        /// EmailFormatValidator control.
+        /// PasswordRequiredValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailFormatValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequiredValidator;
         
         /// <summary>
-        /// PasswordLabel control.
+        /// PasswordValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PasswordLabel;
+        protected global::System.Web.UI.WebControls.CustomValidator PasswordValidator;
         
         /// <summary>
-        /// Password control.
+        /// PasswordNewLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
+        protected global::System.Web.UI.WebControls.Label PasswordNewLabel;
+        
+        /// <summary>
+        /// PasswordNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PasswordNew;
+        
+        /// <summary>
+        /// PasswordNewRequiredValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordNewRequiredValidator;
+        
+        /// <summary>
+        /// PasswordComplexityValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator PasswordComplexityValidator;
         
         /// <summary>
         /// PasswordConfirmLabel control.
@@ -76,6 +103,33 @@ namespace Complex.Domino.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox PasswordConfirm;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// PasswordConfirmValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator PasswordConfirmValidator;
+        
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        
+        /// <summary>
         /// Ok control.
         /// </summary>
         /// <remarks>
@@ -83,6 +137,15 @@ namespace Complex.Domino.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Ok;
+        
+        /// <summary>
+        /// Image3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image3;
         
         /// <summary>
         /// Cancel control.
@@ -94,57 +157,12 @@ namespace Complex.Domino.Web.Admin {
         protected global::System.Web.UI.WebControls.LinkButton Cancel;
         
         /// <summary>
-        /// RolesPanel control.
+        /// Image4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel RolesPanel;
-        
-        /// <summary>
-        /// RoleType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RoleType;
-        
-        /// <summary>
-        /// Course control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Course;
-        
-        /// <summary>
-        /// AddRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddRole;
-        
-        /// <summary>
-        /// userRoleList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Complex.Domino.Web.Controls.MultiSelectGridView userRoleList;
-        
-        /// <summary>
-        /// DeleteRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton DeleteRole;
+        protected global::System.Web.UI.WebControls.Image Image4;
     }
 }

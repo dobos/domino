@@ -10,7 +10,7 @@
 namespace Complex.Domino.Web.Auth {
     
     
-    public partial class Auth {
+    public partial class Master {
         
         /// <summary>
         /// main control.

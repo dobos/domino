@@ -52,7 +52,20 @@ namespace Complex.Domino.Web.Auth
         {
             if (IsValid)
             {
-                RedirectAuthenticatedUser();
+                if (!String.IsNullOrWhiteSpace(DatabaseContext.User.Email))
+                {
+                    FormsAuthentication.RedirectFromLoginPage(
+                        DatabaseContext.User.Name,
+                        Remember.Checked);
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(
+                        DatabaseContext.User.Name,
+                        Remember.Checked);
+
+                    Response.Redirect(Auth.User.GetUrl(ReturnUrl));
+                }
             }
         }
 
@@ -96,13 +109,6 @@ namespace Complex.Domino.Web.Auth
 
                 return false;
             }
-        }
-
-        private void RedirectAuthenticatedUser()
-        {
-            FormsAuthentication.RedirectFromLoginPage(
-                DatabaseContext.User.Name,
-                Remember.Checked);
         }
 
         #endregion

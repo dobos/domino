@@ -76,6 +76,7 @@
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />
     <Content Include="App_Themes\Basic\toolbar.css" />
+    <Content Include="Auth\ChangePassword.aspx" />
     <Content Include="Auth\Reset.aspx" />
     <Content Include="Auth\User.aspx" />
     <Content Include="Auth\SignIn.aspx" />
@@ -465,6 +466,13 @@
     </Compile>
     <Compile Include="Auth\Auth.master.designer.cs">
       <DependentUpon>Auth.master</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auth\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auth\Reset.aspx.cs">
       <DependentUpon>Reset.aspx</DependentUpon>

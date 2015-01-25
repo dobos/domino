@@ -19,3 +19,8 @@ teacher menu
     <li><asp:HyperLink runat="server" ID="StudentCourses">courses</asp:HyperLink></li>
     <li><asp:HyperLink runat="server" ID="StudentAssignments">assignments</asp:HyperLink></li>
 </ul>
+your account
+<ul class="menu">
+    <li><asp:HyperLink runat="server" ID="UserAccount" Text="update account" /></li>
+    <li><asp:HyperLink runat="server" ID="UserPassword" Text="reset password" /></li>
+</ul>

@@ -9,8 +9,6 @@
             </td>
             <td class="field">
                 <asp:TextBox ID="Email" runat="server" ValidationGroup="User" />
-                <asp:RequiredFieldValidator ID="EmailRequiredValidator" runat="server" Display="Dynamic"
-                    ErrorMessage="<br />E-mail address is required" ControlToValidate="Email" ValidationGroup="User" />
                 <asp:RegularExpressionValidator ID="EmailFormatValidator" runat="server" 
                     ControlToValidate="Email" Display="Dynamic" ErrorMessage="<br />Invalid format" 
                     ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="User" />
