@@ -76,7 +76,7 @@ namespace Complex.Domino.Web.Auth
             // It might happen that the user is awaiting activation.
             try
             {
-                var u = new User(DatabaseContext);
+                var u = new Lib.User(DatabaseContext);
                 u.SignIn(Username.Text, Password.Text);
 
                 if (!u.Enabled)

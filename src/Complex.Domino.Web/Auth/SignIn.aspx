@@ -14,7 +14,7 @@
                     <asp:Label runat="server" ID="UsernameLabel">User name:</asp:Label>
                 </td>
                 <td class="field">
-                    <asp:TextBox ID="Username" runat="server" CssClass="FormField"></asp:TextBox>
+                    <asp:TextBox ID="Username" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="UsernameRequiredValidator" runat="server" Display="Dynamic"
                         ErrorMessage="<br />Username is required" ControlToValidate="Username" />
                 </td>

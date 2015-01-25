@@ -57,3 +57,20 @@ git rev-parse HEAD
 
 
 git show
+
+
+
+=================================
+
+   login page password field too high
+   menu main items style
+   new submission without assignment?
+   <p> remove double spacing, set marging
+   file browser zip download
+   file browser remove edit button when submit
+   set file size format
+   remove link from file name
+   view or download binary files
+   view in new tab (target=_blank)
+   rename delete button to clear all, implement
+   add points and grades
