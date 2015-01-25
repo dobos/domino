@@ -71,6 +71,12 @@ namespace Complex.Domino.Lib
             InitializeMembers();
         }
 
+        protected Entity(Entity old)
+            : base(old.Context)
+        {
+            CopyMembers(old);
+        }
+
         private void InitializeMembers()
         {
             this.isLoaded = false;
@@ -81,6 +87,18 @@ namespace Complex.Domino.Lib
             this.visible = true;
             this.enabled = true;
             this.comments = String.Empty;
+        }
+
+        private void CopyMembers(Entity old)
+        {
+            this.isLoaded = old.isLoaded;
+
+            this.id = old.id;
+            this.name = old.name;
+            this.description = old.description;
+            this.visible = old.visible;
+            this.enabled = old.enabled;
+            this.comments = old.comments;
         }
 
         public virtual void LoadFromDataReader(SqlDataReader reader)
