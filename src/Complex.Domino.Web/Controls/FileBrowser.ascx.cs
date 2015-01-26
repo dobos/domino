@@ -231,6 +231,16 @@ namespace Complex.Domino.Web.Controls
             }
         }
 
+        protected void Download_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ExtractArchive(string archiveExtension, Stream input)
         {
             if (StringComparer.InvariantCultureIgnoreCase.Compare(archiveExtension, ".zip") == 0)
@@ -389,6 +399,8 @@ namespace Complex.Domino.Web.Controls
             DataBindAll();
 
             base.OnLoad(e);
+
+            UpdateForm();
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -396,6 +408,13 @@ namespace Complex.Domino.Web.Controls
             base.OnPreRender(e);
 
             DataBindAll();
+        }
+
+        private void UpdateForm()
+        {
+            Download.Visible = AllowDownload;
+            Delete.Visible = AllowDelete && AllowSelection;
+            ButtonsPanel.Visible = Download.Visible || Delete.Visible;
         }
 
         private void DataBindAll()

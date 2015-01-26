@@ -81,12 +81,13 @@
         </scroll>
     </list>
 
-    <toolbar class="right">
-        <asp:LinkButton runat="server" ToolTip="Download selected files as an archive.">
+    <toolbar runat="server" class="right" ID="ButtonsPanel">
+        <asp:LinkButton runat="server" ToolTip="Download selected files as an archive." ID="Download"
+            OnClick="Download_Click">
             <asp:Image runat="server" SkinID="DownloadButton" />
             <p>Download</p>
         </asp:LinkButton>
-        <asp:LinkButton runat="server" ToolTip="Delete selected files.">
+        <asp:LinkButton runat="server" ToolTip="Delete selected files." ID="Delete" OnClick="Delete_Click">
             <asp:Image runat="server" SkinID="DeleteButton" />
             <p>Delete</p>
         </asp:LinkButton>
