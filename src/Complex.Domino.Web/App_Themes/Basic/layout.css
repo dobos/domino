@@ -20,13 +20,22 @@ table#layout {
     width: 100%;
 }
 
+td#layoutLogo {
+    background-color: #000000;
+    height: 24px;
+    width: 300px;
+    padding: 0px;
+    padding-top: 4px;
+    vertical-align: central;
+}
+
 td#layoutTop {
     background-color: #000000;
     color: #FFFFFF;
     height: 24px;
     padding-left: 24px;
     padding-right: 24px;
-    padding-top: 4px;
+    padding-top: 2px;
     text-align: right;
     vertical-align: central;
 }

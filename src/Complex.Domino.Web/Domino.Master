@@ -14,7 +14,10 @@
         <asp:ScriptManager runat="server" />
         <table id="layout">
             <tr>
-                <td colspan="2" id="layoutTop">
+                <td id="layoutLogo">
+                    <asp:Image runat="server" SkinID="DominoLogo" />
+                </td>
+                <td id="layoutTop">
                     <domino:userstatus runat="server" id="UserStatus" />
                 </td>
             </tr>
