@@ -2,7 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>Reset password</h1>
-    <asp:Panel runat="server" ID="resetPanel">
+    <asp:Panel runat="server" ID="resetPanel" DefaultButton="Ok">
         <asp:Panel runat="server" ID="resetIntroPanel">
             <p>
                 To reset your password, please enter your e-mail address.
