@@ -57,7 +57,7 @@ namespace Complex.Domino.Web
 
         protected void Session_End(object sender, EventArgs e)
         {
-            Complex.Domino.Util.IO.ForceEmptyDirectory((string)Session[Constants.SessionGuid]);
+            CleanUpScratch((string)Session[Constants.SessionGuid]);
         }
 
         protected void Application_End(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace Complex.Domino.Web
                 scratchdir = System.IO.Path.Combine(scratchdir, subdir);
             }
 
-            //Complex.Domino.Util.IO.ForceEmptyDirectory(scratchdir);
+            Complex.Domino.Util.IO.ForceEmptyDirectory(scratchdir);
         }
     }
 }

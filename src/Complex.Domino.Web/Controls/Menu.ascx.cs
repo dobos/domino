@@ -11,19 +11,41 @@ namespace Complex.Domino.Web.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            AdminUsers.NavigateUrl = Admin.Users.GetUrl();
-            AdminSemesters.NavigateUrl = Admin.Semesters.GetUrl();
-            AdminCourses.NavigateUrl = Admin.Courses.GetUrl();
-            AdminAssignments.NavigateUrl = Admin.Assignments.GetUrl();
+            var user = (Lib.User)Session[Constants.SessionUser];
 
-            TeacherCourses.NavigateUrl = Teacher.CourseList.GetUrl();
+            if (user != null)
+            {
+                // --- Admin menu
 
-            StudentMenu.NavigateUrl = Student.Default.GetUrl();
-            StudentCourses.NavigateUrl = Student.Courses.GetUrl();
-            StudentAssignments.NavigateUrl = Student.Assignments.GetUrl();
+                AdminPanel.Visible = user.IsInAdminRole();
 
-            UserAccount.NavigateUrl = Auth.User.GetUrl(Page.Request.Url);
-            UserPassword.NavigateUrl = Auth.ChangePassword.GetUrl(Page.Request.Url);
+                AdminUsers.NavigateUrl = Admin.Users.GetUrl();
+                AdminSemesters.NavigateUrl = Admin.Semesters.GetUrl();
+                AdminCourses.NavigateUrl = Admin.Courses.GetUrl();
+                AdminAssignments.NavigateUrl = Admin.Assignments.GetUrl();
+
+                // --- Teacher menu
+
+                TeacherPanel.Visible = user.IsInRole(Lib.UserRoleType.Teacher);
+
+                TeacherCourses.NavigateUrl = Teacher.CourseList.GetUrl();
+
+                // --- Student menu
+
+                StudentPanel.Visible = user.IsInRole(Lib.UserRoleType.Student);
+
+                StudentMain.NavigateUrl = Student.Default.GetUrl();
+                StudentCourses.NavigateUrl = Student.Courses.GetUrl();
+                StudentAssignments.NavigateUrl = Student.Assignments.GetUrl();
+
+                // --- User menu
+
+                UserPanel.Visible = true;
+
+                UserAccount.NavigateUrl = Auth.User.GetUrl(Page.Request.Url);
+                UserPassword.NavigateUrl = Auth.ChangePassword.GetUrl(Page.Request.Url);
+                UserSignOut.NavigateUrl = Auth.SignOut.GetUrl();
+            }
         }
     }
 }

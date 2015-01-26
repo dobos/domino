@@ -22,19 +22,26 @@ namespace Complex.Domino.Util
 
         public static void ForceEmptyDirectory(string path)
         {
-            var directory = new DirectoryInfo(path) { Attributes = FileAttributes.Normal };
-
-            foreach (var info in directory.GetFileSystemInfos("*", SearchOption.TopDirectoryOnly))
+            if (!Directory.Exists(path))
             {
-                info.Attributes = FileAttributes.Normal;
+                Directory.CreateDirectory(path);
+            }
+            else
+            {
+                var directory = new DirectoryInfo(path) { Attributes = FileAttributes.Normal };
 
-                if ((info.Attributes & FileAttributes.Directory) != 0)
+                foreach (var info in directory.GetFileSystemInfos("*", SearchOption.TopDirectoryOnly))
                 {
-                    ForceDeleteDirectory(info.FullName);
-                }
-                else
-                {
-                    info.Delete();
+                    info.Attributes = FileAttributes.Normal;
+
+                    if ((info.Attributes & FileAttributes.Directory) != 0)
+                    {
+                        ForceDeleteDirectory(info.FullName);
+                    }
+                    else
+                    {
+                        info.Delete();
+                    }
                 }
             }
         }

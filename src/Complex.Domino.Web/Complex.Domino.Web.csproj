@@ -73,6 +73,7 @@
     <Content Include="App_Themes\Basic\FileIcons\Unknown.png" />
     <Content Include="App_Themes\Basic\fonts.css" />
     <Content Include="App_Themes\Basic\form.css" />
+    <Content Include="App_Themes\Basic\Images\Domino.png" />
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />
     <Content Include="App_Themes\Basic\toolbar.css" />
@@ -95,6 +96,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Files\View.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="App_Themes\Basic\layout.skin" />
     <None Include="Resources\ResetPassword.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />

@@ -13,6 +13,24 @@ namespace Complex.Domino.Web.Controls {
     public partial class Menu {
         
         /// <summary>
+        /// AdminPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel AdminPanel;
+        
+        /// <summary>
+        /// AdminMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AdminMenu;
+        
+        /// <summary>
         /// AdminUsers control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,24 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.HyperLink AdminAssignments;
         
         /// <summary>
+        /// TeacherPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel TeacherPanel;
+        
+        /// <summary>
+        /// TeacherMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TeacherMenu;
+        
+        /// <summary>
         /// TeacherCourses control.
         /// </summary>
         /// <remarks>
@@ -58,13 +94,31 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.HyperLink TeacherCourses;
         
         /// <summary>
+        /// StudentPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel StudentPanel;
+        
+        /// <summary>
         /// StudentMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink StudentMenu;
+        protected global::System.Web.UI.WebControls.Label StudentMenu;
+        
+        /// <summary>
+        /// StudentMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink StudentMain;
         
         /// <summary>
         /// StudentCourses control.
@@ -85,6 +139,24 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.HyperLink StudentAssignments;
         
         /// <summary>
+        /// UserPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel UserPanel;
+        
+        /// <summary>
+        /// UserMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label UserMenu;
+        
+        /// <summary>
         /// UserAccount control.
         /// </summary>
         /// <remarks>
@@ -101,5 +173,14 @@ namespace Complex.Domino.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink UserPassword;
+        
+        /// <summary>
+        /// UserSignOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink UserSignOut;
     }
 }

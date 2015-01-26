@@ -336,6 +336,19 @@ WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType
             }
         }
 
+        public bool IsInRole(UserRoleType roleType)
+        {
+            foreach (var key in Roles.Keys)
+            {
+                if (Roles[key].RoleType == roleType)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public bool IsInRole(int courseID, UserRoleType roleType)
         {
             if (Roles.ContainsKey(courseID))

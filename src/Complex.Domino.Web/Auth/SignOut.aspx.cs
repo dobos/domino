@@ -10,9 +10,9 @@ namespace Complex.Domino.Web.Auth
 {
     public partial class SignOut : PageBase
     {
-        public static string GetUrl(Uri returnUrl)
+        public static string GetUrl()
         {
-            return String.Format("~/Auth/SignOut.aspx?ReturnUrl={0}", HttpUtility.UrlEncode(returnUrl.ToString()));
+            return "~/Auth/SignOut.aspx";
         }
 
         protected override void OnLoad(EventArgs e)
@@ -27,7 +27,7 @@ namespace Complex.Domino.Web.Auth
             FormsAuthentication.SignOut();
             Session.Abandon();
 
-            Util.Url.RedirectTo(ReturnUrl);
+            Util.Url.RedirectTo("~");
         }
     }
 }
