@@ -56,7 +56,8 @@ namespace Complex.Domino.Lib
         protected override string GetTableQuery()
         {
             var from = @"
-(SELECT a.*, c.Name CourseName, s.ID SemesterID, s.Name SemesterName
+(SELECT a.*, c.Name CourseName, c.Description CourseDescription,
+        s.ID SemesterID, s.Name SemesterName, s.Description SemesterDescription
 FROM Assignment a
 INNER JOIN Course c ON a.CourseID = c.ID
 INNER JOIN Semester s ON c.SemesterID = s.ID)

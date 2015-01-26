@@ -12,6 +12,7 @@ namespace Complex.Domino.Lib
     {
         private int semesterID;
         private string semesterName;
+        private string semesterDescription;
         private DateTime startDate;
         private DateTime endDate;
         private string url;
@@ -26,6 +27,11 @@ namespace Complex.Domino.Lib
         public string SemesterName
         {
             get { return semesterName; }
+        }
+
+        public string SemesterDescription
+        {
+            get { return semesterDescription; }
         }
 
         public DateTime StartDate
@@ -67,6 +73,7 @@ namespace Complex.Domino.Lib
         {
             this.semesterID = -1;
             this.semesterName = null;
+            this.semesterDescription = null;
             this.startDate = new DateTime(DateTime.Now.Year, 1, 1);
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.url = String.Empty;
@@ -79,6 +86,7 @@ namespace Complex.Domino.Lib
 
             this.semesterID = reader.GetInt32("SemesterID");
             this.semesterName = reader.GetString("SemesterName");
+            this.semesterDescription = reader.GetString("SemesterDescription");
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
             this.url = reader.GetString("Url");
@@ -88,7 +96,7 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT c.*, r.Name SemesterName
+SELECT c.*, r.Name SemesterName, r.Description SemesterDescription
 FROM [Course] c
 INNER JOIN [Semester] r ON r.ID = c.SemesterID
 WHERE c.ID = @ID";

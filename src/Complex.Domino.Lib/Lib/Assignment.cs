@@ -13,8 +13,10 @@ namespace Complex.Domino.Lib
     {
         private int semesterID;
         private string semesterName;
+        private string semesterDescription;
         private int courseID;
         private string courseName;
+        private string courseDescription;
         private DateTime startDate;
         private DateTime endDate;
         private DateTime endDateSoft;
@@ -32,6 +34,11 @@ namespace Complex.Domino.Lib
             get { return semesterName; }
         }
 
+        public string SemesterDescription
+        {
+            get { return semesterDescription; }
+        }
+
         public int CourseID
         {
             get { return courseID; }
@@ -41,6 +48,11 @@ namespace Complex.Domino.Lib
         public string CourseName
         {
             get { return courseName; }
+        }
+
+        public string CourseDescription
+        {
+            get { return courseDescription; }
         }
 
         public DateTime StartDate
@@ -94,8 +106,10 @@ namespace Complex.Domino.Lib
         {
             this.semesterID = -1;
             this.semesterName = null;
+            this.semesterDescription = null;
             this.courseID = -1;
             this.courseName = null;
+            this.courseDescription = null;
             this.startDate = new DateTime(DateTime.Now.Year, 1, 1);
             this.endDate = new DateTime(DateTime.Now.Year, 12, 31);
             this.endDateSoft = new DateTime(DateTime.Now.Year, 12, 31);
@@ -110,8 +124,10 @@ namespace Complex.Domino.Lib
 
             this.semesterID = reader.GetInt32("SemesterID");
             this.semesterName = reader.GetString("SemesterName");
+            this.semesterDescription = reader.GetString("SemesterDescription");
             this.courseID = reader.GetInt32("CourseID");
             this.courseName = reader.GetString("CourseName");
+            this.courseDescription = reader.GetString("CourseDescription");
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
             this.endDateSoft = reader.GetDateTime("EndDateSoft");
@@ -123,7 +139,8 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT a.*, c.Name CourseName, r.ID SemesterID, r.Name SemesterName
+SELECT a.*, c.Name CourseName, c.Description CourseDescription,
+       r.ID SemesterID, r.Name SemesterName, r.Description SemesterDescription
 FROM [Assignment] a
 INNER JOIN [Course] c ON c.ID = a.CourseID
 INNER JOIN [Semester] r ON r.ID = c.SemesterID

@@ -62,7 +62,7 @@ namespace Complex.Domino.Lib
             if (needRoles)
             {
                 return @"
-(SELECT c.*, s.Name SemesterName, r.UserID, r.UserRoleType
+(SELECT c.*, s.Name SemesterName, s.Description SemesterDescription, r.UserID, r.UserRoleType
 FROM Course c
 INNER JOIN Semester s ON s.ID = c.SemesterID
 INNER JOIN UserRole r ON c.ID = r.CourseID)";
@@ -70,7 +70,7 @@ INNER JOIN UserRole r ON c.ID = r.CourseID)";
             else
             {
                 return @"
-(SELECT c.*, s.Name SemesterName
+(SELECT c.*, s.Name SemesterName, s.Description SemesterDescription
 FROM Course c
 INNER JOIN Semester s ON s.ID = c.SemesterID)
 ";
