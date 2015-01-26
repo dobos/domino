@@ -12,10 +12,13 @@ namespace Complex.Domino.Lib
     {
         private int semesterID;
         private string semesterName;
+        private string semesterDescription;
         private int courseID;
         private string courseName;
+        private string courseDescription;
         private int assignmentID;
         private string assignmentName;
+        private string assignmentDescription;
         private int studentID;
         private string studentName;
         private int teacherID;
@@ -33,6 +36,11 @@ namespace Complex.Domino.Lib
             get { return semesterName; }
         }
 
+        public string SemesterDescription
+        {
+            get { return semesterDescription; }
+        }
+
         public int CourseID
         {
             get { return courseID; }
@@ -41,6 +49,11 @@ namespace Complex.Domino.Lib
         public string CourseName
         {
             get { return courseName; }
+        }
+
+        public string CourseDescription
+        {
+            get { return courseDescription; }
         }
 
         public int AssignmentID
@@ -52,6 +65,11 @@ namespace Complex.Domino.Lib
         public string AssignmentName
         {
             get { return assignmentName; }
+        }
+
+        public string AssignmentDescription
+        {
+            get { return assignmentDescription; }
         }
 
         public int StudentID
@@ -99,10 +117,13 @@ namespace Complex.Domino.Lib
         {
             this.semesterID = -1;
             this.semesterName = null;
+            this.semesterDescription = null;
             this.courseID = -1;
             this.courseName = null;
+            this.courseDescription = null;
             this.assignmentID = -1;
             this.assignmentName = null;
+            this.assignmentDescription = null;
             this.studentID = -1;
             this.studentName = null;
             this.teacherID = -1;
@@ -117,10 +138,13 @@ namespace Complex.Domino.Lib
 
             this.semesterID = reader.GetInt32("SemesterID");
             this.semesterName = reader.GetString("SemesterName");
+            this.semesterDescription = reader.GetString("SemesterDescription");
             this.courseID = reader.GetInt32("CourseID");
             this.courseName = reader.GetString("CourseName");
+            this.courseDescription = reader.GetString("CourseDescription");
             this.assignmentID = reader.GetInt32("AssignmentID");
             this.assignmentName = reader.GetString("AssignmentName");
+            this.assignmentDescription = reader.GetString("AssignmentDescription");
             this.studentID = reader.GetInt32("StudentID");
             this.studentName = reader.GetString("StudentName");
             this.teacherID = reader.GetInt32("TeacherID");
@@ -132,7 +156,9 @@ namespace Complex.Domino.Lib
         public override void Load(int id)
         {
             var sql = @"
-SELECT s.*, r.ID SemesterID, r.Name SemesterName, c.ID CourseID, c.Name CourseName, a.Name AssignmentName,
+SELECT s.*, r.ID SemesterID, r.Name SemesterName, r.Description SemesterDescription,
+       c.ID CourseID, c.Name CourseName, c.Description CourseDescription,
+       a.Name AssignmentName, a.Description AssignmentDescription,
        student.Name StudentName, teacher.Name TeacherName
 FROM [Submission] s
 INNER JOIN [Assignment] a ON a.ID = s.AssignmentID

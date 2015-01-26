@@ -14,7 +14,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <asp:HyperLink runat="server" CssClass="fullbar" ID="SubmissionsLink"
-                NavigateUrl='<%# Complex.Domino.Web.Student.Submissions.GetUrl((int)Eval("ID")) %>'>
+                NavigateUrl='<%# Complex.Domino.Web.Student.Assignment.GetUrl((int)Eval("ID")) %>'>
                 <asp:Image ID="Image1" runat="server" SkinID="AssignmentIcon" />
                 <h1><%# Eval("Description") %></h1>
                 <p>

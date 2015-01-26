@@ -87,6 +87,7 @@ namespace Complex.Domino.Web.Controls
         protected void Page_Load(object sender, EventArgs e)
         {
             uploadPanel.Visible = AllowUpload;
+            
         }
 
         protected void directoryList_ItemCreated(object sender, ListViewItemEventArgs e)
@@ -153,7 +154,7 @@ namespace Complex.Domino.Web.Controls
                     view.NavigateUrl = Files.View.GetUrl(Path.Combine(PrefixPath, MakePathRelative(basePath, fi.FullName)));
 
                     edit.Visible = !dir && AllowEdit;
-                    //edit.CommandArgument = fi.Name;
+                    // TODO: add url
 
                     delete.Visible = AllowDelete;
                     delete.CommandArgument = fi.Name;

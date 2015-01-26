@@ -9,6 +9,10 @@ namespace Complex.Domino.Web.Student
 {
     public partial class Submission : EntityPage<Lib.Submission>
     {
+        public static string GetUrl(int assignmentID)
+        {
+            return GetUrl(assignmentID, -1);
+        }
 
         public static string GetUrl(int assignmentID, int submissionID)
         {
@@ -99,7 +103,6 @@ namespace Complex.Domino.Web.Student
             this.AssignmentDescription.Text = assignment.Description;
 
             fileBrowser.AllowDelete = !Item.IsExisting;
-            fileBrowser.AllowEdit = !Item.IsExisting;
             fileBrowser.AllowUpload = !Item.IsExisting;
 
             if (Item.IsExisting)

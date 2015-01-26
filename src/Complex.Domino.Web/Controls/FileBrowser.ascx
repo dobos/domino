@@ -65,11 +65,11 @@
                                 <asp:HyperLink runat="server" ID="view">
                                     <asp:Image runat="server" SkinID="ViewButton" />
                                 </asp:HyperLink>
-                                <asp:HyperLink runat="server" ID="edit">
+                                <asp:HyperLink runat="server" ID="edit" CommandName="edit">
                                     <asp:Image runat="server" SkinID="EditButton" />
                                 </asp:HyperLink>
                                 <asp:LinkButton runat="server" ID="delete" CommandName="delete">
-                                    <asp:Image ID="Image1" runat="server" SkinID="DelsmlButton" />
+                                    <asp:Image runat="server" SkinID="DelsmlButton" />
                                 </asp:LinkButton>
                             </td>
                         </tr>

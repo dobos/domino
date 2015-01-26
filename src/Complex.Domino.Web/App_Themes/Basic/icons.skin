@@ -2,5 +2,6 @@
 <asp:Image runat="server" SkinID="CourseIcon" ImageUrl="Icons/Course.png" />
 <asp:Image runat="server" SkinID="AssignmentIcon" ImageUrl="Icons/Assignment.png" />
 <asp:Image runat="server" SkinID="SubmissionIcon" ImageUrl="Icons/Submission.png" />
+<asp:Image runat="server" SkinID="NewSubmissionIcon" ImageUrl="Icons/NewSubmission.png" />
 <asp:Image runat="server" SkinID="KeepUploadsIcon" ImageUrl="Icons/KeepUploads.png" />
 <asp:Image runat="server" SkinID="DeleteUploadsIcon" ImageUrl="Icons/DeleteUploads.png" />
