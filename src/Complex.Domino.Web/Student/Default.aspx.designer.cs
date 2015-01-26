@@ -13,13 +13,13 @@ namespace Complex.Domino.Web.Student {
     public partial class Default {
         
         /// <summary>
-        /// Name control.
+        /// NameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Name;
+        protected global::System.Web.UI.WebControls.Label NameLabel;
         
         /// <summary>
         /// CoursesLink control.
@@ -38,14 +38,5 @@ namespace Complex.Domino.Web.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink AssignmentsLink;
-        
-        /// <summary>
-        /// SubmissionsLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink SubmissionsLink;
     }
 }

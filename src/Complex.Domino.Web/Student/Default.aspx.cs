@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Student
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : PageBase
     {
         public static string GetUrl()
         {
@@ -16,9 +16,10 @@ namespace Complex.Domino.Web.Student
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            NameLabel.Text = DatabaseContext.User.Description;
+
             CoursesLink.NavigateUrl = Courses.GetUrl();
             AssignmentsLink.NavigateUrl = Assignments.GetUrl();
-            SubmissionsLink.NavigateUrl = Submissions.GetUrl();
         }
     }
 }
