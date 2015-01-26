@@ -1,0 +1,1 @@
+﻿<asp:Image runat="server" SkinID="DominoLogo" ImageUrl="Images/Domino.png" />
