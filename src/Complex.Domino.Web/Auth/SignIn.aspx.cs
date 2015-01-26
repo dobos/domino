@@ -24,6 +24,17 @@ namespace Complex.Domino.Web.Auth
 
         #region Event handlers
 
+        protected override void OnPreLoad(EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                FormsAuthentication.SignOut();
+                ResetUser();
+            }
+
+            base.OnPreLoad(e);
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             BypassAuthentication();
@@ -60,18 +71,16 @@ namespace Complex.Domino.Web.Auth
         {
             if (IsValid)
             {
-                if (!String.IsNullOrWhiteSpace(DatabaseContext.User.Email))
-                {
-                    FormsAuthentication.RedirectFromLoginPage(
-                        DatabaseContext.User.Name,
-                        Remember.Checked);
-                }
-                else
-                {
-                    FormsAuthentication.SetAuthCookie(
+                FormsAuthentication.SetAuthCookie(
                         DatabaseContext.User.Name,
                         Remember.Checked);
 
+                if (!String.IsNullOrWhiteSpace(DatabaseContext.User.Email))
+                {
+                    Util.Url.RedirectTo(ReturnUrl);
+                }
+                else
+                {
                     Util.Url.RedirectTo(Auth.User.GetUrl(ReturnUrl));
                 }
             }

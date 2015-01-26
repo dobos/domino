@@ -62,7 +62,14 @@ namespace Complex.Domino.Web.Auth
                 item.ActivationCode = String.Empty;
                 item.Save();
 
-                Util.Url.RedirectTo(SignIn.GetUrl(ReturnUrl));
+                if (ActivationCode != null)
+                {
+                    Util.Url.RedirectTo(SignIn.GetUrl(ReturnUrl));
+                }
+                else
+                {
+                    Util.Url.RedirectTo(ReturnUrl);
+                }
             }
         }
 
