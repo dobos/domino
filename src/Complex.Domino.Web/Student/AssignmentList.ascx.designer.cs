@@ -10,15 +10,24 @@
 namespace Complex.Domino.Web.Student {
     
     
-    public partial class Assignments {
+    public partial class AssignmentList {
         
         /// <summary>
-        /// AssignmentList control.
+        /// assignmentDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Complex.Domino.Web.Student.AssignmentList AssignmentList;
+        protected global::System.Web.UI.WebControls.ObjectDataSource assignmentDataSource;
+        
+        /// <summary>
+        /// assignmentList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView assignmentList;
     }
 }

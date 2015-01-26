@@ -43,12 +43,18 @@ namespace Complex.Domino.Web
 
         protected virtual void UpdateForm()
         {
-            entityForm.UpdateForm(item);
+            if (entityForm != null)
+            {
+                entityForm.UpdateForm(item);
+            }
         }
 
         protected virtual void SaveForm()
         {
-            entityForm.SaveForm(item);
+            if (entityForm != null)
+            {
+                entityForm.SaveForm(item);
+            }
         }
 
         protected virtual void DataBindForm()

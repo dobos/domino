@@ -178,7 +178,7 @@ SELECT @@IDENTITY
         protected override void Modify(string columns)
         {
             var sql = @"
-UPDATE [Assigment]
+UPDATE [Assignment]
 SET CourseID = @CourseID,
     {0},
     StartDate = @StartDate,

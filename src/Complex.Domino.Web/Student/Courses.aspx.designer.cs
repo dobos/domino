@@ -13,21 +13,12 @@ namespace Complex.Domino.Web.Student {
     public partial class Courses {
         
         /// <summary>
-        /// courseDataSource control.
+        /// CourseList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource courseDataSource;
-        
-        /// <summary>
-        /// courseList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView courseList;
+        protected global::Complex.Domino.Web.Student.CourseList CourseList;
     }
 }

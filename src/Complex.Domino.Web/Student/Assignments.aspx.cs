@@ -19,38 +19,9 @@ namespace Complex.Domino.Web.Student
             return String.Format("~/Student/Assignments.aspx?courseID={0}", courseID);
         }
 
-        private Lib.AssignmentFactory searchObject;
-
         protected void Page_Load(object sender, EventArgs e)
         {
         }
 
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            if (assignmentList.Visible)
-            {
-                assignmentList.DataBind();
-            }
-        }
-
-        protected void assignmentDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
-        {
-            searchObject = new Lib.AssignmentFactory(DatabaseContext);
-
-            // Set search criteria
-            if (Request.QueryString[Constants.RequestSemesterID] != null)
-            {
-                searchObject.SemesterID = int.Parse(Request.QueryString[Constants.RequestSemesterID]);
-            }
-
-            if (Request.QueryString[Constants.RequestCourseID] != null)
-            {
-                searchObject.CourseID = int.Parse(Request.QueryString[Constants.RequestCourseID]);
-            }
-
-            searchObject.UserID = DatabaseContext.User.ID;
-
-            e.ObjectInstance = searchObject;
-        }
     }
 }

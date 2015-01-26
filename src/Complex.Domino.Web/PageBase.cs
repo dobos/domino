@@ -12,7 +12,7 @@ namespace Complex.Domino.Web
         private bool bypassAuthentication;
         private Context databaseContext;
 
-        protected Context DatabaseContext
+        public Context DatabaseContext
         {
             get
             {
