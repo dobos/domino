@@ -38,7 +38,7 @@ namespace Complex.Domino.Web.Student
 
         protected new int AssigmentID
         {
-            get { return Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestAssignmentID]); }
+            get { return Util.Url.ParseInt(Request.QueryString[Constants.RequestAssignmentID]); }
         }
 
         protected void Page_Load(object sender, EventArgs e)

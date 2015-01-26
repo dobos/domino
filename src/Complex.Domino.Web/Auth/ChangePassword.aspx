@@ -4,7 +4,7 @@
     <h1>Change your password</h1>
     <div class="frame">
         <table class="form">
-            <tr>
+            <tr runat="server" id="OldPasswordRow">
                 <td class="label">
                     <asp:Label runat="server" ID="OldPasswordLabel">Old password:</asp:Label>
                 </td>

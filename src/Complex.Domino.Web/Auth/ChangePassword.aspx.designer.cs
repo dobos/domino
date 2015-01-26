@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Auth {
     public partial class ChangePassword {
         
         /// <summary>
+        /// OldPasswordRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow OldPasswordRow;
+        
+        /// <summary>
         /// OldPasswordLabel control.
         /// </summary>
         /// <remarks>

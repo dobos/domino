@@ -28,5 +28,20 @@ namespace Complex.Domino.Lib
         {
             return new ArgumentException(ErrorMessages.InvalidUserID);
         }
+
+        public static SecurityException InvalidUserEmail()
+        {
+            return new SecurityException(ErrorMessages.InvalidUserEmail);
+        }
+
+        public static SecurityException InvalidActivationCode()
+        {
+            return new SecurityException(ErrorMessages.InvalidActivationCode);
+        }
+
+        public static SecurityException AccessDenied()
+        {
+            return new SecurityException(ErrorMessages.AccessDenied);
+        }
     }
 }

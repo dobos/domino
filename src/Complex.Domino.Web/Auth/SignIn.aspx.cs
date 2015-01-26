@@ -14,7 +14,12 @@ namespace Complex.Domino.Web.Auth
     {
         public static string GetUrl(Uri returnUrl)
         {
-            return String.Format("~/Auth/SignIn.aspx?ReturnUrl={0}", HttpUtility.UrlEncode(returnUrl.ToString()));
+            return GetUrl(returnUrl.ToString());
+        }
+
+        public static string GetUrl(string returnUrl)
+        {
+            return String.Format("~/Auth/SignIn.aspx?ReturnUrl={0}", HttpUtility.UrlEncode(returnUrl));
         }
 
         #region Event handlers
@@ -28,7 +33,10 @@ namespace Complex.Domino.Web.Auth
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            UpdateForm();
+            if (!IsPostBack)
+            {
+                UpdateForm();
+            }
         }
 
         /// <summary>
@@ -64,7 +72,7 @@ namespace Complex.Domino.Web.Auth
                         DatabaseContext.User.Name,
                         Remember.Checked);
 
-                    Response.Redirect(Auth.User.GetUrl(ReturnUrl));
+                    Util.Url.RedirectTo(Auth.User.GetUrl(ReturnUrl));
                 }
             }
         }
@@ -74,7 +82,7 @@ namespace Complex.Domino.Web.Auth
 
         private void UpdateForm()
         {
-            //ResetLink.NavigateUrl = Jhu.Graywulf.Web.Auth.RequestReset.GetUrl(ReturnUrl);
+            ResetLink.NavigateUrl = ResetPassword.GetUrl();
         }
 
         #endregion

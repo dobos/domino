@@ -27,7 +27,7 @@ namespace Complex.Domino.Web.Auth
             FormsAuthentication.SignOut();
             Session.Abandon();
 
-            Response.Redirect(ReturnUrl);
+            Util.Url.RedirectTo(ReturnUrl);
         }
     }
 }

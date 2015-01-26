@@ -21,12 +21,37 @@ namespace Complex.Domino.Web.Auth
 
         public static string GetUrl(string returnUrl)
         {
-            return String.Format("~/Auth/ChangePassword.aspx?ReturnUrl={0}", HttpUtility.UrlEncode(returnUrl));
+            return String.Format("~/Auth/ChangePassword.aspx?returnUrl={0}", HttpUtility.UrlEncode(returnUrl));
+        }
+
+        public static string GetResetUrl(string activationCode)
+        {
+            return String.Format("~/Auth/ChangePassword.aspx?code={0}", activationCode);
+        }
+
+        protected string ActivationCode
+        {
+            get { return (string)Request.QueryString[Constants.RequestActivationCode]; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CreateItem();
+            if (ActivationCode != null)
+            {
+                var uf = new UserFactory(DatabaseContext);
+                item = uf.LoadByActivationCode(ActivationCode);
+
+                OldPasswordRow.Visible = false;
+            }
+            else if (DatabaseContext.User != null)
+            {
+                item = new Lib.User(DatabaseContext);
+                item.Load(DatabaseContext.User.ID);
+            }
+            else
+            {
+                throw Lib.Error.AccessDenied();
+            }
         }
         
         protected void Ok_Click(object sender, EventArgs e)
@@ -34,15 +59,16 @@ namespace Complex.Domino.Web.Auth
             if (IsValid)
             {
                 item.SetPassword(PasswordNew.Text);
+                item.ActivationCode = String.Empty;
                 item.Save();
 
-                Response.Redirect(ReturnUrl);
+                Util.Url.RedirectTo(SignIn.GetUrl(ReturnUrl));
             }
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect(ReturnUrl);
+            Util.Url.RedirectTo(ReturnUrl);
         }
 
         protected void PasswordValidator_ServerValidate(object source, ServerValidateEventArgs args)
@@ -71,12 +97,6 @@ namespace Complex.Domino.Web.Auth
         protected void PasswordConfirmValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = PasswordNew.Text == PasswordConfirm.Text;
-        }
-
-        private void CreateItem()
-        {
-            item = new Lib.User(DatabaseContext);
-            item.Load(DatabaseContext.User.ID);
         }
     }
 }

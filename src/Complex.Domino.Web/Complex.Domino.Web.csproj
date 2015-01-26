@@ -77,10 +77,14 @@
     <Content Include="App_Themes\Basic\menu.css" />
     <Content Include="App_Themes\Basic\toolbar.css" />
     <Content Include="Auth\ChangePassword.aspx" />
-    <Content Include="Auth\Reset.aspx" />
+    <Content Include="Auth\ResetPassword.aspx" />
     <Content Include="Auth\User.aspx" />
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
+    <EmbeddedResource Include="Auth\EmailTemplates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
     <Content Include="Controls\EntityForm.ascx" />
     <Content Include="Controls\FileBrowser.ascx" />
@@ -91,6 +95,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Files\View.aspx" />
     <Content Include="Global.asax" />
+    <None Include="Resources\ResetPassword.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
     <Content Include="Scripts\CodeMirror\addon\dialog\dialog.css" />
@@ -474,12 +479,17 @@
     <Compile Include="Auth\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Auth\Reset.aspx.cs">
-      <DependentUpon>Reset.aspx</DependentUpon>
+    <Compile Include="Auth\EmailTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailTemplates.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Auth\Reset.aspx.designer.cs">
-      <DependentUpon>Reset.aspx</DependentUpon>
+    <Compile Include="Auth\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auth\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
@@ -645,8 +655,8 @@
     <Compile Include="Teacher\Teacher.master.designer.cs">
       <DependentUpon>Teacher.master</DependentUpon>
     </Compile>
-    <Compile Include="Util\UrlFormatter.cs" />
-    <Compile Include="Util\UrlParser.cs" />
+    <Compile Include="Util\Email.cs" />
+    <Compile Include="Util\Url.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Domino.Master" />

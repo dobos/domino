@@ -15,7 +15,7 @@ namespace Complex.Domino.Web
 
         protected new int ID
         {
-            get { return Util.UrlParser.ParseInt(Request.QueryString[Constants.RequestID], -1); }
+            get { return Util.Url.ParseInt(Request.QueryString[Constants.RequestID], -1); }
         }
 
         protected T Item
@@ -81,13 +81,13 @@ namespace Complex.Domino.Web
                 SaveForm();
                 item.Save();
 
-                Response.Redirect(OriginalReferer);
+                Util.Url.RedirectTo(OriginalReferer);
             }
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect(OriginalReferer);
+            Util.Url.RedirectTo(OriginalReferer);
         }
     }
 }

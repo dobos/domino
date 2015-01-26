@@ -61,6 +61,33 @@ namespace Complex.Domino.Lib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access denied..
+        /// </summary>
+        internal static string AccessDenied {
+            get {
+                return ResourceManager.GetString("AccessDenied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid actication code..
+        /// </summary>
+        internal static string InvalidActivationCode {
+            get {
+                return ResourceManager.GetString("InvalidActivationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail address not found..
+        /// </summary>
+        internal static string InvalidUserEmail {
+            get {
+                return ResourceManager.GetString("InvalidUserEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid user ID..
         /// </summary>
         internal static string InvalidUserID {

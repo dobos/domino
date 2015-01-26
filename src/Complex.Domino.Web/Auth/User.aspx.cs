@@ -41,13 +41,13 @@ namespace Complex.Domino.Web.Auth
                 SaveForm();
                 item.Save();
 
-                Response.Redirect(ReturnUrl);
+                Util.Url.RedirectTo(ReturnUrl);
             }
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect(ReturnUrl);
+            Util.Url.RedirectTo(ReturnUrl);
         }
         
         private void CreateItem()

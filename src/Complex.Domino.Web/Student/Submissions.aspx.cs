@@ -25,7 +25,7 @@ namespace Complex.Domino.Web.Student
         {
             get
             {
-                return Util.UrlParser.ParseInt(Request.QueryString["assignmentID"], -1);
+                return Util.Url.ParseInt(Request.QueryString["assignmentID"], -1);
             }
         }
 

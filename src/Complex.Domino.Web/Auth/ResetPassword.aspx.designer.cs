@@ -10,7 +10,16 @@
 namespace Complex.Domino.Web.Auth {
     
     
-    public partial class Reset {
+    public partial class ResetPassword {
+        
+        /// <summary>
+        /// resetPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel resetPanel;
         
         /// <summary>
         /// resetIntroPanel control.
@@ -58,6 +67,15 @@ namespace Complex.Domino.Web.Auth {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailFormatValidator;
         
         /// <summary>
+        /// EmailValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator EmailValidator;
+        
+        /// <summary>
         /// Ok control.
         /// </summary>
         /// <remarks>
@@ -65,5 +83,14 @@ namespace Complex.Domino.Web.Auth {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Ok;
+        
+        /// <summary>
+        /// messagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel messagePanel;
     }
 }

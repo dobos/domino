@@ -221,6 +221,19 @@ WHERE (Email = @NameOrEmail OR Name = @NameOrEmail) AND
             }
         }
 
+        public void GenerateActivationCode()
+        {
+            var rnd = new Random();
+            var code = new char[50];
+
+            for (int i = 0; i < code.Length; i++)
+            {
+                code[i] = (char)((int)'a' + rnd.Next((int)('z' - 'a' + 1)));
+            }
+
+            this.activationCode = new String(code);
+        }
+
         #endregion
         #region Role functions
 

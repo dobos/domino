@@ -25,6 +25,15 @@ namespace Complex.Domino.Lib
         private static readonly ConfigurationProperty propRepositoriesPath = new ConfigurationProperty(
             "repositoriesPath", typeof(string), String.Empty, ConfigurationPropertyOptions.None);
 
+        private static readonly ConfigurationProperty propEmailFromAddress = new ConfigurationProperty(
+            "emailFromAddress", typeof(string), null, ConfigurationPropertyOptions.IsRequired);
+
+        private static readonly ConfigurationProperty propEmailFromName = new ConfigurationProperty(
+            "emailFromName", typeof(string), null, ConfigurationPropertyOptions.IsRequired);
+
+        private static readonly ConfigurationProperty propEmailNoreplyAddress = new ConfigurationProperty(
+            "emailNoreplyAddress", typeof(string), null, ConfigurationPropertyOptions.IsRequired);
+
         static DominoConfiguration()
         {
             properties = new ConfigurationPropertyCollection();
@@ -45,6 +54,27 @@ namespace Complex.Domino.Lib
         {
             get { return (string)base[propRepositoriesPath]; }
             set { base[propRepositoriesPath] = value; }
+        }
+
+        [ConfigurationProperty("emailFromAddress")]
+        public string EmailFromAddress
+        {
+            get { return (string)base[propEmailFromAddress]; }
+            set { base[propEmailFromAddress] = value; }
+        }
+
+        [ConfigurationProperty("emailFromName")]
+        public string EmailFromName
+        {
+            get { return (string)base[propEmailFromName]; }
+            set { base[propEmailFromName] = value; }
+        }
+
+        [ConfigurationProperty("emailNoreplyAddress")]
+        public string EmailNoreplyAddress
+        {
+            get { return (string)base[propEmailNoreplyAddress]; }
+            set { base[propEmailNoreplyAddress] = value; }
         }
     }
 }

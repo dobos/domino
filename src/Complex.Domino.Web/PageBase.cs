@@ -38,7 +38,7 @@ namespace Complex.Domino.Web
         /// </summary>
         public string BaseUrl
         {
-            get { return Util.UrlFormatter.ToBaseUrl(Request.Url.AbsoluteUri, Request.ApplicationPath); }
+            get { return Util.Url.ToBaseUrl(Request.Url.AbsoluteUri, Request.ApplicationPath); }
         }
 
         /// <summary>
