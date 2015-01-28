@@ -144,13 +144,22 @@ namespace Complex.Domino.Git
         /// </summary>
         /// <param name="message"></param>
         /// <param name="all"></param>
-        public void Commit(string message, bool all)
+        public void Commit(string message, string messageFilePath, bool all)
         {
             var args = new Arguments();
 
             args.Append("commit");
             args.AppendIfTrue(all, "--all");
-            args.Append("--message", message);
+
+            if (message != null)
+            {
+                args.Append("--message", message);
+            }
+            else if (messageFilePath != null)
+            {
+                args.Append("--file", messageFilePath);
+            }
+
             args.Append("--author", author.ToString());
 
             GitWrapper.Call(this, args);
