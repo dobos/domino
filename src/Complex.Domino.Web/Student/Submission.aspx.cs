@@ -133,8 +133,15 @@ namespace Complex.Domino.Web.Student
         {
             base.SaveForm();
 
+            var comments = Item.Comments;
+
+            if (String.IsNullOrWhiteSpace(comments))
+            {
+                comments = "(no comments were given)";   // TODO
+            }
+
             // Commit changes into git
-            var commit = git.CommitSubmission(Item.Comments);  // TODO: use comments
+            var commit = git.CommitSubmission(comments);
 
             Item.StudentID = DatabaseContext.User.ID;
             Item.Direction = Lib.SubmissionDirection.StudentToTeacher;
