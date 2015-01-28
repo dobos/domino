@@ -170,7 +170,7 @@ $find('{0}${1}').onBeforeSubmit.call($find('{0}${1}'));
             yield return new ScriptReference("Complex.Domino.Web.Controls.CodeMirror.js", "Complex.Domino.Web");
             yield return new ScriptReference("~/Scripts/CodeMirror/lib/codemirror.js");
 
-            if (!String.IsNullOrWhiteSpace(Mode))
+            if (!String.IsNullOrWhiteSpace(Mode) && Modes.ContainsKey(Mode))
             {
                 yield return new ScriptReference(String.Format("~/Scripts/CodeMirror/mode/{0}/{0}.js", Modes[Mode]));
             }
