@@ -64,14 +64,14 @@ namespace Complex.Domino.Git
                 "This is the first revision");
 
             Git.Add(".", true);
-            Git.Commit("First revision", true);
+            Git.Commit("First revision", null, true);
 
             // Modify file
             File.WriteAllText(
                 Path.Combine(TestRepoPath, "test.txt"),
                 "This is the second revision");
 
-            Git.Commit("Second revision", true);
+            Git.Commit("Second revision", null, true);
 
             var commits = Git.ReadLog();
             Assert.AreEqual(2, commits.Count);
