@@ -75,7 +75,14 @@ namespace Complex.Domino.Web
                 scratchdir = System.IO.Path.Combine(scratchdir, subdir);
             }
 
-            Complex.Domino.Util.IO.ForceEmptyDirectory(scratchdir);
+            try
+            {
+                Complex.Domino.Util.IO.ForceEmptyDirectory(scratchdir);
+            }
+            catch (Exception)
+            {
+                // TODO!
+            }
         }
     }
 }
