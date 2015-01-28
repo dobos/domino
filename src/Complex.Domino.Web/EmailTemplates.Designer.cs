@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Complex.Domino.Web.Auth {
+namespace Complex.Domino.Web {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Complex.Domino.Web.Auth {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Complex.Domino.Web.Auth.EmailTemplates", typeof(EmailTemplates).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Complex.Domino.Web.EmailTemplates", typeof(EmailTemplates).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

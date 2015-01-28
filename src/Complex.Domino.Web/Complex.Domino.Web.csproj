@@ -82,8 +82,9 @@
     <Content Include="Auth\User.aspx" />
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
-    <EmbeddedResource Include="Auth\EmailTemplates.resx">
+    <EmbeddedResource Include="EmailTemplates.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>EmailTemplates.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
@@ -489,11 +490,6 @@
     <Compile Include="Auth\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Auth\EmailTemplates.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmailTemplates.resx</DependentUpon>
-    </Compile>
     <Compile Include="Auth\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -553,6 +549,11 @@
     </Compile>
     <Compile Include="Controls\UserStatus.ascx.designer.cs">
       <DependentUpon>UserStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="EmailTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailTemplates.resx</DependentUpon>
     </Compile>
     <Compile Include="Student\AssignmentList.ascx.cs">
       <DependentUpon>AssignmentList.ascx</DependentUpon>
