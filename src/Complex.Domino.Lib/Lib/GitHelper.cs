@@ -199,6 +199,21 @@ namespace Complex.Domino.Lib
             if (!IsRepoInitialized())
             {
                 InitializeRepo();
+
+                // Also, create scratch and check in a dummy page
+                // so that we have a HEAD
+
+                InitializeScratch();
+
+                var scratchdir = GetScratchPath();
+                var git = CreateGit(scratchdir);
+
+                File.WriteAllText(
+                    Path.Combine(scratchdir, "README.md"),
+                    String.Format("Personal Domino repository of {0}.", user.Name));
+
+                git.Add("README.md", false);
+                git.Commit("Initialized personal Domino repo", null, false);
             }
         }
 
@@ -250,8 +265,16 @@ namespace Complex.Domino.Lib
             // directory in the working tree of the student
             git.Add(dir, true);
 
+            // Save comments into a file
+
+            var msgpath = Path.Combine(scratchdir, dir, "___commit_message");
+
+            File.WriteAllText(msgpath, commitMessage);
+
             // Commit changes
-            git.Commit(commitMessage, true);
+            git.Commit(commitMessage, msgpath, true);
+
+            File.Delete(msgpath);
 
             // Try to simply push the commit to origin
 
