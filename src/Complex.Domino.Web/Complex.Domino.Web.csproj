@@ -89,6 +89,14 @@
       <LastGenOutput>Labels.hu-HU.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_GlobalResources\Errors.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Errors.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Errors.hu-HU.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="EmailTemplates.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -107,6 +115,7 @@
     <Content Include="App_Themes\Basic\layout.skin" />
     <EmbeddedResource Include="App_GlobalResources\Labels.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Labels.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Util\DateTimeStrings.resx">
@@ -115,7 +124,15 @@
     </EmbeddedResource>
     <None Include="Resources\ResetPassword.txt" />
     <None Include="Resources\NewSubmissionIntro.txt" />
-    <None Include="Resources\NewSubmissionIntro.hu-HU.txt.txt" />
+    <None Include="Resources\NewSubmissionIntro.hu-HU.txt" />
+    <None Include="Resources\SignInIntro.txt" />
+    <None Include="Resources\SignInIntro.hu-HU.txt" />
+    <None Include="Resources\ResetPasswordIntro.txt" />
+    <None Include="Resources\ResetPasswordIntro.hu-HU.txt" />
+    <None Include="Resources\ResetPasswordResults.txt" />
+    <None Include="Resources\ChangePasswordIntro.txt" />
+    <Content Include="Resources\ChangePasswordIntro.hu-HU.txt" />
+    <Content Include="Resources\ResetPasswordResults.hu-HU.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
     <Content Include="Scripts\CodeMirror\addon\dialog\dialog.css" />
@@ -489,6 +506,21 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Errors.hu-HU.designer.cs">
+      <DependentUpon>Errors.hu-HU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Errors.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Errors.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Labels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Labels.hu-HU.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -593,11 +625,6 @@
     </Compile>
     <Compile Include="Student\Course.aspx.designer.cs">
       <DependentUpon>Course.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\Labels.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Labels.resx</DependentUpon>
     </Compile>
     <Compile Include="Student\SubmissionList.ascx.cs">
       <DependentUpon>SubmissionList.ascx</DependentUpon>

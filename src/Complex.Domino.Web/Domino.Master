@@ -18,7 +18,7 @@
                     <asp:Image runat="server" SkinID="DominoLogo" />
                 </td>
                 <td id="layoutTop">
-                    <domino:userstatus runat="server" id="UserStatus" />
+                    <asp:ContentPlaceHolder runat="server" ID="header" />
                 </td>
             </tr>
             <tr>

@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Auth {
     public partial class ChangePassword {
         
         /// <summary>
+        /// changeIntroPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel changeIntroPanel;
+        
+        /// <summary>
         /// OldPasswordRow control.
         /// </summary>
         /// <remarks>
@@ -112,13 +121,13 @@ namespace Complex.Domino.Web.Auth {
         protected global::System.Web.UI.WebControls.TextBox PasswordConfirm;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// PasswordConfirmRequiredValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordConfirmRequiredValidator;
         
         /// <summary>
         /// PasswordConfirmValidator control.
@@ -130,15 +139,6 @@ namespace Complex.Domino.Web.Auth {
         protected global::System.Web.UI.WebControls.CustomValidator PasswordConfirmValidator;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
         /// Ok control.
         /// </summary>
         /// <remarks>
@@ -148,15 +148,6 @@ namespace Complex.Domino.Web.Auth {
         protected global::System.Web.UI.WebControls.LinkButton Ok;
         
         /// <summary>
-        /// Image3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image3;
-        
-        /// <summary>
         /// Cancel control.
         /// </summary>
         /// <remarks>
@@ -164,14 +155,5 @@ namespace Complex.Domino.Web.Auth {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Cancel;
-        
-        /// <summary>
-        /// Image4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image4;
     }
 }

@@ -2,33 +2,37 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <asp:Panel runat="server" DefaultButton="Ok">
-        <h1>Sign in to Domino</h1>
+        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, SignInFormLabel %>" /></h1>
         <asp:Panel runat="server" ID="signInIntroPanel">
-            <p>
-                To start using Domino, please sign in with your existing credentials.
-            </p>
+            <p><asp:Literal runat="server" Text="<%$ Resources:Labels, SignInIntro %>" /></p>
         </asp:Panel>
         <div class="frame">
             <table class="form">
                 <tr>
                     <td class="label">
-                        <asp:Label runat="server" ID="UsernameLabel">User name:</asp:Label>
+                        <asp:Label runat="server" ID="UsernameLabel" Text="<%$ Resources:Labels, UserName %>" />:
                     </td>
                     <td class="field">
-                        <asp:TextBox ID="Username" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="Username" runat="server" />
+                    </td>
+                    <td class="error">
                         <asp:RequiredFieldValidator ID="UsernameRequiredValidator" runat="server" Display="Dynamic"
-                            ErrorMessage="<br />Username is required" ControlToValidate="Username" />
+                            ErrorMessage="<%$ Resources:Errors, Required %>" ControlToValidate="Username" />
                     </td>
                 </tr>
                 <tr>
                     <td class="label">
-                        <asp:Label runat="server" ID="PasswordLabel">Password:</asp:Label>
+                        <asp:Label runat="server" ID="PasswordLabel" Text="<%$ Resources:Labels, Password %>" />
                     </td>
                     <td class="field">
-                        <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="Password" runat="server" TextMode="Password" />
+                    </td>
+                    <td class="error">
                         <asp:RequiredFieldValidator ID="PasswordRequiredValidator" runat="server" Display="Dynamic"
-                            ErrorMessage="<br />Password is required" ControlToValidate="Password" />
-                        <asp:CustomValidator ID="PasswordValidator" runat="server" Display="Dynamic" ErrorMessage="<br />Invalid User name or Password"
+                            ErrorMessage="<%$ Resources:Errors, Required %>" ControlToValidate="Password" />
+                        <asp:CustomValidator ID="PasswordValidator" runat="server" Display="Dynamic"
+                            ControlToValidate="Password"
+                            ErrorMessage="<%$ Resources:Errors, InvalidPassword %>"
                             OnServerValidate="PasswordValidator_ServerValidate" />
                     </td>
                 </tr>
@@ -36,22 +40,23 @@
                     <td class="label">&nbsp;
                     </td>
                     <td class="field">
-                        <asp:CheckBox ID="Remember" runat="server" Text="Remember me on this computer" />
+                        <asp:CheckBox ID="Remember" runat="server" Text="<%$ Resources:Labels, RememberMe %>" />
                     </td>
+                    <td class="error"></td>
                 </tr>
             </table>
             <asp:Panel runat="server" ID="signInDetailsPanel">
                 <ul>
-                    <li>If you have forgotten you password,
-                        <asp:HyperLink runat="server" ID="ResetLink">
-                    request a password reset</asp:HyperLink>.</li>
+                    <li>
+                        <asp:HyperLink runat="server" ID="ResetLink" Text="<%$ Resources:Labels, PasswordReset %>" />
+                    </li>
                 </ul>
             </asp:Panel>
         </div>
         <toolbar class="form">
             <asp:LinkButton runat="Server" ID="Ok" OnClick="Ok_Click">
                 <asp:Image runat="server" SkinID="SignInButton" />
-                    <p>Sign In</p>
+                    <p><asp:Label runat="server" Text="<%$ Resources:Labels, SignIn %>" /></p>
             </asp:LinkButton>
         </toolbar>
     </asp:Panel>

@@ -31,13 +31,13 @@ namespace Complex.Domino.Web {
         protected global::System.Web.UI.HtmlControls.HtmlForm theForm;
         
         /// <summary>
-        /// UserStatus control.
+        /// header control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Complex.Domino.Web.Controls.UserStatus UserStatus;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder header;
         
         /// <summary>
         /// Menu control.

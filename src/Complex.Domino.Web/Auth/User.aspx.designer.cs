@@ -94,15 +94,6 @@ namespace Complex.Domino.Web.Auth {
         protected global::System.Web.UI.WebControls.LinkButton OK;
         
         /// <summary>
-        /// Image1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-        
-        /// <summary>
         /// Cancel control.
         /// </summary>
         /// <remarks>
@@ -110,14 +101,5 @@ namespace Complex.Domino.Web.Auth {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Cancel;
-        
-        /// <summary>
-        /// Image2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
     }
 }

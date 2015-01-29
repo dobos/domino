@@ -218,6 +218,66 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="NewSubmissionIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewSubmissionIntro.hu-HU.txt.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+    <value>..\Resources\NewSubmissionIntro.hu-HU.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="SignInFormLabel" xml:space="preserve">
+    <value>Bejentkezés a Dominóba</value>
+  </data>
+  <data name="SignInIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SignInIntro.hu-HU.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Kijelentkezés</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Felhasználó</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Felhasználónév</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail cím:</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Név</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Elfelejtett jelszó újragenerálása</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Emlékezz rám ezen a számítógépen</value>
+  </data>
+  <data name="UpdateUserAccount" xml:space="preserve">
+    <value>Felhasználó adatainak módosítása</value>
+  </data>
+  <data name="ResetPasswordIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ResetPasswordIntro.hu-HU.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="ResetPasswordResults" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ResetPasswordResults.hu-HU.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Jelszó újragenerálása</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Jelszó megváltoztatása</value>
+  </data>
+  <data name="ChangePasswordIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChangePasswordIntro.hu-HU.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Új jelszó</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Régi jelszó</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Megerősítés</value>
   </data>
 </root>

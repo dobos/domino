@@ -106,6 +106,33 @@ namespace Complex.Domino.Web.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change your password.
+        /// </summary>
+        internal static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must contain lowercase and uppercase letter, numerical digits and must be longer than 8 characters..
+        /// </summary>
+        internal static string ChangePasswordIntro {
+            get {
+                return ResourceManager.GetString("ChangePasswordIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        internal static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Course.
         /// </summary>
         internal static string Course {
@@ -169,6 +196,15 @@ namespace Complex.Domino.Web.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail address.
+        /// </summary>
+        internal static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grade.
         /// </summary>
         internal static string Grade {
@@ -192,6 +228,24 @@ namespace Complex.Domino.Web.App_GlobalResources {
         internal static string KeepFilesDetails {
             get {
                 return ResourceManager.GetString("KeepFilesDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        internal static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
             }
         }
         
@@ -252,11 +306,110 @@ namespace Complex.Domino.Web.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Old password.
+        /// </summary>
+        internal static string OldPassword {
+            get {
+                return ResourceManager.GetString("OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have forgotten you password, request a password reset..
+        /// </summary>
+        internal static string PasswordReset {
+            get {
+                return ResourceManager.GetString("PasswordReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember me on this computer.
+        /// </summary>
+        internal static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset password.
+        /// </summary>
+        internal static string ResetPassword {
+            get {
+                return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To reset your password, please enter your e-mail address..
+        /// </summary>
+        internal static string ResetPasswordIntro {
+            get {
+                return ResourceManager.GetString("ResetPasswordIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An e-mail with a password reset link has been sent to your e-mail address..
+        /// </summary>
+        internal static string ResetPasswordResults {
+            get {
+                return ResourceManager.GetString("ResetPasswordResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Semester.
         /// </summary>
         internal static string Semester {
             get {
                 return ResourceManager.GetString("Semester", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign in.
+        /// </summary>
+        internal static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign in to Domino.
+        /// </summary>
+        internal static string SignInFormLabel {
+            get {
+                return ResourceManager.GetString("SignInFormLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To start using Domino, please sign in with your existing credentials..
+        /// </summary>
+        internal static string SignInIntro {
+            get {
+                return ResourceManager.GetString("SignInIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign out.
+        /// </summary>
+        internal static string SignOut {
+            get {
+                return ResourceManager.GetString("SignOut", resourceCulture);
             }
         }
         
@@ -297,6 +450,15 @@ namespace Complex.Domino.Web.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update your user account.
+        /// </summary>
+        internal static string UpdateUserAccount {
+            get {
+                return ResourceManager.GetString("UpdateUserAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload.
         /// </summary>
         internal static string Upload {
@@ -320,6 +482,24 @@ namespace Complex.Domino.Web.App_GlobalResources {
         internal static string UploadFile {
             get {
                 return ResourceManager.GetString("UploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        internal static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name.
+        /// </summary>
+        internal static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
         

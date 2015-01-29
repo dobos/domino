@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Admin {
     public partial class Admin {
         
         /// <summary>
+        /// UserStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Complex.Domino.Web.Controls.UserStatus UserStatus;
+        
+        /// <summary>
         /// main control.
         /// </summary>
         /// <remarks>

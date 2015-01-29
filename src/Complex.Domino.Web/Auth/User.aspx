@@ -2,35 +2,39 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <asp:Panel runat="server" DefaultButton="Ok">
-        <h1>Update your user account</h1>
+        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, UpdateUserAccount %>" /></h1>
         <div class="frame">
             <table class="form">
                 <tr>
                     <td class="label">
-                        <asp:Label runat="server" ID="NameLabel" Text="User name:" />
+                        <asp:Label runat="server" ID="NameLabel" Text="<%$ Resources:Labels, UserName %>" />:
                     </td>
                     <td class="field">
                         <asp:Label ID="Name" runat="server" />
                     </td>
+                    <td class="error"></td>
                 </tr>
                 <tr>
                     <td class="label">
-                        <asp:Label runat="server" ID="DescriptionLabel" Text="Name:" />
+                        <asp:Label runat="server" ID="DescriptionLabel" Text="<%$ Resources:Labels, Name %>" />:
                     </td>
                     <td class="field">
                         <asp:Label ID="Description" runat="server" />
                     </td>
+                    <td class="error"></td>
                 </tr>
                 <tr>
                     <td class="label">
-                        <asp:Label runat="server" ID="EmailLabel" CssClass="required" Text="E-mail address:" />
+                        <asp:Label runat="server" ID="EmailLabel" CssClass="required" Text="<%$ Resources:Labels, Email %>" />
                     </td>
                     <td class="field">
                         <asp:TextBox ID="Email" runat="server" ValidationGroup="User" />
+                    </td>
+                    <td class="error">
                         <asp:RequiredFieldValidator ID="EmailRequiredValidator" runat="server" Display="Dynamic"
-                            ErrorMessage="<br />E-mail address is required" ControlToValidate="Email" />
+                            ErrorMessage="<%$ Resources:Errors, Required %>" ControlToValidate="Email" />
                         <asp:RegularExpressionValidator ID="EmailFormatValidator" runat="server"
-                            ControlToValidate="Email" Display="Dynamic" ErrorMessage="<br />Invalid format"
+                            ControlToValidate="Email" Display="Dynamic" ErrorMessage="<%$ Resources:Errors, InvalidFormat %>"
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
                     </td>
                 </tr>
@@ -38,12 +42,12 @@
         </div>
         <toolbar class="form">
             <asp:LinkButton runat="server" ID="OK" OnClick="Ok_Click">
-                <asp:Image ID="Image1" runat="server" SkinID="OkButton" />
-                <p>Ok</p>
+                <asp:Image runat="server" SkinID="OkButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
             </asp:LinkButton>
             <asp:LinkButton runat="server" ID="Cancel" OnClick="Cancel_Click" CausesValidation="false">
-                <asp:Image ID="Image2" runat="server" SkinID="CancelButton" />
-                <p>Cancel</p>
+                <asp:Image runat="server" SkinID="CancelButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Cancel %>" /></p>
             </asp:LinkButton>
         </toolbar>
     </asp:Panel>

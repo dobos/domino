@@ -1,6 +1,9 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Domino.Master" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Complex.Domino.Web.Admin.Admin" %>
 
-<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="main">
+<asp:Content runat="server" ContentPlaceHolderID="header">
+    <domino:userstatus runat="server" id="UserStatus" />
+</asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="main">
     <asp:ContentPlaceHolder ID="main" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>
