@@ -97,6 +97,14 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Errors.hu-HU.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\Menu.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Menu.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu.hu-HU.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="EmailTemplates.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -506,6 +514,11 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Menu.hu-HU.designer.cs">
+      <DependentUpon>Menu.hu-HU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\Errors.hu-HU.designer.cs">
       <DependentUpon>Errors.hu-HU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -525,6 +538,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Labels.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Menu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.resx</DependentUpon>
     </Compile>
     <Compile Include="Auth\Auth.master.cs">
       <DependentUpon>Auth.master</DependentUpon>

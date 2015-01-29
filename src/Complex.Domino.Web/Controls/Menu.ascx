@@ -1,49 +1,49 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Menu.ascx.cs" Inherits="Complex.Domino.Web.Controls.Menu" %>
 <asp:Panel ID="AdminPanel" runat="server" Visible="false">
-    <asp:Label runat="server" ID="AdminMenu" Text="admin menu" />
+    <asp:Label runat="server" ID="AdminMenu" Text="<%$ Resources:Menu, AdminMenu %>" />
     <ul class="menu">
         <li>
-            <asp:HyperLink runat="server" ID="AdminUsers">users</asp:HyperLink></li>
+            <asp:HyperLink runat="server" ID="AdminUsers" Text="<%$ Resources:Menu, Users %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="AdminSemesters">semesters</asp:HyperLink></li>
+            <asp:HyperLink runat="server" ID="AdminSemesters" Text="<%$ Resources:Menu, Semesters %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="AdminCourses">courses</asp:HyperLink></li>
+            <asp:HyperLink runat="server" ID="AdminCourses" Text="<%$ Resources:Menu, Courses %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="AdminAssignments">assignments</asp:HyperLink></li>
+            <asp:HyperLink runat="server" ID="AdminAssignments" Text="<%$ Resources:Menu, Assignments %>" /></li>
     </ul>
 </asp:Panel>
 
 <asp:Panel ID="TeacherPanel" runat="server" Visible="false">
-    <asp:Label runat="server" ID="TeacherMenu" Text="teacher menu" />
+    <asp:Label runat="server" ID="TeacherMenu" Text="<%$ Resources:Menu, TeacherMenu %>" />
     <ul class="menu">
         <li>semesters</li>
         <li>
-            <asp:HyperLink runat="server" ID="TeacherCourses">courses</asp:HyperLink></li>
+            <asp:HyperLink runat="server" ID="TeacherCourses" Text="<%$ Resources:Menu, Courses %>" /></li>
         <li>students</li>
         <li>submissions</li>
     </ul>
 </asp:Panel>
 
 <asp:Panel ID="StudentPanel" runat="server" Visible="false">
-    <asp:Label runat="server" ID="StudentMenu" Text="student menu" />
+    <asp:Label runat="server" ID="StudentMenu" Text="<%$ Resources:Menu, StudentMenu %>" />
     <ul class="menu">
         <li>
-            <asp:HyperLink runat="server" ID="StudentMain" Text="main" /></li>
+            <asp:HyperLink runat="server" ID="StudentMain" Text="<%$ Resources:Menu, Main %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="StudentCourses" Text="courses" /></li>
+            <asp:HyperLink runat="server" ID="StudentCourses" Text="<%$ Resources:Menu, Courses %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="StudentAssignments" Text="assignments" /></li>
+            <asp:HyperLink runat="server" ID="StudentAssignments" Text="<%$ Resources:Menu, Assignments %>" /></li>
     </ul>
 </asp:Panel>
 
 <asp:Panel ID="UserPanel" runat="server" Visible="false">
-    <asp:Label runat="server" ID="UserMenu" Text="your account" />
+    <asp:Label runat="server" ID="UserMenu" Text="<%$ Resources:Menu, UserMenu %>" />
     <ul class="menu">
         <li>
-            <asp:HyperLink runat="server" ID="UserAccount" Text="update account" /></li>
+            <asp:HyperLink runat="server" ID="UserAccount" Text="<%$ Resources:Menu, UpdateUser %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="UserPassword" Text="reset password" /></li>
+            <asp:HyperLink runat="server" ID="UserPassword" Text="<%$ Resources:Menu, ChangePassword %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="UserSignOut" Text="sign out" /></li>
+            <asp:HyperLink runat="server" ID="UserSignOut" Text="<%$ Resources:Menu, SignOut %>" /></li>
     </ul>
 </asp:Panel>
