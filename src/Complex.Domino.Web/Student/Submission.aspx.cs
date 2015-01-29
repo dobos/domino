@@ -40,7 +40,7 @@ namespace Complex.Domino.Web.Student
         private Lib.Assignment assignment;
         protected Lib.GitHelper git;
 
-        protected new int AssigmentID
+        protected int AssigmentID
         {
             get { return Util.Url.ParseInt(Request.QueryString[Constants.RequestAssignmentID]); }
         }
@@ -91,6 +91,16 @@ namespace Complex.Domino.Web.Student
         protected override void UpdateForm()
         {
             base.UpdateForm();
+
+            FormLabel.Text = Item.IsExisting ?
+                App_GlobalResources.Labels.Submission :
+                App_GlobalResources.Labels.NewSubmission;
+
+            CancelLabel.Text = Item.IsExisting ?
+                App_GlobalResources.Labels.Ok :
+                App_GlobalResources.Labels.Cancel;
+
+            OK.Visible = !Item.IsExisting;
 
             var semester = new Lib.Semester(DatabaseContext);
             semester.Load(assignment.SemesterID);

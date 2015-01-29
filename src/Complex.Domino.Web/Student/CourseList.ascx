@@ -15,8 +15,8 @@
             <asp:HyperLink runat="server" CssClass="fullbar" ID="AssignmentsLink"
                 NavigateUrl='<%# Complex.Domino.Web.Student.Course.GetUrl((int)Eval("ID")) %>'>
                 <asp:Image ID="Image1" runat="server" SkinID="CourseIcon" />
-                <h1>Course: <%# Eval("Description") %></h1>
-                <p>Semester: <%# Eval("SemesterDescription") %></p>
+                <h1><%# Eval("Description") %></h1>
+                <p><%# Eval("SemesterDescription") %></p>
             </asp:HyperLink>
         </ItemTemplate>
     </asp:ListView>

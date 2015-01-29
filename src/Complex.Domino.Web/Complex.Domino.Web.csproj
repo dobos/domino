@@ -109,6 +109,7 @@
       <LastGenOutput>DateTimeStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Resources\ResetPassword.txt" />
+    <None Include="Resources\NewSubmissionIntro.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
     <Content Include="Scripts\CodeMirror\addon\dialog\dialog.css" />

@@ -49,6 +49,15 @@ namespace Complex.Domino.Web.Student {
         protected global::System.Web.UI.WebControls.Panel filesPanel;
         
         /// <summary>
+        /// FormLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FormLabel;
+        
+        /// <summary>
         /// SemesterLabel control.
         /// </summary>
         /// <remarks>
@@ -128,5 +137,14 @@ namespace Complex.Domino.Web.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Cancel;
+        
+        /// <summary>
+        /// CancelLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CancelLabel;
     }
 }

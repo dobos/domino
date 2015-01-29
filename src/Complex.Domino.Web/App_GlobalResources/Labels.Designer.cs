@@ -61,11 +61,137 @@ namespace Complex.Domino.Web.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your assignments.
+        /// </summary>
+        internal static string AllAssignments {
+            get {
+                return ResourceManager.GetString("AllAssignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your courses.
+        /// </summary>
+        internal static string AllCourses {
+            get {
+                return ResourceManager.GetString("AllCourses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assignment.
         /// </summary>
         internal static string Assignment {
             get {
                 return ResourceManager.GetString("Assignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assignments.
+        /// </summary>
+        internal static string Assignments {
+            get {
+                return ResourceManager.GetString("Assignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Course.
+        /// </summary>
+        internal static string Course {
+            get {
+                return ResourceManager.GetString("Course", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current directory.
+        /// </summary>
+        internal static string CurrentDirectory {
+            get {
+                return ResourceManager.GetString("CurrentDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete files.
+        /// </summary>
+        internal static string DeleteFiles {
+            get {
+                return ResourceManager.GetString("DeleteFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to start with empty folder and upload files again.
+        /// </summary>
+        internal static string DeleteFilesDetails {
+            get {
+                return ResourceManager.GetString("DeleteFilesDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        internal static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Due.
+        /// </summary>
+        internal static string DueDate {
+            get {
+                return ResourceManager.GetString("DueDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grade.
+        /// </summary>
+        internal static string Grade {
+            get {
+                return ResourceManager.GetString("Grade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep files.
+        /// </summary>
+        internal static string KeepFiles {
+            get {
+                return ResourceManager.GetString("KeepFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to please verify your files before submission.
+        /// </summary>
+        internal static string KeepFilesDetails {
+            get {
+                return ResourceManager.GetString("KeepFilesDetails", resourceCulture);
             }
         }
         
@@ -88,6 +214,53 @@ namespace Complex.Domino.Web.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have chosen to start a new submission but files from an earlier
+        ///submission are available. Do you want to keep these or start from
+        ///an empty folder?.
+        /// </summary>
+        internal static string NewSubmissionIntro {
+            get {
+                return ResourceManager.GetString("NewSubmissionIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No assignments found..
+        /// </summary>
+        internal static string NoAssignments {
+            get {
+                return ResourceManager.GetString("NoAssignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No files have been uploaded so far..
+        /// </summary>
+        internal static string NoFiles {
+            get {
+                return ResourceManager.GetString("NoFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semester.
+        /// </summary>
+        internal static string Semester {
+            get {
+                return ResourceManager.GetString("Semester", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submission.
         /// </summary>
         internal static string Submission {
@@ -97,11 +270,101 @@ namespace Complex.Domino.Web.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submitted.
+        /// </summary>
+        internal static string SubmissionDate {
+            get {
+                return ResourceManager.GetString("SubmissionDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submissions.
         /// </summary>
         internal static string Submissions {
             get {
                 return ResourceManager.GetString("Submissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload.
+        /// </summary>
+        internal static string Upload {
+            get {
+                return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploaded files.
+        /// </summary>
+        internal static string UploadedFiles {
+            get {
+                return ResourceManager.GetString("UploadedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload file.
+        /// </summary>
+        internal static string UploadFile {
+            get {
+                return ResourceManager.GetString("UploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View your assignments.
+        /// </summary>
+        internal static string ViewAssignments {
+            get {
+                return ResourceManager.GetString("ViewAssignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to see all your assignments and submission.
+        /// </summary>
+        internal static string ViewAssignmentsDetails {
+            get {
+                return ResourceManager.GetString("ViewAssignmentsDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View your courses.
+        /// </summary>
+        internal static string ViewCourses {
+            get {
+                return ResourceManager.GetString("ViewCourses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to see all courses you are registered to.
+        /// </summary>
+        internal static string ViewCoursesDetails {
+            get {
+                return ResourceManager.GetString("ViewCoursesDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web page.
+        /// </summary>
+        internal static string WebPage {
+            get {
+                return ResourceManager.GetString("WebPage", resourceCulture);
             }
         }
     }

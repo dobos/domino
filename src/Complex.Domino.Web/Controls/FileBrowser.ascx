@@ -3,7 +3,7 @@
     <table class="form">
         <tr>
             <td class="label">
-                <asp:Label ID="Label1" runat="server" Text="Current directory:" />
+                <asp:Label ID="DirectoryLabel" runat="server" Text="<%$ Resources:Labels, CurrentDirectory %>" />:
             </td>
             <td class="field">
                 <field style="width: 442px">
@@ -27,14 +27,14 @@
         <table class="form">
             <tr>
                 <td class="label">
-                    <asp:Label runat="server" ID="UploadedFileLabel" Text="Upload File:" />
+                    <asp:Label runat="server" ID="UploadFileLabel" Text="<%$ Resources:Labels, UploadFile %>" />:
                 </td>
                 <td class="field" style="text-align: right">
                     <input type="file" runat="server" id="UploadedFile" />
                     <toolbar class="button" style="margin-left: 8px;">
                         <asp:LinkButton runat="server" ID="Upload" OnClick="Upload_Click">
                             <asp:Image runat="server" SkinID="UploadButton" />
-                            <p>Upload</p>
+                            <p><asp:Label runat="server" Text="<%$ Resources:Labels, Upload %>" /></p>
                         </asp:LinkButton>
                     </toolbar>
                 </td>
@@ -75,21 +75,21 @@
                         </tr>
                 </itemtemplate>
                 <EmptyItemTemplate>
-                No files have been uploaded so far.
+                <asp:Label runat="server" Text="<%$ Resources:Labels, NoFiles %>" />
                 </EmptyItemTemplate>
             </domino:multiselectlistview>
         </scroll>
     </list>
 
     <toolbar runat="server" class="right" ID="ButtonsPanel">
-        <asp:LinkButton runat="server" ToolTip="Download selected files as an archive." ID="Download"
+        <asp:LinkButton runat="server" ID="Download"
             OnClick="Download_Click">
             <asp:Image runat="server" SkinID="DownloadButton" />
-            <p>Download</p>
+            <p><asp:Label runat="server" Text="<%$ Resources:Labels, Download %>" /></p>
         </asp:LinkButton>
-        <asp:LinkButton runat="server" ToolTip="Delete selected files." ID="Delete" OnClick="Delete_Click">
+        <asp:LinkButton runat="server" ID="Delete" OnClick="Delete_Click">
             <asp:Image runat="server" SkinID="DeleteButton" />
-            <p>Delete</p>
+            <p><asp:Label runat="server" Text="<%$ Resources:Labels, Delete %>" /></p>
         </asp:LinkButton>
     </toolbar>
 </div>

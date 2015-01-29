@@ -13,13 +13,13 @@ namespace Complex.Domino.Web.Controls {
     public partial class FileBrowser {
         
         /// <summary>
-        /// Label1 control.
+        /// DirectoryLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label DirectoryLabel;
         
         /// <summary>
         /// directoryList control.
@@ -40,13 +40,13 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.Panel uploadPanel;
         
         /// <summary>
-        /// UploadedFileLabel control.
+        /// UploadFileLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UploadedFileLabel;
+        protected global::System.Web.UI.WebControls.Label UploadFileLabel;
         
         /// <summary>
         /// UploadedFile control.

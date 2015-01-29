@@ -11,7 +11,7 @@
         <table class="form">
             <tr>
                 <td class="label">
-                    <asp:Label runat="server" ID="SemesterLabel" Text="Semester:" />
+                    <asp:Label runat="server" ID="SemesterLabel" Text="<%$ Resources:Labels, Semester %>" />:
                 </td>
                 <td class="field">
                     <asp:Label runat="server" ID="SemesterDescription" />
@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td class="label">
-                    <asp:Label runat="server" ID="CourseLabel" Text="Course:" />
+                    <asp:Label runat="server" ID="CourseLabel" Text="<%$ Resources:Labels, Course %>" />:
                 </td>
                 <td class="field">
                     <asp:Label runat="server" ID="CourseDescription" />
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <td class="label">
-                    <asp:Label runat="server" ID="AssignmentLabel" Text="Assignment:" />
+                    <asp:Label runat="server" ID="AssignmentLabel" Text="<%$ Resources:Labels, Assignment %>" />:
                 </td>
                 <td class="field">
                     <asp:Label runat="server" ID="AssignmentDescription" />
@@ -35,7 +35,7 @@
             </tr>
             <tr runat="server" id="UrlRow">
                 <td class="label">
-                    <asp:Label runat="server" ID="UrlLabel" Text="Web page:" />
+                    <asp:Label runat="server" ID="UrlLabel" Text="<%$ Resources:Labels, WebPage %>" />:
                 </td>
                 <td class="field">
                     <asp:HyperLink runat="server" ID="Url" Target="_blank" />
@@ -43,7 +43,7 @@
             </tr>
             <tr>
                 <td class="label">
-                    <asp:Label runat="server" ID="GradeLabel" Text="Grade:" />
+                    <asp:Label runat="server" ID="GradeLabel" Text="<%$ Resources:Labels, Grade %>" />:
                 </td>
                 <td class="field">
                     <asp:Label runat="server" ID="Grade" />
