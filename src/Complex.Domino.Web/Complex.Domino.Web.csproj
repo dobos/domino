@@ -84,6 +84,11 @@
     <Content Include="Auth\User.aspx" />
     <Content Include="Auth\SignIn.aspx" />
     <Content Include="Auth\SignOut.aspx" />
+    <Content Include="App_GlobalResources\Labels.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Labels.hu-HU.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <EmbeddedResource Include="EmailTemplates.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -110,6 +115,7 @@
     </EmbeddedResource>
     <None Include="Resources\ResetPassword.txt" />
     <None Include="Resources\NewSubmissionIntro.txt" />
+    <None Include="Resources\NewSubmissionIntro.hu-HU.txt.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
     <Content Include="Scripts\CodeMirror\addon\dialog\dialog.css" />
@@ -482,6 +488,11 @@
     </Compile>
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Labels.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels.hu-HU.resx</DependentUpon>
     </Compile>
     <Compile Include="Auth\Auth.master.cs">
       <DependentUpon>Auth.master</DependentUpon>

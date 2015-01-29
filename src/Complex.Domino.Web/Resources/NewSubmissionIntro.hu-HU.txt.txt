@@ -1,0 +1,3 @@
+Új megoldás beküldését választottad, de egy korábban beküldött 
+megoldás fájlai még rendelkezésre állnak. Meg szeretnéd tartani
+a fájlokat, vagy egy üres mappával kezdjünk?
