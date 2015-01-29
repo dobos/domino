@@ -100,6 +100,10 @@
     <Content Include="Files\View.aspx" />
     <Content Include="Global.asax" />
     <Content Include="App_Themes\Basic\layout.skin" />
+    <EmbeddedResource Include="App_GlobalResources\Labels.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Labels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Util\DateTimeStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DateTimeStrings.Designer.cs</LastGenOutput>
@@ -577,6 +581,11 @@
     </Compile>
     <Compile Include="Student\Course.aspx.designer.cs">
       <DependentUpon>Course.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Labels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels.resx</DependentUpon>
     </Compile>
     <Compile Include="Student\SubmissionList.ascx.cs">
       <DependentUpon>SubmissionList.ascx</DependentUpon>

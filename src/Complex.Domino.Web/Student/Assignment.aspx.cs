@@ -18,7 +18,7 @@ namespace Complex.Domino.Web.Student
         {
             base.UpdateForm();
 
-            TitleLabel.Text = Item.Description;
+            Description.Text = Item.Description;
             SemesterDescription.Text = Item.SemesterDescription;
             CourseDescription.Text = Item.CourseDescription;
             AssignmentDescription.Text = Item.Description;

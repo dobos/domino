@@ -4,8 +4,9 @@
 
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <h1>Assignment:
-        <asp:Label runat="server" ID="TitleLabel" /></h1>
+    <h1>
+        <asp:Label runat="server" Text="<%$ Resources:Labels, Assignment %>" />:
+        <asp:Label runat="server" ID="Description" /></h1>
     <div class="frame">
         <table class="form">
             <tr>
@@ -34,7 +35,7 @@
             </tr>
             <tr runat="server" id="UrlRow">
                 <td class="label">
-                    <asp:Label runat="server" ID="UrlLabel" Text="Course web page:" />
+                    <asp:Label runat="server" ID="UrlLabel" Text="Web page:" />
                 </td>
                 <td class="field">
                     <asp:HyperLink runat="server" ID="Url" Target="_blank" />
@@ -53,11 +54,12 @@
     <div runat="server" class="frame" id="CommentsPanel">
         <asp:Label runat="server" ID="Comments" />
     </div>
-    <h2>Submissions</h2>
+    <h2>
+        <asp:Label runat="server" Text="<%$ Resources:Labels, Submissions %>" /></h2>
     <asp:HyperLink runat="server" CssClass="fullbar" ID="NewSubmission">
         <asp:Image runat="server" SkinID="NewSubmissionIcon" />
-        <h1>New submission</h1>
-        <p>upload files and submit homework</p>
+        <h1><asp:Label runat="server" Text="<%$ Resources:Labels,NewSubmission %>" /></h1>
+        <p><asp:Label runat="server" Text="<%$ Resources:Labels,NewSubmissionDetails %>" /></p>
     </asp:HyperLink>
     <domino:submissionlist runat="server" id="SubmissionList" />
 </asp:Content>

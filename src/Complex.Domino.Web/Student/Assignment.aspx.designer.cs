@@ -13,13 +13,13 @@ namespace Complex.Domino.Web.Student {
     public partial class Assignment {
         
         /// <summary>
-        /// TitleLabel control.
+        /// Description control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLabel;
+        protected global::System.Web.UI.WebControls.Label Description;
         
         /// <summary>
         /// SemesterLabel control.
