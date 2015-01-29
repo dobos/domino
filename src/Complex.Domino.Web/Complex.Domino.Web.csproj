@@ -105,11 +105,16 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Menu.hu-HU.designer.cs</LastGenOutput>
     </Content>
-    <EmbeddedResource Include="EmailTemplates.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+    <Content Include="App_GlobalResources\EmailTemplates.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>EmailTemplates.hu-HU.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\EmailTemplates.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>EmailTemplates.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
     <Content Include="Controls\EntityForm.ascx" />
     <Content Include="Controls\FileBrowser.ascx" />
@@ -121,16 +126,16 @@
     <Content Include="Files\View.aspx" />
     <Content Include="Global.asax" />
     <Content Include="App_Themes\Basic\layout.skin" />
-    <EmbeddedResource Include="App_GlobalResources\Labels.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+    <Content Include="App_GlobalResources\Labels.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Labels.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Util\DateTimeStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DateTimeStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Resources\ResetPassword.txt" />
+    <Resource Include="Resources\ResetPasswordEmail.txt" />
     <None Include="Resources\NewSubmissionIntro.txt" />
     <None Include="Resources\NewSubmissionIntro.hu-HU.txt" />
     <None Include="Resources\SignInIntro.txt" />
@@ -138,8 +143,9 @@
     <None Include="Resources\ResetPasswordIntro.txt" />
     <None Include="Resources\ResetPasswordIntro.hu-HU.txt" />
     <None Include="Resources\ResetPasswordResults.txt" />
-    <None Include="Resources\ChangePasswordIntro.txt" />
-    <Content Include="Resources\ChangePasswordIntro.hu-HU.txt" />
+    <Resource Include="Resources\ChangePasswordIntro.txt" />
+    <Resource Include="Resources\ChangePasswordIntro.hu-HU.txt" />
+    <Resource Include="Resources\ResetPasswordEmail.hu-HU.txt" />
     <Content Include="Resources\ResetPasswordResults.hu-HU.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
@@ -514,6 +520,16 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\EmailTemplates.hu-HU.designer.cs">
+      <DependentUpon>EmailTemplates.hu-HU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\EmailTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailTemplates.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Menu.hu-HU.designer.cs">
       <DependentUpon>Menu.hu-HU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -617,11 +633,6 @@
     </Compile>
     <Compile Include="Controls\UserStatus.ascx.designer.cs">
       <DependentUpon>UserStatus.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="EmailTemplates.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmailTemplates.resx</DependentUpon>
     </Compile>
     <Compile Include="Student\AssignmentList.ascx.cs">
       <DependentUpon>AssignmentList.ascx</DependentUpon>

@@ -93,12 +93,12 @@ namespace Complex.Domino.Web.Student
             base.UpdateForm();
 
             FormLabel.Text = Item.IsExisting ?
-                App_GlobalResources.Labels.Submission :
-                App_GlobalResources.Labels.NewSubmission;
+                Resources.Labels.Submission :
+                Resources.Labels.NewSubmission;
 
             CancelLabel.Text = Item.IsExisting ?
-                App_GlobalResources.Labels.Ok :
-                App_GlobalResources.Labels.Cancel;
+                Resources.Labels.Ok :
+                Resources.Labels.Cancel;
 
             OK.Visible = !Item.IsExisting;
 

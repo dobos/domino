@@ -45,7 +45,8 @@ namespace Complex.Domino.Web.Auth
                 item.GenerateActivationCode();
                 item.Save();
 
-                var body = new StringBuilder(EmailTemplates.ResetPassword);
+                var body = new StringBuilder(Resources.EmailTemplates.ResetPassword);
+
 
                 var tokens = new Dictionary<string, string>()
                 {
@@ -60,7 +61,7 @@ namespace Complex.Domino.Web.Auth
                     DominoConfiguration.Instance.EmailNoreplyAddress,
                     item.Description,
                     item.Email,
-                    EmailTemplates.ResetPasswordSubject,
+                    Resources.EmailTemplates.ResetPasswordSubject,
                     body.ToString());
 
                 resetPanel.Visible = false;
