@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 namespace Complex.Domino.Lib
 {
+    [Serializable]
     public class Semester : Entity, IDatabaseTableObject
     {
         private DateTime startDate;

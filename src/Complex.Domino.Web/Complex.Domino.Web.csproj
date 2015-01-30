@@ -66,6 +66,7 @@
     <Content Include="Admin\Assignments.aspx" />
     <Content Include="Admin\Course.aspx" />
     <Content Include="Admin\Courses.aspx" />
+    <Content Include="Admin\ImportUsers.aspx" />
     <Content Include="Admin\Semester.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Semesters.aspx" />
@@ -485,6 +486,13 @@
     </Compile>
     <Compile Include="Admin\Courses.aspx.designer.cs">
       <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ImportUsers.aspx.cs">
+      <DependentUpon>ImportUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ImportUsers.aspx.designer.cs">
+      <DependentUpon>ImportUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Semester.aspx.cs">
       <DependentUpon>Semester.aspx</DependentUpon>

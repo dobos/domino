@@ -10,8 +10,12 @@ using System.IO;
 
 namespace Complex.Domino.Lib
 {
+    [Serializable]
     public class User : Entity, IDatabaseTableObject
     {
+        private static readonly char[] passwordChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToArray();
+        private static readonly Random rnd = new Random();
+
         private string email;
         private string activationCode;
         private string passwordHash;
@@ -223,15 +227,32 @@ WHERE (Email = @NameOrEmail OR Name = @NameOrEmail) AND
 
         public void GenerateActivationCode()
         {
-            var rnd = new Random();
-            var code = new char[50];
-
-            for (int i = 0; i < code.Length; i++)
+            lock (rnd)
             {
-                code[i] = (char)((int)'a' + rnd.Next((int)('z' - 'a' + 1)));
-            }
+                var code = new char[50];
 
-            this.activationCode = new String(code);
+                for (int i = 0; i < code.Length; i++)
+                {
+                    code[i] = (char)((int)'a' + rnd.Next((int)('z' - 'a' + 1)));
+                }
+
+                this.activationCode = new String(code);
+            }
+        }
+
+        public void GeneratePassword()
+        {
+            lock (rnd)
+            {
+                var code = new char[10];
+
+                for (int i = 0; i < code.Length; i++)
+                {
+                    code[i] = passwordChars[rnd.Next(passwordChars.Length)];
+                }
+
+                this.activationCode = new String(code);
+            }
         }
 
         #endregion

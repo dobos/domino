@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 namespace Complex.Domino.Lib
 {
+    [Serializable]
     public class Course : Entity, IDatabaseTableObject
     {
         private int semesterID;

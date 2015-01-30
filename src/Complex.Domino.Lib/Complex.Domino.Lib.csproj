@@ -45,6 +45,7 @@
     <Compile Include="Lib\ContextObject.cs" />
     <Compile Include="Lib\Assignment.cs" />
     <Compile Include="Lib\AssignmentFactory.cs" />
+    <Compile Include="Lib\TextFileReader.cs" />
     <Compile Include="Lib\DominoConfiguration.cs" />
     <Compile Include="Lib\GitHelper.cs" />
     <Compile Include="Lib\SubmissionFactory.cs" />

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 namespace Complex.Domino.Lib
 {
+    [Serializable]
     public abstract class Entity : ContextObject, IDatabaseTableObject
     {
         private bool isLoaded;

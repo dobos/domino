@@ -9,6 +9,7 @@ using System.IO;
 
 namespace Complex.Domino.Lib
 {
+    [Serializable]
     public class Assignment : Entity, IDatabaseTableObject
     {
         private int semesterID;

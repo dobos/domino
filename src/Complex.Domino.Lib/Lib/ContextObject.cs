@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Complex.Domino.Lib
 {
+    [Serializable]
     public abstract class ContextObject
     {
+        [NonSerialized]
         private Context context;
 
         public Context Context

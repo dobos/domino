@@ -36,6 +36,7 @@
                 SortExpression="Name "/>
             <asp:BoundField HeaderText="Name" DataField="Description" SortExpression="Description" />
             <asp:BoundField HeaderText="E-mail" DataField="Email" SortExpression="Email" />
+            <asp:BoundField HeaderText="Created" DataField="CreatedDate" SortExpression="CreatedDate" />
             <asp:CheckBoxField HeaderText="Visible" DataField="Visible" />
             <asp:CheckBoxField HeaderText="Enabled" DataField="Enabled" />
         </Columns>

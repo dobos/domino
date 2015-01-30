@@ -19,6 +19,7 @@ namespace Complex.Domino.Web.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             ToolbarCreate.NavigateUrl = Web.Admin.User.GetUrl();
+            ToolbarImport.NavigateUrl = Web.Admin.ImportUsers.GetUrl();
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
