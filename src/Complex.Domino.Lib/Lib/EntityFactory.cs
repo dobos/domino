@@ -13,7 +13,6 @@ namespace Complex.Domino.Lib
         private string name;
         private bool? enabled;
         private bool? visible;
-        private string orderBy;
 
         public string Name
         {
@@ -44,7 +43,6 @@ namespace Complex.Domino.Lib
             this.name = null;
             this.enabled = null;
             this.visible = true;
-            this.orderBy = null;
         }
 
         public int Count()
