@@ -38,6 +38,8 @@ CREATE TABLE [dbo].[Semester]
 	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
 
 	[StartDate] datetime NOT NULL,
@@ -60,6 +62,8 @@ CREATE TABLE [dbo].[Course]
 	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
 
 	[StartDate] datetime,
@@ -107,6 +111,8 @@ CREATE TABLE [dbo].[User]
 	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
 
 	[Email] nvarchar(150) NOT NULL,
@@ -169,6 +175,8 @@ CREATE TABLE [dbo].[Assignment]
 	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,	
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
 
 	[StartDate] datetime,
@@ -223,9 +231,9 @@ CREATE TABLE [dbo].[Submission]
 	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
-	[Comments] nvarchar(max) NOT NULL,
-
-	[Date] datetime NOT NULL
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
+	[Comments] nvarchar(max) NOT NULL
 	
 	CONSTRAINT [PK_Submission] PRIMARY KEY CLUSTERED 
 	(

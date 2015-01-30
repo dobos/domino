@@ -155,7 +155,6 @@ namespace Complex.Domino.Web.Student
 
             Item.StudentID = DatabaseContext.User.ID;
             Item.Direction = Lib.SubmissionDirection.StudentToTeacher;
-            Item.Date = commit.Date;
             Item.Name = commit.Hash;
         }
     }

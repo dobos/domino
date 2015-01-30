@@ -24,7 +24,6 @@ namespace Complex.Domino.Lib
         private int teacherID;
         private string teacherName;
         private SubmissionDirection direction;
-        private DateTime date;
 
         public int SemesterID
         {
@@ -96,12 +95,6 @@ namespace Complex.Domino.Lib
             set { direction = value; }
         }
 
-        public DateTime Date
-        {
-            get { return date; }
-            set { date = value; }
-        }
-
         public Submission()
         {
             InitializeMembers();
@@ -129,7 +122,6 @@ namespace Complex.Domino.Lib
             this.teacherID = -1;
             this.teacherName = null;
             this.direction = SubmissionDirection.Unknown;
-            this.date = new DateTime(2015, 1, 1);
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -150,7 +142,6 @@ namespace Complex.Domino.Lib
             this.teacherID = reader.GetInt32("TeacherID");
             this.teacherName = reader.GetString("TeacherName");
             this.direction = (SubmissionDirection)reader.GetInt32("Direction");
-            this.date = reader.GetDateTime("Date");
         }
 
         public override void Load(int id)
@@ -180,9 +171,9 @@ WHERE s.ID = @ID";
         {
             var sql = @"
 INSERT [Submission]
-    (AssignmentID, StudentID, TeacherID, Direction, {0}, Date)
+    (AssignmentID, StudentID, TeacherID, Direction, {0})
 VALUES
-    (@AssignmentID, @StudentID, @TeacherID, @Direction, {1}, @Date)
+    (@AssignmentID, @StudentID, @TeacherID, @Direction, {1})
 
 SELECT @@IDENTITY
 ";
@@ -204,8 +195,7 @@ SET AssignmentID = @AssignmentID,
     StudentID = @StudentID,
     TeacherID = @TeacherID,
     Direction = @Direction,
-    {0},
-    Date = @Date
+    {0}
 WHERE ID = @ID";
 
             sql = String.Format(sql, columns);
@@ -225,7 +215,6 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
             cmd.Parameters.Add("@TeacherID", SqlDbType.Int).Value = teacherID > 0 ? (object)teacherID : DBNull.Value;
             cmd.Parameters.Add("@Direction", SqlDbType.Int).Value = (int)direction;
-            cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = Date;
         }
 
         public override void Delete(int id)

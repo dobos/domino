@@ -17,6 +17,8 @@ namespace Complex.Domino.Lib
         private string description;
         private bool visible;
         private bool enabled;
+        private DateTime createdDate;
+        private DateTime modifiedDate;
         private string comments;
 
         public int ID
@@ -47,6 +49,16 @@ namespace Complex.Domino.Lib
         {
             get { return enabled; }
             set { enabled = value; }
+        }
+
+        public DateTime CreatedDate
+        {
+            get { return createdDate; }
+        }
+
+        public DateTime ModifiedDate
+        {
+            get { return modifiedDate; }
         }
 
         public string Comments
@@ -86,6 +98,8 @@ namespace Complex.Domino.Lib
             this.description = String.Empty;
             this.visible = true;
             this.enabled = true;
+            this.createdDate = DateTime.Now;
+            this.modifiedDate = DateTime.Now;
             this.comments = String.Empty;
         }
 
@@ -98,6 +112,8 @@ namespace Complex.Domino.Lib
             this.description = old.description;
             this.visible = old.visible;
             this.enabled = old.enabled;
+            this.createdDate = old.createdDate;
+            this.modifiedDate = old.modifiedDate;
             this.comments = old.comments;
         }
 
@@ -108,6 +124,8 @@ namespace Complex.Domino.Lib
             this.description = reader.GetString("Description");
             this.visible = reader.GetBoolean("Visible");
             this.enabled = reader.GetBoolean("Enabled");
+            this.createdDate = reader.GetDateTime("CreatedDate");
+            this.modifiedDate = reader.GetDateTime("ModifiedDate");
             this.comments = reader.GetString("Comments");
 
             isLoaded = true;
@@ -115,8 +133,8 @@ namespace Complex.Domino.Lib
 
         protected void GetInsertColumnsScript(out string columns, out string values)
         {
-            columns = "Name, Description, Visible, Enabled, Comments";
-            values = "@Name, @Description, @Visible, @Enabled, @Comments";
+            columns = "Name, Description, Visible, Enabled, CreatedDate, ModifiedDate, Comments";
+            values = "@Name, @Description, @Visible, @Enabled, @CreatedDate, @ModifiedDate, @Comments";
         }
 
         protected void GetUpdateColumnsScript(out string columns)
@@ -125,6 +143,8 @@ namespace Complex.Domino.Lib
     Description = @Description,
     Visible = @Visible,
     Enabled = @Enabled,
+    CreatedDate = @CreatedDate,
+    ModifiedDate = @ModifiedDate,
     Comments = @Comments";
         }
 
@@ -135,6 +155,8 @@ namespace Complex.Domino.Lib
             cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = description;
             cmd.Parameters.Add("@Visible", SqlDbType.Bit).Value = visible;
             cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled;
+            cmd.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = createdDate;
+            cmd.Parameters.Add("@ModifiedDate", SqlDbType.DateTime).Value = modifiedDate;
             cmd.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
         }
 
@@ -151,12 +173,16 @@ namespace Complex.Domino.Lib
             {
                 string columns;
                 GetUpdateColumnsScript(out columns);
+                
+                modifiedDate = DateTime.Now;
                 Modify(columns);
             }
             else
             {
                 string columns, values;
                 GetInsertColumnsScript(out columns, out values);
+                
+                createdDate = modifiedDate = DateTime.Now;
                 Create(columns, values);
             }
         }
