@@ -53,12 +53,12 @@ namespace Complex.Domino.Lib
 
         public IEnumerable<Submission> Find()
         {
-            return Find(-1, -1);
+            return Find(-1, -1, null);
         }
 
-        public IEnumerable<Submission> Find(int max, int from)
+        public IEnumerable<Submission> Find(int max, int from, string orderBy)
         {
-            return base.Find<Submission>(max, from);
+            return base.Find<Submission>(max, from, orderBy);
         }
 
         protected override string GetTableQuery()

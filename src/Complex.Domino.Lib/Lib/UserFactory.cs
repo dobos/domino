@@ -37,9 +37,9 @@ namespace Complex.Domino.Lib
             this.username = null;
         }
 
-        public IEnumerable<User> Find(int max, int from)
+        public IEnumerable<User> Find(int max, int from, string orderBy)
         {
-            return base.Find<User>(max, from);
+            return base.Find<User>(max, from, orderBy);
         }
 
         protected override string GetTableQuery()

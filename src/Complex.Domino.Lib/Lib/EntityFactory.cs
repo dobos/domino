@@ -33,12 +33,6 @@ namespace Complex.Domino.Lib
             set { visible = value; }
         }
 
-        public string OrderBy
-        {
-            get { return orderBy; }
-            set { orderBy = value; }
-        }
-
         public EntityFactory(Context context)
             : base(context)
         {
@@ -70,7 +64,7 @@ SELECT COUNT(*) FROM {0} AS entities
             }
         }
 
-        protected IEnumerable<T> Find<T>(int max, int from)
+        protected IEnumerable<T> Find<T>(int max, int from, string orderBy)
             where T : IDatabaseTableObject, new()
         {
             using (var cmd = Context.CreateCommand())
@@ -88,7 +82,7 @@ SELECT * FROM q
 ";
 
                 var where = BuildWhereClause(cmd);
-                var orderby = BuildOrderByClause();
+                var orderby = BuildOrderByClause(orderBy);
 
                 var limit = from > 0 || max > 0 ? "WHERE rn BETWEEN @from AND @to" : "";
 
@@ -155,7 +149,7 @@ SELECT * FROM q
             sb.AppendLine(")");
         }
 
-        protected string BuildOrderByClause()
+        protected string BuildOrderByClause(string orderBy)
         {
             if (!String.IsNullOrWhiteSpace(orderBy))
             {

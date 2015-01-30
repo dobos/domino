@@ -45,12 +45,12 @@ namespace Complex.Domino.Lib
 
         public IEnumerable<Course> Find()
         {
-            return Find(-1, -1);
+            return Find(-1, -1, null);
         }
 
-        public IEnumerable<Course> Find(int max, int from)
+        public IEnumerable<Course> Find(int max, int from, string orderBy)
         {
-            return base.Find<Course>(max, from);
+            return base.Find<Course>(max, from, orderBy);
         }
 
         protected override string GetTableQuery()

@@ -21,12 +21,12 @@ namespace Complex.Domino.Lib
 
         public IEnumerable<Semester> Find()
         {
-            return Find(-1, -1);
+            return Find(-1, -1, null);
         }
 
-        public IEnumerable<Semester> Find(int max, int from)
+        public IEnumerable<Semester> Find(int max, int from, string orderBy)
         {
-            return base.Find<Semester>(max, from);
+            return base.Find<Semester>(max, from, orderBy);
         }
 
         protected override string GetTableQuery()
