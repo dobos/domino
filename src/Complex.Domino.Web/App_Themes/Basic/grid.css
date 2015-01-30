@@ -1,0 +1,36 @@
+﻿div.grid {
+    min-width: 600px;
+    background-color: #FFFFFF;
+    border: 1px solid #808080;
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+table.grid {
+    width: 100%;
+    border: 0px;
+}
+    table.grid tr {
+        background-color: #FFFFFF;
+    }
+
+    table.grid tr:hover {
+        background-color: #EEEECC;
+    }
+
+    table.grid th {
+        border: 2px solid #FFFFFF;
+        background-color: #FFFFFF;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    table.grid td {
+        border: 2px solid #FFFFFF;
+        text-align: left;
+    }

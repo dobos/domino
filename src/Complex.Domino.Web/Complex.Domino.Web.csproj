@@ -75,6 +75,7 @@
     <Content Include="App_Themes\Basic\FileIcons\Unknown.png" />
     <Content Include="App_Themes\Basic\fonts.css" />
     <Content Include="App_Themes\Basic\form.css" />
+    <Content Include="App_Themes\Basic\grid.css" />
     <Content Include="App_Themes\Basic\Images\Domino.png" />
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />

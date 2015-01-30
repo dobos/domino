@@ -1,4 +1,5 @@
 ﻿<asp:Image runat="server" SkinID="NewSubmissionButton" ImageUrl="Buttons/NewSubmission.png" />
+<asp:Image runat="server" SkinID="NewUserButton" ImageUrl="Buttons/NewUser.png" />
 <asp:Image runat="server" SkinID="OkButton" ImageUrl="Buttons/OK.png" />
 <asp:Image runat="server" SkinID="CancelButton" ImageUrl="Buttons/Cancel.png" />
 <asp:Image runat="server" SkinID="UploadButton" ImageUrl="Buttons/Upload.png" />
@@ -8,4 +9,5 @@
 <asp:Image runat="server" SkinID="EditButton" ImageUrl="Buttons/Edit.png" />
 <asp:Image runat="server" SkinID="DelsmlButton" ImageUrl="Buttons/Delsml.png" />
 <asp:Image runat="server" SkinID="SignInButton" ImageUrl="Buttons/SignIn.png" />
+<asp:Image runat="server" SkinID="ImportButton" ImageUrl="Buttons/Import.png" />
 

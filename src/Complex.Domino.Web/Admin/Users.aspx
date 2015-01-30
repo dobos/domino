@@ -2,20 +2,29 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>All users</h1>
-    <div class="toolbar">
-        <asp:HyperLink runat="server" ID="ToolbarCreate" Text="Create User" />
-        <asp:HyperLink runat="server" ID="ToolbarImport" Text="Import" />
-    </div>
+    <toolbar>
+        <asp:HyperLink runat="server" ID="ToolbarCreate">
+            <asp:Image runat="server" SkinID="NewUserButton" />
+            <p>Create User</p>
+        </asp:HyperLink>
+        <asp:HyperLink runat="server" ID="ToolbarImport">
+            <asp:Image runat="server" SkinID="ImportButton" />
+            <p>Import</p>
+        </asp:HyperLink>
+    </toolbar>
     <asp:ObjectDataSource runat="server" ID="userDataSource" DataObjectTypeName="Complex.Domino.Lib.User"
         OnObjectCreating="userDataSource_ObjectCreating" TypeName="Complex.Domino.Lib.UserFactory"
         SelectMethod="Find"
         SelectCountMethod="Count"
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
+        SortParameterName="orderBy"
         EnablePaging="true" />
     <domino:multiselectgridview id="userList" runat="server" datasourceid="userDataSource"
         autogeneratecolumns="false" datakeynames="ID"
-        allowPaging="true" pagersettings-mode="NumericFirstLast" pagesize="25">
+        allowPaging="true"  AllowSorting="true"
+        pagersettings-mode="NumericFirstLast" pagesize="25"
+        CssClass="grid">
         <Columns>
             <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField HeaderText="ID" DataField="ID" />
@@ -23,20 +32,27 @@
                 DataNavigateUrlFields="ID"
                 DataNavigateUrlFormatString="User.aspx?ID={0}"
                 DataTextField="Name"
-                HeaderText="User name"/>
-            <asp:BoundField HeaderText="Name" DataField="Description" />
-            <asp:BoundField HeaderText="Visible" DataField="Visible" />
-            <asp:BoundField HeaderText="Enabled" DataField="Enabled" />
-            <asp:BoundField HeaderText="E-mail" DataField="Email" />
+                HeaderText="User name"
+                SortExpression="Name "/>
+            <asp:BoundField HeaderText="Name" DataField="Description" SortExpression="Description" />
+            <asp:BoundField HeaderText="E-mail" DataField="Email" SortExpression="Email" />
+            <asp:CheckBoxField HeaderText="Visible" DataField="Visible" />
+            <asp:CheckBoxField HeaderText="Enabled" DataField="Enabled" />
         </Columns>
         <EmptyDataTemplate>
             <p>No users match the query.</p>
         </EmptyDataTemplate>
     </domino:multiselectgridview>
-    <div class="toolbar">
-        <asp:LinkButton runat="server" ID="Delete" Text="Delete" OnClick="Delete_Click" 
+    <toolbar>
+        <asp:LinkButton runat="server" ID="Delete" OnClick="Delete_Click" 
             OnClientClick="return confirm('Are you sure you want to delete the selected items?')"
-            ValidationGroup="Delete" />
-        <asp:LinkButton runat="server" Text="Generate password" />
-    </div>
+            ValidationGroup="Delete">
+            <asp:Image runat="server" SkinID="DeleteButton" />
+            <p>Delete</p>
+        </asp:LinkButton>
+        <asp:LinkButton runat="server">
+            <asp:Image runat="server" SkinID="SignInButton" />
+            <p>Generate password</p>
+        </asp:LinkButton>
+    </toolbar>
 </asp:Content>
