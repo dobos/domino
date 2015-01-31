@@ -80,20 +80,42 @@ namespace Complex.Domino.Web
             base.OnPreRender(e);
         }
 
-        protected void Ok_Click(object sender, EventArgs e)
+        protected virtual void Ok_Click(object sender, EventArgs e)
         {
             if (IsValid)
             {
-                SaveForm();
-                item.Save();
-
-                Util.Url.RedirectTo(OriginalReferer);
+                OnOkClick();
             }
         }
 
-        protected void Cancel_Click(object sender, EventArgs e)
+        protected virtual void Cancel_Click(object sender, EventArgs e)
         {
-            Util.Url.RedirectTo(OriginalReferer);
+            OnCancelClick();
+        }
+
+        protected virtual void OnOkClick()
+        {
+            SaveForm();
+            item.Save();
+
+            OnRedirect();
+        }
+
+        protected virtual void OnCancelClick()
+        {
+            OnRedirect();
+        }
+
+        protected virtual void OnRedirect()
+        {
+            if (!String.IsNullOrWhiteSpace(ReturnUrl))
+            {
+                Util.Url.RedirectTo(ReturnUrl);
+            }
+            else
+            {
+                Util.Url.RedirectTo(OriginalReferer);
+            }
         }
     }
 }

@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Admin {
     public partial class User {
         
         /// <summary>
+        /// userPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel userPanel;
+        
+        /// <summary>
         /// EmailLabel control.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,13 @@ namespace Complex.Domino.Web.Admin {
         protected global::System.Web.UI.WebControls.LinkButton Cancel;
         
         /// <summary>
-        /// RolesPanel control.
+        /// rolesPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel RolesPanel;
+        protected global::System.Web.UI.WebControls.Panel rolesPanel;
         
         /// <summary>
         /// RoleType control.

@@ -14,6 +14,18 @@ namespace Complex.Domino.Web.Admin
             return "~/Admin/User.aspx";
         }
 
+        public static string GetUrl(int id, string returnUrl)
+        {
+            var url = "~/Admin/User.aspx?ID={0}";
+
+            if (returnUrl != null)
+            {
+                url += String.Format("&{0}={1}", Constants.ReturnUrl, HttpUtility.UrlEncode(returnUrl));
+            }
+
+            return url;
+        }
+
         protected override void UpdateForm()
         {
             base.UpdateForm();
@@ -22,7 +34,7 @@ namespace Complex.Domino.Web.Admin
 
             if (Item.IsExisting)
             {
-                RolesPanel.Visible = true;
+                rolesPanel.Visible = true;
                 RefreshCourseList();
             }
         }
@@ -55,6 +67,21 @@ namespace Complex.Domino.Web.Admin
             var f = new Lib.CourseFactory(DatabaseContext);
             Course.DataSource = f.Find().ToArray();
             Course.DataBind();
+        }
+
+        protected override void OnOkClick()
+        {
+            if (Item.IsExisting)
+            {
+                base.OnOkClick();
+            }
+            else
+            {
+                SaveForm();
+                Item.Save();
+
+                Util.Url.RedirectTo(GetUrl(Item.ID, OriginalReferer));
+            }
         }
 
         protected void AddRole_Click(object sender, EventArgs e)
