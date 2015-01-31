@@ -50,7 +50,8 @@
 
         table.form td.field > input[readonly]:hover,
         table.form td.field > input[readonly='readonly']:hover,
-        table.form td.field > textarea:hover {
+        table.form td.field > textarea[readonly]:hover,
+        table.form td.field > textarea[readonly='readonly']:hover {
             border: 1px solid #C0C0C0;
         }
 
