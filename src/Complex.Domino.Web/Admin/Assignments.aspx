@@ -2,18 +2,22 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>All assignments</h1>
-    <div class="toolbar">
-        <asp:HyperLink runat="server" ID="ToolbarCreate" Text="Create Assignment" />
-    </div>
+    <toolbar>
+        <asp:HyperLink runat="server" ID="ToolbarCreate">
+            <asp:Image runat="server" SkinID="NewAssignmentButton" />
+            <p>Create Assignment</p>
+        </asp:HyperLink>
+    </toolbar>
     <asp:ObjectDataSource runat="server" ID="assignmentDataSource" DataObjectTypeName="Complex.Domino.Lib.Assignment"
         OnObjectCreating="assignmentDataSource_ObjectCreating" TypeName="Complex.Domino.Lib.AssignmentFactory"
         SelectMethod="Find"
         SelectCountMethod="Count"
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
+        SortParameterName="orderBy"
         EnablePaging="true" />
     <domino:multiselectgridview id="assignmentList" runat="server" datasourceid="assignmentDataSource"
-        autogeneratecolumns="false" datakeynames="ID"
+        autogeneratecolumns="false" datakeynames="ID" cssclass="grid" allowsorting="true"
         allowpaging="true" pagersettings-mode="NumericFirstLast" pagesize="25">
         <Columns>
             <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
@@ -22,7 +26,8 @@
                 DataNavigateUrlFields="SemesterID"
                 DataNavigateUrlFormatString="semester.aspx?ID={0}"
                 DataTextField="SemesterName"
-                HeaderText="Semester"/>
+                HeaderText="Semester"
+                SortExpression="SemesterName"/>
             <asp:HyperLinkField
                 DataNavigateUrlFields="CourseID"
                 DataNavigateUrlFormatString="course.aspx?ID={0}"
@@ -32,7 +37,8 @@
                 DataNavigateUrlFields="ID"
                 DataNavigateUrlFormatString="assignment.aspx?ID={0}"
                 DataTextField="Name"
-                HeaderText="Name"/>
+                HeaderText="Name"
+                SortExpression="Name"/>
             <asp:BoundField HeaderText="Visible" DataField="Visible" />
             <asp:BoundField HeaderText="Enabled" DataField="Enabled" />
             <asp:BoundField HeaderText="Start date" DataField="StartDate" />
@@ -49,9 +55,12 @@
             <p>No assignments match the query.</p>
         </EmptyDataTemplate>
     </domino:multiselectgridview>
-    <div class="toolbar">
-        <asp:LinkButton runat="server" ID="Delete" Text="Delete" OnClick="Delete_Click" 
+    <toolbar>
+        <asp:LinkButton runat="server" ID="Delete" OnClick="Delete_Click"
             OnClientClick="return confirm('Are you sure you want to delete the selected items?')"
-            ValidationGroup="Delete" />
-    </div>
+            ValidationGroup="Delete">
+            <asp:Image runat="server" SkinID="DeleteButton" />
+            <p>Delete</p>
+        </asp:LinkButton>
+    </toolbar>
 </asp:Content>

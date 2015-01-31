@@ -1,4 +1,7 @@
 ﻿<asp:Image runat="server" SkinID="NewSubmissionButton" ImageUrl="Buttons/NewSubmission.png" />
+<asp:Image runat="server" SkinID="NewSemesterButton" ImageUrl="Buttons/NewSubmission.png" />
+<asp:Image runat="server" SkinID="NewCourseButton" ImageUrl="Buttons/NewSubmission.png" />
+<asp:Image runat="server" SkinID="NewAssignmentButton" ImageUrl="Buttons/NewSubmission.png" />
 <asp:Image runat="server" SkinID="NewUserButton" ImageUrl="Buttons/NewUser.png" />
 <asp:Image runat="server" SkinID="OkButton" ImageUrl="Buttons/OK.png" />
 <asp:Image runat="server" SkinID="CancelButton" ImageUrl="Buttons/Cancel.png" />

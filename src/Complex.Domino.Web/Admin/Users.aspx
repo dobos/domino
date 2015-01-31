@@ -33,7 +33,7 @@
                 DataNavigateUrlFormatString="User.aspx?ID={0}"
                 DataTextField="Name"
                 HeaderText="User name"
-                SortExpression="Name "/>
+                SortExpression="Name"/>
             <asp:BoundField HeaderText="Name" DataField="Description" SortExpression="Description" />
             <asp:BoundField HeaderText="E-mail" DataField="Email" SortExpression="Email" />
             <asp:BoundField HeaderText="Created" DataField="CreatedDate" SortExpression="CreatedDate" />

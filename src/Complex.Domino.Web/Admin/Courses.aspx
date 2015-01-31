@@ -2,18 +2,22 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>All courses</h1>
-    <div class="toolbar">
-        <asp:HyperLink runat="server" ID="ToolbarCreate" Text="Create Course" />
-    </div>
+    <toolbar>
+        <asp:HyperLink runat="server" ID="ToolbarCreate">
+            <asp:Image runat="server" SkinID="NewCourseButton" />
+            <p>Create Course</p>
+        </asp:HyperLink>
+    </toolbar>
     <asp:ObjectDataSource runat="server" ID="courseDataSource" DataObjectTypeName="Complex.Domino.Lib.Course"
         OnObjectCreating="courseDataSource_ObjectCreating" TypeName="Complex.Domino.Lib.CourseFactory"
         SelectMethod="Find"
         SelectCountMethod="Count"
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
+        SortParameterName="orderBy"
         EnablePaging="true" />
     <domino:multiselectgridview id="courseList" runat="server" datasourceid="courseDataSource"
-        autogeneratecolumns="false" datakeynames="ID"
+        autogeneratecolumns="false" datakeynames="ID" CssClass="grid" AllowSorting="true"
         allowpaging="true" pagersettings-mode="NumericFirstLast" pagesize="25">
         <Columns>
             <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
@@ -22,30 +26,39 @@
                 DataNavigateUrlFields="SemesterID"
                 DataNavigateUrlFormatString="courses.aspx?semesterID={0}"
                 DataTextField="SemesterName"
-                HeaderText="Semester"/>
+                HeaderText="Semester" />
             <asp:HyperLinkField
                 DataNavigateUrlFields="ID"
                 DataNavigateUrlFormatString="course.aspx?ID={0}"
                 DataTextField="Name"
-                HeaderText="Name"/>
-            <asp:BoundField HeaderText="Visible" DataField="Visible" />
-            <asp:BoundField HeaderText="Enabled" DataField="Enabled" />
+                HeaderText="Name"
+                SortExpression="Name"/>
+            <asp:BoundField HeaderText="Grade type" DataField="GradeType" />
             <asp:BoundField HeaderText="Start date" DataField="StartDate" />
             <asp:BoundField HeaderText="End date" DataField="EndDate" />
-            <asp:BoundField HeaderText="Grade type" DataField="GradeType" />
+            <asp:HyperLinkField
+                DataNavigateUrlFields="ID"
+                DataNavigateUrlFormatString="assignments.aspx?CourseID={0}"
+                Text="assignments"
+                HeaderText="Assignment"/>
             <asp:HyperLinkField
                 DataNavigateUrlFields="Url"
                 DataNavigateUrlFormatString="{0}"
                 Text="URL"
                 HeaderText="Url"/>
+            <asp:CheckBoxField HeaderText="Visible" DataField="Visible" />
+            <asp:CheckBoxField HeaderText="Enabled" DataField="Enabled" />
         </Columns>
         <EmptyDataTemplate>
-            <p>No semesters match the query.</p>
+            <p>No courses match the query.</p>
         </EmptyDataTemplate>
     </domino:multiselectgridview>
-    <div class="toolbar">
-        <asp:LinkButton runat="server" ID="Delete" Text="Delete" OnClick="Delete_Click" 
+    <toolbar>
+        <asp:LinkButton runat="server" ID="Delete" OnClick="Delete_Click" 
             OnClientClick="return confirm('Are you sure you want to delete the selected items?')"
-            ValidationGroup="Delete" />
-    </div>
+            ValidationGroup="Delete">
+            <asp:Image runat="server" SkinID="DeleteButton" />
+            <p>Delete</p>
+        </asp:LinkButton>
+    </toolbar>
 </asp:Content>
