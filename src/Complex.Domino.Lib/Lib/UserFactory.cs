@@ -13,6 +13,8 @@ namespace Complex.Domino.Lib
     {
         private string email;
         private string username;
+        private int courseID;
+        private UserRoleType role;
 
         public string Email
         {
@@ -26,6 +28,18 @@ namespace Complex.Domino.Lib
             set { username = value; }
         }
 
+        public int CourseID
+        {
+            get { return courseID; }
+            set { courseID = value; }
+        }
+
+        public UserRoleType Role
+        {
+            get { return role; }
+            set { role = value; }
+        }
+
         public UserFactory(Context context)
             : base(context)
         {
@@ -36,6 +50,8 @@ namespace Complex.Domino.Lib
         {
             this.email = null;
             this.username = null;
+            this.courseID = -1;
+            this.role = UserRoleType.Unknown;
         }
 
         public IEnumerable<User> Find(int max, int from, string orderBy)
@@ -45,7 +61,18 @@ namespace Complex.Domino.Lib
 
         protected override string GetTableQuery()
         {
-            return "[User]";
+            if (courseID > 0)
+            {
+                return @"
+(SELECT u.*, r.CourseID, r.UserRoleType
+FROM [User] u
+INNER JOIN [UserRole] r ON r.UserID = u.ID)
+";
+            }
+            else
+            {
+                return "[User]";
+            }
         }
 
         protected override void AppendWhereCriteria(StringBuilder sb, SqlCommand cmd)
@@ -64,6 +91,14 @@ namespace Complex.Domino.Lib
                 AppendWhereCriterion(sb, "Username LIKE @Username");
 
                 cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = '%' + username + '%';
+            }
+
+            if (courseID > 0 && role != UserRoleType.Unknown)
+            {
+                AppendWhereCriterion(sb, "CourseID LIKE @CourseID");
+
+                cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseID;
+                cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role;
             }
         }
 

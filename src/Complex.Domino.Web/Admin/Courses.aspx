@@ -34,8 +34,11 @@
                 HeaderText="Name"
                 SortExpression="Name"/>
             <asp:BoundField HeaderText="Grade type" DataField="GradeType" />
-            <asp:BoundField HeaderText="Start date" DataField="StartDate" />
-            <asp:BoundField HeaderText="End date" DataField="EndDate" />
+            <asp:HyperLinkField
+                DataNavigateUrlFields="ID"
+                DataNavigateUrlFormatString="users.aspx?CourseID={0}"
+                Text="students"
+                HeaderText="Students"/>
             <asp:HyperLinkField
                 DataNavigateUrlFields="ID"
                 DataNavigateUrlFormatString="assignments.aspx?CourseID={0}"

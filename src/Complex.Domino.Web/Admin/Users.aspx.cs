@@ -14,12 +14,24 @@ namespace Complex.Domino.Web.Admin
             return "~/Admin/Users.aspx";
         }
 
+        public static string GetUrl(int courseId)
+        {
+            return String.Format(
+                "~/Admin/Users.aspx?{0}={1}",
+                Constants.RequestCourseID, courseId);
+        }
+
         private Lib.UserFactory searchObject;
+
+        protected int CourseID
+        {
+            get { return int.Parse(Request.QueryString["courseId"] ?? "-1"); }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             ToolbarCreate.NavigateUrl = Web.Admin.User.GetUrl();
-            ToolbarImport.NavigateUrl = Web.Admin.ImportUsers.GetUrl();
+            ToolbarImport.NavigateUrl = Web.Admin.ImportUsers.GetUrl(CourseID);
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -32,9 +44,11 @@ namespace Complex.Domino.Web.Admin
 
         protected void userDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
         {
-            searchObject = new Lib.UserFactory(DatabaseContext);
-
-            // TODO: set search criteria here
+            searchObject = new Lib.UserFactory(DatabaseContext)
+            {
+                CourseID = this.CourseID,
+                Role = Lib.UserRoleType.Student,
+            };
 
             e.ObjectInstance = searchObject;
         }
