@@ -28,7 +28,8 @@ namespace Complex.Domino.Web.Controls
 
                 TeacherPanel.Visible = user.IsInRole(Lib.UserRoleType.Teacher);
 
-                TeacherCourses.NavigateUrl = Teacher.CourseList.GetUrl();
+                TeacherSemesters.NavigateUrl = Teacher.Semesters.GetUrl();
+                TeacherCourses.NavigateUrl = Teacher.Courses.GetUrl();
 
                 // --- Student menu
 

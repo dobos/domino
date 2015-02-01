@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to students.
+        /// </summary>
+        internal static string Students {
+            get {
+                return ResourceManager.GetString("Students", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to submissions.
         /// </summary>
         internal static string Submissions {

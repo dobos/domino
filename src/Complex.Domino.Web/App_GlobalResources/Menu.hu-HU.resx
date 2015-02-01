@@ -141,6 +141,9 @@
   <data name="StudentMenu" xml:space="preserve">
     <value>hallgató menü</value>
   </data>
+  <data name="Students" xml:space="preserve">
+    <value>hallgatók</value>
+  </data>
   <data name="Submissions" xml:space="preserve">
     <value>megoldások</value>
   </data>

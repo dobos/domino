@@ -16,11 +16,16 @@
 <asp:Panel ID="TeacherPanel" runat="server" Visible="false">
     <asp:Label runat="server" ID="TeacherMenu" Text="<%$ Resources:Menu, TeacherMenu %>" />
     <ul class="menu">
-        <li>semesters</li>
+        <li>
+            <asp:HyperLink runat="server" ID="TeacherSemesters" Text="<%$ Resources:Menu, Semesters %>" /></li>
         <li>
             <asp:HyperLink runat="server" ID="TeacherCourses" Text="<%$ Resources:Menu, Courses %>" /></li>
-        <li>students</li>
-        <li>submissions</li>
+        <li>
+            <asp:HyperLink runat="server" ID="TeacherStudents" Text="<%$ Resources:Menu, Students %>" /></li>
+        <li>
+            <asp:HyperLink runat="server" ID="TeacherAssignments" Text="<%$ Resources:Menu, Assignments %>" />
+        </li>
+        <li><asp:HyperLink runat="server" ID="TeacherSubmissions" Text="<%$ Resources:Menu, Submissions %>" /></li>
     </ul>
 </asp:Panel>
 

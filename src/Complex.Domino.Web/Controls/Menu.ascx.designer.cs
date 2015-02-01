@@ -85,6 +85,15 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.Label TeacherMenu;
         
         /// <summary>
+        /// TeacherSemesters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink TeacherSemesters;
+        
+        /// <summary>
         /// TeacherCourses control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,33 @@ namespace Complex.Domino.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink TeacherCourses;
+        
+        /// <summary>
+        /// TeacherStudents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink TeacherStudents;
+        
+        /// <summary>
+        /// TeacherAssignments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink TeacherAssignments;
+        
+        /// <summary>
+        /// TeacherSubmissions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink TeacherSubmissions;
         
         /// <summary>
         /// StudentPanel control.

@@ -7,15 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Teacher
 {
-    public partial class CourseList : PageBase
+    public partial class CourseList : UserControlBase
     {
-        public static string GetUrl()
-        {
-            return "~/Teacher/CourseList.aspx";
-        }
-
         private Lib.CourseFactory searchObject;
-
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
@@ -28,6 +22,10 @@ namespace Complex.Domino.Web.Teacher
         protected void courseDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
         {
             searchObject = new Lib.CourseFactory(DatabaseContext);
+
+            // Limit to user
+            searchObject.UserID = DatabaseContext.User.ID;
+            searchObject.RoleType = Lib.UserRoleType.Student;
 
             // Set search criteria
             if (Request.QueryString[Constants.RequestSemesterID] != null)

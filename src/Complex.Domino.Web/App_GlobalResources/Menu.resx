@@ -141,6 +141,9 @@
   <data name="StudentMenu" xml:space="preserve">
     <value>student menu</value>
   </data>
+  <data name="Students" xml:space="preserve">
+    <value>students</value>
+  </data>
   <data name="Submissions" xml:space="preserve">
     <value>submissions</value>
   </data>

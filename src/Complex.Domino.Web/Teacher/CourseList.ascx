@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CourseList.ascx.cs" Inherits="Complex.Domino.Web.Student.CourseList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CourseList.ascx.cs" Inherits="Complex.Domino.Web.Teacher.CourseList" %>
 
 <asp:ObjectDataSource runat="server" ID="courseDataSource" DataObjectTypeName="Complex.Domino.Lib.Course"
         OnObjectCreating="courseDataSource_ObjectCreating" TypeName="Complex.Domino.Lib.CourseFactory"
@@ -6,6 +6,7 @@
         SelectCountMethod="Count"
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
+        SortParameterName="orderBy"
         EnablePaging="true" />
     <asp:ListView ID="courseList" runat="server" DataSourceID="courseDataSource">
         <LayoutTemplate>

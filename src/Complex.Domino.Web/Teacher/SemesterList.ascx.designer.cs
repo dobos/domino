@@ -10,33 +10,24 @@
 namespace Complex.Domino.Web.Teacher {
     
     
-    public partial class CourseList {
+    public partial class SemesterList {
         
         /// <summary>
-        /// ToolbarCreate control.
+        /// semesterDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink ToolbarCreate;
+        protected global::System.Web.UI.WebControls.ObjectDataSource semesterDataSource;
         
         /// <summary>
-        /// courseDataSource control.
+        /// semesterList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource courseDataSource;
-        
-        /// <summary>
-        /// courseList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Complex.Domino.Web.Controls.MultiSelectGridView courseList;
+        protected global::System.Web.UI.WebControls.ListView semesterList;
     }
 }
