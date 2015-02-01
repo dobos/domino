@@ -38,6 +38,7 @@ namespace Complex.Domino.Web.Admin
             {
                 rolesPanel.Visible = true;
                 RefreshCourseList();
+                DeleteRole.OnClientClick = String.Format("return confirm('{0}');", Resources.Labels.ConfirmDeleteRole);
             }
         }
 
@@ -111,14 +112,13 @@ namespace Complex.Domino.Web.Admin
                 {
                     UserID = Item.ID,
                     CourseID = int.Parse(parts[0]),
-                    RoleType = (Lib.UserRoleType)int.Parse(parts[1]),
+                    RoleType = (Lib.UserRoleType)Enum.Parse(typeof(Lib.UserRoleType), parts[1]),
                 };
 
                 Item.DeleteRole(role);
             }
 
             Item.LoadRoles();
-
             userRoleList.DataBind();
         }
     }

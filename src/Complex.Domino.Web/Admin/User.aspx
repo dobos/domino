@@ -85,22 +85,28 @@
                             DataTextField="FullName" DataValueField="ID" ValidationGroup="AddRole">
                             <asp:ListItem Value="-1" Text="<%$ Resources:Labels, SelectCourse %>" />
                         </asp:DropDownList>
+                    </td>
+                    <td class="error">
                         <asp:RangeValidator runat="server" ControlToValidate="Course"
                             Display="Dynamic" MinimumValue="1" MaximumValue="2147483647" ValidationGroup="AddRole"
                             ErrorMessage="<%$ Resources:Errors, SelectItem %>" Type="Integer" />
                     </td>
+                </tr>
+                <tr>
+                    <td></td>
                     <td>
-                        <toolbar class="button" style="margin-left: 8px;">
+                        <toolbar class="right">
                             <asp:LinkButton runat="Server" ID="AddRole" OnClick="AddRole_Click" ValidationGroup="AddRole">
                                 <asp:Image runat="server" SkinID="OkButton" />
                                 <p><asp:Label runat="server" Text="<%$ Resources:Labels, AddRole %>" /></p>
                             </asp:LinkButton>
                         </toolbar>
                     </td>
+                    <td class="error"></td>
                 </tr>
             </table>
             <domino:multiselectgridview runat="server" id="userRoleList" autogeneratecolumns="false"
-                datakeynames="UserID, CourseID" cssclass="grid">
+                datakeynames="CourseID, RoleType" cssclass="grid">
                 <Columns>
                     <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
                     <asp:HyperLinkField
@@ -120,8 +126,7 @@
                 </EmptyDataTemplate>
             </domino:multiselectgridview>
             <toolbar class="right">
-                <asp:LinkButton runat="Server" ID="DeleteRole" ValidationGroup="DeleteRole" OnClick="DeleteRole_Click"
-                OnClientClick="return confirm('<%$ Resources:Labels, ConfirmDeleteRole %>')">
+                <asp:LinkButton runat="Server" ID="DeleteRole" ValidationGroup="DeleteRole" OnClick="DeleteRole_Click">
                     <asp:Image runat="server" SkinID="DeleteButton" />
                     <p><asp:Label runat="server" Text="<%$ Resources:Labels, DeleteRole %>" /></p>
                 </asp:LinkButton>
