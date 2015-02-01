@@ -119,7 +119,8 @@
                         DataNavigateUrlFormatString="Course.aspx?ID={0}"
                         DataTextField="CourseName"
                         HeaderText="<%$ Resources:Labels, Course %>"/>
-                    <asp:BoundField HeaderText="<%$ Resources:Labels, Role %>" DataField="RoleType"/>
+                    <domino:EnumField HeaderText="<%$ Resources:Labels, Role %>" DataField="RoleType"
+                        ResourceType="Resources.Roles" />
                 </Columns>
                 <EmptyDataTemplate>
                     <p><asp:Label runat="server" Text="<%$ Resources:Labels, NoRoles %>" /></p>

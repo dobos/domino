@@ -663,6 +663,7 @@
     </Compile>
     <Compile Include="Controls\FileBrowserEventArgs.cs" />
     <Compile Include="Controls\IntArrayConverter.cs" />
+    <Compile Include="Controls\EnumField.cs" />
     <Compile Include="Controls\Menu.ascx.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
