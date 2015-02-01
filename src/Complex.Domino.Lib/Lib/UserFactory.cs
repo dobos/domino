@@ -96,6 +96,7 @@ INNER JOIN [UserRole] r ON r.UserID = u.ID)
             if (courseID > 0 && role != UserRoleType.Unknown)
             {
                 AppendWhereCriterion(sb, "CourseID LIKE @CourseID");
+                AppendWhereCriterion(sb, "@UserRoleType = -1 OR UserRoleType = @UserRoleType");
 
                 cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseID;
                 cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role;
