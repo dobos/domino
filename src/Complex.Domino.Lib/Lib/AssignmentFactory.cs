@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Complex.Domino.Lib
 {
-    public class AssignmentFactory : EntityFactory
+    public class AssignmentFactory : EntityFactory<Assignment>
     {
         private int semesterID;
         private int courseID;
@@ -41,16 +41,6 @@ namespace Complex.Domino.Lib
             this.semesterID = -1;
             this.courseID = -1;
             this.userID = -1;
-        }
-
-        public IEnumerable<Assignment> Find()
-        {
-            return Find(-1, -1, null);
-        }
-
-        public IEnumerable<Assignment> Find(int max, int from, string orderBy)
-        {
-            return base.Find<Assignment>(max, from, orderBy);
         }
 
         protected override string GetTableQuery()

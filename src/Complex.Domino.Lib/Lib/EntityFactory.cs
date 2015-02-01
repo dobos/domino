@@ -8,7 +8,8 @@ using System.Data.SqlClient;
 
 namespace Complex.Domino.Lib
 {
-    public abstract class EntityFactory : ContextObject
+    public abstract class EntityFactory<T> : ContextObject
+        where T : IDatabaseTableObject, new()
     {
         private string name;
         private bool? enabled;
@@ -62,8 +63,12 @@ SELECT COUNT(*) FROM {0} AS entities
             }
         }
 
-        protected IEnumerable<T> Find<T>(int max, int from, string orderBy)
-            where T : IDatabaseTableObject, new()
+        public IEnumerable<T> Find()
+        {
+            return Find(-1, -1, null);
+        }
+
+        public IEnumerable<T> Find(int max, int from, string orderBy)
         {
             using (var cmd = Context.CreateCommand())
             {

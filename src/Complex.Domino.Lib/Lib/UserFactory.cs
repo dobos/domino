@@ -9,11 +9,11 @@ using System.IO;
 
 namespace Complex.Domino.Lib
 {
-    public class UserFactory : EntityFactory
+    public class UserFactory : EntityFactory<User>
     {
         private string email;
         private string username;
-        private int courseID;
+        private int courseId;
         private UserRoleType role;
 
         public string Email
@@ -30,8 +30,8 @@ namespace Complex.Domino.Lib
 
         public int CourseID
         {
-            get { return courseID; }
-            set { courseID = value; }
+            get { return courseId; }
+            set { courseId = value; }
         }
 
         public UserRoleType Role
@@ -50,18 +50,13 @@ namespace Complex.Domino.Lib
         {
             this.email = null;
             this.username = null;
-            this.courseID = -1;
+            this.courseId = -1;
             this.role = UserRoleType.Unknown;
-        }
-
-        public IEnumerable<User> Find(int max, int from, string orderBy)
-        {
-            return base.Find<User>(max, from, orderBy);
         }
 
         protected override string GetTableQuery()
         {
-            if (courseID > 0)
+            if (courseId > 0)
             {
                 return @"
 (SELECT u.*, r.CourseID, r.UserRoleType
@@ -83,22 +78,22 @@ INNER JOIN [UserRole] r ON r.UserID = u.ID)
             {
                 AppendWhereCriterion(sb, "Email LIKE @Email");
 
-                cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = '%' + email + '%';
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
             }
 
             if (username != null)
             {
-                AppendWhereCriterion(sb, "Username LIKE @Username");
+                AppendWhereCriterion(sb, "Name LIKE @Username");
 
-                cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = '%' + username + '%';
+                cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
             }
 
-            if (courseID > 0 && role != UserRoleType.Unknown)
+            if (courseId > 0 && role != UserRoleType.Unknown)
             {
                 AppendWhereCriterion(sb, "CourseID LIKE @CourseID");
                 AppendWhereCriterion(sb, "@UserRoleType = -1 OR UserRoleType = @UserRoleType");
 
-                cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseID;
+                cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseId;
                 cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role;
             }
         }
