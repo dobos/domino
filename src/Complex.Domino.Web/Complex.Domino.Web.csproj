@@ -129,6 +129,10 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Roles.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\Roles.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Roles.hu-HU.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
     <Content Include="Controls\EntityForm.ascx" />
     <Content Include="Controls\FileBrowser.ascx" />
@@ -542,6 +546,11 @@
     </Compile>
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Roles.hu-HU.designer.cs">
+      <DependentUpon>Roles.hu-HU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="App_GlobalResources\Grades.hu-HU.designer.cs">
       <DependentUpon>Grades.hu-HU.resx</DependentUpon>
