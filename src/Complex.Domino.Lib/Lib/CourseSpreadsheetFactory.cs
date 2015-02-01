@@ -19,9 +19,37 @@ namespace Complex.Domino.Lib
         private Dictionary<int, int> assignmentIds;
         private List<Submission>[][] submissions;
 
+        public int CourseID
+        {
+            get { return courseId; }
+            set { courseId = value; }
+        }
+
+        public int AssignmentID
+        {
+            get { return assignmentId; }
+            set { assignmentId = value; }
+        }
+
+        public List<User> Students
+        {
+            get { return students; }
+        }
+
+        public List<Assignment> Assignments
+        {
+            get { return assignments; }
+        }
+
+        public List<Submission>[][] Submissions
+        {
+            get { return submissions; }
+        }
+
         public CourseSpreadsheetFactory(Context context)
             : base(context)
         {
+            InitializeMembers();
         }
 
         private void InitializeMembers()
@@ -34,7 +62,7 @@ namespace Complex.Domino.Lib
             this.submissions = null;
         }
 
-        private IEnumerable<User> FindStudents(int max, int from, string orderBy)
+        public void FindStudents(int max, int from, string orderBy)
         {
             var uf = new UserFactory(Context)
             {
@@ -51,11 +79,9 @@ namespace Complex.Domino.Lib
             {
                 studentIds.Add(students[i].ID, i);
             }
-
-            return students;
         }
 
-        private void FindAssignments()
+        public void FindAssignments()
         {
             if (assignmentId > 0)
             {
@@ -83,23 +109,21 @@ namespace Complex.Domino.Lib
             }
         }
 
-        private void FindSubmissions(int max, int from, string orderBy)
+        public void FindSubmissions(int max, int from, string orderBy)
         {
             var sql = @"
-DECLARE @CourseID int = 1;
-
 WITH u AS
 (
-	SELECT u.ID, ROW_NUMBER() OVER(ORDER BY u.Name) rn
+	SELECT u.*, ROW_NUMBER() OVER(ORDER BY u.Name) rn
 	FROM [User] u
 	INNER JOIN [UserRole] r ON r.UserID = u.ID
 	WHERE r.CourseID = @CourseID AND r.UserRoleType = 3	-- student of the course
 ),
 a AS
 (
-	SELECT a.ID, ROW_NUMBER() OVER(ORDER BY a.Name) rn
+	SELECT a.*, ROW_NUMBER() OVER(ORDER BY a.Name) rn
 	FROM [Assignment] a
-	WHERE CourseID = @CourseID AND (@AssigmentID = -1 OR ID = @AssignmentID)
+	WHERE CourseID = @CourseID AND (@AssignmentID = -1 OR ID = @AssignmentID)
 ),
 s AS
 (
@@ -107,10 +131,17 @@ s AS
 	FROM [Submission] s
 	WHERE TeacherID IS NULL		-- only student submissions
 )
-SELECT s.*
+SELECT s.*,
+    a.Name AssignmentName, a.Description AssignmentDescription,
+    c.ID CourseID, c.Name CourseName, c.Description CourseDescription,
+    r.ID SemesterID, r.Name SemesterName, r.Description SemesterDescription,
+    u.Name StudentName, teacher.Name TeacherName
 FROM (u CROSS JOIN a)
 INNER JOIN s ON s.StudentID = u.ID AND s.AssignmentID = a.ID
-WHERE u.rn BETWEEN @from AND @to
+INNER JOIN [Course] c ON c.ID = a.CourseID
+INNER JOIN [Semester] r ON r.ID = c.SemesterID
+LEFT OUTER JOIN [User] teacher ON teacher.ID = s.TeacherID
+--WHERE u.rn BETWEEN @from AND @to
 ORDER BY u.rn, a.rn, s.rn
 ";
 
