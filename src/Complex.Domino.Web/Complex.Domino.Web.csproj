@@ -469,7 +469,7 @@
     <Content Include="Teacher\Courses.aspx" />
     <Content Include="Teacher\SemesterList.ascx" />
     <Content Include="Teacher\Semesters.aspx" />
-    <Content Include="Teacher\Submissions.aspx" />
+    <Content Include="Teacher\Spreadsheet.aspx" />
     <Content Include="Teacher\Teacher.master" />
     <Content Include="Teacher\Web.config" />
     <Content Include="Web.config" />
@@ -771,12 +771,12 @@
     <Compile Include="Teacher\Semesters.aspx.designer.cs">
       <DependentUpon>Semesters.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\Submissions.aspx.cs">
-      <DependentUpon>Submissions.aspx</DependentUpon>
+    <Compile Include="Teacher\Spreadsheet.aspx.cs">
+      <DependentUpon>Spreadsheet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Teacher\Submissions.aspx.designer.cs">
-      <DependentUpon>Submissions.aspx</DependentUpon>
+    <Compile Include="Teacher\Spreadsheet.aspx.designer.cs">
+      <DependentUpon>Spreadsheet.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserControlBase.cs">
       <SubType>ASPXCodeBehind</SubType>

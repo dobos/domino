@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Complex.Domino.Lib
 {
-    public class CourseSpreadsheetFactory : ContextObject
+    public class SpreadsheetFactory : ContextObject
     {
         private int courseId;
         private int assignmentId;
@@ -46,7 +46,7 @@ namespace Complex.Domino.Lib
             get { return submissions; }
         }
 
-        public CourseSpreadsheetFactory(Context context)
+        public SpreadsheetFactory(Context context)
             : base(context)
         {
             InitializeMembers();

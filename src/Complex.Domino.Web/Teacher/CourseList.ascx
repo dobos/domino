@@ -19,7 +19,7 @@
                 <p><%# Eval("SemesterDescription") %> |
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Course.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources: Labels, ModifyCourse %>" /> |
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Assignments.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Assignments %>" /> |
-                    <asp:HyperLink runat="server" NavigateUrl='' Text="<%$ Resources:Labels, Submissions %>" />
+                    <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Spreadsheet.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Submissions %>" />
                 </p>
             </asp:HyperLink>
         </ItemTemplate>

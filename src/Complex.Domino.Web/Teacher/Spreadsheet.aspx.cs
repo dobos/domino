@@ -8,7 +8,7 @@ using System.Web.UI.HtmlControls;
 
 namespace Complex.Domino.Web.Teacher
 {
-    public partial class Submissions : PageBase
+    public partial class Spreadsheet : PageBase
     {
         public static string GetUrl(int courseId)
         {
@@ -42,7 +42,7 @@ namespace Complex.Domino.Web.Teacher
 
         private void RefreshForm()
         {
-            var csf = new Lib.CourseSpreadsheetFactory(DatabaseContext)
+            var csf = new Lib.SpreadsheetFactory(DatabaseContext)
             {
                 CourseID = this.CourseID,
             };

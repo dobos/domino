@@ -10,7 +10,7 @@
 namespace Complex.Domino.Web.Teacher {
     
     
-    public partial class Submissions {
+    public partial class Spreadsheet {
         
         /// <summary>
         /// tablePlaceholder control.

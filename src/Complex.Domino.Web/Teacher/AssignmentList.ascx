@@ -20,7 +20,7 @@
                 <asp:Label runat="server" ID="semester" Text='<%# Eval("SemesterName") %>' /> |
                 <asp:Label runat="server" ID="course" Text='<%# Eval("CourseName") %>' /> |
                 <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Assignment.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, ModifyAssignment %>" />
-                <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Submissions.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Submissions %>" />
+                <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Spreadsheet.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Submissions %>" />
             </p>
         </div>
     </ItemTemplate>
