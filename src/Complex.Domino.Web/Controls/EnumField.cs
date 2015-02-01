@@ -41,12 +41,7 @@ namespace Complex.Domino.Web.Controls
 
                 if (type != null)
                 {
-                    var prop = type.GetProperty(value, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
-
-                    if (prop != null)
-                    {
-                        localized = (string)prop.GetValue(null);
-                    }
+                    localized = Util.Enum.ToLocalized(type, dataValue);
                 }
             }
 

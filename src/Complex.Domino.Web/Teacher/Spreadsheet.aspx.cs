@@ -17,7 +17,7 @@ namespace Complex.Domino.Web.Teacher
 
         public static string GetUrl(int courseId, int assignmentId)
         {
-            var url = "~/Teacher/Submissions.aspx";
+            var url = "~/Teacher/Spreadsheet.aspx";
             url += String.Format("?{0}={1}", Constants.RequestCourseID, courseId);
 
             if (assignmentId > 0)
@@ -42,65 +42,160 @@ namespace Complex.Domino.Web.Teacher
 
         private void RefreshForm()
         {
-            var csf = new Lib.SpreadsheetFactory(DatabaseContext)
+            var sf = new Lib.SpreadsheetFactory(DatabaseContext)
             {
                 CourseID = this.CourseID,
             };
 
-            csf.FindStudents(-1, -1, "Name");
-            csf.FindAssignments();
-            csf.FindSubmissions(-1, -1, "Name");
 
-            HtmlTableRow tr;
-            HtmlTableCell td;
+            // TODO: move these into a single function on the factory class
+            sf.FindStudents(-1, -1, "Name");
+            sf.FindAssignments();
+            sf.FindSubmissions(-1, -1, "Name");
 
             table = new HtmlTable();
+            table.Attributes.Add("class", "spreadsheet");
 
-            // Header line
-            tr = new HtmlTableRow();
+            table.Rows.Add(GenerateHeaderRow1(sf));
+            table.Rows.Add(GenerateHeaderRow2(sf));
 
-            // -- corner
-            td = new HtmlTableCell();
-            tr.Cells.Add(td);
-
-            for (int ai = 0; ai < csf.Assignments.Count; ai++)
+            for (int si = 0; si < sf.Students.Count; si++)
             {
-                td = new HtmlTableCell();
-                td.InnerText = csf.Assignments[ai].Name;
-                tr.Cells.Add(td);
-            }
-
-            table.Rows.Add(tr);
-
-            // Data lines
-
-            for (int si = 0; si < csf.Students.Count; si++)
-            {
-                tr = new HtmlTableRow();
-
-                // User name
-                td = new HtmlTableCell()
-                {
-                    InnerText = csf.Students[si].Name,
-                };
-                tr.Cells.Add(td);
-
-                for (int ai = 0; ai < csf.Assignments.Count; ai++)
-                {
-                    td = new HtmlTableCell();
-
-                    if (csf.Submissions[si][ai] != null)
-                    {
-                        td.InnerText = csf.Submissions[si][ai].Count.ToString();
-                    }
-
-                    tr.Cells.Add(td);
-                }
-
-                table.Rows.Add(tr);
+                table.Rows.Add(GenerateStudentRow(sf, si));
             }
 
             tablePlaceholder.Controls.Add(table);
+        }
+
+        private HtmlTableRow GenerateHeaderRow1(Lib.SpreadsheetFactory sf)
+        {
+            HtmlTableRow tr;
+            HtmlTableCell td;
+
+            tr = new HtmlTableRow();
+
+            // -- corner
+            td = new HtmlTableCell()
+            {
+                ColSpan = 2
+            };
+            tr.Cells.Add(td);
+
+            for (int ai = 0; ai < sf.Assignments.Count; ai++)
+            {
+                td = new HtmlTableCell()
+                {
+                    ColSpan = 3,
+                    InnerText = sf.Assignments[ai].Name
+                };
+
+                tr.Cells.Add(td);
+            }
+
+            return tr;
+        }
+
+        private HtmlTableRow GenerateHeaderRow2(Lib.SpreadsheetFactory sf)
+        {
+            HtmlTableRow tr;
+            HtmlTableCell td;
+
+            tr = new HtmlTableRow();
+
+            td = new HtmlTableCell();
+            td.InnerText = Resources.Labels.UserName;
+            tr.Cells.Add(td);
+
+            td = new HtmlTableCell();
+            td.InnerText = Resources.Labels.Name;
+            tr.Cells.Add(td);
+
+            for (int ai = 0; ai < sf.Assignments.Count; ai++)
+            {
+                td = new HtmlTableCell();
+                td.InnerText = Resources.Labels.First.ToLower();
+                tr.Cells.Add(td);
+
+                td = new HtmlTableCell();
+                td.InnerText = Resources.Labels.Last.ToLower();
+                tr.Cells.Add(td);
+
+                td = new HtmlTableCell();
+                td.InnerText = Util.Enum.ToLocalized(typeof(Resources.Grades), sf.Assignments[ai].GradeType).ToLower();
+                tr.Cells.Add(td);
+            }
+
+            return tr;
+        }
+
+        private HtmlTableRow GenerateStudentRow(Lib.SpreadsheetFactory sf, int si)
+        {
+            HtmlTableRow tr;
+            HtmlTableCell td;
+
+            tr = new HtmlTableRow();
+
+
+            // User name
+            td = new HtmlTableCell();
+            td.InnerText = sf.Students[si].Name;
+            td.Attributes.Add("class", "name");
+            tr.Cells.Add(td);
+
+            // Name
+            td = new HtmlTableCell();
+            td.InnerText = sf.Students[si].Description;
+            td.Attributes.Add("class", "desc");
+            tr.Cells.Add(td);
+
+            for (int ai = 0; ai < sf.Assignments.Count; ai++)
+            {
+                var tds = GenerateSubmissionCells(sf, si, ai);
+
+                for (int i = 0; i < tds.Length; i++)
+                {
+                    tr.Cells.Add(tds[i]);
+                }
+            }
+
+            return tr;
+        }
+
+        private HtmlTableCell[] GenerateSubmissionCells(Lib.SpreadsheetFactory sf, int si, int ai)
+        {
+            var td = new HtmlTableCell[3];
+
+            for (int i = 0; i < td.Length; i ++)
+            {
+                td[i] = new HtmlTableCell();
+            }
+
+            var ss = sf.Submissions[si][ai];
+
+            if (ss != null)
+            {
+                if (ss.Count > 0)
+                {
+                    var s = ss[0];                  // First submission
+
+                    td[0].InnerText = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat);
+                }
+
+                if (ss.Count > 1)
+                {
+                    var s = ss[ss.Count - 1];       // Last submission
+
+                    td[1].InnerText = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat);
+                }
+            }
+
+            // Set CSS
+
+            td[0].Attributes.Add("class", "item");
+            td[1].Attributes.Add("class", "item");
+            td[2].Attributes.Add("class", "item");
+
+            return td;
         }
     }
 }

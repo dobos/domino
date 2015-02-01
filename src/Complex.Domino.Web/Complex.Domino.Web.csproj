@@ -80,6 +80,7 @@
     <Content Include="App_Themes\Basic\Images\Domino.png" />
     <Content Include="App_Themes\Basic\layout.css" />
     <Content Include="App_Themes\Basic\menu.css" />
+    <Content Include="App_Themes\Basic\spreadsheet.css" />
     <Content Include="App_Themes\Basic\toolbar.css" />
     <Content Include="Auth\ChangePassword.aspx" />
     <Content Include="Auth\ResetPassword.aspx" />
@@ -133,6 +134,14 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Roles.hu-HU.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\DateTime.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>DateTime.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\DateTime.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>DateTime.hu-HU.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
     <Content Include="Controls\EntityForm.ascx" />
     <Content Include="Controls\FileBrowser.ascx" />
@@ -149,10 +158,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Labels.Designer.cs</LastGenOutput>
     </Content>
-    <EmbeddedResource Include="Util\DateTimeStrings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DateTimeStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <Resource Include="Resources\ResetPasswordEmail.txt" />
     <None Include="Resources\NewSubmissionIntro.txt" />
     <None Include="Resources\NewSubmissionIntro.hu-HU.txt" />
@@ -552,6 +557,16 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\DateTime.hu-HU.designer.cs">
+      <DependentUpon>DateTime.hu-HU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\DateTime.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateTime.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Roles.hu-HU.designer.cs">
       <DependentUpon>Roles.hu-HU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -882,12 +897,8 @@
       <DependentUpon>Teacher.master</DependentUpon>
     </Compile>
     <Compile Include="Util\DateTime.cs" />
-    <Compile Include="Util\DateTimeStrings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DateTimeStrings.resx</DependentUpon>
-    </Compile>
     <Compile Include="Util\Email.cs" />
+    <Compile Include="Util\Enum.cs" />
     <Compile Include="Util\Url.cs" />
   </ItemGroup>
   <ItemGroup>

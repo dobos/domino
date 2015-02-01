@@ -406,4 +406,10 @@
   <data name="UserListFile" xml:space="preserve">
     <value>User list file</value>
   </data>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
 </root>

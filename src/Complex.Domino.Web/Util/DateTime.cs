@@ -17,15 +17,15 @@ namespace Complex.Domino.Web.Util
 
             if (value.Date == today)
             {
-                date = DateTimeStrings.Today;
+                date = Resources.DateTime.Today;
             }
             else if (value.Date.AddDays(1) == today)
             {
-                date = DateTimeStrings.Yesterday;
+                date = Resources.DateTime.Yesterday;
             }
             else if (value.Date.AddDays(-1) == today)
             {
-                date = DateTimeStrings.Tomorrow;
+                date = Resources.DateTime.Tomorrow;
             }
             else
             {

@@ -1,0 +1,38 @@
+﻿table.spreadsheet {
+
+}
+
+table.spreadsheet tr {
+    background-color: #FFFFFF;
+}
+
+table.spreadsheet tr:hover {
+    background-color: #EEEECC;
+}
+
+table.spreadsheet td {
+    border-collapse: collapse;
+    border: 1px solid #C0C0C0;
+}
+
+table.spreadsheet td.new {
+    color: #FFFFFF;
+    border: 1px solid #FF0000;
+}
+
+table.spreadsheet td.late {
+    color: #FFFFFF;
+    border: 1px solid #FF0000;
+}
+
+table.spreadsheet td.name {
+    width: 120px;
+}
+
+table.spreadsheet td.desc {
+    width: 200px;
+}
+
+table.spreadsheet td.item {
+    width: 48px;
+}

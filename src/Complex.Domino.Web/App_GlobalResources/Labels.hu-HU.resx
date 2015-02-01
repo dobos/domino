@@ -406,4 +406,10 @@
   <data name="UserListFile" xml:space="preserve">
     <value>Felhasználólista</value>
   </data>
+  <data name="First" xml:space="preserve">
+    <value>Első</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Utolsó</value>
+  </data>
 </root>

@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Grade" xml:space="preserve">
-    <value>Jegy</value>
+  <data name="MonthDayFormat" xml:space="preserve">
+    <value>MM.dd.</value>
   </data>
-  <data name="Points" xml:space="preserve">
-    <value>Pont</value>
+  <data name="Today" xml:space="preserve">
+    <value>Ma</value>
   </data>
-  <data name="Signature" xml:space="preserve">
-    <value>Aláírás</value>
+  <data name="Tomorrow" xml:space="preserve">
+    <value>Holnap</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Tegnap</value>
   </data>
 </root>
