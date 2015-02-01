@@ -295,23 +295,15 @@ WHERE UserID = @UserID";
                 throw Error.InvalidUserID();
             }
 
+            var uf = new UserFactory(Context);
+            uf.AddRole(role);
+
             EnsureRolesLoaded();
 
-            // TODO: check duplicates
-
-            var sql = @"
-INSERT UserRole
-    (UserID, CourseID, UserRoleType)
-VALUES
-    (@UserID, @CourseID, @UserRoleType)";
-
-            using (var cmd = Context.CreateCommand(sql))
+            if (!roles.ContainsKey(role.CourseID))
             {
-                AppendRoleParamters(cmd, role);
-                Context.ExecuteCommandNonQuery(cmd);
+                roles.Add(role.CourseID, role);
             }
-
-            roles.Add(role.CourseID, role);
         }
 
         public void DeleteRole(UserRole role)
@@ -321,29 +313,18 @@ VALUES
                 throw Error.InvalidUserID();
             }
 
+            var uf = new UserFactory(Context);
+            uf.DeleteRole(role);
+
             EnsureRolesLoaded();
 
-            // TODO: check existence
-
-            var sql = @"
-DELETE UserRole
-WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType";
-
-            using (var cmd = Context.CreateCommand(sql))
+            if (roles.ContainsKey(role.CourseID))
             {
-                AppendRoleParamters(cmd, role);
-                Context.ExecuteCommandNonQuery(cmd);
+                roles.Remove(role.CourseID);
             }
-
-            roles.Remove(role.CourseID);
         }
 
-        private void AppendRoleParamters(SqlCommand cmd, UserRole role)
-        {
-            cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = ID;
-            cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = role.CourseID;
-            cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role.RoleType;
-        }
+        
 
         public bool IsInAdminRole()
         {

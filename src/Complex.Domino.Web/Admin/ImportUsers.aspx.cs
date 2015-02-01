@@ -16,6 +16,18 @@ namespace Complex.Domino.Web.Admin
             return "~/Admin/ImportUsers.aspx";
         }
 
+        public static string GetUrl(int courseId)
+        {
+            return String.Format(
+                "~/Admin/ImportUsers.aspx?{0}={1}",
+                Constants.RequestCourseID, courseId);
+        }
+
+        protected int CourseID
+        {
+            get { return int.Parse(Request.QueryString["courseId"] ?? "-1"); }
+        }
+
         protected List<Lib.User> Users
         {
             get { return (List<Lib.User>)ViewState["Users"]; }
@@ -30,7 +42,12 @@ namespace Complex.Domino.Web.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                RefreshCourseList();
 
+                Course.SelectedValue = CourseID.ToString();
+            }
         }
 
         protected void Ok_Click(object sender, EventArgs e)
@@ -44,29 +61,77 @@ namespace Complex.Domino.Web.Admin
                     var txt = new Lib.TextFileReader(reader);
 
                     List<Lib.User> users, duplicates;
-                    uf.Import(txt, out users, out duplicates);
+                    uf.Import(txt, out users);
+
+                    foreach (var user in users)
+                    {
+                        
+                    }
+                    uf.FindUserDuplicates(users, out duplicates);
 
                     Users = users;
                     Duplicates = duplicates;
 
                     importPanel.Visible = false;
                     listPanel.Visible = true;
+                    duplicatesPanel.Visible = true;
                 }
                 else
                 {
-                    // Save users
-                    foreach (var user in Users)
-                    {
-                        // Generate password hash
-                        user.SetPassword(user.ActivationCode);
-                        user.ActivationCode = String.Empty;
+                    SaveUsers();
 
-                        // Save user
-                        user.Context = DatabaseContext;
-                        user.Save();
+                    if (int.Parse(Course.SelectedValue) > 0)
+                    {
+                        AddStudentRoles();
                     }
 
                     Util.Url.RedirectTo(OriginalReferer);
+                }
+            }
+        }
+
+        private void RefreshCourseList()
+        {
+            var f = new Lib.CourseFactory(DatabaseContext);
+            Course.DataSource = f.Find().ToArray();
+            Course.DataBind();
+        }
+
+        private void SaveUsers()
+        {
+            foreach (var user in Users)
+            {
+                // Generate password hash
+                user.SetPassword(user.ActivationCode);
+                user.ActivationCode = String.Empty;
+
+                // Save user
+                user.Context = DatabaseContext;
+                user.Save();
+            }
+        }
+
+        private void AddStudentRoles()
+        {
+            var courseId = int.Parse( Course.SelectedValue);
+
+            if (courseId > 0)
+            {
+                var uf = new Lib.UserFactory(DatabaseContext);
+
+                foreach (var user in Users.Concat(Duplicates))
+                {
+                    var role = new Lib.UserRole()
+                    {
+                        CourseID = courseId,
+                        RoleType = Lib.UserRoleType.Student,
+                        UserID = user.ID
+                    };
+
+                    if (!uf.IsRoleDuplicate(role))
+                    {
+                        uf.AddRole(role);
+                    }
                 }
             }
         }

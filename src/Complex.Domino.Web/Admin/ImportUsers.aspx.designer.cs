@@ -49,6 +49,15 @@ namespace Complex.Domino.Web.Admin {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator FileRequiredValidator;
         
         /// <summary>
+        /// Course control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Course;
+        
+        /// <summary>
         /// listPanel control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace Complex.Domino.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView userList;
+        
+        /// <summary>
+        /// duplicatesPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel duplicatesPanel;
         
         /// <summary>
         /// duplicateList control.

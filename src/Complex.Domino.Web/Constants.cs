@@ -21,5 +21,7 @@ namespace Complex.Domino.Web
         public const string RequestSubmissionID = "SubmissionID";
         public const string RequestFile = "File";
         public const string RequestActivationCode = "Code";
+        public const string RequestMode = "Mode";
+        public const string RequestRole = "Role";
     }
 }

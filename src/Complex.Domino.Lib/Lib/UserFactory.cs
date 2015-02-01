@@ -124,24 +124,95 @@ WHERE ActivationCode = @ActivationCode";
             }
         }
 
-        public bool IsDuplicate(string name)
+        /// <summary>
+        /// Tests if the user name is a duplicate
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool IsUserDuplicate(string name, out User user)
         {
             string sql = @"
-SELECT ISNULL(COUNT(*), 0)
-FROM [User]
+SELECT *
+FROM [User] u
 WHERE Name = @Name";
 
             using (var cmd = Context.CreateCommand(sql))
             {
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
+
+                try
+                {
+                    user = new User(Context);
+                    Context.ExecuteCommandSingleObject(cmd, user);
+                    return true;
+                }
+                catch (NoResultsException)
+                {
+                    user = null;
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tests if the user is already in the role
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <param name="role"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool IsRoleDuplicate(UserRole role)
+        {
+            string sql = @"
+SELECT ISNULL(COUNT(*), 0)
+FROM [UserRole] r
+WHERE r.UserID = @UserID AND r.CourseID = @CourseID AND r.UserRoleType = @UserRoleType";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                AppendRoleParameters(cmd, role);
                 return Context.ExecuteCommandScalar(cmd) > 0;
             }
         }
 
-        public void Import(IEnumerable<string[]> lines, out List<User> users, out List<User> duplicates)
+        public void AddRole(UserRole role)
+        {
+            var sql = @"
+INSERT UserRole
+    (UserID, CourseID, UserRoleType)
+VALUES
+    (@UserID, @CourseID, @UserRoleType)";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                AppendRoleParameters(cmd, role);
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
+
+        public void DeleteRole(UserRole role)
+        {
+            var sql = @"
+DELETE UserRole
+WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                AppendRoleParameters(cmd, role);
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
+
+        private void AppendRoleParameters(SqlCommand cmd, UserRole role)
+        {
+            cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = role.UserID;
+            cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = role.CourseID;
+            cmd.Parameters.Add("@UserRoleType", SqlDbType.Int).Value = (int)role.RoleType;
+        }
+
+        public void Import(IEnumerable<string[]> lines, out List<User> users)
         {
             users = new List<User>();
-            duplicates = new List<User>();
 
             foreach (var line in lines)
             {
@@ -170,14 +241,55 @@ WHERE Name = @Name";
                         user.GeneratePassword();
                     }
 
-                    if (!IsDuplicate(user.Name))
-                    {
-                        users.Add(user);
-                    }
-                    else
-                    {
-                        duplicates.Add(user);
-                    }
+                    users.Add(user);
+                }
+            }
+        }
+
+        public void FindUserDuplicates(List<User> users, out List<User> duplicates)
+        {
+            duplicates = new List<User>();
+
+            int i = 0;
+            while (i < users.Count)
+            {
+                User user;
+
+                if (IsUserDuplicate(users[i].Name, out user))
+                {
+                    users.RemoveAt(i);
+                    duplicates.Add(user);
+                }
+                else
+                {
+                    i++;
+                }
+            }
+        }
+
+        public void FindRoleDuplicates(int courseId, UserRoleType roleType, List<User> users, out List<User> duplicates)
+        {
+            duplicates = new List<User>();
+
+            int i = 0;
+            while (i < users.Count)
+            {
+                var user = users[i];
+                var role = new UserRole()
+                {
+                    CourseID = courseId,
+                    RoleType = roleType,
+                    UserID = user.ID,
+                };
+
+                if (IsRoleDuplicate(role))
+                {
+                    users.RemoveAt(i);
+                    duplicates.Add(user);
+                }
+                else
+                {
+                    i++;
                 }
             }
         }
