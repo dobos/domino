@@ -388,4 +388,22 @@
   <data name="Users" xml:space="preserve">
     <value>Felhasználók</value>
   </data>
+  <data name="AddAsStudentTo" xml:space="preserve">
+    <value>Hallgatóként hozzáad</value>
+  </data>
+  <data name="DoNotAdd" xml:space="preserve">
+    <value>(nem ad hozzá)</value>
+  </data>
+  <data name="DuplicateUsers" xml:space="preserve">
+    <value>Már létező felhasználók</value>
+  </data>
+  <data name="ImportUsers" xml:space="preserve">
+    <value>Felhasználók importálása</value>
+  </data>
+  <data name="NewUsers" xml:space="preserve">
+    <value>Új felhasználók</value>
+  </data>
+  <data name="UserListFile" xml:space="preserve">
+    <value>Felhasználólista</value>
+  </data>
 </root>

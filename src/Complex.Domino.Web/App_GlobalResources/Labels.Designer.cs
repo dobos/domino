@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add as student to.
+        /// </summary>
+        internal static string AddAsStudentTo {
+            get {
+                return ResourceManager.GetString("AddAsStudentTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add role.
         /// </summary>
         internal static string AddRole {
@@ -232,6 +241,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (do not add).
+        /// </summary>
+        internal static string DoNotAdd {
+            get {
+                return ResourceManager.GetString("DoNotAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download.
         /// </summary>
         internal static string Download {
@@ -246,6 +264,15 @@ namespace Resources {
         internal static string DueDate {
             get {
                 return ResourceManager.GetString("DueDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate users.
+        /// </summary>
+        internal static string DuplicateUsers {
+            get {
+                return ResourceManager.GetString("DuplicateUsers", resourceCulture);
             }
         }
         
@@ -327,6 +354,15 @@ namespace Resources {
         internal static string Import {
             get {
                 return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import users.
+        /// </summary>
+        internal static string ImportUsers {
+            get {
+                return ResourceManager.GetString("ImportUsers", resourceCulture);
             }
         }
         
@@ -464,6 +500,15 @@ namespace Resources {
         internal static string NewUser {
             get {
                 return ResourceManager.GetString("NewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New users.
+        /// </summary>
+        internal static string NewUsers {
+            get {
+                return ResourceManager.GetString("NewUsers", resourceCulture);
             }
         }
         
@@ -788,6 +833,15 @@ namespace Resources {
         internal static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User list file.
+        /// </summary>
+        internal static string UserListFile {
+            get {
+                return ResourceManager.GetString("UserListFile", resourceCulture);
             }
         }
         

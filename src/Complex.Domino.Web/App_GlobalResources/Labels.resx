@@ -388,4 +388,22 @@
   <data name="Users" xml:space="preserve">
     <value>Users</value>
   </data>
+  <data name="AddAsStudentTo" xml:space="preserve">
+    <value>Add as student to</value>
+  </data>
+  <data name="DoNotAdd" xml:space="preserve">
+    <value>(do not add)</value>
+  </data>
+  <data name="DuplicateUsers" xml:space="preserve">
+    <value>Duplicate users</value>
+  </data>
+  <data name="ImportUsers" xml:space="preserve">
+    <value>Import users</value>
+  </data>
+  <data name="NewUsers" xml:space="preserve">
+    <value>New users</value>
+  </data>
+  <data name="UserListFile" xml:space="preserve">
+    <value>User list file</value>
+  </data>
 </root>

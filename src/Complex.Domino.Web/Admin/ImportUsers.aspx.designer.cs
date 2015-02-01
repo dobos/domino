@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Admin {
     public partial class ImportUsers {
         
         /// <summary>
+        /// TitleLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleLabel;
+        
+        /// <summary>
         /// importPanel control.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,13 @@ namespace Complex.Domino.Web.Admin {
         protected global::System.Web.UI.WebControls.GridView duplicateList;
         
         /// <summary>
-        /// OK control.
+        /// Ok control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton OK;
+        protected global::System.Web.UI.WebControls.LinkButton Ok;
         
         /// <summary>
         /// Cancel control.
