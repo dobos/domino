@@ -117,6 +117,18 @@
       <SubType>Designer</SubType>
       <LastGenOutput>EmailTemplates.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\Grades.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Grades.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Grades.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Grades.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Roles.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Roles.Designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
     <Content Include="Controls\EntityForm.ascx" />
     <Content Include="Controls\FileBrowser.ascx" />
@@ -529,6 +541,11 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Grades.hu-HU.designer.cs">
+      <DependentUpon>Grades.hu-HU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\EmailTemplates.hu-HU.designer.cs">
       <DependentUpon>EmailTemplates.hu-HU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -538,6 +555,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmailTemplates.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Grades.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Grades.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\Menu.hu-HU.designer.cs">
       <DependentUpon>Menu.hu-HU.resx</DependentUpon>
@@ -568,6 +590,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Roles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Roles.resx</DependentUpon>
     </Compile>
     <Compile Include="Auth\Auth.master.cs">
       <DependentUpon>Auth.master</DependentUpon>

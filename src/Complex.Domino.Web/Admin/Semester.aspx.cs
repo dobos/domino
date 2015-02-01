@@ -18,6 +18,8 @@ namespace Complex.Domino.Web.Admin
         {
             base.UpdateForm();
 
+            TitleLabel.Text = Item.IsExisting ? Resources.Labels.ModifySemester : Resources.Labels.NewSemester;
+
             StartDate.Text = Item.StartDate.ToString();
             EndDate.Text = Item.EndDate.ToString();
         }

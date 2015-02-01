@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Admin {
     public partial class Assignment {
         
         /// <summary>
+        /// TitleLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleLabel;
+        
+        /// <summary>
         /// SemesterLabel control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace Complex.Domino.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Course;
-        
-        /// <summary>
-        /// RangeValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
         
         /// <summary>
         /// StartDateLabel control.

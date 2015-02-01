@@ -117,22 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmationNoMatch" xml:space="preserve">
-    <value>no match</value>
+  <data name="Grade" xml:space="preserve">
+    <value>Osztályzat</value>
   </data>
-  <data name="InvalidFormat" xml:space="preserve">
-    <value>invalid format</value>
+  <data name="Points" xml:space="preserve">
+    <value>Pontok</value>
   </data>
-  <data name="InvalidPassword" xml:space="preserve">
-    <value>invalid password</value>
-  </data>
-  <data name="Required" xml:space="preserve">
-    <value>required</value>
-  </data>
-  <data name="SelectItem" xml:space="preserve">
-    <value>select an item</value>
-  </data>
-  <data name="UnknownEmail" xml:space="preserve">
-    <value>unknown e-mail</value>
+  <data name="Signature" xml:space="preserve">
+    <value>Aláírás</value>
   </data>
 </root>

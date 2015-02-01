@@ -280,4 +280,85 @@
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmation</value>
   </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="EndDateSoft" xml:space="preserve">
+    <value>End date (soft)</value>
+  </data>
+  <data name="GradeType" xml:space="preserve">
+    <value>Grade type</value>
+  </data>
+  <data name="GradeWeight" xml:space="preserve">
+    <value>Grade weight</value>
+  </data>
+  <data name="ModifyAssignment" xml:space="preserve">
+    <value>Modify assignment</value>
+  </data>
+  <data name="NewAssignment" xml:space="preserve">
+    <value>New assignment</value>
+  </data>
+  <data name="SelectCourse" xml:space="preserve">
+    <value>(select course)</value>
+  </data>
+  <data name="SelectGradeType" xml:space="preserve">
+    <value>(select grade type)</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="Visible" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="ModifyCourse" xml:space="preserve">
+    <value>Modify course</value>
+  </data>
+  <data name="NewCourse" xml:space="preserve">
+    <value>New course</value>
+  </data>
+  <data name="SelectSemester" xml:space="preserve">
+    <value>(select semester)</value>
+  </data>
+  <data name="AddRole" xml:space="preserve">
+    <value>Add role</value>
+  </data>
+  <data name="ConfirmDeleteRole" xml:space="preserve">
+    <value>Are you sure you want to revoke the selected roles?</value>
+  </data>
+  <data name="DeleteRole" xml:space="preserve">
+    <value>Delete role</value>
+  </data>
+  <data name="ModifySemester" xml:space="preserve">
+    <value>Modify semester</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modify user</value>
+  </data>
+  <data name="NewSemester" xml:space="preserve">
+    <value>New semester</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>New user</value>
+  </data>
+  <data name="NoRoles" xml:space="preserve">
+    <value>User has no roles yet.</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="SelectRole" xml:space="preserve">
+    <value>(select role)</value>
+  </data>
+  <data name="UserRoles" xml:space="preserve">
+    <value>User roles</value>
+  </data>
 </root>

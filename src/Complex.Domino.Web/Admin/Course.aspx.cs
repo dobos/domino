@@ -18,6 +18,8 @@ namespace Complex.Domino.Web.Admin
         {
             base.UpdateForm();
 
+            TitleLabel.Text = Item.IsExisting ? Resources.Labels.ModifyCourse : Resources.Labels.NewCourse;
+
             RefreshSemesterList();
 
             Semester.SelectedValue = Item.SemesterID.ToString();

@@ -129,6 +129,9 @@
   <data name="Required" xml:space="preserve">
     <value>hiányzó mező</value>
   </data>
+  <data name="SelectItem" xml:space="preserve">
+    <value>válassz egy elemet</value>
+  </data>
   <data name="UnknownEmail" xml:space="preserve">
     <value>ismeretlen e-mail</value>
   </data>

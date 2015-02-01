@@ -280,4 +280,85 @@
   <data name="Confirmation" xml:space="preserve">
     <value>Megerősítés</value>
   </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Vége dátum</value>
+  </data>
+  <data name="EndDateSoft" xml:space="preserve">
+    <value>Vége dátum (gyenge)</value>
+  </data>
+  <data name="GradeType" xml:space="preserve">
+    <value>Értékelés típusa</value>
+  </data>
+  <data name="GradeWeight" xml:space="preserve">
+    <value>Értékelés súlya</value>
+  </data>
+  <data name="ModifyAssignment" xml:space="preserve">
+    <value>Feladat módosítása</value>
+  </data>
+  <data name="NewAssignment" xml:space="preserve">
+    <value>Új feladat</value>
+  </data>
+  <data name="SelectCourse" xml:space="preserve">
+    <value>(válassz egy kurzust)</value>
+  </data>
+  <data name="SelectGradeType" xml:space="preserve">
+    <value>(válassz egy értékelést)</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Kezdő dátum</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Megjegyzések</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Leírás</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Módosítható</value>
+  </data>
+  <data name="Visible" xml:space="preserve">
+    <value>Látható</value>
+  </data>
+  <data name="ModifyCourse" xml:space="preserve">
+    <value>Kurzus módosítása</value>
+  </data>
+  <data name="NewCourse" xml:space="preserve">
+    <value>Új kurzus</value>
+  </data>
+  <data name="SelectSemester" xml:space="preserve">
+    <value>(válassz egy szemesztert)</value>
+  </data>
+  <data name="AddRole" xml:space="preserve">
+    <value>Szerepkör hozzádása</value>
+  </data>
+  <data name="ConfirmDeleteRole" xml:space="preserve">
+    <value>Biztos vagy benne, hogy törölni szeretnék a kiválasztott szerepköröket?</value>
+  </data>
+  <data name="DeleteRole" xml:space="preserve">
+    <value>Szerepkör törlése</value>
+  </data>
+  <data name="ModifySemester" xml:space="preserve">
+    <value>Szemeszter módosítása</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Felhasználó módosítása</value>
+  </data>
+  <data name="NewSemester" xml:space="preserve">
+    <value>Új szemeszter</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>Új felhasználó</value>
+  </data>
+  <data name="NoRoles" xml:space="preserve">
+    <value>Ehhez a felhasználóhoz még nem tartoznak szerepkörök.</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Szerepkör</value>
+  </data>
+  <data name="SelectRole" xml:space="preserve">
+    <value>(válassz egy szerepkört)</value>
+  </data>
+  <data name="UserRoles" xml:space="preserve">
+    <value>Szerepkörök</value>
+  </data>
 </root>

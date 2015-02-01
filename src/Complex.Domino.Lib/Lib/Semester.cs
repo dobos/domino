@@ -26,6 +26,11 @@ namespace Complex.Domino.Lib
             set { endDate = value; }
         }
 
+        public string FullName
+        {
+            get { return Name; }
+        }
+
         public Semester()
         {
             InitializeMembers();

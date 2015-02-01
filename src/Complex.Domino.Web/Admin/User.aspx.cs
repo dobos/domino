@@ -30,6 +30,8 @@ namespace Complex.Domino.Web.Admin
         {
             base.UpdateForm();
 
+            TitleLabel.Text = Item.IsExisting ? Resources.Labels.ModifyUser : Resources.Labels.NewUser;
+
             Email.Text = Item.Email;
 
             if (Item.IsExisting)

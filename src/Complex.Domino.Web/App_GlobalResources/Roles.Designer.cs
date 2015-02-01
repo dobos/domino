@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "11.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Errors {
+    internal class Roles {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Errors() {
+        internal Roles() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Errors", global::System.Reflection.Assembly.Load("App_GlobalResources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Roles", global::System.Reflection.Assembly.Load("App_GlobalResources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,29 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to no match.
+        ///   Looks up a localized string similar to Admin.
         /// </summary>
-        internal static string ConfirmationNoMatch {
+        internal static string Admin {
             get {
-                return ResourceManager.GetString("ConfirmationNoMatch", resourceCulture);
+                return ResourceManager.GetString("Admin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to invalid format.
+        ///   Looks up a localized string similar to Student.
         /// </summary>
-        internal static string InvalidFormat {
+        internal static string Student {
             get {
-                return ResourceManager.GetString("InvalidFormat", resourceCulture);
+                return ResourceManager.GetString("Student", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to invalid password.
+        ///   Looks up a localized string similar to Teacher.
         /// </summary>
-        internal static string InvalidPassword {
+        internal static string Teacher {
             get {
-                return ResourceManager.GetString("InvalidPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to required.
-        /// </summary>
-        internal static string Required {
-            get {
-                return ResourceManager.GetString("Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to select an item.
-        /// </summary>
-        internal static string SelectItem {
-            get {
-                return ResourceManager.GetString("SelectItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to unknown e-mail.
-        /// </summary>
-        internal static string UnknownEmail {
-            get {
-                return ResourceManager.GetString("UnknownEmail", resourceCulture);
+                return ResourceManager.GetString("Teacher", resourceCulture);
             }
         }
     }
