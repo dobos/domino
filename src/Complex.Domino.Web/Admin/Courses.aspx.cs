@@ -19,6 +19,7 @@ namespace Complex.Domino.Web.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             ToolbarCreate.NavigateUrl = Course.GetUrl();
+            Delete.OnClientClick = String.Format("return confirm('{0}');", Resources.Labels.ConfirmDeleteEntities);
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

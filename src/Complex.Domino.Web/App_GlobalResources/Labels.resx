@@ -117,11 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllAssignments" xml:space="preserve">
-    <value>Your assignments</value>
-  </data>
-  <data name="AllCourses" xml:space="preserve">
-    <value>Your courses</value>
+  <data name="Courses" xml:space="preserve">
+    <value>Courses</value>
   </data>
   <data name="Assignment" xml:space="preserve">
     <value>Assignment</value>
@@ -360,5 +357,35 @@
   </data>
   <data name="UserRoles" xml:space="preserve">
     <value>User roles</value>
+  </data>
+  <data name="ConfirmDeleteEntities" xml:space="preserve">
+    <value>Are you sure you want to delete the selected items?</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="GeneratePassword" xml:space="preserve">
+    <value>Generate password</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="NoCourses" xml:space="preserve">
+    <value>No courses match the query.</value>
+  </data>
+  <data name="NoSemesters" xml:space="preserve">
+    <value>No semesters match the query.</value>
+  </data>
+  <data name="NoUsers" xml:space="preserve">
+    <value>No users match the query.</value>
+  </data>
+  <data name="Semesters" xml:space="preserve">
+    <value>Semesters</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Students</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
   </data>
 </root>

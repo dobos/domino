@@ -117,11 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllAssignments" xml:space="preserve">
-    <value>A feladataid</value>
-  </data>
-  <data name="AllCourses" xml:space="preserve">
-    <value>A tantárgyaid</value>
+  <data name="Courses" xml:space="preserve">
+    <value>Kurzusok</value>
   </data>
   <data name="Assignment" xml:space="preserve">
     <value>Feladat</value>
@@ -239,7 +236,7 @@
     <value>Felhasználónév</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>E-mail cím:</value>
+    <value>E-mail cím</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Név</value>
@@ -281,10 +278,10 @@
     <value>Megerősítés</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>Vége dátum</value>
+    <value>Végdátum</value>
   </data>
   <data name="EndDateSoft" xml:space="preserve">
-    <value>Vége dátum (gyenge)</value>
+    <value>Végdátum (gyenge)</value>
   </data>
   <data name="GradeType" xml:space="preserve">
     <value>Értékelés típusa</value>
@@ -360,5 +357,35 @@
   </data>
   <data name="UserRoles" xml:space="preserve">
     <value>Szerepkörök</value>
+  </data>
+  <data name="ConfirmDeleteEntities" xml:space="preserve">
+    <value>Biztos vagy benne, hogy törölni szeretnék a kiválasztott elemeket?</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Létre hozva</value>
+  </data>
+  <data name="GeneratePassword" xml:space="preserve">
+    <value>Jelszógenerálás</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importálás</value>
+  </data>
+  <data name="NoCourses" xml:space="preserve">
+    <value>Nem találhatók a keresésnek megfelelő kurzusok.</value>
+  </data>
+  <data name="NoSemesters" xml:space="preserve">
+    <value>Nem találhatók a keresésnek megfelelő szemeszterek.</value>
+  </data>
+  <data name="NoUsers" xml:space="preserve">
+    <value>Nem találhatók a keresésnek megfelelő felhasználók.</value>
+  </data>
+  <data name="Semesters" xml:space="preserve">
+    <value>Szemeszterek</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Hallgatók</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Felhasználók</value>
   </data>
 </root>

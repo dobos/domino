@@ -70,24 +70,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your assignments.
-        /// </summary>
-        internal static string AllAssignments {
-            get {
-                return ResourceManager.GetString("AllAssignments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your courses.
-        /// </summary>
-        internal static string AllCourses {
-            get {
-                return ResourceManager.GetString("AllCourses", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Assignment.
         /// </summary>
         internal static string Assignment {
@@ -151,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the selected items?.
+        /// </summary>
+        internal static string ConfirmDeleteEntities {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteEntities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to revoke the selected roles?.
         /// </summary>
         internal static string ConfirmDeleteRole {
@@ -165,6 +156,24 @@ namespace Resources {
         internal static string Course {
             get {
                 return ResourceManager.GetString("Course", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Courses.
+        /// </summary>
+        internal static string Courses {
+            get {
+                return ResourceManager.GetString("Courses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        internal static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
             }
         }
         
@@ -277,6 +286,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate password.
+        /// </summary>
+        internal static string GeneratePassword {
+            get {
+                return ResourceManager.GetString("GeneratePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grade.
         /// </summary>
         internal static string Grade {
@@ -300,6 +318,15 @@ namespace Resources {
         internal static string GradeWeight {
             get {
                 return ResourceManager.GetString("GradeWeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import.
+        /// </summary>
+        internal static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
             }
         }
         
@@ -450,6 +477,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No courses match the query..
+        /// </summary>
+        internal static string NoCourses {
+            get {
+                return ResourceManager.GetString("NoCourses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No files have been uploaded so far..
         /// </summary>
         internal static string NoFiles {
@@ -464,6 +500,24 @@ namespace Resources {
         internal static string NoRoles {
             get {
                 return ResourceManager.GetString("NoRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No semesters match the query..
+        /// </summary>
+        internal static string NoSemesters {
+            get {
+                return ResourceManager.GetString("NoSemesters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No users match the query..
+        /// </summary>
+        internal static string NoUsers {
+            get {
+                return ResourceManager.GetString("NoUsers", resourceCulture);
             }
         }
         
@@ -594,6 +648,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Semesters.
+        /// </summary>
+        internal static string Semesters {
+            get {
+                return ResourceManager.GetString("Semesters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in.
         /// </summary>
         internal static string SignIn {
@@ -635,6 +698,15 @@ namespace Resources {
         internal static string StartDate {
             get {
                 return ResourceManager.GetString("StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Students.
+        /// </summary>
+        internal static string Students {
+            get {
+                return ResourceManager.GetString("Students", resourceCulture);
             }
         }
         
@@ -734,6 +806,15 @@ namespace Resources {
         internal static string UserRoles {
             get {
                 return ResourceManager.GetString("UserRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        internal static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

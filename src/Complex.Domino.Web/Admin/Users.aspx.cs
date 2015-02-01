@@ -32,6 +32,7 @@ namespace Complex.Domino.Web.Admin
         {
             ToolbarCreate.NavigateUrl = Web.Admin.User.GetUrl();
             ToolbarImport.NavigateUrl = Web.Admin.ImportUsers.GetUrl(CourseID);
+            Delete.OnClientClick = String.Format("return confirm('{0}');", Resources.Labels.ConfirmDeleteEntities);
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
