@@ -58,6 +58,12 @@ namespace Complex.Domino.Lib
 
         public IEnumerable<Submission> Find(int max, int from, string orderBy)
         {
+            // Default sort is by ID DESC
+            if (String.IsNullOrWhiteSpace(orderBy))
+            {
+                orderBy = "ID DESC";
+            }
+
             return base.Find<Submission>(max, from, orderBy);
         }
 
