@@ -4,6 +4,6 @@
 
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <h1><asp:Label runat="server" Text="<%$ Resources:Labels, AllCourses %>" /></h1>
+    <h1><asp:Label runat="server" Text="<%$ Resources:Labels, Courses %>" /></h1>
     <domino:courselist runat="server" id="CourseList" />
 </asp:Content>

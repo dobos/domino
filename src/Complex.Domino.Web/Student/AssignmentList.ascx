@@ -6,6 +6,7 @@
     SelectCountMethod="Count"
     StartRowIndexParameterName="from"
     MaximumRowsParameterName="max"
+    SortParameterName="orderBy"
     EnablePaging="true" />
 <asp:ListView runat="server" ID="assignmentList" DataSourceID="assignmentDataSource"
     OnItemCreated="assignmentList_OnItemCreated">

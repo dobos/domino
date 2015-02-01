@@ -6,6 +6,7 @@
         SelectCountMethod="Count"
         StartRowIndexParameterName="from"
         MaximumRowsParameterName="max"
+        SortParameterName="orderBy"
         EnablePaging="true" />
     <asp:ListView ID="courseList" runat="server" DataSourceID="courseDataSource">
         <LayoutTemplate>
