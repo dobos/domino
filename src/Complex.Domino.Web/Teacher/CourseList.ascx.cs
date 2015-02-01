@@ -25,7 +25,7 @@ namespace Complex.Domino.Web.Teacher
 
             // Limit to user
             searchObject.UserID = DatabaseContext.User.ID;
-            searchObject.RoleType = Lib.UserRoleType.Student;
+            searchObject.RoleType = Lib.UserRoleType.Teacher;
 
             // Set search criteria
             if (Request.QueryString[Constants.RequestSemesterID] != null)

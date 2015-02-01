@@ -13,11 +13,14 @@
             <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
         </LayoutTemplate>
         <ItemTemplate>
-            <asp:HyperLink runat="server" CssClass="fullbar" ID="AssignmentsLink"
-                NavigateUrl='<%# Complex.Domino.Web.Student.Course.GetUrl((int)Eval("ID")) %>'>
+            <div class="fullbar" ID="AssignmentsLink" />
                 <asp:Image runat="server" SkinID="CourseIcon" />
                 <h1><%# Eval("Description") %></h1>
-                <p><%# Eval("SemesterDescription") %></p>
+                <p><%# Eval("SemesterDescription") %> |
+                    <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Course.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources: Labels, ModifyCourse %>" /> |
+                    <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Assignments.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Assignments %>" /> |
+                    <asp:HyperLink runat="server" NavigateUrl='' Text="<%$ Resources:Labels, Submissions %>" />
+                </p>
             </asp:HyperLink>
         </ItemTemplate>
     </asp:ListView>

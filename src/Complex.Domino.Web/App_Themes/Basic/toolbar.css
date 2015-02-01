@@ -57,7 +57,7 @@
         margin-bottom: 0px;
     }
 
-a.fullbar {
+.fullbar {
     display: block;
     width: 632px;
     height: 64px;
@@ -70,11 +70,11 @@ a.fullbar {
     text-decoration: none;
 }
 
-    a.fullbar:hover {
+    .fullbar:hover {
         background-color: #EEEECC;
     }
 
-    a.fullbar img {
+    .fullbar img {
         float: left;
         width: 48px;
         height: 48px;
@@ -83,14 +83,14 @@ a.fullbar {
         margin-right: 32px;
     }
 
-    a.fullbar h1 {
+    .fullbar h1 {
         font-size: 16px;
         font-weight: bold;
         margin-top: 10px;
         margin-bottom: 0px;
     }
 
-    a.fullbar p {
+    .fullbar p {
         font-size: 14px;
         margin: 0px;
     }
