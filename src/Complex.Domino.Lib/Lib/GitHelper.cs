@@ -10,7 +10,8 @@ namespace Complex.Domino.Lib
     public class GitHelper
     {
         private string sessionGuid;
-        private User user;
+        private User author;
+        private User student;
         private Assignment assignment;
         private Submission submission;
 
@@ -20,10 +21,22 @@ namespace Complex.Domino.Lib
             set { sessionGuid = value; }
         }
 
-        public User User
+        /// <summary>
+        /// Gets or sets the user authoring the submission
+        /// </summary>
+        public User Author
         {
-            get { return user; }
-            set { user = value; }
+            get { return author; }
+            set { author = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the user who owns the submission
+        /// </summary>
+        public User Student
+        {
+            get { return student; }
+            set { student = value; }
         }
 
         public Assignment Assignment
@@ -46,7 +59,8 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.sessionGuid = null;
-            this.user = null;
+            this.author = null;
+            this.student = null;
             this.assignment = null;
             this.submission = null;
         }
@@ -57,8 +71,8 @@ namespace Complex.Domino.Lib
             {
                 Author = new Git.User()
                 {
-                    Name = user.Name,
-                    Email = String.Format(user.Email)
+                    Name = author.Name,
+                    Email = String.Format(author.Email)
                 }
             };
 
@@ -67,27 +81,36 @@ namespace Complex.Domino.Lib
 
         public string GetRepoPath()
         {
+            // Take path from the name of the owner
+
             return Path.Combine(
                 DominoConfiguration.Instance.RepositoriesPath,
-                user.Name);
+                student.Name);
         }
 
         public string GetScratchPath()
         {
+            // Take path from the name of the owner
+
             return Path.Combine(
                 DominoConfiguration.Instance.ScratchPath,
                 sessionGuid,
-                user.Name);
+                student.Name);
         }
 
         public string GetAssignmentPath()
         {
-            return Path.Combine(GetScratchPath(), GetAssignmentPrefixPath());
+            return Path.Combine(
+                GetScratchPath(),
+                assignment.SemesterName,
+                assignment.CourseName,
+                assignment.Name);
         }
 
         public string GetAssignmentPrefixPath()
         {
             return Path.Combine(
+                student.Name,
                 assignment.SemesterName,
                 assignment.CourseName,
                 assignment.Name);
@@ -160,8 +183,8 @@ namespace Complex.Domino.Lib
 
             // Set variables required for commit
             // These values will be overwritten at commit
-            git.Config("user.email", user.Email, false);
-            git.Config("user.name", user.Name, false);
+            git.Config("user.email", author.Email, false);
+            git.Config("user.name", author.Name, false);
         }
 
         public void CheckoutScratchTip()
@@ -208,9 +231,11 @@ namespace Complex.Domino.Lib
                 var scratchdir = GetScratchPath();
                 var git = CreateGit(scratchdir);
 
+                // TODO: take text from resource
+
                 File.WriteAllText(
                     Path.Combine(scratchdir, "README.md"),
-                    String.Format("Personal Domino repository of {0}.", user.Name));
+                    String.Format("Personal Domino repository of {0}.", author.Name));
 
                 git.Add("README.md", false);
                 git.Commit("Initialized personal Domino repo", null, false);

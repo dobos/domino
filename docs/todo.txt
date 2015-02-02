@@ -12,6 +12,7 @@ DOMINO TODO
    sing in cookie time-out
    highlight required fields
    error column css
+   git exception trim trailing newline
 
    Welcome szöveg
    

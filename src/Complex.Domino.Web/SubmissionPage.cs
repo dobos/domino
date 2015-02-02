@@ -20,36 +20,50 @@ namespace Complex.Domino.Web
 
         private Lib.Assignment assignment;
         private Lib.GitHelper git;
+        private Lib.User student;
 
-        protected int AssingmentID
+        protected int AssignmentID
         {
             get { return Util.Url.ParseInt(Request.QueryString[Constants.RequestAssignmentID]); }
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            // Initialize the git helper class with current session info
-
-            assignment = new Lib.Assignment(DatabaseContext);
-            assignment.Load(Item.AssignmentID);
-
-            git = new Lib.GitHelper()
-            {
-                SessionGuid = SessionGuid,
-                User = DatabaseContext.User,
-                Assignment = assignment,
-                Submission = Item,
-            };
-
-            fileBrowser.PrefixPath = git.GetAssignmentPrefixPath();
-            fileBrowser.BasePath = git.GetAssignmentPath();
         }
 
         protected override void CreateItem()
         {
             base.CreateItem();
 
-            Item.AssignmentID = this.AssingmentID;
+            Item.AssignmentID = this.AssignmentID;
+
+            assignment = new Lib.Assignment(DatabaseContext);
+            assignment.Load(Item.AssignmentID);
+
+            // If the submission already exists we can take the student from
+            // it.
+            // TODO: need to extend logic in case of reply by teacher
+
+            if (Item.IsExisting)
+            {
+                student = new Lib.User(DatabaseContext);
+                student.Load(Item.StudentID);
+            }
+            else
+            {
+                // TODO: add reply-to logic here
+                student = DatabaseContext.User;
+            }
+
+            // Initialize the git helper class with current session info
+
+            git = new Lib.GitHelper()
+            {
+                SessionGuid = SessionGuid,
+                Author = DatabaseContext.User,
+                Student = student,
+                Assignment = assignment,
+                Submission = Item,
+            };
+
+            fileBrowser.PrefixPath = git.GetAssignmentPrefixPath();
+            fileBrowser.BasePath = git.GetAssignmentPath();
         }
 
         protected override void UpdateForm()
@@ -135,7 +149,11 @@ namespace Complex.Domino.Web
 
         private void SwitchViewToFiles()
         {
-            emptyPanel.Visible = false;
+            if (emptyPanel != null)
+            {
+                emptyPanel.Visible = false;
+            }
+
             filesPanel.Visible = true;
         }
 

@@ -38,7 +38,6 @@ namespace Complex.Domino.Web.Files
             var path = Path.Combine(
                 DominoConfiguration.Instance.ScratchPath,
                 guid,
-                username,
                 filename);
 
             // Copy file to the output

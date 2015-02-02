@@ -26,7 +26,6 @@ namespace Complex.Domino.Web.Files
             // TODO: this is just a quick solution, fix this later
 
             var guid = (string)Session[Constants.SessionGuid];
-            var username = ((Lib.User)Session[Constants.SessionUser]).Name;
             var filename = this.FileName;
             var extension = Path.GetExtension(filename);
             var type = FileTypes.GetFileTypeByExtension(extension);
@@ -34,7 +33,6 @@ namespace Complex.Domino.Web.Files
             var path = Path.Combine(
                 DominoConfiguration.Instance.ScratchPath,
                 guid,
-                username,
                 filename);
 
             if (type != null)
