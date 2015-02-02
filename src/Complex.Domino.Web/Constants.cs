@@ -15,6 +15,7 @@ namespace Complex.Domino.Web
         public const string SessionGuid = "Complex.Domino.Web.SessionGuid";
 
         public const string RequestID = "ID";
+        public const string RequestUserID = "UserID";
         public const string RequestSemesterID = "SemesterID";
         public const string RequestCourseID = "CourseID";
         public const string RequestAssignmentID = "AssignmentID";

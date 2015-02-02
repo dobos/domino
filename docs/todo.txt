@@ -1,76 +1,53 @@
-features
+DOMINO TODO
+===========
 
-login as admin
-login as student
-create course
-create users
-- mass user create (from xls etc), password generator
-- university id
-assign course to student
-create assignments
-associate assignments with students
-- one by one
-- by course
-submit homework
-- handle versions
-upload individual files
-- filter by extension
-upload archives
-- extract and prevent reference to parent directories!
-send submission confirmation
-compile code
-test code, configurable compiler string
-test files per assignement
-code editor with ability to add remarks
-back-end features
-- create users
-- give points
+   Common:
+   
+   ACCESS CONTROL
+   
+   dátum mezõk mindenütt
+   fájlméret mezõ a feltöltõnél
+   full name could be nicer
+   footer
+   sing in cookie time-out
+   highlight required fields
+   error column css
 
-
-store files in git
-- one repo per course
-
-
-
-
-
-
-
-===============================================================
-git commands
-
-
-
-git init
-git add . --all
-git commit --all --message "First commit" --author=test
-git log test/valami.dat
-git log --follow test2.txt
-git checkout ac733bee2b1bfe20e28c0c250a825de69a870719
-git checkout master
-
-git blame test2.txt
-
-git branch
-
-git rev-parse HEAD
-
-
-git show
-
-
-
-=================================
-
-   login page password field too high
-   menu main items style
-   new submission without assignment?
-   <p> remove double spacing, set marging
-   file browser zip download
-   file browser remove edit button when submit
-   set file size format
-   remove link from file name
-   view or download binary files
-   view in new tab (target=_blank)
-   rename delete button to clear all, implement
-   add points and grades
+   Welcome szöveg
+   
+   Admin:
+   
+   Semester list set semesterID when creating new
+   new course, copy dates from semester
+   new assignment, copy dates from course
+   course list grade not localized
+   user list might forward courseid to new user form, like import
+   generált jelszó legyen rövidebb
+   import végén lehetne riport
+   lapozás a gridek tetején
+   assignment list should forward courseid to new assignment form
+   assignemnt form grade validator
+   assignment list grade localization
+   user form password: hide, validate etc. autogen
+   user form: move roles above buttons
+   
+   Teacher:
+   
+   semester list: make nicer, add links or just remove the whole thing
+   course form: disable name edit, visibility and enabled edit
+   add new assignment form
+   assignment form: disable name etc. editing
+   spreadsheet: could use nicer design
+   rationalize teacher menu
+   
+   Student:
+   
+   need opening page? merge / with Student/
+   magyar szövegek a student/ oldalon
+   submission: comment font
+   submission: take default comment from resource
+   submission: confirmation page for users
+   submission: confirmation e-mail
+   submission: readonly comment when viewing
+   submission form title: new/edit
+   submission list: highlight replies

@@ -7,28 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Complex.Domino.Web.Student {
+namespace Complex.Domino.Web.Teacher {
     
     
     public partial class Submission {
-        
-        /// <summary>
-        /// newSubmissionKeep control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton newSubmissionKeep;
-        
-        /// <summary>
-        /// newSubmissionEmpty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton newSubmissionEmpty;
         
         /// <summary>
         /// SemesterLabel control.

@@ -183,9 +183,19 @@ namespace Complex.Domino.Web.Teacher
 
                     var a = new HyperLink()
                     {
-                        NavigateUrl = "",
                         Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat),
                     };
+
+                    // If this is the only submission, point link to it directly,
+                    // otherwise point to a list of submissions
+                    if (ss.Count == 1)
+                    {
+                        a.NavigateUrl = Teacher.Submission.GetUrl(aa.ID, s.ID);
+                    }
+                    else
+                    {
+                        a.NavigateUrl = Teacher.Submissions.GetUrl(aa.ID, s.StudentID);
+                    }
 
                     td[0].Controls.Add(a);
 
@@ -205,8 +215,8 @@ namespace Complex.Domino.Web.Teacher
 
                     var a = new HyperLink()
                     {
-                        NavigateUrl = "",
-                        Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat)
+                        Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat),
+                        NavigateUrl = Teacher.Submission.GetUrl(aa.ID, s.ID),
                     };
 
                     td[1].Controls.Add(a);

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Complex.Domino.Web.Student
+namespace Complex.Domino.Web.Teacher
 {
     public partial class Submission : SubmissionPage
     {
@@ -16,7 +16,7 @@ namespace Complex.Domino.Web.Student
 
         public static string GetUrl(int assignmentID, int submissionID)
         {
-            var url = "~/Student/Submission.aspx";
+            var url = "~/Teacher/Submission.aspx";
             var query = "";
 
             if (assignmentID > 0)
@@ -35,6 +35,6 @@ namespace Complex.Domino.Web.Student
             }
 
             return url;
-        }
+        } 
     }
 }

@@ -469,12 +469,15 @@
     <Content Include="Teacher\Assignment.aspx" />
     <Content Include="Teacher\AssignmentList.ascx" />
     <Content Include="Teacher\Assignments.aspx" />
+    <Content Include="Teacher\Submission.aspx" />
+    <Content Include="Teacher\Submissions.aspx" />
     <Content Include="Teacher\Course.aspx" />
     <Content Include="Teacher\CourseList.ascx" />
     <Content Include="Teacher\Courses.aspx" />
     <Content Include="Teacher\SemesterList.ascx" />
     <Content Include="Teacher\Semesters.aspx" />
     <Content Include="Teacher\Spreadsheet.aspx" />
+    <Content Include="Teacher\SubmissionList.ascx" />
     <Content Include="Teacher\Teacher.master" />
     <Content Include="Teacher\Web.config" />
     <Content Include="Web.config" />
@@ -730,6 +733,9 @@
     <Compile Include="Student\SubmissionList.ascx.designer.cs">
       <DependentUpon>SubmissionList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="SubmissionPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Teacher\Assignment.aspx.cs">
       <DependentUpon>Assignment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -750,6 +756,20 @@
     </Compile>
     <Compile Include="Teacher\Assignments.aspx.designer.cs">
       <DependentUpon>Assignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Submission.aspx.cs">
+      <DependentUpon>Submission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Submission.aspx.designer.cs">
+      <DependentUpon>Submission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Submissions.aspx.cs">
+      <DependentUpon>Submissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Submissions.aspx.designer.cs">
+      <DependentUpon>Submissions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\Course.aspx.cs">
       <DependentUpon>Course.aspx</DependentUpon>
@@ -792,6 +812,13 @@
     </Compile>
     <Compile Include="Teacher\Spreadsheet.aspx.designer.cs">
       <DependentUpon>Spreadsheet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\SubmissionList.ascx.cs">
+      <DependentUpon>SubmissionList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\SubmissionList.ascx.designer.cs">
+      <DependentUpon>SubmissionList.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControlBase.cs">
       <SubType>ASPXCodeBehind</SubType>

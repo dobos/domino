@@ -1,23 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Student/Student.master" AutoEventWireup="true" CodeBehind="Submission.aspx.cs" Inherits="Complex.Domino.Web.Student.Submission" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/Teacher.master" AutoEventWireup="true" CodeBehind="Submission.aspx.cs" Inherits="Complex.Domino.Web.Teacher.Submission" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <asp:Panel runat="server" ID="emptyPanel">
-        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, NewSubmission %>" /></h1>
-        <p><asp:Literal runat="server" Text="<%$ Resources:Labels, NewSubmissionIntro %>" /></p>
-
-            <asp:LinkButton CssClass="fullbar" runat="server" ValidationGroup="NewSubmission" ID="newSubmissionKeep"
-                OnClick="NewSubmissionKeep_Click">
-                <asp:Image runat="server" SkinID="KeepUploadsIcon" />
-                <h1><asp:Label runat="server" Text="<%$ Resources:Labels, KeepFiles %>" /></h1>
-                <p><asp:Label runat="server" Text="<%$ Resources:Labels, KeepFilesDetails %>" /></p>
-            </asp:LinkButton>
-            <asp:LinkButton CssClass="fullbar" runat="server" ValidationGroup="NewSubmission" ID="newSubmissionEmpty"
-                OnClick="NewSubmissionEmpty_Click">
-                <asp:Image runat="server" SkinID="DeleteUploadsIcon" />
-                <h1><asp:Label runat="server" Text="<%$ Resources:Labels, DeleteFiles %>" /></h1>
-                <p><asp:Label runat="server" Text="<%$ Resources:Labels, DeleteFilesDetails %>" /></p>
-            </asp:LinkButton>
-    </asp:Panel>
     <asp:Panel runat="server" ID="filesPanel" Visible="false">
         <h1><asp:Label runat="server" ID="formLabel" /></h1>
         <div class="frame">
@@ -51,10 +34,8 @@
         <h2><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h2>
         <domino:filebrowser runat="server" id="fileBrowser" AllowSelection="false"
             AllowDownload="false" AllowEdit="false" />
-        <div class="frame">
         <domino:EntityForm runat="server" id="entityForm"
             NameVisible="false" DescriptionVisible="false" OptionsVisible="false" />
-        </div>
         <toolbar class="form">
             <asp:LinkButton runat="server" ID="ok" OnClick="Ok_Click">
                 <asp:Image runat="server" SkinID="OkButton" />
