@@ -68,9 +68,6 @@
                     </asp:DropDownList>
                 </td>
                 <td class="error">
-                    <asp:RangeValidator runat="server" ControlToValidate="GradeType" ValidationGroup="Entity"
-                        Display="Dynamic" MinimumValue="1" MaximumValue="2147483647"
-                        ErrorMessage="<%$ Resources:Errors, SelectItem %>" Type="Integer" />
                 </td>
             </tr>
             <tr>
