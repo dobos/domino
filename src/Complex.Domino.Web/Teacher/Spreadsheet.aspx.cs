@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
 
 namespace Complex.Domino.Web.Teacher
 {
@@ -27,8 +26,6 @@ namespace Complex.Domino.Web.Teacher
 
             return url;
         }
-
-        private HtmlTable table;
 
         protected int CourseID
         {
@@ -53,8 +50,8 @@ namespace Complex.Domino.Web.Teacher
             sf.FindAssignments();
             sf.FindSubmissions(-1, -1, "Name");
 
-            table = new HtmlTable();
-            table.Attributes.Add("class", "spreadsheet");
+            var table = new Table();
+            table.CssClass = "spreadsheet";
 
             table.Rows.Add(GenerateHeaderRow1(sf));
             table.Rows.Add(GenerateHeaderRow2(sf));
@@ -67,26 +64,27 @@ namespace Complex.Domino.Web.Teacher
             tablePlaceholder.Controls.Add(table);
         }
 
-        private HtmlTableRow GenerateHeaderRow1(Lib.SpreadsheetFactory sf)
+        private TableRow GenerateHeaderRow1(Lib.SpreadsheetFactory sf)
         {
-            HtmlTableRow tr;
-            HtmlTableCell td;
+            TableRow tr;
+            TableCell td;
 
-            tr = new HtmlTableRow();
+            tr = new TableRow();
 
             // -- corner
-            td = new HtmlTableCell()
+            td = new TableCell()
             {
-                ColSpan = 2
+                ColumnSpan = 2
             };
+
             tr.Cells.Add(td);
 
             for (int ai = 0; ai < sf.Assignments.Count; ai++)
             {
-                td = new HtmlTableCell()
+                td = new TableCell()
                 {
-                    ColSpan = 3,
-                    InnerText = sf.Assignments[ai].Name
+                    ColumnSpan = 3,
+                    Text = sf.Assignments[ai].Name
                 };
 
                 tr.Cells.Add(td);
@@ -95,81 +93,86 @@ namespace Complex.Domino.Web.Teacher
             return tr;
         }
 
-        private HtmlTableRow GenerateHeaderRow2(Lib.SpreadsheetFactory sf)
+        private TableRow GenerateHeaderRow2(Lib.SpreadsheetFactory sf)
         {
-            HtmlTableRow tr;
-            HtmlTableCell td;
+            TableRow tr;
+            TableCell td;
 
-            tr = new HtmlTableRow();
+            tr = new TableRow();
 
-            td = new HtmlTableCell();
-            td.InnerText = Resources.Labels.UserName;
+            td = new TableCell();
+            td.Text = Resources.Labels.UserName;
             tr.Cells.Add(td);
 
-            td = new HtmlTableCell();
-            td.InnerText = Resources.Labels.Name;
+            td = new TableCell();
+            td.Text = Resources.Labels.Name;
             tr.Cells.Add(td);
 
             for (int ai = 0; ai < sf.Assignments.Count; ai++)
             {
-                td = new HtmlTableCell();
-                td.InnerText = Resources.Labels.First.ToLower();
+                td = new TableCell();
+                td.Text = Resources.Labels.First.ToLower();
                 tr.Cells.Add(td);
 
-                td = new HtmlTableCell();
-                td.InnerText = Resources.Labels.Last.ToLower();
+                td = new TableCell();
+                td.Text = Resources.Labels.Last.ToLower();
                 tr.Cells.Add(td);
 
-                td = new HtmlTableCell();
-                td.InnerText = Util.Enum.ToLocalized(typeof(Resources.Grades), sf.Assignments[ai].GradeType).ToLower();
+                td = new TableCell();
+                td.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), sf.Assignments[ai].GradeType).ToLower();
                 tr.Cells.Add(td);
             }
 
             return tr;
         }
 
-        private HtmlTableRow GenerateStudentRow(Lib.SpreadsheetFactory sf, int si)
+        private TableRow GenerateStudentRow(Lib.SpreadsheetFactory sf, int si)
         {
-            HtmlTableRow tr;
-            HtmlTableCell td;
+            TableRow tr;
+            TableCell td;
 
-            tr = new HtmlTableRow();
+            tr = new TableRow();
 
 
             // User name
-            td = new HtmlTableCell();
-            td.InnerText = sf.Students[si].Name;
-            td.Attributes.Add("class", "name");
+            td = new TableCell()
+            {
+                Text = sf.Students[si].Name,
+                CssClass = "name",
+            };
+
             tr.Cells.Add(td);
 
             // Name
-            td = new HtmlTableCell();
-            td.InnerText = sf.Students[si].Description;
-            td.Attributes.Add("class", "desc");
+            td = new TableCell()
+            {
+                Text = sf.Students[si].Description,
+                CssClass = "desc"
+            };
+
             tr.Cells.Add(td);
 
             for (int ai = 0; ai < sf.Assignments.Count; ai++)
             {
-                var tds = GenerateSubmissionCells(sf, si, ai);
-
-                for (int i = 0; i < tds.Length; i++)
-                {
-                    tr.Cells.Add(tds[i]);
-                }
+                tr.Cells.AddRange(GenerateSubmissionCells(sf, si, ai));
             }
 
             return tr;
         }
 
-        private HtmlTableCell[] GenerateSubmissionCells(Lib.SpreadsheetFactory sf, int si, int ai)
+        private TableCell[] GenerateSubmissionCells(Lib.SpreadsheetFactory sf, int si, int ai)
         {
-            var td = new HtmlTableCell[3];
+            var td = new TableCell[3];
 
-            for (int i = 0; i < td.Length; i ++)
+            for (int i = 0; i < td.Length; i++)
             {
-                td[i] = new HtmlTableCell();
+                td[i] = new TableCell()
+                {
+                    CssClass = "item"
+                };
             }
 
+            var aa = sf.Assignments[ai];
             var ss = sf.Submissions[si][ai];
 
             if (ss != null)
@@ -178,22 +181,39 @@ namespace Complex.Domino.Web.Teacher
                 {
                     var s = ss[0];                  // First submission
 
-                    td[0].InnerText = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat);
+                    var a = new HyperLink()
+                    {
+                        NavigateUrl = "",
+                        Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat),
+                    };
+
+                    td[0].Controls.Add(a);
+
+                    // Late
+
+                    if (s.CreatedDate > aa.EndDateSoft)
+                    {
+                        td[0].CssClass += " late";
+                    }
+
+                    // Unread
                 }
 
                 if (ss.Count > 1)
                 {
                     var s = ss[ss.Count - 1];       // Last submission
 
-                    td[1].InnerText = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat);
+                    var a = new HyperLink()
+                    {
+                        NavigateUrl = "",
+                        Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat)
+                    };
+
+                    td[1].Controls.Add(a);
+
+                    // Unread
                 }
             }
-
-            // Set CSS
-
-            td[0].Attributes.Add("class", "item");
-            td[1].Attributes.Add("class", "item");
-            td[2].Attributes.Add("class", "item");
 
             return td;
         }

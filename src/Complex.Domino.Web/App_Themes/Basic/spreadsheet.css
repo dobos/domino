@@ -15,16 +15,6 @@ table.spreadsheet td {
     border: 1px solid #C0C0C0;
 }
 
-table.spreadsheet td.new {
-    color: #FFFFFF;
-    border: 1px solid #FF0000;
-}
-
-table.spreadsheet td.late {
-    color: #FFFFFF;
-    border: 1px solid #FF0000;
-}
-
 table.spreadsheet td.name {
     width: 120px;
 }
@@ -35,4 +25,15 @@ table.spreadsheet td.desc {
 
 table.spreadsheet td.item {
     width: 48px;
+    text-align:center;
+}
+
+table.spreadsheet td.new {
+    color: #000000;
+    background-color: #FFFF00;
+}
+
+table.spreadsheet td.late {
+    color: #FFFFFF;
+    background-color: #FF0000;
 }
