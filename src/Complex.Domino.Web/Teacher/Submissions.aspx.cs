@@ -17,8 +17,20 @@ namespace Complex.Domino.Web.Teacher
                 Constants.RequestUserID, studentId);
         }
 
+        public int AssignmentID
+        {
+            get { return int.Parse(Request[Constants.RequestAssignmentID]); }
+        }
+
+        public int UserID
+        {
+            get { return int.Parse(Request[Constants.RequestUserID]); }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            SubmissionList.AssignmentID = AssignmentID;
+            SubmissionList.UserID = UserID;
         }
 
     }

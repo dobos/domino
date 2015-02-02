@@ -11,16 +11,16 @@ namespace Complex.Domino.Web.Teacher
     {
         private Lib.SubmissionFactory searchObject;
 
-        public int CourseID
-        {
-            get { return (int)(ViewState["CourseID"] ?? -1); }
-            set { ViewState["CourseID"] = value; }
-        }
-
         public int AssignmentID
         {
             get { return (int)(ViewState["AssignmentID"] ?? -1); }
             set { ViewState["AssignmentID"] = value; }
+        }
+
+        public int UserID
+        {
+            get { return (int)(ViewState["UserID"] ?? -1); }
+            set { ViewState["UserID"] = value; }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -35,9 +35,8 @@ namespace Complex.Domino.Web.Teacher
         {
             searchObject = new Lib.SubmissionFactory(DatabaseContext);
 
-            searchObject.CourseID = CourseID;
             searchObject.AssignmentID = AssignmentID;
-            searchObject.StudentID = DatabaseContext.User.ID;
+            searchObject.StudentID = UserID;
 
             e.ObjectInstance = searchObject;
         }
