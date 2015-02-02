@@ -16,7 +16,9 @@ namespace Complex.Domino.Web.Admin
 
         public static string GetUrl(int id, string returnUrl)
         {
-            var url = "~/Admin/User.aspx?ID={0}";
+            var url = String.Format(
+                "~/Admin/User.aspx?{0}={1}",
+                Constants.RequestID, id);
 
             if (returnUrl != null)
             {
