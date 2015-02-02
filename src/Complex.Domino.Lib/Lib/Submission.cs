@@ -24,7 +24,8 @@ namespace Complex.Domino.Lib
         private string studentName;
         private int teacherID;
         private string teacherName;
-        private SubmissionDirection direction;
+        private int replyToSubmissionID;
+        private DateTime readDate;
 
         public int SemesterID
         {
@@ -90,10 +91,21 @@ namespace Complex.Domino.Lib
             set { teacherID = value; }
         }
 
-        public SubmissionDirection Direction
+        public int ReplyToSubmissionID
         {
-            get { return direction; }
-            set { direction = value; }
+            get { return replyToSubmissionID; }
+            set { replyToSubmissionID = value; }
+        }
+
+        public DateTime ReadDate
+        {
+            get { return readDate; }
+            set { readDate = value; }
+        }
+
+        public bool IsRead
+        {
+            get { return readDate != DateTime.MinValue; }
         }
 
         public Submission()
@@ -122,7 +134,8 @@ namespace Complex.Domino.Lib
             this.studentName = null;
             this.teacherID = -1;
             this.teacherName = null;
-            this.direction = SubmissionDirection.Unknown;
+            this.replyToSubmissionID = -1;
+            this.readDate = DateTime.MinValue;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -142,7 +155,8 @@ namespace Complex.Domino.Lib
             this.studentName = reader.GetString("StudentName");
             this.teacherID = reader.GetInt32("TeacherID");
             this.teacherName = reader.GetString("TeacherName");
-            this.direction = (SubmissionDirection)reader.GetInt32("Direction");
+            this.replyToSubmissionID = reader.GetInt32("ReplyToSubmissionID");
+            this.readDate = reader.GetDateTime("ReadDate");
         }
 
         public override void Load(int id)
@@ -172,9 +186,9 @@ WHERE s.ID = @ID";
         {
             var sql = @"
 INSERT [Submission]
-    (AssignmentID, StudentID, TeacherID, Direction, {0})
+    (AssignmentID, StudentID, TeacherID, ReplyToSubmissionID, ReadDate, {0})
 VALUES
-    (@AssignmentID, @StudentID, @TeacherID, @Direction, {1})
+    (@AssignmentID, @StudentID, @TeacherID, @ReplyToSubmissionID, @ReadDate, {1})
 
 SELECT @@IDENTITY
 ";
@@ -195,7 +209,8 @@ UPDATE [Submission]
 SET AssignmentID = @AssignmentID,
     StudentID = @StudentID,
     TeacherID = @TeacherID,
-    Direction = @Direction,
+    ReplyToSubmissionID = @ReplyToSubmissionID, 
+    ReadDate = @ReadDate,
     {0}
 WHERE ID = @ID";
 
@@ -215,7 +230,8 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@AssignmentID", SqlDbType.Int).Value = assignmentID;
             cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
             cmd.Parameters.Add("@TeacherID", SqlDbType.Int).Value = teacherID > 0 ? (object)teacherID : DBNull.Value;
-            cmd.Parameters.Add("@Direction", SqlDbType.Int).Value = (int)direction;
+            cmd.Parameters.Add("@ReplyToSubmissionID", SqlDbType.Int).Value = replyToSubmissionID > 0 ? (object)replyToSubmissionID : DBNull.Value;
+            cmd.Parameters.Add("@ReadDate", SqlDbType.DateTime).Value = readDate != DateTime.MinValue ? (object)readDate : DBNull.Value;
         }
 
         public override void Delete(int id)

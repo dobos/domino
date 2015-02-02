@@ -13,6 +13,10 @@ DOMINO TODO
    highlight required fields
    error column css
    git exception trim trailing newline
+   file browser: view in new windows
+   file browser: edit
+   file browser: file sizes
+   login page: reset password link position
 
    Welcome szöveg
    
@@ -40,6 +44,11 @@ DOMINO TODO
    assignment form: disable name etc. editing
    spreadsheet: could use nicer design
    rationalize teacher menu
+   add student page to view email
+   link to student page from spreadsheet
+   submissions still in wrong order
+   add user and assignment details to submissions page
+   implement reply
    
    Student:
    
@@ -52,3 +61,4 @@ DOMINO TODO
    submission: readonly comment when viewing
    submission form title: new/edit
    submission list: highlight replies
+   submissions still in wrong order

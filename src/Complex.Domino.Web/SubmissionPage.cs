@@ -132,7 +132,6 @@ namespace Complex.Domino.Web
             var commit = git.CommitSubmission(comments);
 
             Item.StudentID = DatabaseContext.User.ID;
-            Item.Direction = Lib.SubmissionDirection.StudentToTeacher;
             Item.Name = commit.Hash;
         }
 

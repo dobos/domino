@@ -70,7 +70,15 @@ namespace Complex.Domino.Lib
         public static DateTime GetDateTime(this SqlDataReader reader, string key)
         {
             var o = reader.GetOrdinal(key);
-            return reader.GetDateTime(o);
+
+            if (reader.IsDBNull(o))
+            {
+                return DateTime.MinValue;
+            }
+            else
+            {
+                return reader.GetDateTime(o);
+            }
         }
 
         public static string GetString(this SqlDataReader reader, string key)

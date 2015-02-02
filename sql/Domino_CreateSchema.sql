@@ -226,14 +226,16 @@ CREATE TABLE [dbo].[Submission]
 	[AssignmentID] int NOT NULL,
 	[StudentID] int NOT NULL,
 	[TeacherID] int NULL,
-	[Direction] int NOT NULL,
 	[Name] nvarchar(50) NOT NULL,
 	[Description] nvarchar(250) NOT NULL,
 	[Visible] bit NOT NULL,
 	[Enabled] bit NOT NULL,
 	[CreatedDate] datetime NOT NULL,
 	[ModifiedDate] datetime NOT NULL,
-	[Comments] nvarchar(max) NOT NULL
+	[Comments] nvarchar(max) NOT NULL,
+
+	[ReplyToSubmissionID] int NULL,
+	[ReadDate] datetime NULL,
 	
 	CONSTRAINT [PK_Submission] PRIMARY KEY CLUSTERED 
 	(
