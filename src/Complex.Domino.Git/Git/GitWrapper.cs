@@ -67,7 +67,7 @@ namespace Complex.Domino.Git
             // Flush buffers
             process.StandardOutput.ReadToEnd();
             
-            var error = process.StandardError.ReadToEnd();
+            var error = process.StandardError.ReadToEnd().Trim();
 
             process.WaitForExit(30000);
             process.WaitForExit();
