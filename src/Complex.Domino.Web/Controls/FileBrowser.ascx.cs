@@ -153,8 +153,11 @@ namespace Complex.Domino.Web.Controls
                     view.Visible = !dir;
                     view.NavigateUrl = Files.View.GetUrl(Path.Combine(PrefixPath, MakePathRelative(basePath, fi.FullName)));
 
+
+                    // TODO: filter editing based on file type
                     edit.Visible = !dir && AllowEdit;
-                    // TODO: add url
+                    edit.NavigateUrl = Files.Edit.GetUrl(Path.Combine(PrefixPath, MakePathRelative(basePath, fi.FullName)));
+
 
                     delete.Visible = AllowDelete;
                     delete.CommandArgument = fi.Name;

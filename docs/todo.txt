@@ -13,7 +13,7 @@ DOMINO TODO
    highlight required fields
    error column css
 ++ git exception trim trailing newline
-   file browser: view in new windows
+++ file browser: view in new windows
    file browser: edit
    file browser: file sizes
    login page: reset password link position
@@ -35,6 +35,8 @@ DOMINO TODO
    assignment list grade localization
    user form password: hide, validate etc. autogen
    user form: move roles above buttons
+   user form: require password when new user is created
+   user form: rename ok to save when new user is created
    
    Teacher:
    
@@ -62,3 +64,4 @@ DOMINO TODO
    submission form title: new/edit
    submission list: highlight replies
    submissions still in wrong order
+   limit submission file types (later by assignment, now by hard-coded list)

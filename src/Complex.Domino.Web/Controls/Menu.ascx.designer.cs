@@ -31,15 +31,6 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.Label AdminMenu;
         
         /// <summary>
-        /// AdminUsers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink AdminUsers;
-        
-        /// <summary>
         /// AdminSemesters control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace Complex.Domino.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink AdminAssignments;
+        
+        /// <summary>
+        /// AdminUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink AdminUsers;
         
         /// <summary>
         /// TeacherPanel control.

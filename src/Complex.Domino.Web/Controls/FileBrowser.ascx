@@ -62,10 +62,10 @@
                                 <p><asp:Label ID="size" runat="server" /></p>
                             </td>
                             <td class="buttons">
-                                <asp:HyperLink runat="server" ID="view">
+                                <asp:HyperLink runat="server" ID="view" Target="_blank">
                                     <asp:Image runat="server" SkinID="ViewButton" />
                                 </asp:HyperLink>
-                                <asp:HyperLink runat="server" ID="edit" CommandName="edit">
+                                <asp:HyperLink runat="server" ID="edit" CommandName="edit" Target="_blank">
                                     <asp:Image runat="server" SkinID="EditButton" />
                                 </asp:HyperLink>
                                 <asp:LinkButton runat="server" ID="delete" CommandName="delete">

@@ -3,13 +3,13 @@
     <asp:Label runat="server" ID="AdminMenu" Text="<%$ Resources:Menu, AdminMenu %>" />
     <ul class="menu">
         <li>
-            <asp:HyperLink runat="server" ID="AdminUsers" Text="<%$ Resources:Menu, Users %>" /></li>
-        <li>
             <asp:HyperLink runat="server" ID="AdminSemesters" Text="<%$ Resources:Menu, Semesters %>" /></li>
         <li>
             <asp:HyperLink runat="server" ID="AdminCourses" Text="<%$ Resources:Menu, Courses %>" /></li>
         <li>
             <asp:HyperLink runat="server" ID="AdminAssignments" Text="<%$ Resources:Menu, Assignments %>" /></li>
+        <li>
+            <asp:HyperLink runat="server" ID="AdminUsers" Text="<%$ Resources:Menu, Users %>" /></li>
     </ul>
 </asp:Panel>
 

@@ -150,6 +150,7 @@
     <EmbeddedResource Include="Controls\MultiSelectListView.js" />
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
+    <Content Include="Files\Edit.aspx" />
     <Content Include="Files\View.aspx" />
     <Content Include="Global.asax" />
     <Content Include="App_Themes\Basic\layout.skin" />
@@ -704,6 +705,13 @@
     </Compile>
     <Compile Include="Controls\UserStatus.ascx.designer.cs">
       <DependentUpon>UserStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\AssignmentList.ascx.cs">
       <DependentUpon>AssignmentList.ascx</DependentUpon>
