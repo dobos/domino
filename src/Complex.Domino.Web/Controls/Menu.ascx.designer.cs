@@ -103,15 +103,6 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.HyperLink TeacherCourses;
         
         /// <summary>
-        /// TeacherStudents control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink TeacherStudents;
-        
-        /// <summary>
         /// TeacherAssignments control.
         /// </summary>
         /// <remarks>
@@ -121,13 +112,13 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.HyperLink TeacherAssignments;
         
         /// <summary>
-        /// TeacherSubmissions control.
+        /// TeacherStudents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink TeacherSubmissions;
+        protected global::System.Web.UI.WebControls.HyperLink TeacherStudents;
         
         /// <summary>
         /// StudentPanel control.

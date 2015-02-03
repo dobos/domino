@@ -21,11 +21,9 @@
         <li>
             <asp:HyperLink runat="server" ID="TeacherCourses" Text="<%$ Resources:Menu, Courses %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="TeacherStudents" Text="<%$ Resources:Menu, Students %>" /></li>
+            <asp:HyperLink runat="server" ID="TeacherAssignments" Text="<%$ Resources:Menu, Assignments %>" /></li>
         <li>
-            <asp:HyperLink runat="server" ID="TeacherAssignments" Text="<%$ Resources:Menu, Assignments %>" />
-        </li>
-        <li><asp:HyperLink runat="server" ID="TeacherSubmissions" Text="<%$ Resources:Menu, Submissions %>" /></li>
+            <asp:HyperLink runat="server" ID="TeacherStudents" Text="<%$ Resources:Menu, Students %>" /></li>
     </ul>
 </asp:Panel>
 

@@ -470,6 +470,8 @@
     <Content Include="Teacher\Assignment.aspx" />
     <Content Include="Teacher\AssignmentList.ascx" />
     <Content Include="Teacher\Assignments.aspx" />
+    <Content Include="Teacher\Student.aspx" />
+    <Content Include="Teacher\Students.aspx" />
     <Content Include="Teacher\Submission.aspx" />
     <Content Include="Teacher\Submissions.aspx" />
     <Content Include="Teacher\Course.aspx" />
@@ -764,6 +766,20 @@
     </Compile>
     <Compile Include="Teacher\Assignments.aspx.designer.cs">
       <DependentUpon>Assignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Student.aspx.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Student.aspx.designer.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Students.aspx.cs">
+      <DependentUpon>Students.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Students.aspx.designer.cs">
+      <DependentUpon>Students.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\Submission.aspx.cs">
       <DependentUpon>Submission.aspx</DependentUpon>

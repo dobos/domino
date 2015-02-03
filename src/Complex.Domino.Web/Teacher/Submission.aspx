@@ -29,7 +29,7 @@
                     </td>
                     <td class="field">
                         <asp:HyperLink runat="server" ID="studentName" Target="_blank" /> |
-                        <asp:Label runat="server" ID="studentDescription" />
+                        <asp:HyperLink runat="server" ID="studentDescription" Target="_blank" />
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
             <table class="form">
                 <tr>
                     <td class="label" colspan="3">
-                        <asp:CheckBox runat="server" ID="markRead" Text="<%$ Resources:Labels, MarkRead %>" />
+                        <asp:CheckBox runat="server" ID="markRead" Text="<%$ Resources:Labels, MarkRead %>" Checked="true" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:CheckBox runat="server" ID="sendReply" Text="<%$ Resources:Labels, SendReply %>" Checked="true"
                             AutoPostBack="true" CausesValidation="false" OnCheckedChanged="SendReply_CheckedChanged" />

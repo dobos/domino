@@ -43,7 +43,9 @@ namespace Complex.Domino.Web.Teacher
 
             createdDate.Text = Util.DateTime.FormatFancy(Item.CreatedDate);
             studentName.Text = Student.Name;
+            studentName.NavigateUrl = Teacher.Student.GetUrl(Student.ID);
             studentDescription.Text = Student.Description;
+            studentDescription.NavigateUrl = Teacher.Student.GetUrl(Student.ID);
             comments.Text = Item.Comments;
             gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Assignment.GradeType);
             //grade.Text =  TODO: read actual grade from database
