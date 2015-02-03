@@ -35,6 +35,24 @@ namespace Complex.Domino.Web.Teacher
             }
 
             return url;
-        } 
+        }
+
+        protected override void UpdateForm()
+        {
+            base.UpdateForm();
+
+            createdDate.Text = Util.DateTime.FormatFancy(Item.CreatedDate);
+            studentName.Text = Student.Name;
+            studentDescription.Text = Student.Description;
+            comments.Text = Item.Comments;
+            gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Assignment.GradeType);
+            //grade.Text =  TODO: read actual grade from database
+        }
+
+        protected void SendReply_CheckedChanged(object sender, EventArgs e)
+        {
+            CommentsRow3.Visible = sendReply.Checked;
+            CommentsRow4.Visible = sendReply.Checked;
+        }
     }
 }

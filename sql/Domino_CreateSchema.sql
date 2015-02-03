@@ -209,6 +209,7 @@ CREATE TABLE [dbo].[AssignmentGrade]
 	[AssignmentID] int NOT NULL,
 	[StudentID] int NOT NULL,
 	[Grade] int NOT NULL,
+	[Comments] string nvarchar(max),
 	
 	CONSTRAINT [PK_AssignmentGrade] PRIMARY KEY CLUSTERED 
 	(

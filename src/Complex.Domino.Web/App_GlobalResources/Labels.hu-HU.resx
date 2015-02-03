@@ -412,4 +412,34 @@
   <data name="Last" xml:space="preserve">
     <value>Utolsó</value>
   </data>
+  <data name="EvaluateSubmission" xml:space="preserve">
+    <value>Megoldás értékelése</value>
+  </data>
+  <data name="Evaluation" xml:space="preserve">
+    <value>Értékelés</value>
+  </data>
+  <data name="HiddenFromStudent" xml:space="preserve">
+    <value>(a hallgató elől elrejtve)</value>
+  </data>
+  <data name="MarkRead" xml:space="preserve">
+    <value>Megjelölés olvasottként</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>Válasz</value>
+  </data>
+  <data name="SaveGrade" xml:space="preserve">
+    <value>Értékelés mentése</value>
+  </data>
+  <data name="SendReply" xml:space="preserve">
+    <value>Válasz küldése</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Hallgató</value>
+  </data>
+  <data name="StudentComments" xml:space="preserve">
+    <value>Hallgató megjegyzései</value>
+  </data>
+  <data name="VisibleToStudent" xml:space="preserve">
+    <value>(a hallgató számára látható)</value>
+  </data>
 </root>

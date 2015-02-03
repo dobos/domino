@@ -313,6 +313,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Evaluate submission.
+        /// </summary>
+        internal static string EvaluateSubmission {
+            get {
+                return ResourceManager.GetString("EvaluateSubmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation.
+        /// </summary>
+        internal static string Evaluation {
+            get {
+                return ResourceManager.GetString("Evaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First.
         /// </summary>
         internal static string First {
@@ -358,6 +376,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (hidden from student).
+        /// </summary>
+        internal static string HiddenFromStudent {
+            get {
+                return ResourceManager.GetString("HiddenFromStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import.
         /// </summary>
         internal static string Import {
@@ -399,6 +426,15 @@ namespace Resources {
         internal static string Last {
             get {
                 return ResourceManager.GetString("Last", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark as read.
+        /// </summary>
+        internal static string MarkRead {
+            get {
+                return ResourceManager.GetString("MarkRead", resourceCulture);
             }
         }
         
@@ -630,6 +666,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reply.
+        /// </summary>
+        internal static string Reply {
+            get {
+                return ResourceManager.GetString("Reply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset password.
         /// </summary>
         internal static string ResetPassword {
@@ -662,6 +707,15 @@ namespace Resources {
         internal static string Role {
             get {
                 return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save grade.
+        /// </summary>
+        internal static string SaveGrade {
+            get {
+                return ResourceManager.GetString("SaveGrade", resourceCulture);
             }
         }
         
@@ -720,6 +774,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send reply.
+        /// </summary>
+        internal static string SendReply {
+            get {
+                return ResourceManager.GetString("SendReply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in.
         /// </summary>
         internal static string SignIn {
@@ -761,6 +824,24 @@ namespace Resources {
         internal static string StartDate {
             get {
                 return ResourceManager.GetString("StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        internal static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student&apos;s comments.
+        /// </summary>
+        internal static string StudentComments {
+            get {
+                return ResourceManager.GetString("StudentComments", resourceCulture);
             }
         }
         
@@ -932,6 +1013,15 @@ namespace Resources {
         internal static string Visible {
             get {
                 return ResourceManager.GetString("Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (visible to student).
+        /// </summary>
+        internal static string VisibleToStudent {
+            get {
+                return ResourceManager.GetString("VisibleToStudent", resourceCulture);
             }
         }
         

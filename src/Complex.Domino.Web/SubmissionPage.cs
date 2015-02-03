@@ -19,12 +19,27 @@ namespace Complex.Domino.Web
         protected Controls.FileBrowser fileBrowser;
 
         private Lib.Assignment assignment;
-        private Lib.GitHelper git;
         private Lib.User student;
+        private Lib.GitHelper git;
 
         protected int AssignmentID
         {
             get { return Util.Url.ParseInt(Request.QueryString[Constants.RequestAssignmentID]); }
+        }
+
+        protected Lib.Assignment Assignment
+        {
+            get { return assignment; }
+        }
+
+        protected Lib.User Student
+        {
+            get { return student; }
+        }
+
+        protected Lib.GitHelper GitHelper
+        {
+            get { return git; }
         }
 
         protected override void CreateItem()
@@ -69,16 +84,6 @@ namespace Complex.Domino.Web
         protected override void UpdateForm()
         {
             base.UpdateForm();
-
-            formLabel.Text = Item.IsExisting ?
-                Resources.Labels.Submission :
-                Resources.Labels.NewSubmission;
-
-            cancelLabel.Text = Item.IsExisting ?
-                Resources.Labels.Ok :
-                Resources.Labels.Cancel;
-
-            ok.Visible = !Item.IsExisting;
 
             var semester = new Lib.Semester(DatabaseContext);
             semester.Load(assignment.SemesterID);

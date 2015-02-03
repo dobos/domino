@@ -36,5 +36,20 @@ namespace Complex.Domino.Web.Student
 
             return url;
         }
+
+        protected override void UpdateForm()
+        {
+            base.UpdateForm();
+
+            formLabel.Text = Item.IsExisting ?
+                Resources.Labels.Submission :
+                Resources.Labels.NewSubmission;
+
+            cancelLabel.Text = Item.IsExisting ?
+                Resources.Labels.Ok :
+                Resources.Labels.Cancel;
+
+            ok.Visible = !Item.IsExisting;
+        }
     }
 }
