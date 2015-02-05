@@ -37,6 +37,17 @@ namespace Complex.Domino.Web.Student
             return url;
         }
 
+        protected override void CreateItem()
+        {
+            base.CreateItem();
+
+            // If this is a reply by a teacher, mark it as read
+            if (Item.TeacherID > 0)
+            {
+                Item.MarkRead();
+            }
+        }
+
         protected override void UpdateForm()
         {
             base.UpdateForm();

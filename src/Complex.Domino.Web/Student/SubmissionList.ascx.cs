@@ -56,11 +56,14 @@ namespace Complex.Domino.Web.Student
                 {
                     link.CssClass += " unread";
                 }
+                else if (submission.TeacherID > 0)
+                {
+                    link.CssClass += " reply";
+                }
 
                 // mark submissions by teacher
                 if (submission.TeacherID > 0)
                 {
-                    link.CssClass += " reply";
                     label.Text = Resources.Labels.ReplyDate;
                 }
                 else
