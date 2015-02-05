@@ -594,6 +594,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (no grade assigned).
+        /// </summary>
+        internal static string NoGrade {
+            get {
+                return ResourceManager.GetString("NoGrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User has no roles yet..
         /// </summary>
         internal static string NoRoles {

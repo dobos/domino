@@ -74,7 +74,7 @@
         background-color: #EEEECC;
     }
 
-    .fullbar img {
+    .fullbar > img {
         float: left;
         width: 48px;
         height: 48px;
@@ -83,28 +83,54 @@
         margin-right: 32px;
     }
 
-    .fullbar h1 {
+    .fullbar > h1 {
         font-size: 16px;
         font-weight: bold;
         margin-top: 10px;
         margin-bottom: 0px;
     }
 
-    .fullbar h2 {
+    .fullbar > h2 {
         font-size: 14px;
         font-weight: normal;
         margin-top: 8px;
     }
 
-    .fullbar p {
+    .fullbar > p {
         font-size: 14px;
         margin: 8px;
     }
 
-    .fullbar a.unread {
-        border: 1px solid #00FF00;
+a.unread {
+    border: 1px solid #00FF00;
+}
+
+a.reply {
+    border: 1px solid #FF0000;
+}
+
+.fullbar grade {
+    display: block;
+    float: right;
+    height: 46px;
+    width: 46px;
+    margin-left: 32px;
+    margin-top: 8px;
+    margin-right: 8px;
+    border: 1px solid #808080;
+    background-color: #000000;
+    border-radius: 8px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+    .fullbar grade > h1 {
+        font-size: 22px;
+        margin-top: 2px;
+        margin-bottom: 0px;
     }
 
-    .fullbar a.reply {
-        border: 1px solid #FF0000;
+    .fullbar grade > p {
+        font-size: 12px;
+        margin-top: -10px;
     }

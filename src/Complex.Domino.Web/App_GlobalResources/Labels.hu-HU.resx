@@ -130,7 +130,7 @@
     <value>Mégse</value>
   </data>
   <data name="Course" xml:space="preserve">
-    <value>Tantárgy</value>
+    <value>Kurzus</value>
   </data>
   <data name="CurrentDirectory" xml:space="preserve">
     <value>Könyvtár</value>
@@ -205,7 +205,7 @@
     <value>az összes feladat és beküldött megoldás megtekintése</value>
   </data>
   <data name="ViewCourses" xml:space="preserve">
-    <value>Tantárgyak megtekintése</value>
+    <value>Kurzusok megtekintése</value>
   </data>
   <data name="ViewCoursesDetails" xml:space="preserve">
     <value>az összes tantárgy listája, melyre regisztrálva vagy</value>
@@ -450,5 +450,8 @@
   </data>
   <data name="Results" xml:space="preserve">
     <value>Eredmények</value>
+  </data>
+  <data name="NoGrade" xml:space="preserve">
+    <value>(nincs jegy)</value>
   </data>
 </root>

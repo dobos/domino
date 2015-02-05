@@ -451,4 +451,7 @@
   <data name="Results" xml:space="preserve">
     <value>Results</value>
   </data>
+  <data name="NoGrade" xml:space="preserve">
+    <value>(no grade assigned)</value>
+  </data>
 </root>

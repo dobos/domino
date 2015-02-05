@@ -25,7 +25,7 @@ namespace Complex.Domino.Web.Student
             }
         }
 
-        protected void assignmentDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
+        protected void AssignmentDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
         {
             searchObject = new Lib.AssignmentFactory(DatabaseContext);
 
@@ -35,27 +35,36 @@ namespace Complex.Domino.Web.Student
             e.ObjectInstance = searchObject;
         }
 
-        protected void assignmentList_OnItemCreated(object sender, ListViewItemEventArgs e)
+        protected void AssignmentList_OnItemCreated(object sender, ListViewItemEventArgs e)
         {
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
-                var di = (Lib.Assignment)((ListViewDataItem)e.Item).DataItem;
+                var assignment = (Lib.Assignment)((ListViewDataItem)e.Item).DataItem;
 
-                if (di != null)
+                if (assignment != null)
                 {
                     var semester = e.Item.FindControl("semester") as Label;
                     var course = e.Item.FindControl("course") as Label;
                     var endDateSoft = e.Item.FindControl("endDateSoft") as Label;
+                    var grade = e.Item.FindControl("grade") as Label;
+                    var gradeLabel = e.Item.FindControl("gradeLabel") as Label;
 
-                    semester.Text = di.SemesterDescription;
-                    course.Text = di.CourseDescription;
-                    endDateSoft.Text = Util.DateTime.FormatFancy(di.EndDateSoft);
+                    semester.Text = assignment.SemesterDescription;
+                    course.Text = assignment.CourseDescription;
+                    endDateSoft.Text = Util.DateTime.FormatFancy(assignment.EndDateSoft);
 
                     // TODO: use datetime control and formatting
-                    if (di.EndDateSoft < DateTime.Now)
+                    if (assignment.EndDateSoft < DateTime.Now)
                     {
                         endDateSoft.CssClass = "expired";
                     }
+
+                    // Load grade
+                    var assignmentGrade = new Lib.AssignmentGrade(DatabaseContext);
+                    assignmentGrade.Load(assignment.ID, DatabaseContext.User.ID);
+
+                    grade.Text = assignmentGrade.Grade > 0 ? assignmentGrade.Grade.ToString() : "-";
+                    gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), assignment.GradeType);
                 }
             }
         }

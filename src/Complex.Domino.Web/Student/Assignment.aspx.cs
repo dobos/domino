@@ -14,6 +14,16 @@ namespace Complex.Domino.Web.Student
             return String.Format("~/Student/Assignment.aspx?ID={0}", assignmentID);
         }
 
+        protected Lib.AssignmentGrade assignmentGrade;
+
+        protected override void CreateItem()
+        {
+            base.CreateItem();
+
+            assignmentGrade = new Lib.AssignmentGrade(DatabaseContext);
+            assignmentGrade.Load(Item.ID, DatabaseContext.User.ID);
+        }
+
         protected override void UpdateForm()
         {
             base.UpdateForm();
@@ -22,6 +32,9 @@ namespace Complex.Domino.Web.Student
             SemesterDescription.Text = Item.SemesterDescription;
             CourseDescription.Text = Item.CourseDescription;
             AssignmentDescription.Text = Item.Description;
+
+            GradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Item.GradeType);
+            Grade.Text = assignmentGrade.Grade > 0 ? assignmentGrade.Grade.ToString() : Resources.Labels.NoGrade;
 
             if (!String.IsNullOrWhiteSpace(Item.Url))
             {
