@@ -48,7 +48,6 @@ namespace Complex.Domino.Web.Admin
             searchObject = new Lib.UserFactory(DatabaseContext)
             {
                 CourseID = this.CourseID,
-                Role = Lib.UserRoleType.Student,
             };
 
             e.ObjectInstance = searchObject;

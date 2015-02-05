@@ -612,6 +612,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No submissions match the query..
+        /// </summary>
+        internal static string NoSubmissions {
+            get {
+                return ResourceManager.GetString("NoSubmissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No users match the query..
         /// </summary>
         internal static string NoUsers {

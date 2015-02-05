@@ -442,4 +442,7 @@
   <data name="VisibleToStudent" xml:space="preserve">
     <value>(a hallgató számára látható)</value>
   </data>
+  <data name="NoSubmissions" xml:space="preserve">
+    <value>Nem találhatók a keresésnek megfelelő megoldások</value>
+  </data>
 </root>

@@ -442,4 +442,7 @@
   <data name="VisibleToStudent" xml:space="preserve">
     <value>(visible to student)</value>
   </data>
+  <data name="NoSubmissions" xml:space="preserve">
+    <value>No submissions match the query.</value>
+  </data>
 </root>

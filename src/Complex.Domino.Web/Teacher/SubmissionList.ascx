@@ -24,4 +24,7 @@
                    </p>
         </asp:HyperLink>
     </ItemTemplate>
+    <EmptyItemTemplate>
+        <p><asp:Label runat="server" Text="<%$ Resources:Labels, NoSubmissions %>" /></p>
+    </EmptyItemTemplate>
 </asp:ListView>
