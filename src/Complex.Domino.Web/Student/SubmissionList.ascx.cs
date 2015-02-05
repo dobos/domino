@@ -31,7 +31,7 @@ namespace Complex.Domino.Web.Student
             }
         }
 
-        protected void submissionDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
+        protected void SubmissionDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
         {
             searchObject = new Lib.SubmissionFactory(DatabaseContext);
 
@@ -40,6 +40,34 @@ namespace Complex.Domino.Web.Student
             searchObject.StudentID = DatabaseContext.User.ID;
 
             e.ObjectInstance = searchObject;
+        }
+
+        protected void SubmissionList_ItemCreated(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                var submission = (Lib.Submission)e.Item.DataItem;
+
+                var link = (HyperLink)e.Item.FindControl("submissionsLink");
+                var label = (Label)e.Item.FindControl("createdDateLabel");
+
+                // mark unread submissions by teacher
+                if (!submission.IsRead && submission.TeacherID > 0)
+                {
+                    link.CssClass += " unread";
+                }
+
+                // mark submissions by teacher
+                if (submission.TeacherID > 0)
+                {
+                    link.CssClass += " reply";
+                    label.Text = Resources.Labels.ReplyDate;
+                }
+                else
+                {
+                    label.Text = Resources.Labels.SubmissionDate;
+                }
+            }
         }
     }
 }

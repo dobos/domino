@@ -101,10 +101,10 @@
         margin: 8px;
     }
 
-a.unread {
-    border: 1px solid #ffc300;
-}
+    .fullbar a.unread {
+        border: 1px solid #00FF00;
+    }
 
-a.reply {
-    border: 1px solid #C0C0C0;
-}
+    .fullbar a.reply {
+        border: 1px solid #FF0000;
+    }

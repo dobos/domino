@@ -16,18 +16,20 @@
     <ItemTemplate>
         <asp:HyperLink runat="server" CssClass="fullbar" ID="submissionsLink"
             NavigateUrl='<%# Complex.Domino.Web.Teacher.Submission.GetUrl((int)Eval("AssignmentID"), (int)Eval("ID")) %>'>
-                <asp:Image runat="server" SkinID="SubmissionIcon" />
-                <h1><asp:Label runat="server" ID="createdDateLabel" />: <%# Eval("CreatedDate") %></h1>
-                <h2><%# Eval("SemesterDescription") %> |
+            <asp:Image runat="server" SkinID="SubmissionIcon" />
+            <h1>
+                <asp:Label runat="server" ID="createdDateLabel" />: <%# Eval("CreatedDate") %></h1>
+            <h2><%# Eval("SemesterDescription") %> |
                    <%# Eval("CourseDescription") %> |
                    <%# Eval("AssignmentDescription") %>
-                   </h2>
+            </h2>
             <p>
                 <%# Eval("Comments") %>
             </p>
         </asp:HyperLink>
     </ItemTemplate>
     <EmptyItemTemplate>
-        <p><asp:Label runat="server" Text="<%$ Resources:Labels, NoSubmissions %>" /></p>
+        <p>
+            <asp:Label runat="server" Text="<%$ Resources:Labels, NoSubmissions %>" /></p>
     </EmptyItemTemplate>
 </asp:ListView>
