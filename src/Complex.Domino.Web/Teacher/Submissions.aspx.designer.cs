@@ -13,12 +13,12 @@ namespace Complex.Domino.Web.Teacher {
     public partial class Submissions {
         
         /// <summary>
-        /// SubmissionList control.
+        /// submissionList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Complex.Domino.Web.Teacher.SubmissionList SubmissionList;
+        protected global::Complex.Domino.Web.Teacher.SubmissionList submissionList;
     }
 }

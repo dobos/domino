@@ -29,8 +29,8 @@ namespace Complex.Domino.Web.Teacher
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SubmissionList.AssignmentID = AssignmentID;
-            SubmissionList.UserID = UserID;
+            submissionList.AssignmentID = AssignmentID;
+            submissionList.UserID = UserID;
         }
 
     }

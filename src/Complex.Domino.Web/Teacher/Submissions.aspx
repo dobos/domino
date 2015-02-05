@@ -5,5 +5,5 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1><asp:Label runat="server" Text="<%$ Resources:Labels, Submissions %>" /></h1>
-    <dt:SubmissionList runat="server" id="SubmissionList" />
+    <dt:SubmissionList runat="server" id="submissionList" />
 </asp:Content>

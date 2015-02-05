@@ -8,8 +8,7 @@
     MaximumRowsParameterName="max"
     SortParameterName="orderBy"
     EnablePaging="true" />
-<asp:ListView runat="server" ID="submissionList" DataSourceID="submissionDataSource"
-    S>
+<asp:ListView runat="server" ID="submissionList" DataSourceID="submissionDataSource">
     <LayoutTemplate>
         <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
     </LayoutTemplate>
