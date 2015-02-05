@@ -152,6 +152,11 @@ SELECT * FROM q
             sb.AppendLine(")");
         }
 
+        protected virtual string GetDefaultOrderBy()
+        {
+            return "ID ASC";
+        }
+
         protected string BuildOrderByClause(string orderBy)
         {
             if (!String.IsNullOrWhiteSpace(orderBy))
@@ -160,7 +165,7 @@ SELECT * FROM q
             }
             else
             {
-                return "ORDER BY ID ASC";
+                return "ORDER BY " + GetDefaultOrderBy();
             }
         }
     }

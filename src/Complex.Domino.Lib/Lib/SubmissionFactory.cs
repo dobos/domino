@@ -97,5 +97,10 @@ LEFT OUTER JOIN [User] teacher ON teacher.ID = s.TeacherID)
                 cmd.Parameters.Add("@StudentID", System.Data.SqlDbType.Int).Value = studentID;
             }
         }
+
+        protected override string GetDefaultOrderBy()
+        {
+            return "ID DESC";
+        }
     }
 }
