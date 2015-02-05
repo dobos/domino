@@ -9,13 +9,13 @@
                 OnClick="NewSubmissionKeep_Click">
                 <asp:Image runat="server" SkinID="KeepUploadsIcon" />
                 <h1><asp:Label runat="server" Text="<%$ Resources:Labels, KeepFiles %>" /></h1>
-                <p><asp:Label runat="server" Text="<%$ Resources:Labels, KeepFilesDetails %>" /></p>
+                <h2><asp:Label runat="server" Text="<%$ Resources:Labels, KeepFilesDetails %>" /></h2>
             </asp:LinkButton>
             <asp:LinkButton CssClass="fullbar" runat="server" ValidationGroup="NewSubmission" ID="newSubmissionEmpty"
                 OnClick="NewSubmissionEmpty_Click">
                 <asp:Image runat="server" SkinID="DeleteUploadsIcon" />
                 <h1><asp:Label runat="server" Text="<%$ Resources:Labels, DeleteFiles %>" /></h1>
-                <p><asp:Label runat="server" Text="<%$ Resources:Labels, DeleteFilesDetails %>" /></p>
+                <h2><asp:Label runat="server" Text="<%$ Resources:Labels, DeleteFilesDetails %>" /></h2>
             </asp:LinkButton>
     </asp:Panel>
     <asp:Panel runat="server" ID="filesPanel" Visible="false">

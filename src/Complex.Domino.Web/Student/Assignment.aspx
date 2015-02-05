@@ -59,7 +59,7 @@
     <asp:HyperLink runat="server" CssClass="fullbar" ID="NewSubmission">
         <asp:Image runat="server" SkinID="NewSubmissionIcon" />
         <h1><asp:Label runat="server" Text="<%$ Resources:Labels,NewSubmission %>" /></h1>
-        <p><asp:Label runat="server" Text="<%$ Resources:Labels,NewSubmissionDetails %>" /></p>
+        <h2><asp:Label runat="server" Text="<%$ Resources:Labels,NewSubmissionDetails %>" /></h2>
     </asp:HyperLink>
     <domino:submissionlist runat="server" id="SubmissionList" />
 </asp:Content>

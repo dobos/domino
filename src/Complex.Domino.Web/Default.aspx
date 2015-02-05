@@ -9,7 +9,7 @@
     <asp:HyperLink runat="server" CssClass="fullbar" ID="SignInLink">
         <asp:Image runat="server" SkinID="SignInIcon" />
         <h1>Sign in to Domino</h1>
-        <p>you need to be a registered user to use Domino</p>
+        <h2>you need to be a registered user to use Domino</h2>
     </asp:HyperLink>
 
 </asp:Content>

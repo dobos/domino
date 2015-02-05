@@ -4,11 +4,11 @@
     <asp:HyperLink runat="server" CssClass="fullbar" ID="CoursesLink">
         <asp:Image runat="server" SkinID="CourseIcon" />
         <h1><asp:Label runat="server" Text="<%$ Resources:Labels, ViewCourses %>" /></h1>
-        <p><asp:Label runat="server" Text="<%$ Resources:Labels, ViewCoursesDetails %>" /></p>
+        <h2><asp:Label runat="server" Text="<%$ Resources:Labels, ViewCoursesDetails %>" /></h2>
     </asp:HyperLink>
     <asp:HyperLink runat="server" CssClass="fullbar" ID="AssignmentsLink">
         <asp:Image runat="server" SkinID="AssignmentIcon" />
         <h1><asp:Label runat="server" Text="<%$ Resources:Labels, ViewAssignments %>" /></h1>
-        <p><asp:Label runat="server" Text="<%$ Resources:Labels, ViewAssignmentsDetails %>" /></p>
+        <h2><asp:Label runat="server" Text="<%$ Resources:Labels, ViewAssignmentsDetails %>" /></h2>
     </asp:HyperLink>
 </asp:Content>

@@ -17,7 +17,7 @@
                 NavigateUrl='<%# Complex.Domino.Web.Teacher.Courses.GetUrl((int)Eval("ID")) %>'>
                 <asp:Image runat="server" SkinID="SemesterIcon" />
                 <h1><%# Eval("Description") %></h1>
-                <p>...</p>
+                <h2>...</h2>
             </asp:HyperLink>
         </ItemTemplate>
     </asp:ListView>

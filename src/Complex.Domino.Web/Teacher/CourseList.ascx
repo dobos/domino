@@ -16,12 +16,12 @@
             <div class="fullbar" ID="AssignmentsLink" />
                 <asp:Image runat="server" SkinID="CourseIcon" />
                 <h1><%# Eval("Description") %></h1>
-                <p><%# Eval("SemesterDescription") %> |
+                <h2><%# Eval("SemesterDescription") %> |
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Course.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources: Labels, ModifyCourse %>" /> |
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Students.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources: Labels, Students %>" /> |
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Assignments.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Assignments %>" /> |
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Spreadsheet.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Submissions %>" />
-                </p>
+                </h2>
             </div>
         </ItemTemplate>
     </asp:ListView>
