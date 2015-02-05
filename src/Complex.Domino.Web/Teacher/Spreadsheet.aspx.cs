@@ -64,63 +64,63 @@ namespace Complex.Domino.Web.Teacher
             tablePlaceholder.Controls.Add(table);
         }
 
-        private TableRow GenerateHeaderRow1(Lib.SpreadsheetFactory sf)
+        private TableHeaderRow GenerateHeaderRow1(Lib.SpreadsheetFactory sf)
         {
-            TableRow tr;
-            TableCell td;
+            TableHeaderRow tr;
+            TableHeaderCell th;
 
-            tr = new TableRow();
+            tr = new TableHeaderRow();
 
             // -- corner
-            td = new TableCell()
+            th = new TableHeaderCell()
             {
                 ColumnSpan = 2
             };
 
-            tr.Cells.Add(td);
+            tr.Cells.Add(th);
 
             for (int ai = 0; ai < sf.Assignments.Count; ai++)
             {
-                td = new TableCell()
+                th = new TableHeaderCell()
                 {
                     ColumnSpan = 3,
                     Text = sf.Assignments[ai].Name
                 };
 
-                tr.Cells.Add(td);
+                tr.Cells.Add(th);
             }
 
             return tr;
         }
 
-        private TableRow GenerateHeaderRow2(Lib.SpreadsheetFactory sf)
+        private TableHeaderRow GenerateHeaderRow2(Lib.SpreadsheetFactory sf)
         {
-            TableRow tr;
-            TableCell td;
+            TableHeaderRow tr;
+            TableHeaderCell th;
 
-            tr = new TableRow();
+            tr = new TableHeaderRow();
 
-            td = new TableCell();
-            td.Text = Resources.Labels.UserName;
-            tr.Cells.Add(td);
+            th = new TableHeaderCell();
+            th.Text = Resources.Labels.UserName;
+            tr.Cells.Add(th);
 
-            td = new TableCell();
-            td.Text = Resources.Labels.Name;
-            tr.Cells.Add(td);
+            th = new TableHeaderCell();
+            th.Text = Resources.Labels.Name;
+            tr.Cells.Add(th);
 
             for (int ai = 0; ai < sf.Assignments.Count; ai++)
             {
-                td = new TableCell();
-                td.Text = Resources.Labels.First.ToLower();
-                tr.Cells.Add(td);
+                th = new TableHeaderCell();
+                th.Text = Resources.Labels.First.ToLower();
+                tr.Cells.Add(th);
 
-                td = new TableCell();
-                td.Text = Resources.Labels.Last.ToLower();
-                tr.Cells.Add(td);
+                th = new TableHeaderCell();
+                th.Text = Resources.Labels.Last.ToLower();
+                tr.Cells.Add(th);
 
-                td = new TableCell();
-                td.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), sf.Assignments[ai].GradeType).ToLower();
-                tr.Cells.Add(td);
+                th = new TableHeaderCell();
+                th.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), sf.Assignments[ai].GradeType).ToLower();
+                tr.Cells.Add(th);
             }
 
             return tr;
@@ -131,8 +131,10 @@ namespace Complex.Domino.Web.Teacher
             TableRow tr;
             TableCell td;
 
-            tr = new TableRow();
-
+            tr = new TableRow()
+            {
+                CssClass = "item"
+            };
 
             // User name
             td = new TableCell()
@@ -168,7 +170,7 @@ namespace Complex.Domino.Web.Teacher
             {
                 td[i] = new TableCell()
                 {
-                    CssClass = "item"
+                    CssClass = "subm"
                 };
             }
 
@@ -199,18 +201,32 @@ namespace Complex.Domino.Web.Teacher
 
                     td[0].Controls.Add(a);
 
-                    // Late
-
-                    if (s.CreatedDate > aa.EndDateSoft)
+                    if (!s.IsRead)
                     {
+                        // Unread
+
+                        td[0].CssClass += " new";
+                    }
+                    else if (s.CreatedDate > aa.EndDateSoft)
+                    {
+                        // Late
+
                         td[0].CssClass += " late";
                     }
 
-                    // Unread
+                    
                 }
 
                 if (ss.Count > 1)
                 {
+                    // Check if any of the submissions is unread
+
+                    bool unread = false;
+                    for (int i = 1; i < ss.Count; i++)
+                    {
+                        unread |= !ss[i].IsRead;
+                    }
+
                     var s = ss[ss.Count - 1];       // Last submission
 
                     var a = new HyperLink()
@@ -221,7 +237,12 @@ namespace Complex.Domino.Web.Teacher
 
                     td[1].Controls.Add(a);
 
-                    // Unread
+                    if (unread)
+                    {
+                        // Unread
+
+                        td[1].CssClass += " new";
+                    }
                 }
             }
 
