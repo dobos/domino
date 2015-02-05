@@ -445,4 +445,7 @@
   <data name="NoSubmissions" xml:space="preserve">
     <value>No submissions match the query.</value>
   </data>
+  <data name="ReplyDate" xml:space="preserve">
+    <value>Replied</value>
+  </data>
 </root>

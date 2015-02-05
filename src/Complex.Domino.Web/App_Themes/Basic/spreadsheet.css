@@ -38,11 +38,17 @@ table.spreadsheet {
             border-right: 2px solid #EEEECC;
         }
 
-        table.spreadsheet td.subm {
+        table.spreadsheet td.subm,
+        table.spreadsheet td.points {
             width: 48px;
             text-align: center;
             border-left: 2px solid #EEEECC;
             border-right: 2px solid #EEEECC;
+        }
+
+        table.spreadsheet td.points {
+            text-align: right;
+            padding-right: 4px;
         }
 
         table.spreadsheet td.new {
@@ -53,4 +59,8 @@ table.spreadsheet {
         table.spreadsheet td.late {
             color: #FFFFFF;
             background-color: #FF0000;
+        }
+
+        table.spreadsheet td.comments {
+            font-weight: bold;
         }

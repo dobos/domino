@@ -58,17 +58,17 @@
                     <td class="label" colspan="3">
                         <asp:CheckBox runat="server" ID="markRead" Text="<%$ Resources:Labels, MarkRead %>" Checked="true" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:CheckBox runat="server" ID="sendReply" Text="<%$ Resources:Labels, SendReply %>" Checked="true"
+                        <asp:CheckBox runat="server" ID="sendReply" Text="<%$ Resources:Labels, SendReply %>" Checked="false"
                             AutoPostBack="true" CausesValidation="false" OnCheckedChanged="SendReply_CheckedChanged" />
                     </td>
                 </tr>
-                <tr runat="server" id="CommentsRow3">
+                <tr runat="server" id="CommentsRow3" visible="false">
                     <td class="label" colspan="3">
                         <asp:Label runat="server" ID="replyLabel" Text="<%$ Resources:Labels, Reply %>" />:
                         <asp:Label runat="server" Text="<%$ Resources:Labels, VisibleToStudent %>" />
                     </td>
                 </tr>
-                <tr runat="server" id="CommentsRow4">
+                <tr runat="server" id="CommentsRow4" visible="false">
                     <td colspan="3" class="field">
                         <asp:TextBox runat="server" ID="reply" TextMode="MultiLine" ValidationGroup="Entity" />
                     </td>

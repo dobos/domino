@@ -684,6 +684,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replied.
+        /// </summary>
+        internal static string ReplyDate {
+            get {
+                return ResourceManager.GetString("ReplyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset password.
         /// </summary>
         internal static string ResetPassword {

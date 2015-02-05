@@ -44,13 +44,15 @@ DOMINO TODO
    course form: disable name edit, visibility and enabled edit
    add new assignment form
    assignment form: disable name etc. editing
-   spreadsheet: could use nicer design
-   rationalize teacher menu
-   add student page to view email
++  spreadsheet: could use nicer design
+++ rationalize teacher menu
+++ add student page to view email
    link to student page from spreadsheet
    submissions still in wrong order
-   add user and assignment details to submissions page
+   highlight unread submission on submissions page
+++ add user and assignment details to submissions page
    implement reply
+   reply off by default
    
    Student:
    

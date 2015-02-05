@@ -49,6 +49,7 @@ namespace Complex.Domino.Web.Teacher
             sf.FindStudents(-1, -1, "Name");
             sf.FindAssignments();
             sf.FindSubmissions(-1, -1, "Name");
+            sf.FindAssignmentGrades(-1, -1, "Name");
 
             var table = new Table();
             table.CssClass = "spreadsheet";
@@ -174,29 +175,31 @@ namespace Complex.Domino.Web.Teacher
                 };
             }
 
-            var aa = sf.Assignments[ai];
-            var ss = sf.Submissions[si][ai];
+            var assignment = sf.Assignments[ai];
+            var submission = sf.Submissions[si][ai];
+            var grade = sf.AssignmentGrades[si][ai];
 
-            if (ss != null)
+            if (submission != null)
             {
-                if (ss.Count > 0)
+                if (submission.Count > 0)
                 {
-                    var s = ss[0];                  // First submission
+                    var s = submission[0];                  // First submission
 
                     var a = new HyperLink()
                     {
                         Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat),
+                        Target = "_blank",
                     };
 
                     // If this is the only submission, point link to it directly,
                     // otherwise point to a list of submissions
-                    if (ss.Count == 1)
+                    if (submission.Count == 1)
                     {
-                        a.NavigateUrl = Teacher.Submission.GetUrl(aa.ID, s.ID);
+                        a.NavigateUrl = Teacher.Submission.GetUrl(assignment.ID, s.ID);
                     }
                     else
                     {
-                        a.NavigateUrl = Teacher.Submissions.GetUrl(aa.ID, s.StudentID);
+                        a.NavigateUrl = Teacher.Submissions.GetUrl(assignment.ID, s.StudentID);
                     }
 
                     td[0].Controls.Add(a);
@@ -207,7 +210,7 @@ namespace Complex.Domino.Web.Teacher
 
                         td[0].CssClass += " new";
                     }
-                    else if (s.CreatedDate > aa.EndDateSoft)
+                    else if (s.CreatedDate > assignment.EndDateSoft)
                     {
                         // Late
 
@@ -217,22 +220,23 @@ namespace Complex.Domino.Web.Teacher
                     
                 }
 
-                if (ss.Count > 1)
+                if (submission.Count > 1)
                 {
                     // Check if any of the submissions is unread
 
                     bool unread = false;
-                    for (int i = 1; i < ss.Count; i++)
+                    for (int i = 1; i < submission.Count; i++)
                     {
-                        unread |= !ss[i].IsRead;
+                        unread |= !submission[i].IsRead;
                     }
 
-                    var s = ss[ss.Count - 1];       // Last submission
+                    var s = submission[submission.Count - 1];       // Last submission
 
                     var a = new HyperLink()
                     {
                         Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat),
-                        NavigateUrl = Teacher.Submission.GetUrl(aa.ID, s.ID),
+                        NavigateUrl = Teacher.Submission.GetUrl(assignment.ID, s.ID),
+                        Target = "_blank",
                     };
 
                     td[1].Controls.Add(a);
@@ -242,6 +246,18 @@ namespace Complex.Domino.Web.Teacher
                         // Unread
 
                         td[1].CssClass += " new";
+                    }
+                }
+
+                if (grade != null)
+                {
+                    td[2].Text = grade.Grade.ToString();
+                    td[2].CssClass = "points";
+
+                    if (!String.IsNullOrWhiteSpace(grade.Comments))
+                    {
+                        td[2].ToolTip = grade.Comments;
+                        td[2].CssClass += " comments";
                     }
                 }
             }

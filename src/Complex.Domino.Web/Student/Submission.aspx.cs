@@ -51,5 +51,15 @@ namespace Complex.Domino.Web.Student
 
             ok.Visible = !Item.IsExisting;
         }
+
+        protected override void SaveForm()
+        {
+            base.SaveForm();
+
+            var commit = CommitSubmission(Item);
+
+            Item.StudentID = DatabaseContext.User.ID;
+            Item.Name = commit.Hash;
+        }
     }
 }

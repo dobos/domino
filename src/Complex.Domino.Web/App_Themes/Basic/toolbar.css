@@ -60,7 +60,7 @@
 .fullbar {
     display: block;
     width: 632px;
-    height: 64px;
+    min-height: 64px;
     background-color: #FFFFFF;
     border: 1px solid #808080;
     border-radius: 8px;
@@ -90,7 +90,21 @@
         margin-bottom: 0px;
     }
 
+    .fullbar h2 {
+        font-size: 14px;
+        font-weight: normal;
+        margin-top: 8px;
+    }
+
     .fullbar p {
         font-size: 14px;
-        margin: 0px;
+        margin: 8px;
     }
+
+a.unread {
+    border: 1px solid #ffc300;
+}
+
+a.reply {
+    border: 1px solid #C0C0C0;
+}

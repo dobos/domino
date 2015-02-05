@@ -18,6 +18,7 @@ namespace Complex.Domino.Lib
         private List<Assignment> assignments;
         private Dictionary<int, int> assignmentIds;
         private List<Submission>[][] submissions;
+        private AssignmentGrade[][] assignmentGrades;
 
         public int CourseID
         {
@@ -44,6 +45,11 @@ namespace Complex.Domino.Lib
         public List<Submission>[][] Submissions
         {
             get { return submissions; }
+        }
+
+        public AssignmentGrade[][] AssignmentGrades
+        {
+            get { return assignmentGrades; }
         }
 
         public SpreadsheetFactory(Context context)
@@ -141,9 +147,22 @@ INNER JOIN s ON s.StudentID = u.ID AND s.AssignmentID = a.ID
 INNER JOIN [Course] c ON c.ID = a.CourseID
 INNER JOIN [Semester] r ON r.ID = c.SemesterID
 LEFT OUTER JOIN [User] teacher ON teacher.ID = s.TeacherID
---WHERE u.rn BETWEEN @from AND @to
+{0}
 ORDER BY u.rn, a.rn, s.rn
 ";
+
+            string where;
+
+            if (from > -1 && max > -1)
+            {
+                where = "WHERE u.rn BETWEEN @from AND @to";
+            }
+            else
+            {
+                where = "";
+            }
+
+            sql = String.Format(sql, where);
 
             using (var cmd = Context.CreateCommand(sql))
             {
@@ -171,6 +190,67 @@ ORDER BY u.rn, a.rn, s.rn
                     }
 
                     submissions[si][ai].Add(submission);
+                }
+            }
+        }
+
+        public void FindAssignmentGrades(int max, int from, string orderBy)
+        {
+            var sql = @"
+WITH uu AS
+(
+	SELECT u.*, ROW_NUMBER() OVER(ORDER BY u.Name) rn
+	FROM [User] u
+	INNER JOIN [UserRole] r ON r.UserID = u.ID
+	WHERE r.CourseID = @CourseID AND r.UserRoleType = 3	-- student of the course
+),
+gg AS
+(
+	SELECT g.*, ROW_NUMBER() OVER(ORDER BY a.Name) rn
+	FROM [AssignmentGrade] g
+	INNER JOIN [Assignment] a ON a.ID = g.AssignmentID
+	WHERE a.CourseID = @CourseID AND (@AssignmentID = -1 OR ID = @AssignmentID)
+)
+SELECT *
+FROM gg
+INNER JOIN uu ON gg.StudentID = uu.ID
+{0}
+ORDER BY uu.rn
+";
+
+            string where;
+
+            if (from > -1 && max > -1)
+            {
+                where = "WHERE u.rn BETWEEN @from AND @to";
+            }
+            else
+            {
+                where = "";
+            }
+
+            sql = String.Format(sql, where);
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseId;
+                cmd.Parameters.Add("@AssignmentID", SqlDbType.Int).Value = assignmentId;
+
+                cmd.Parameters.Add("@from", SqlDbType.Int).Value = from;
+                cmd.Parameters.Add("@to", SqlDbType.Int).Value = from + max;
+
+                assignmentGrades = new AssignmentGrade[students.Count][];
+                for (int i = 0; i < assignmentGrades.Length; i++)
+                {
+                    assignmentGrades[i] = new AssignmentGrade[assignments.Count];
+                }
+
+                foreach (var grade in Context.ExecuteCommandReader<AssignmentGrade>(cmd))
+                {
+                    var si = studentIds[grade.StudentId];
+                    var ai = assignmentIds[grade.AssignmentId];
+
+                    assignmentGrades[si][ai] = grade;
                 }
             }
         }

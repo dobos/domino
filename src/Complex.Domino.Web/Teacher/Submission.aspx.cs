@@ -37,6 +37,17 @@ namespace Complex.Domino.Web.Teacher
             return url;
         }
 
+        protected Lib.AssignmentGrade assignmentGrade;
+        protected Lib.Submission replySubmission;
+
+        protected override void CreateItem()
+        {
+            base.CreateItem();
+
+            assignmentGrade = new Lib.AssignmentGrade(DatabaseContext);
+            assignmentGrade.Load(Item.AssignmentID, Item.StudentID);
+        }
+
         protected override void UpdateForm()
         {
             base.UpdateForm();
@@ -47,8 +58,57 @@ namespace Complex.Domino.Web.Teacher
             studentDescription.Text = Student.Description;
             studentDescription.NavigateUrl = Teacher.Student.GetUrl(Student.ID);
             comments.Text = Item.Comments;
+            
             gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Assignment.GradeType);
-            //grade.Text =  TODO: read actual grade from database
+            gradeComments.Text = assignmentGrade.Comments;
+            grade.Text = assignmentGrade.Grade.ToString();
+        }
+
+        protected override void SaveForm()
+        {
+            base.SaveForm();
+
+            if (sendReply.Checked)
+            {
+                replySubmission = new Lib.Submission(Item);
+
+                replySubmission.ID = -1;       // Reset, so a new submission will be created
+                replySubmission.TeacherID = DatabaseContext.User.ID;
+                replySubmission.Comments = reply.Text;
+
+                var commit = CommitSubmission(replySubmission);
+
+                replySubmission.Name = commit.Hash;
+            }
+
+            assignmentGrade.Comments = gradeComments.Text;
+            assignmentGrade.Grade = int.Parse(grade.Text);
+        }
+
+        protected override void OnOkClick()
+        {
+            SaveForm();
+
+            // Only create a new submission (reply) if requested.
+            // Always save grade
+
+            if (sendReply.Checked)
+            {
+                replySubmission.Save();
+            }
+
+            if (markRead.Checked)
+            {
+                Item.MarkRead();
+            }
+            else
+            {
+                Item.MarkUnread();
+            }
+
+            assignmentGrade.Save();
+
+            OnRedirect();
         }
 
         protected void SendReply_CheckedChanged(object sender, EventArgs e)

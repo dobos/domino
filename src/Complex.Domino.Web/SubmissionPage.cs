@@ -20,7 +20,7 @@ namespace Complex.Domino.Web
 
         private Lib.Assignment assignment;
         private Lib.User student;
-        private Lib.GitHelper git;
+        private Lib.GitHelper gitHelper;
 
         protected int AssignmentID
         {
@@ -39,7 +39,7 @@ namespace Complex.Domino.Web
 
         protected Lib.GitHelper GitHelper
         {
-            get { return git; }
+            get { return gitHelper; }
         }
 
         protected override void CreateItem()
@@ -68,7 +68,7 @@ namespace Complex.Domino.Web
 
             // Initialize the git helper class with current session info
 
-            git = new Lib.GitHelper()
+            gitHelper = new Lib.GitHelper()
             {
                 SessionGuid = SessionGuid,
                 Author = DatabaseContext.User,
@@ -77,8 +77,8 @@ namespace Complex.Domino.Web
                 Submission = Item,
             };
 
-            fileBrowser.PrefixPath = git.GetAssignmentPrefixPath();
-            fileBrowser.BasePath = git.GetAssignmentPath();
+            fileBrowser.PrefixPath = gitHelper.GetAssignmentPrefixPath();
+            fileBrowser.BasePath = gitHelper.GetAssignmentPath();
         }
 
         protected override void UpdateForm()
@@ -103,7 +103,7 @@ namespace Complex.Domino.Web
                 // Check out the current submission to view files
                 // TODO: might need to be replace with smarter solution
                 // that read file contents from git directly
-                git.CheckOutSubmission();
+                gitHelper.CheckOutSubmission();
 
                 SwitchViewToFiles();
             }
@@ -111,22 +111,20 @@ namespace Complex.Domino.Web
             {
                 // Make sure the git repo is checked out, the assigment exists
                 // and it is the tip of the branch
-                git.EnsureAssignmentExists();
+                gitHelper.EnsureAssignmentExists();
 
                 // If this a first time visit to the page the user can choose whether to
                 // keep existing files in the submission folder or delete them
-                if (git.IsAssignmentEmpty())
+                if (gitHelper.IsAssignmentEmpty())
                 {
                     SwitchViewToFiles();
                 }
             }
         }
 
-        protected override void SaveForm()
+        protected Git.Commit CommitSubmission(Lib.Submission submission)
         {
-            base.SaveForm();
-
-            var comments = Item.Comments;
+            var comments = submission.Comments;
 
             if (String.IsNullOrWhiteSpace(comments))
             {
@@ -134,10 +132,9 @@ namespace Complex.Domino.Web
             }
 
             // Commit changes into git
-            var commit = git.CommitSubmission(comments);
+            var commit = GitHelper.CommitSubmission(comments);
 
-            Item.StudentID = DatabaseContext.User.ID;
-            Item.Name = commit.Hash;
+            return commit;
         }
 
         protected void NewSubmissionKeep_Click(object sender, EventArgs e)
@@ -147,7 +144,7 @@ namespace Complex.Domino.Web
 
         protected void NewSubmissionEmpty_Click(object sender, EventArgs e)
         {
-            git.EmptyAssignment();
+            gitHelper.EmptyAssignment();
             SwitchViewToFiles();
         }
 

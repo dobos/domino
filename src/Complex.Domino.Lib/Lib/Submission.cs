@@ -119,6 +119,12 @@ namespace Complex.Domino.Lib
             InitializeMembers();
         }
 
+        public Submission(Submission old)
+            : base(old)
+        {
+            CopyMembers(old);
+        }
+
         private void InitializeMembers()
         {
             this.semesterID = -1;
@@ -133,6 +139,25 @@ namespace Complex.Domino.Lib
             this.studentID = -1;
             this.studentName = null;
             this.teacherID = -1;
+            this.teacherName = null;
+            this.replyToSubmissionID = -1;
+            this.readDate = DateTime.MinValue;
+        }
+
+        private void CopyMembers(Submission old)
+        {
+            this.semesterID = old.semesterID;
+            this.semesterName = old.semesterName;
+            this.semesterDescription = old.semesterDescription;
+            this.courseID = old.courseID;
+            this.courseName = old.courseName;
+            this.courseDescription = old.courseDescription;
+            this.assignmentID = old.assignmentID;
+            this.assignmentName = old.assignmentName;
+            this.assignmentDescription = old.assignmentDescription;
+            this.studentID = old.studentID;
+            this.studentName = old.studentName;
+            this.teacherID = old.teacherID;
             this.teacherName = null;
             this.replyToSubmissionID = -1;
             this.readDate = DateTime.MinValue;
@@ -243,6 +268,42 @@ WHERE ID = @ID";
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
                 Context.ExecuteCommandNonQuery(cmd);
             }
+        }
+
+        public void MarkRead()
+        {
+            if (readDate == DateTime.MinValue)
+            {
+
+                var sql = @"
+UPDATE Submission
+SET ReadDate = GETDATE()
+WHERE ID = @ID";
+
+                using (var cmd = Context.CreateCommand(sql))
+                {
+                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
+                    Context.ExecuteCommandNonQuery(cmd);
+                }
+
+                this.readDate = DateTime.Now;
+            }
+        }
+
+        public void MarkUnread()
+        {
+            var sql = @"
+UPDATE Submission
+SET ReadDate = NULL
+WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+
+            this.readDate = DateTime.MinValue;
         }
     }
 }

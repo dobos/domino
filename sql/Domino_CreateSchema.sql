@@ -94,11 +94,30 @@ CREATE TABLE [dbo].[CourseGrade]
 	[CourseID] int NOT NULL,
 	[StudentID] int NOT NULL,
 	[Grade] int,
+	[Comments] nvarchar(max),
 	
 	CONSTRAINT [PK_CourseGrade] PRIMARY KEY CLUSTERED 
 	(
-		[CourseID] ASC,
-		[StudentID] ASC
+		[StudentID] ASC,
+		[CourseID] ASC
+	),
+
+	CONSTRAINT [FK_CourseGrade_Course] FOREIGN KEY
+	(
+		[CourseID]
+	) 
+	REFERENCES [dbo].[Course]
+	(
+		[ID]
+	),
+
+	CONSTRAINT [FK_CourseGrade_User] FOREIGN KEY
+	(
+		[StudentID]
+	) 
+	REFERENCES [dbo].[User]
+	(
+		[ID]
 	)
 )
 
@@ -209,12 +228,30 @@ CREATE TABLE [dbo].[AssignmentGrade]
 	[AssignmentID] int NOT NULL,
 	[StudentID] int NOT NULL,
 	[Grade] int NOT NULL,
-	[Comments] string nvarchar(max),
+	[Comments] nvarchar(max),
 	
 	CONSTRAINT [PK_AssignmentGrade] PRIMARY KEY CLUSTERED 
 	(
-		[AssignmentID] ASC,
-		[StudentID] ASC
+		[StudentID] ASC,
+		[AssignmentID] ASC
+	),
+
+	CONSTRAINT [FK_AssignmentGrade_Assignment] FOREIGN KEY
+	(
+		[AssignmentID]
+	) 
+	REFERENCES [dbo].[Assignment]
+	(
+		[ID]
+	),
+
+	CONSTRAINT [FK_AssignmentGrade_User] FOREIGN KEY
+	(
+		[StudentID]
+	) 
+	REFERENCES [dbo].[User]
+	(
+		[ID]
 	)
 )
 

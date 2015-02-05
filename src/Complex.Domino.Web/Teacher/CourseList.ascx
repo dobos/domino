@@ -22,6 +22,6 @@
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Assignments.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Assignments %>" /> |
                     <asp:HyperLink runat="server" NavigateUrl='<%# Complex.Domino.Web.Teacher.Spreadsheet.GetUrl((int)Eval("ID")) %>' Text="<%$ Resources:Labels, Submissions %>" />
                 </p>
-            </asp:HyperLink>
+            </div>
         </ItemTemplate>
     </asp:ListView>
