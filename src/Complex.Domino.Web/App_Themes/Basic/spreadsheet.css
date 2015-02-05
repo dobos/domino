@@ -24,6 +24,10 @@ table.spreadsheet {
             background-color: #EEEECC;
         }
 
+    table.spreadsheet th {
+        border-bottom: 2px solid #EEEECC;
+    }
+
     table.spreadsheet td {
         border: 2px solid #FFFFFF;
         text-align: left;
@@ -53,7 +57,7 @@ table.spreadsheet {
 
         table.spreadsheet td.new {
             color: #000000;
-            background-color: #FFFF00;
+            background-color: #00FF00;
         }
 
         table.spreadsheet td.late {

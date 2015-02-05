@@ -448,4 +448,7 @@
   <data name="ReplyDate" xml:space="preserve">
     <value>Replied</value>
   </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
 </root>

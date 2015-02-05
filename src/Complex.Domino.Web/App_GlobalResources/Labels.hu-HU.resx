@@ -448,4 +448,7 @@
   <data name="ReplyDate" xml:space="preserve">
     <value>Megválaszolva</value>
   </data>
+  <data name="Results" xml:space="preserve">
+    <value>Eredmények</value>
+  </data>
 </root>
