@@ -35,5 +35,26 @@ namespace Complex.Domino.Web.Student
 
             e.ObjectInstance = searchObject;
         }
+
+        protected void CourseList_ItemCreated(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                var course = (Lib.Course)((ListViewDataItem)e.Item).DataItem;
+
+                if (course != null)
+                {
+                    var grade = e.Item.FindControl("grade") as Label;
+                    var gradeLabel = e.Item.FindControl("gradeLabel") as Label;
+
+                    // Load grade
+                    var courseGrade = new Lib.CourseGrade(DatabaseContext);
+                    courseGrade.Load(course.ID, DatabaseContext.User.ID);
+
+                    grade.Text = courseGrade.Grade > 0 ? courseGrade.Grade.ToString() : "-";
+                    gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), course.GradeType);
+                }
+            }
+        }
     }
 }

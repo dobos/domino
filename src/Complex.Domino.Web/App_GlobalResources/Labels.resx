@@ -454,4 +454,10 @@
   <data name="NoGrade" xml:space="preserve">
     <value>(no grade assigned)</value>
   </data>
+  <data name="AssignmentWebPage" xml:space="preserve">
+    <value>Assignment web page</value>
+  </data>
+  <data name="CourseWebPage" xml:space="preserve">
+    <value>Course web page</value>
+  </data>
 </root>

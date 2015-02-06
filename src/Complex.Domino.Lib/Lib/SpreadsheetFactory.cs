@@ -19,6 +19,7 @@ namespace Complex.Domino.Lib
         private Dictionary<int, int> assignmentIds;
         private List<Submission>[][] submissions;
         private AssignmentGrade[][] assignmentGrades;
+        private CourseGrade[] courseGrades;
 
         public int CourseID
         {
@@ -52,6 +53,11 @@ namespace Complex.Domino.Lib
             get { return assignmentGrades; }
         }
 
+        public CourseGrade[] CourseGrades
+        {
+            get { return courseGrades; }
+        }
+
         public SpreadsheetFactory(Context context)
             : base(context)
         {
@@ -66,6 +72,9 @@ namespace Complex.Domino.Lib
             this.students = null;
             this.assignments = null;
             this.submissions = null;
+            this.assignmentIds = null;
+            this.assignmentGrades = null;
+            this.courseGrades = null;
         }
 
         public void FindStudents(int max, int from, string orderBy)
@@ -195,6 +204,67 @@ ORDER BY u.rn, a.rn, s.rn
         }
 
         public void FindAssignmentGrades(int max, int from, string orderBy)
+        {
+            var sql = @"
+WITH uu AS
+(
+	SELECT u.*, ROW_NUMBER() OVER(ORDER BY u.Name) rn
+	FROM [User] u
+	INNER JOIN [UserRole] r ON r.UserID = u.ID
+	WHERE r.CourseID = @CourseID AND r.UserRoleType = 3	-- student of the course
+),
+gg AS
+(
+	SELECT g.*, ROW_NUMBER() OVER(ORDER BY a.Name) rn
+	FROM [AssignmentGrade] g
+	INNER JOIN [Assignment] a ON a.ID = g.AssignmentID
+	WHERE a.CourseID = @CourseID AND (@AssignmentID = -1 OR ID = @AssignmentID)
+)
+SELECT *
+FROM gg
+INNER JOIN uu ON gg.StudentID = uu.ID
+{0}
+ORDER BY uu.rn
+";
+
+            string where;
+
+            if (from > -1 && max > -1)
+            {
+                where = "WHERE u.rn BETWEEN @from AND @to";
+            }
+            else
+            {
+                where = "";
+            }
+
+            sql = String.Format(sql, where);
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseId;
+                cmd.Parameters.Add("@AssignmentID", SqlDbType.Int).Value = assignmentId;
+
+                cmd.Parameters.Add("@from", SqlDbType.Int).Value = from;
+                cmd.Parameters.Add("@to", SqlDbType.Int).Value = from + max;
+
+                assignmentGrades = new AssignmentGrade[students.Count][];
+                for (int i = 0; i < assignmentGrades.Length; i++)
+                {
+                    assignmentGrades[i] = new AssignmentGrade[assignments.Count];
+                }
+
+                foreach (var grade in Context.ExecuteCommandReader<AssignmentGrade>(cmd))
+                {
+                    var si = studentIds[grade.StudentId];
+                    var ai = assignmentIds[grade.AssignmentId];
+
+                    assignmentGrades[si][ai] = grade;
+                }
+            }
+        }
+
+        public void FindSubmissionGrades(int max, int from, string orderBy)
         {
             var sql = @"
 WITH uu AS

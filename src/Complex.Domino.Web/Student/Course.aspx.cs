@@ -14,32 +14,38 @@ namespace Complex.Domino.Web.Student
             return String.Format("~/Student/Course.aspx?ID={0}", courseID);
         }
 
+        protected Lib.CourseGrade courseGrade;
+
+        protected override void CreateItem()
+        {
+            base.CreateItem();
+
+            // Load grade
+            courseGrade = new Lib.CourseGrade(DatabaseContext);
+            courseGrade.Load(Item.ID, DatabaseContext.User.ID);
+
+            gradePanel.Visible = courseGrade.Grade > 0;
+            grade.Text = courseGrade.Grade > 0 ? courseGrade.Grade.ToString() : "-";
+            gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Item.GradeType);
+        }
+
         protected override void UpdateForm()
         {
             base.UpdateForm();
 
             Description.Text = Item.Description;
             SemesterDescription.Text = Item.SemesterDescription;
-            CourseDescription.Text = Item.Description;
 
             if (!String.IsNullOrWhiteSpace(Item.Url))
             {
-                Url.Text = Item.Url;
                 Url.NavigateUrl = Item.Url;
             }
             else
             {
-                UrlRow.Visible = false;
+                Url.Visible = false;
             }
 
-            if (!String.IsNullOrWhiteSpace(Item.Comments))
-            {
-                Comments.Text = Item.Comments;
-            }
-            else
-            {
-                CommentsPanel.Visible = false;
-            }
+            Comments.Text = Item.Comments;
 
             AssignmentList.CourseID = Item.ID;
         }

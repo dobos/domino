@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assignment web page.
+        /// </summary>
+        internal static string AssignmentWebPage {
+            get {
+                return ResourceManager.GetString("AssignmentWebPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
@@ -174,6 +183,15 @@ namespace Resources {
         internal static string Courses {
             get {
                 return ResourceManager.GetString("Courses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Course web page.
+        /// </summary>
+        internal static string CourseWebPage {
+            get {
+                return ResourceManager.GetString("CourseWebPage", resourceCulture);
             }
         }
         

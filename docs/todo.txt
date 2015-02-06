@@ -51,8 +51,8 @@ DOMINO TODO
    submissions still in wrong order
    highlight unread submission on submissions page
 ++ add user and assignment details to submissions page
-   implement reply
-   reply off by default
+++ implement reply
+++ reply off by default
    
    Student:
    
@@ -64,6 +64,6 @@ DOMINO TODO
    submission: confirmation e-mail
    submission: readonly comment when viewing
    submission form title: new/edit
-   submission list: highlight replies
-   submissions still in wrong order
+++ submission list: highlight replies
+++ submissions still in wrong order
    limit submission file types (later by assignment, now by hard-coded list)

@@ -454,4 +454,10 @@
   <data name="NoGrade" xml:space="preserve">
     <value>(nincs jegy)</value>
   </data>
+  <data name="AssignmentWebPage" xml:space="preserve">
+    <value>Feladat weboldala</value>
+  </data>
+  <data name="CourseWebPage" xml:space="preserve">
+    <value>Kurzus weboldala</value>
+  </data>
 </root>

@@ -8,11 +8,6 @@
     color: #000000;
 }
 
-p
-{
-    line-height: 36px;
-}
-
 td#layoutTop a {
     color: #FFFFFF;
     text-decoration: none;
@@ -36,15 +31,25 @@ ul#menu
 h1
 {
     margin-top: 0px;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     font-size: 22px;
 }
 
 h2
 {
-    margin-top: 24px;
+    margin-top: 8px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+p
+{
+    line-height: 36px;
 }
 
 input {
