@@ -121,8 +121,6 @@ namespace Complex.Domino.Lib
 
         public override void LoadFromDataReader(SqlDataReader reader)
         {
-            base.LoadFromDataReader(reader);
-
             this.semesterID = reader.GetInt32("SemesterID");
             this.semesterName = reader.GetString("SemesterName");
             this.semesterDescription = reader.GetString("SemesterDescription");
@@ -135,6 +133,8 @@ namespace Complex.Domino.Lib
             this.url = reader.GetString("Url");
             this.gradeType = (Lib.GradeType)reader.GetInt32("GradeType");
             this.gradeWeigth = reader.GetDouble("GradeWeight");
+
+            base.LoadFromDataReader(reader);
         }
 
         public override void Load(int id)

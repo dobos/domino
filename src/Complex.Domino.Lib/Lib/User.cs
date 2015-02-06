@@ -81,11 +81,11 @@ namespace Complex.Domino.Lib
 
         public override void LoadFromDataReader(SqlDataReader reader)
         {
-            base.LoadFromDataReader(reader);
-
             this.email = reader.GetString("Email");
             this.activationCode = reader.GetString("ActivationCode");
             this.passwordHash = reader.GetString("PasswordHash");
+
+            base.LoadFromDataReader(reader);
         }
 
         public override void Load(int id)

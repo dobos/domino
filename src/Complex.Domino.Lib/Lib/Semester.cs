@@ -50,10 +50,10 @@ namespace Complex.Domino.Lib
 
         public override void LoadFromDataReader(SqlDataReader reader)
         {
-            base.LoadFromDataReader(reader);
-
             this.startDate = reader.GetDateTime("StartDate");
             this.endDate = reader.GetDateTime("EndDate");
+
+            base.LoadFromDataReader(reader);
         }
 
         public override void Load(int id)
