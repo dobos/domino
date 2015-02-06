@@ -305,5 +305,30 @@ WHERE ID = @ID";
 
             this.readDate = DateTime.MinValue;
         }
+
+        protected override Access GetAccess()
+        {
+            if (Context.User.IsInAdminRole())
+            {
+                return Access.All;
+            }
+            else if (Context.User.Roles.ContainsKey(this.courseID))
+            {
+                if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Teacher)
+                {
+                    // Teacher
+
+                    return new Access(true, true, false, false);
+                }
+                else
+                {
+                    // Student
+
+                    return new Access(true, true, false, false);
+                }
+            }
+
+            return Access.None;
+        }
     }
 }

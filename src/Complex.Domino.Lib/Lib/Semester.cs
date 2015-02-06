@@ -127,5 +127,17 @@ WHERE ID = @ID";
                 Context.ExecuteCommandNonQuery(cmd);
             }
         }
+
+        protected override Access GetAccess()
+        {
+            if (Context.User.IsInAdminRole())
+            {
+                return Access.All;
+            }
+            else
+            {
+                return new Access(false, true, false, false);
+            }
+        }
     }
 }

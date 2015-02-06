@@ -364,5 +364,32 @@ WHERE UserID = @UserID";
         }
 
         #endregion
+
+        protected override Access GetAccess()
+        {
+            if (Context.User.IsInAdminRole())
+            {
+                return Access.All;
+            }
+            else if (Context.User.ID == this.ID)
+            {
+                // The user is themself
+                return new Access(false, true, true, false);
+            }
+            else
+            {
+                // Check if teacher of student
+                foreach (var courseId in this.Roles.Keys)
+                {
+                    if (Context.User.Roles.ContainsKey(courseId) && 
+                        Context.User.Roles[courseId].RoleType == UserRoleType.Teacher)
+                    {
+                        return new Access(false, true, false, false);
+                    }
+                }
+            }
+
+            return Access.None;
+        }
     }
 }

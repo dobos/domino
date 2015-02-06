@@ -222,5 +222,30 @@ WHERE ID = @ID";
                 Context.ExecuteCommandNonQuery(cmd);
             }
         }
+
+        protected override Access GetAccess()
+        {
+            if (Context.User.IsInAdminRole())
+            {
+                return Access.All;
+            }
+            else if (Context.User.Roles.ContainsKey(this.courseID))
+            {
+                if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Teacher)
+                {
+                    // Teacher
+
+                    return new Access(true, true, true, false);
+                }
+                else
+                {
+                    // Student
+
+                    return new Access(false, true, false, false);
+                }
+            }
+
+            return Access.None;
+        }
     }
 }

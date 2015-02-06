@@ -12,6 +12,7 @@ namespace Complex.Domino.Lib
     public abstract class Entity : ContextObject, IDatabaseTableObject
     {
         private bool isLoaded;
+        private Access access;
 
         private int id;
         private string name;
@@ -21,6 +22,19 @@ namespace Complex.Domino.Lib
         private DateTime createdDate;
         private DateTime modifiedDate;
         private string comments;
+
+        public Access Access
+        {
+            get
+            {
+                if (access == null)
+                {
+                    access = GetAccess();
+                }
+
+                return access;
+            }
+        }
 
         public int ID
         {
@@ -132,6 +146,8 @@ namespace Complex.Domino.Lib
             isLoaded = true;
         }
 
+        protected abstract Access GetAccess();
+
         protected void GetInsertColumnsScript(out string columns, out string values)
         {
             columns = "Name, Description, Visible, Enabled, CreatedDate, ModifiedDate, Comments";
@@ -174,7 +190,7 @@ namespace Complex.Domino.Lib
             {
                 string columns;
                 GetUpdateColumnsScript(out columns);
-                
+
                 modifiedDate = DateTime.Now;
                 Modify(columns);
             }
@@ -182,7 +198,7 @@ namespace Complex.Domino.Lib
             {
                 string columns, values;
                 GetInsertColumnsScript(out columns, out values);
-                
+
                 createdDate = modifiedDate = DateTime.Now;
                 Create(columns, values);
             }

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\Access.cs" />
     <Compile Include="Lib\AssignmentGrade.cs" />
     <Compile Include="Lib\Constants.cs" />
     <Compile Include="Lib\Context.cs" />
