@@ -4,23 +4,23 @@
 
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <h1>
-        <asp:Label runat="server" Text="<%$ Resources:Labels, Course %>" />:
-        <asp:Label runat="server" ID="Description" /></h1>
-    <h2>
-        <asp:Label runat="server" ID="SemesterLabel" Text="<%$ Resources:Labels, Semester %>" />:
-        <asp:Label runat="server" ID="SemesterDescription" />
-        |
-        <asp:HyperLink runat="server" ID="Url" Target="_blank" Text="<%$ Resources:Labels, CourseWebPage %>" />
-    </h2>
-    <asp:Literal runat="server" ID="Comments" />
-    <h3>
-        <asp:Label runat="server" Text="<%$ Resources:Labels, Assignments %>" /></h3>
-    <domino:assignmentlist runat="server" id="AssignmentList" />
-    <asp:Panel runat="server" CssClass="placeholder" ID="gradePanel">
+    <div class="placeholder">
         <grade>
             <h1><asp:Label runat="server" ID="grade" /></h1>
             <p><asp:Label runat="server" ID="gradeLabel" /></p>
         </grade>
-    </asp:Panel>
+        <h1>
+            <asp:Label runat="server" ID="Description" /></h1>
+        <h2>
+            <asp:Label runat="server" ID="SemesterDescription" />
+            |
+        <asp:HyperLink runat="server" ID="Url" Target="_blank" Text="<%$ Resources:Labels, CourseWebPage %>" />
+        </h2>
+    </div>
+    <div class="placeholder">
+        <asp:Literal runat="server" ID="Comments" />
+    </div>
+    <h3>
+        <asp:Label runat="server" Text="<%$ Resources:Labels, Assignments %>" /></h3>
+    <domino:assignmentlist runat="server" id="AssignmentList" />
 </asp:Content>

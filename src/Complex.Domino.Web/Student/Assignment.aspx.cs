@@ -30,30 +30,23 @@ namespace Complex.Domino.Web.Student
 
             Description.Text = Item.Description;
             SemesterDescription.Text = Item.SemesterDescription;
+
             CourseDescription.Text = Item.CourseDescription;
-            AssignmentDescription.Text = Item.Description;
-
-            GradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Item.GradeType);
-            Grade.Text = assignmentGrade.Grade > 0 ? assignmentGrade.Grade.ToString() : Resources.Labels.NoGrade;
-
+            CourseDescription.NavigateUrl = Course.GetUrl(Item.CourseID);
+            
             if (!String.IsNullOrWhiteSpace(Item.Url))
             {
-                Url.Text = Item.Url;
                 Url.NavigateUrl = Item.Url;
             }
             else
             {
-                UrlRow.Visible = false;
+                Url.Visible = false;
             }
 
-            if (!String.IsNullOrWhiteSpace(Item.Comments))
-            {
-                Comments.Text = Item.Comments;
-            }
-            else
-            {
-                CommentsPanel.Visible = false;
-            }
+            Comments.Text = Item.Comments;
+
+            grade.Text = assignmentGrade.Grade > 0 ? assignmentGrade.Grade.ToString() : "-";
+            gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Item.GradeType);
 
             NewSubmission.NavigateUrl = Submission.GetUrl(Item.ID);
 

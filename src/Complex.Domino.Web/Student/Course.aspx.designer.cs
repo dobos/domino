@@ -13,6 +13,24 @@ namespace Complex.Domino.Web.Student {
     public partial class Course {
         
         /// <summary>
+        /// grade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label grade;
+        
+        /// <summary>
+        /// gradeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label gradeLabel;
+        
+        /// <summary>
         /// Description control.
         /// </summary>
         /// <remarks>
@@ -20,15 +38,6 @@ namespace Complex.Domino.Web.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Description;
-        
-        /// <summary>
-        /// SemesterLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SemesterLabel;
         
         /// <summary>
         /// SemesterDescription control.
@@ -65,32 +74,5 @@ namespace Complex.Domino.Web.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Complex.Domino.Web.Student.AssignmentList AssignmentList;
-        
-        /// <summary>
-        /// gradePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gradePanel;
-        
-        /// <summary>
-        /// grade control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label grade;
-        
-        /// <summary>
-        /// gradeLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label gradeLabel;
     }
 }

@@ -23,10 +23,6 @@ namespace Complex.Domino.Web.Student
             // Load grade
             courseGrade = new Lib.CourseGrade(DatabaseContext);
             courseGrade.Load(Item.ID, DatabaseContext.User.ID);
-
-            gradePanel.Visible = courseGrade.Grade > 0;
-            grade.Text = courseGrade.Grade > 0 ? courseGrade.Grade.ToString() : "-";
-            gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Item.GradeType);
         }
 
         protected override void UpdateForm()
@@ -46,6 +42,9 @@ namespace Complex.Domino.Web.Student
             }
 
             Comments.Text = Item.Comments;
+
+            grade.Text = courseGrade.Grade > 0 ? courseGrade.Grade.ToString() : "-";
+            gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Item.GradeType);
 
             AssignmentList.CourseID = Item.ID;
         }
