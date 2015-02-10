@@ -32,11 +32,6 @@ DROP TABLE [dbo].[UserRole]
 
 GO
 
-IF OBJECT_ID (N'User', N'U') IS NOT NULL
-DROP TABLE [dbo].[User]
-
-GO
-
 IF OBJECT_ID (N'CourseGrade', N'U') IS NOT NULL
 DROP TABLE [dbo].[CourseGrade]
 
@@ -44,6 +39,11 @@ GO
 
 IF OBJECT_ID (N'Course', N'U') IS NOT NULL
 DROP TABLE [dbo].[Course]
+
+GO
+
+IF OBJECT_ID (N'User', N'U') IS NOT NULL
+DROP TABLE [dbo].[User]
 
 GO
 

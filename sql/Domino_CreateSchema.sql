@@ -54,6 +54,37 @@ CREATE TABLE [dbo].[Semester]
 GO
 
 
+CREATE TABLE [dbo].[User]
+(
+	[ID] int IDENTITY(1,1) NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
+	[Visible] bit NOT NULL,
+	[Enabled] bit NOT NULL,
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
+	[Comments] nvarchar(max) NOT NULL,
+
+	[Email] nvarchar(150) NOT NULL,
+	[ActivationCode] nvarchar(50),
+	[PasswordHash] varchar(1024),
+	
+	CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	)
+)
+
+GO
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Name] ON [dbo].[User]
+(
+	[Name] ASC
+)
+
+GO
+
+
 CREATE TABLE [dbo].[Course]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
@@ -119,36 +150,6 @@ CREATE TABLE [dbo].[CourseGrade]
 	(
 		[ID]
 	)
-)
-
-GO
-
-CREATE TABLE [dbo].[User]
-(
-	[ID] int IDENTITY(1,1) NOT NULL,
-	[Name] nvarchar(50) NOT NULL,
-	[Description] nvarchar(250) NOT NULL,
-	[Visible] bit NOT NULL,
-	[Enabled] bit NOT NULL,
-	[CreatedDate] datetime NOT NULL,
-	[ModifiedDate] datetime NOT NULL,
-	[Comments] nvarchar(max) NOT NULL,
-
-	[Email] nvarchar(150) NOT NULL,
-	[ActivationCode] nvarchar(50),
-	[PasswordHash] varchar(1024),
-	
-	CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
-	(
-		[ID] ASC
-	)
-)
-
-GO
-
-CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Name] ON [dbo].[User]
-(
-	[Name] ASC
 )
 
 GO
