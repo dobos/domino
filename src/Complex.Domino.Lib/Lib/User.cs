@@ -16,11 +16,18 @@ namespace Complex.Domino.Lib
         private static readonly char[] passwordChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToArray();
         private static readonly Random rnd = new Random();
 
+        private bool enabled;
         private string email;
         private string activationCode;
         private string passwordHash;
 
         private Dictionary<int, UserRole> roles;
+
+        public bool Enabled
+        {
+            get { return enabled; }
+            set { enabled = value; }
+        }
 
         public string Email
         {
@@ -62,6 +69,7 @@ namespace Complex.Domino.Lib
 
         private void InitializeMembers()
         {
+            this.enabled = true;
             this.email = null;
             this.activationCode = null;
             this.passwordHash = null;
@@ -71,6 +79,7 @@ namespace Complex.Domino.Lib
 
         private void CopyMembers(User old)
         {
+            this.enabled = old.enabled;
             this.email = old.email;
             this.activationCode = old.activationCode;
             this.passwordHash = old.passwordHash;
@@ -81,6 +90,7 @@ namespace Complex.Domino.Lib
 
         public override void LoadFromDataReader(SqlDataReader reader)
         {
+            this.enabled = reader.GetBoolean("Enabled");
             this.email = reader.GetString("Email");
             this.activationCode = reader.GetString("ActivationCode");
             this.passwordHash = reader.GetString("PasswordHash");
@@ -122,9 +132,9 @@ WHERE Name = @Name";
         {
             var sql = @"
 INSERT [User]
-    ({0}, Email, ActivationCode, PasswordHash)
+    ({0}, Enabled, Email, ActivationCode, PasswordHash)
 VALUES
-    ({1}, @Email, @ActivationCode, @PasswordHash)
+    ({1}, @Enabled, @Email, @ActivationCode, @PasswordHash)
 
 SELECT @@IDENTITY
 ";
@@ -143,6 +153,7 @@ SELECT @@IDENTITY
             var sql = @"
 UPDATE [User]
 SET {0},
+    Enabled = @Enabled,
     Email = @Email,
     ActivationCode = @ActivationCode,
     PasswordHash = @PasswordHash
@@ -161,6 +172,7 @@ WHERE ID = @ID";
         {
             base.AppendCreateModifyCommandParameters(cmd);
 
+            cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled;
             cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
             cmd.Parameters.Add("@ActivationCode", SqlDbType.NVarChar).Value = (object)activationCode ?? DBNull.Value;
             cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar).Value = passwordHash;
@@ -207,7 +219,8 @@ WHERE ID = @ID";
 SELECT *
 FROM [User]
 WHERE (Email = @NameOrEmail OR Name = @NameOrEmail) AND
-	  PasswordHash = @PasswordHash";
+	  PasswordHash = @PasswordHash AND
+      Enabled = 1";
 
             using (var cmd = Context.CreateCommand(sql))
             {

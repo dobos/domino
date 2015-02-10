@@ -44,9 +44,9 @@ GO
 SET IDENTITY_INSERT [dbo].[User] ON
 	
 INSERT [dbo].[User]
-	(ID, Name, Description, Hidden, ReadOnly, CreatedDate, ModifiedDate, Comments, Email, ActivationCode, PasswordHash)
+	(ID, Name, Description, Hidden, ReadOnly, Enabled, CreatedDate, ModifiedDate, Comments, Email, ActivationCode, PasswordHash)
 VALUES
-	(1, 'admin', 'Administrator', 0, 0, GETDATE(), GETDATE(), '', 'admin@domino.org', NULL, '43phqQejhFkrk7ICvVjZlJFbhsgWcGHDF6M1r7ln5WujqVS3Cyautp1SfhO1glr1KrGIskraIKe9sxuhtHW03A==')
+	(1, 'admin', 'Administrator', 0, 0, 1, GETDATE(), GETDATE(), '', 'admin@domino.org', NULL, '43phqQejhFkrk7ICvVjZlJFbhsgWcGHDF6M1r7ln5WujqVS3Cyautp1SfhO1glr1KrGIskraIKe9sxuhtHW03A==')
 
 SET IDENTITY_INSERT [dbo].[User] OFF
 

@@ -61,10 +61,10 @@ CREATE TABLE [dbo].[User]
 	[Description] nvarchar(250) NOT NULL,
 	[Hidden] bit NOT NULL,
 	[ReadOnly] bit NOT NULL,
+	[Enabled] bit NOT NULL,
 	[CreatedDate] datetime NOT NULL,
 	[ModifiedDate] datetime NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
-
 	[Email] nvarchar(150) NOT NULL,
 	[ActivationCode] nvarchar(50),
 	[PasswordHash] varchar(1024),
