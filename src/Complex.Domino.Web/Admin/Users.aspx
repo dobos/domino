@@ -38,8 +38,8 @@
             <asp:BoundField HeaderText="<%$ Resources:Labels, Name %>" DataField="Description" SortExpression="Description" />
             <asp:BoundField HeaderText="<%$ Resources:Labels, Email %>" DataField="Email" SortExpression="Email" />
             <asp:BoundField HeaderText="<%$ Resources:Labels, CreatedDate %>" DataField="CreatedDate" SortExpression="CreatedDate" />
-            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, Visible %>" DataField="Visible" />
-            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, Enabled %>" DataField="Enabled" />
+            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, Hidden %>" DataField="Hidden" />
+            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, ReadOnly %>" DataField="ReadOnly" />
         </Columns>
         <EmptyDataTemplate>
             <p><asp:Label runat="server" Text="<%$ Resources:Labels, NoUsers %>" /></p>

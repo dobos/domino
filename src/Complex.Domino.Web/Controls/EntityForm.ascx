@@ -27,9 +27,9 @@
     <tr runat="server" id="OptionsRow">
         <td class="label">&nbsp;</td>
         <td class="field">
-            <asp:CheckBox ID="Enabled" runat="server" Text="<%$ Resources:Labels, Enabled %>" ValidationGroup="Entity" />
+            <asp:CheckBox ID="ReadOnly" runat="server" Text="<%$ Resources:Labels, ReadOnly %>" ValidationGroup="Entity" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:CheckBox ID="Visible" runat="server" Text="<%$ Resources:Labels, Visible %>" ValidationGroup="Entity" />
+                <asp:CheckBox ID="Hidden" runat="server" Text="<%$ Resources:Labels, Hidden %>" ValidationGroup="Entity" />
         </td>
     </tr>
     <tr runat="server" id="CommentsRow">

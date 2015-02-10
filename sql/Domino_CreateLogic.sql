@@ -18,6 +18,6 @@ AS
 	SELECT *
 	FROM [User]
 	WHERE
-		Enabled = 1 AND
-		(Email = @UsernameOrEmail OR Username = @UsernameOrEmail) AND
+		Hidden = 0 AND
+		(Email = @UsernameOrEmail OR Name = @UsernameOrEmail) AND
 		PasswordHash = @PasswordHash

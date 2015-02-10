@@ -20,9 +20,9 @@ VALUES
 SET IDENTITY_INSERT [dbo].[Semester] ON
 
 INSERT [dbo].[Semester]
-	(ID, Name, Description, Visible, Enabled, CreatedDate, ModifiedDate, Comments, StartDate, EndDate)
+	(ID, Name, Description, Hidden, ReadOnly, CreatedDate, ModifiedDate, Comments, StartDate, EndDate)
 VALUES
-	(-1, 'admin', 'admin', 0, 0, GETDATE(), GETDATE(), '', '2015-01-01', '2015-01-01')
+	(-1, 'admin', 'admin', 1, 1, GETDATE(), GETDATE(), '', '2015-01-01', '2015-01-01')
 
 SET IDENTITY_INSERT [dbo].[Semester] OFF
 
@@ -31,9 +31,9 @@ SET IDENTITY_INSERT [dbo].[Semester] OFF
 SET IDENTITY_INSERT [dbo].[Course] ON
 
 INSERT [dbo].[Course]
-	(ID, SemesterID, Name, Description, Visible, Enabled, CreatedDate, ModifiedDate, Comments, StartDate, EndDate, Url,  GradeType)
+	(ID, SemesterID, Name, Description, Hidden, ReadOnly, CreatedDate, ModifiedDate, Comments, StartDate, EndDate, Url,  GradeType)
 VALUES
-	(-1, -1, 'admin', 'admin', 0, 0, GETDATE(), GETDATE(), '', '2015-01-01', '2015-01-01', NULL, -1)
+	(-1, -1, 'admin', 'admin', 1, 1, GETDATE(), GETDATE(), '', '2015-01-01', '2015-01-01', NULL, -1)
 
 SET IDENTITY_INSERT [dbo].[Course] OFF
 
@@ -44,9 +44,9 @@ GO
 SET IDENTITY_INSERT [dbo].[User] ON
 	
 INSERT [dbo].[User]
-	(ID, Name, Description, Visible, Enabled, CreatedDate, ModifiedDate, Comments, Email, ActivationCode, PasswordHash)
+	(ID, Name, Description, Hidden, ReadOnly, CreatedDate, ModifiedDate, Comments, Email, ActivationCode, PasswordHash)
 VALUES
-	(1, 'admin', 'Administrator', 1, 1, GETDATE(), GETDATE(), '', 'admin@domino.org', NULL, '43phqQejhFkrk7ICvVjZlJFbhsgWcGHDF6M1r7ln5WujqVS3Cyautp1SfhO1glr1KrGIskraIKe9sxuhtHW03A==')
+	(1, 'admin', 'Administrator', 0, 0, GETDATE(), GETDATE(), '', 'admin@domino.org', NULL, '43phqQejhFkrk7ICvVjZlJFbhsgWcGHDF6M1r7ln5WujqVS3Cyautp1SfhO1glr1KrGIskraIKe9sxuhtHW03A==')
 
 SET IDENTITY_INSERT [dbo].[User] OFF
 

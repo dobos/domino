@@ -37,8 +37,8 @@ namespace Complex.Domino.Web.Controls
         {
             Name.Text = item.Name;
             Description.Text = item.Description;
-            Enabled.Checked = item.Enabled;
-            Visible.Checked = item.Visible;
+            ReadOnly.Checked = item.ReadOnly;
+            Hidden.Checked = item.Hidden;
             Comments.Text = item.Comments;
         }
 
@@ -46,8 +46,8 @@ namespace Complex.Domino.Web.Controls
         {
             item.Name = Name.Text;
             item.Description = Description.Text;
-            item.Enabled = Enabled.Checked;
-            item.Visible = Visible.Checked;
+            item.ReadOnly = ReadOnly.Checked;
+            item.Hidden = Hidden.Checked;
             item.Comments = Comments.Text;
         }
     }

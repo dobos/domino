@@ -94,22 +94,22 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow OptionsRow;
         
         /// <summary>
-        /// Enabled control.
+        /// ReadOnly control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Enabled;
+        protected global::System.Web.UI.WebControls.CheckBox ReadOnly;
         
         /// <summary>
-        /// Visible control.
+        /// Hidden control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Visible;
+        protected global::System.Web.UI.WebControls.CheckBox Hidden;
         
         /// <summary>
         /// CommentsRow control.

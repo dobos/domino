@@ -109,7 +109,7 @@ namespace Complex.Domino.Web.Auth
                 var u = new Lib.User(DatabaseContext);
                 u.SignIn(Username.Text, Password.Text);
 
-                if (!u.Enabled)
+                if (!u.ReadOnly)
                 {
                     throw Lib.Error.InvalidUsernameOrPassword();
                 }

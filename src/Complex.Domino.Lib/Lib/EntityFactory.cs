@@ -12,8 +12,8 @@ namespace Complex.Domino.Lib
         where T : IDatabaseTableObject, new()
     {
         private string name;
-        private bool? enabled;
-        private bool? visible;
+        private bool? readOnly;
+        private bool? hidden;
 
         public string Name
         {
@@ -21,16 +21,16 @@ namespace Complex.Domino.Lib
             set { name = value; }
         }
 
-        public bool? Enabled
+        public bool? ReadOnly
         {
-            get { return enabled; }
-            set { enabled = value; }
+            get { return readOnly; }
+            set { readOnly = value; }
         }
 
-        public bool? Visible
+        public bool? Hidden
         {
-            get { return visible; }
-            set { visible = value; }
+            get { return hidden; }
+            set { hidden = value; }
         }
 
         public EntityFactory(Context context)
@@ -42,8 +42,8 @@ namespace Complex.Domino.Lib
         private void InitializeMembers()
         {
             this.name = null;
-            this.enabled = null;
-            this.visible = true;
+            this.readOnly = null;
+            this.hidden = true;
         }
 
         public int Count()
@@ -125,18 +125,18 @@ SELECT * FROM q
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = '%' + name + '%';
             }
 
-            if (enabled.HasValue)
+            if (readOnly.HasValue)
             {
-                AppendWhereCriterion(sb, "Enabled = @Enabled");
+                AppendWhereCriterion(sb, "ReadOnly = @ReadOnly");
 
-                cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled.Value;
+                cmd.Parameters.Add("@ReadOnly", SqlDbType.Bit).Value = readOnly.Value;
             }
 
-            if (visible.HasValue)
+            if (hidden.HasValue)
             {
-                AppendWhereCriterion(sb, "Visible = @Visible");
+                AppendWhereCriterion(sb, "Hidden = @Hidden");
 
-                cmd.Parameters.Add("@Visible", SqlDbType.Bit).Value = visible.Value;
+                cmd.Parameters.Add("@Hidden", SqlDbType.Bit).Value = hidden.Value;
             }
         }
 

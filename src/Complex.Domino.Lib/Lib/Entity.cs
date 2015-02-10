@@ -17,8 +17,8 @@ namespace Complex.Domino.Lib
         private int id;
         private string name;
         private string description;
-        private bool visible;
-        private bool enabled;
+        private bool hidden;
+        private bool readOnly;
         private DateTime createdDate;
         private DateTime modifiedDate;
         private string comments;
@@ -54,16 +54,16 @@ namespace Complex.Domino.Lib
             set { description = value; }
         }
 
-        public bool Visible
+        public bool Hidden
         {
-            get { return visible; }
-            set { visible = value; }
+            get { return hidden; }
+            set { hidden = value; }
         }
 
-        public bool Enabled
+        public bool ReadOnly
         {
-            get { return enabled; }
-            set { enabled = value; }
+            get { return readOnly; }
+            set { readOnly = value; }
         }
 
         public DateTime CreatedDate
@@ -111,8 +111,8 @@ namespace Complex.Domino.Lib
             this.id = -1;
             this.name = String.Empty;
             this.description = String.Empty;
-            this.visible = true;
-            this.enabled = true;
+            this.hidden = false;
+            this.readOnly = false;
             this.createdDate = DateTime.Now;
             this.modifiedDate = DateTime.Now;
             this.comments = String.Empty;
@@ -125,8 +125,8 @@ namespace Complex.Domino.Lib
             this.id = old.id;
             this.name = old.name;
             this.description = old.description;
-            this.visible = old.visible;
-            this.enabled = old.enabled;
+            this.hidden = old.hidden;
+            this.readOnly = old.readOnly;
             this.createdDate = old.createdDate;
             this.modifiedDate = old.modifiedDate;
             this.comments = old.comments;
@@ -137,8 +137,8 @@ namespace Complex.Domino.Lib
             this.id = reader.GetInt32("ID");
             this.name = reader.GetString("Name");
             this.description = reader.GetString("Description");
-            this.visible = reader.GetBoolean("Visible");
-            this.enabled = reader.GetBoolean("Enabled");
+            this.hidden = reader.GetBoolean("Hidden");
+            this.readOnly = reader.GetBoolean("ReadOnly");
             this.createdDate = reader.GetDateTime("CreatedDate");
             this.modifiedDate = reader.GetDateTime("ModifiedDate");
             this.comments = reader.GetString("Comments");
@@ -150,16 +150,16 @@ namespace Complex.Domino.Lib
 
         protected void GetInsertColumnsScript(out string columns, out string values)
         {
-            columns = "Name, Description, Visible, Enabled, CreatedDate, ModifiedDate, Comments";
-            values = "@Name, @Description, @Visible, @Enabled, @CreatedDate, @ModifiedDate, @Comments";
+            columns = "Name, Description, Hidden, ReadOnly, CreatedDate, ModifiedDate, Comments";
+            values = "@Name, @Description, @Hidden, @ReadOnly, @CreatedDate, @ModifiedDate, @Comments";
         }
 
         protected void GetUpdateColumnsScript(out string columns)
         {
             columns = @"Name = @Name,
     Description = @Description,
-    Visible = @Visible,
-    Enabled = @Enabled,
+    Hidden = @Hidden,
+    ReadOnly = @ReadOnly,
     CreatedDate = @CreatedDate,
     ModifiedDate = @ModifiedDate,
     Comments = @Comments";
@@ -170,8 +170,8 @@ namespace Complex.Domino.Lib
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
             cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
             cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = description;
-            cmd.Parameters.Add("@Visible", SqlDbType.Bit).Value = visible;
-            cmd.Parameters.Add("@Enabled", SqlDbType.Bit).Value = enabled;
+            cmd.Parameters.Add("@Hidden", SqlDbType.Bit).Value = hidden;
+            cmd.Parameters.Add("@ReadOnly", SqlDbType.Bit).Value = readOnly;
             cmd.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = createdDate;
             cmd.Parameters.Add("@ModifiedDate", SqlDbType.DateTime).Value = modifiedDate;
             cmd.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;

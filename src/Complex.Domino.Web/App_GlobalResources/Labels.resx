@@ -460,4 +460,10 @@
   <data name="CourseWebPage" xml:space="preserve">
     <value>Course web page</value>
   </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Hidden</value>
+  </data>
+  <data name="ReadOnly" xml:space="preserve">
+    <value>Read only</value>
+  </data>
 </root>

@@ -460,4 +460,10 @@
   <data name="CourseWebPage" xml:space="preserve">
     <value>Kurzus weboldala</value>
   </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Rejtett</value>
+  </data>
+  <data name="ReadOnly" xml:space="preserve">
+    <value>Írásvédett</value>
+  </data>
 </root>

@@ -30,7 +30,7 @@ namespace Complex.Domino.Web.Auth
                 var uf = new UserFactory(DatabaseContext);
                 item = uf.LoadByEmail(Email.Text);
 
-                args.IsValid = item.Enabled;
+                args.IsValid = item.ReadOnly;
             }
             catch (SecurityException)
             {

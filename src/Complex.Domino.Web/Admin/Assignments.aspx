@@ -46,8 +46,8 @@
                 DataNavigateUrlFormatString="{0}"
                 Text="<%$ Resources:Labels, WebPage %>"
                 HeaderText="<%$ Resources:Labels, WebPage %>"/>
-            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, Visible %>" DataField="Visible" />
-            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, Enabled %>" DataField="Enabled" />
+            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, Hidden %>" DataField="Hidden" />
+            <asp:CheckBoxField HeaderText="<%$ Resources:Labels, ReadOnly %>" DataField="ReadOnly" />
         </Columns>
         <EmptyDataTemplate>
             <p><asp:Label runat="server" Text="<%$ Resources:Labels, NoAssignments %>" /></p>
