@@ -49,6 +49,11 @@
     <Compile Include="Lib\AssignmentFactory.cs" />
     <Compile Include="Lib\CourseGrade.cs" />
     <Compile Include="Lib\SpreadsheetFactory.cs" />
+    <Compile Include="Lib\SqlScripts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlScripts.resx</DependentUpon>
+    </Compile>
     <Compile Include="Lib\TextFileReader.cs" />
     <Compile Include="Lib\DominoConfiguration.cs" />
     <Compile Include="Lib\GitHelper.cs" />
@@ -86,6 +91,11 @@
     <EmbeddedResource Include="Lib\ErrorMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lib\SqlScripts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>SqlScripts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

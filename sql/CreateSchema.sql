@@ -1,4 +1,4 @@
-USE [Domino]
+USE [Database]
 
 GO
 
