@@ -9,16 +9,43 @@ namespace Complex.Domino.Web.Teacher
 {
     public partial class Assignment : EntityPage<Lib.Assignment>
     {
-        public static string GetUrl()
+        public static string GetUrl(int courseId,  int assignmentId)
         {
-            return "~/Teacher/Assignment.aspx";
+            var par = "";
+
+            if (courseId > 0)
+            {
+                par += String.Format(
+                    "&{0}={1}", Constants.RequestCourseID, courseId);
+            }
+
+            if (assignmentId > 0)
+            {
+                par += String.Format(
+                    "&{0}={1}", Constants.RequestID, assignmentId);
+            }
+
+            if (par.Length > 0)
+            {
+                par = "?" + par.Substring(1);
+            }
+
+            return "~/Teacher/Assignment.aspx" + par;
         }
 
-        public static string GetUrl(int assignmentId)
+        protected Lib.Course course;
+
+        public int CourseID
         {
-            return String.Format(
-                "~/Teacher/Assignment.aspx?{0}={1}",
-                Constants.RequestID, assignmentId);
+            get { return int.Parse(Request["CourseID"] ?? "-1"); }
+        }
+
+        protected override void CreateItem()
+        {
+            base.CreateItem();
+
+            course = new Lib.Course(DatabaseContext);
+            course.Load(CourseID);
         }
 
         protected override void UpdateForm()
@@ -27,7 +54,7 @@ namespace Complex.Domino.Web.Teacher
 
             TitleLabel.Text = Item.IsExisting ? Resources.Labels.ModifyAssignment : Resources.Labels.NewAssignment;
 
-            Course.Text = Item.CourseID.ToString();
+            CourseDescription.Text = course.Description;
             StartDate.Text = Item.StartDate.ToString();
             EndDate.Text = Item.EndDate.ToString();
             EndDateSoft.Text = Item.EndDateSoft.ToString();
@@ -40,6 +67,7 @@ namespace Complex.Domino.Web.Teacher
         {
             base.SaveForm();
 
+            Item.CourseID = course.ID;
             Item.StartDate = DateTime.Parse(StartDate.Text);
             Item.EndDate = DateTime.Parse(EndDate.Text);
             Item.EndDateSoft = DateTime.Parse(EndDateSoft.Text);

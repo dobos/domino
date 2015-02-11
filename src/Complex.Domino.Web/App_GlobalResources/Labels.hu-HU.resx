@@ -466,4 +466,7 @@
   <data name="ReadOnly" xml:space="preserve">
     <value>Írásvédett</value>
   </data>
+  <data name="NewAssignmentDetails" xml:space="preserve">
+    <value>új feladat kitűzése</value>
+  </data>
 </root>

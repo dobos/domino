@@ -31,13 +31,13 @@ namespace Complex.Domino.Web.Teacher {
         protected global::System.Web.UI.WebControls.Label SemesterLabel;
         
         /// <summary>
-        /// Course control.
+        /// CourseDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Course;
+        protected global::System.Web.UI.WebControls.Label CourseDescription;
         
         /// <summary>
         /// StartDateLabel control.

@@ -520,6 +520,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to create a new assignment.
+        /// </summary>
+        internal static string NewAssignmentDetails {
+            get {
+                return ResourceManager.GetString("NewAssignmentDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New course.
         /// </summary>
         internal static string NewCourse {

@@ -18,11 +18,20 @@ namespace Complex.Domino.Web.Teacher
         {
             return String.Format(
                 "~/Teacher/Assignments.aspx?{0}={1}",
-                Constants.RequestID, courseId);
+                Constants.RequestCourseID, courseId);
+        }
+
+        public int CourseID
+        {
+            get { return int.Parse(Request[Constants.RequestCourseID] ?? "-1"); }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            NewAssignment.NavigateUrl = Assignment.GetUrl(CourseID, -1);
+            NewAssignment.Visible = CourseID > 0;
+            
+            AssignmentList.CourseID = CourseID;
         }
 
     }

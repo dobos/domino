@@ -466,4 +466,7 @@
   <data name="ReadOnly" xml:space="preserve">
     <value>Read only</value>
   </data>
+  <data name="NewAssignmentDetails" xml:space="preserve">
+    <value>create a new assignment</value>
+  </data>
 </root>

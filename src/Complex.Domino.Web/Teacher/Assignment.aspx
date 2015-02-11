@@ -10,7 +10,7 @@
                     <asp:Label runat="server" ID="SemesterLabel" Text="<%$ Resources:Labels, Course %>" />:
                 </td>
                 <td class="field">
-                    <asp:Label runat="server" ID="Course" />
+                    <asp:Label runat="server" ID="CourseDescription" />
                 </td>
                 <td class="error"></td>
             </tr>
