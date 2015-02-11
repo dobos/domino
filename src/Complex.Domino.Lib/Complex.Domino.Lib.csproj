@@ -48,6 +48,7 @@
     <Compile Include="Lib\Assignment.cs" />
     <Compile Include="Lib\AssignmentFactory.cs" />
     <Compile Include="Lib\CourseGrade.cs" />
+    <Compile Include="Lib\Installer.cs" />
     <Compile Include="Lib\SpreadsheetFactory.cs" />
     <Compile Include="Lib\SqlScripts.Designer.cs">
       <AutoGen>True</AutoGen>

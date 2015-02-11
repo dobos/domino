@@ -1,5 +1,7 @@
 USE [Domino]
 
+GO
+
 -- Create contants
 
 INSERT [dbo].[UserRoleType]
