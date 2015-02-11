@@ -43,7 +43,7 @@ namespace Complex.Domino.Lib
         {
             this.name = null;
             this.readOnly = null;
-            this.hidden = true;
+            this.hidden = false;
         }
 
         public int Count()
