@@ -10,12 +10,17 @@ namespace Complex.Domino.Lib
 {
     public class UserRole : IDatabaseTableObject
     {
+        #region Member variables
+
         private int userId;
         private int courseId;
         private string courseName;
         private int semesterId;
         private string semesterName;
         private UserRoleType roleType;
+
+        #endregion
+        #region Properties
 
         public int UserID
         {
@@ -50,6 +55,33 @@ namespace Complex.Domino.Lib
             set { roleType = value; }
         }
 
+        #endregion
+        #region Constructors and initializers
+
+        public UserRole()
+        {
+            InitializeMembers();
+        }
+
+        public UserRole(int courseId, int userId, UserRoleType type)
+        {
+            InitializeMembers();
+
+            this.courseId = courseId;
+            this.userId = userId;
+            this.roleType = type;
+        }
+
+        private void InitializeMembers()
+        {
+            this.userId = -1;
+            this.courseId = -1;
+            this.courseName = null;
+            this.semesterId = -1;
+            this.semesterName = null;
+            this.roleType = UserRoleType.Unknown;
+        }
+
         public void LoadFromDataReader(SqlDataReader reader)
         {
             userId = reader.GetInt32("UserID");
@@ -59,5 +91,7 @@ namespace Complex.Domino.Lib
             semesterName = reader.GetString("SemesterName");
             roleType = (UserRoleType)reader.GetInt32("UserRoleType");
         }
+
+        #endregion
     }
 }
