@@ -39,6 +39,49 @@ namespace Complex.Domino.Lib
         [TestMethod]
         public void UserAccessTest()
         {
+            using (var context = Context.Create())
+            {
+                // Sign in as a user
+                var admin = new User(context);
+                admin.SignIn("admin", "alma");
+
+                context.User = admin;
+
+                // Create semester
+                var semester = new Semester(context)
+                {
+                    Name = "test",
+                };
+                semester.Save();
+
+                // Create course
+                var course = new Course(context)
+                {
+                    SemesterID = semester.ID,
+                    Name = "test",
+                };
+                course.Save();
+
+                // Create teacher
+                var teacher = new User(context)
+                {
+                    Name = "teacher",
+                    Email = "teacher@test.com",
+                };
+                teacher.SetPassword("alma");
+                teacher.Save();
+                teacher.AddRole(new UserRole(course.ID, teacher.ID, UserRoleType.Teacher));
+                
+                // Create student
+                var student = new User(context)
+                {
+                    Name = "student",
+                    Email = "student@test.com",
+                };
+                student.SetPassword("alma");
+                student.Save();
+                student.AddRole(new UserRole(course.ID, student.ID, UserRoleType.Student));
+            }
         }
     }
 }
