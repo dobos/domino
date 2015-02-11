@@ -184,7 +184,7 @@ namespace Complex.Domino.Lib
             base.LoadFromDataReader(reader);
         }
 
-        public override void Load(int id)
+        protected override void OnLoad(int id)
         {
             var sql = @"
 SELECT s.*, r.ID SemesterID, r.Name SemesterName, r.Description SemesterDescription,
@@ -207,7 +207,7 @@ WHERE s.ID = @ID";
             }
         }
 
-        protected override void Create(string columns, string values)
+        protected override void OnCreate(string columns, string values)
         {
             var sql = @"
 INSERT [Submission]
@@ -227,7 +227,7 @@ SELECT @@IDENTITY
             }
         }
 
-        protected override void Modify(string columns)
+        protected override void OnModify(string columns)
         {
             var sql = @"
 UPDATE [Submission]
@@ -259,7 +259,7 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@ReadDate", SqlDbType.DateTime).Value = readDate != DateTime.MinValue ? (object)readDate : DBNull.Value;
         }
 
-        public override void Delete(int id)
+        protected override void OnDelete(int id)
         {
             var sql = "DELETE Submission WHERE ID = @ID";
 
@@ -317,13 +317,11 @@ WHERE ID = @ID";
                 if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Teacher)
                 {
                     // Teacher
-
-                    return new Access(true, true, false, false);
+                    return new Access(true, true, true, false);
                 }
-                else
+                else if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Student)
                 {
                     // Student
-
                     return new Access(true, true, false, false);
                 }
             }

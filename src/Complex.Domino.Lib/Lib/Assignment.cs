@@ -137,7 +137,7 @@ namespace Complex.Domino.Lib
             base.LoadFromDataReader(reader);
         }
 
-        public override void Load(int id)
+        protected override void OnLoad(int id)
         {
             var sql = @"
 SELECT a.*, c.Name CourseName, c.Description CourseDescription,
@@ -155,7 +155,7 @@ WHERE a.ID = @ID";
             }
         }
 
-        protected override void Create(string columns, string values)
+        protected override void OnCreate(string columns, string values)
         {
 
             var sql = @"
@@ -176,7 +176,7 @@ SELECT @@IDENTITY
             }
         }
 
-        protected override void Modify(string columns)
+        protected override void OnModify(string columns)
         {
             var sql = @"
 UPDATE [Assignment]
@@ -212,7 +212,7 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@GradeWeight", SqlDbType.Float).Value = gradeWeigth;
         }
 
-        public override void Delete(int id)
+        protected override void OnDelete(int id)
         {
             var sql = "DELETE Assignment WHERE ID = @ID";
 
@@ -234,13 +234,11 @@ WHERE ID = @ID";
                 if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Teacher)
                 {
                     // Teacher
-
                     return new Access(true, true, true, false);
                 }
-                else
+                else if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Student)
                 {
                     // Student
-
                     return new Access(false, true, false, false);
                 }
             }

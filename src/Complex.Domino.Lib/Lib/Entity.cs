@@ -182,37 +182,75 @@ namespace Complex.Domino.Lib
             Load(this.id);
         }
 
-        public abstract void Load(int id);
-
-        public virtual void Save()
+        public void Load(int id)
         {
+            OnLoad(id);
+
+            // Check access
+            var access = GetAccess();
+
+            if (!access.Read)
+            {
+                throw Error.AccessDenied();
+            }
+        }
+
+        protected abstract void OnLoad(int id);
+
+        public void Save()
+        {
+            var access = GetAccess();
+
             if (IsExisting)
             {
+                if (!access.Update)
+                {
+                    throw Error.AccessDenied();
+                }
+
                 string columns;
                 GetUpdateColumnsScript(out columns);
 
                 modifiedDate = DateTime.Now;
-                Modify(columns);
+                OnModify(columns);
             }
             else
             {
+                // TODO: add access control call
+                if (!access.Create)
+                {
+                    throw Error.AccessDenied();
+                }
+
                 string columns, values;
                 GetInsertColumnsScript(out columns, out values);
 
                 createdDate = modifiedDate = DateTime.Now;
-                Create(columns, values);
+                OnCreate(columns, values);
             }
         }
 
-        protected abstract void Create(string columns, string values);
+        protected abstract void OnCreate(string columns, string values);
 
-        protected abstract void Modify(string columns);
+        protected abstract void OnModify(string columns);
 
         public void Delete()
         {
             Delete(this.id);
         }
 
-        public abstract void Delete(int id);
+        public void Delete(int id)
+        {
+            var access = GetAccess();
+
+            if (!access.Delete)
+            {
+                throw Error.AccessDenied();
+            }
+
+            OnDelete(id);
+        }
+
+        protected abstract void OnDelete(int id);
     }
 }

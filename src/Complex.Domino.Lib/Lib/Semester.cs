@@ -56,7 +56,7 @@ namespace Complex.Domino.Lib
             base.LoadFromDataReader(reader);
         }
 
-        public override void Load(int id)
+        protected override void OnLoad(int id)
         {
             var sql = @"
 SELECT *
@@ -71,7 +71,7 @@ WHERE ID = @ID";
             }
         }
 
-        protected override void Create(string columns, string values)
+        protected override void OnCreate(string columns, string values)
         {
             var sql = @"
 INSERT [Semester]
@@ -91,7 +91,7 @@ SELECT @@IDENTITY
             }
         }
 
-        protected override void Modify(string columns)
+        protected override void OnModify(string columns)
         {
             var sql = @"
 UPDATE [Semester]
@@ -117,7 +117,7 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = endDate;
         }
 
-        public override void Delete(int id)
+        protected override void OnDelete(int id)
         {
             var sql = "DELETE Semester WHERE ID = @ID";
 

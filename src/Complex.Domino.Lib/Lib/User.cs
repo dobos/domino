@@ -98,7 +98,7 @@ namespace Complex.Domino.Lib
             base.LoadFromDataReader(reader);
         }
 
-        public override void Load(int id)
+        protected override void OnLoad(int id)
         {
             var sql = @"
 SELECT *
@@ -128,7 +128,7 @@ WHERE Name = @Name";
             }
         }
 
-        protected override void Create(string columns, string values)
+        protected override void OnCreate(string columns, string values)
         {
             var sql = @"
 INSERT [User]
@@ -148,7 +148,7 @@ SELECT @@IDENTITY
             }
         }
 
-        protected override void Modify(string columns)
+        protected override void OnModify(string columns)
         {
             var sql = @"
 UPDATE [User]
@@ -178,7 +178,7 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar).Value = passwordHash;
         }
 
-        public override void Delete(int id)
+        protected override void OnDelete(int id)
         {
             var sql = "DELETE [User] WHERE ID = @ID";
 
