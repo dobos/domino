@@ -170,6 +170,8 @@
     <Resource Include="Resources\ChangePasswordIntro.txt" />
     <Resource Include="Resources\ChangePasswordIntro.hu-HU.txt" />
     <Resource Include="Resources\ResetPasswordEmail.hu-HU.txt" />
+    <Resource Include="Resources\UpdateAccountEmail.txt" />
+    <Resource Include="Resources\UpdateAccountEmail.hu-HU.txt" />
     <Content Include="Resources\ResetPasswordResults.hu-HU.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />

@@ -23,7 +23,7 @@ DOMINO TODO
    Auth pages:
    
    intro on user details page
-   report page on details page
+++ report page on details page
    info email on user details changed
    report on password change
    password change info email

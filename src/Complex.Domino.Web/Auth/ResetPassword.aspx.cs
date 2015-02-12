@@ -47,7 +47,6 @@ namespace Complex.Domino.Web.Auth
 
                 var body = new StringBuilder(Resources.EmailTemplates.ResetPassword);
 
-
                 var tokens = new Dictionary<string, string>()
                 {
                      { "Name", item.Description },
@@ -56,11 +55,8 @@ namespace Complex.Domino.Web.Auth
 
                 Util.Email.ReplaceTokens(body, tokens);
 
-                Util.Email.Send(
-                    DominoConfiguration.Instance.EmailFromName,
-                    DominoConfiguration.Instance.EmailNoreplyAddress,
-                    item.Description,
-                    item.Email,
+                Util.Email.SendFromDomino(
+                    item,
                     Resources.EmailTemplates.ResetPasswordSubject,
                     body.ToString());
 

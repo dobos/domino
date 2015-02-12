@@ -1,0 +1,6 @@
+Üdv [$Name],
+
+A Domino felhasználói adataid módosítása megtörtént.
+
+===============================================================
+Domino

@@ -6,14 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.Security;
+using System.Text;
 using Complex.Domino.Lib;
 
 namespace Complex.Domino.Web.Auth
 {
     public partial class User : PageBase
     {
-        private Lib.User item;
-
         public static string GetUrl(Uri returnUrl)
         {
             return GetUrl(returnUrl.ToString());
@@ -23,6 +22,8 @@ namespace Complex.Domino.Web.Auth
         {
             return String.Format("~/Auth/User.aspx?ReturnUrl={0}", HttpUtility.UrlEncode(returnUrl));
         }
+
+        private Lib.User item;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,8 +39,29 @@ namespace Complex.Domino.Web.Auth
         {
             if (IsValid)
             {
+                var emailchanged = StringComparer.InvariantCultureIgnoreCase.Compare(item.Email, Email.Text) != 0;
+
                 SaveForm();
                 item.Save();
+
+                // Send confirmation email
+
+                if (emailchanged)
+                {
+                    var body = new StringBuilder(Resources.EmailTemplates.UpdateAccount);
+
+                    var tokens = new Dictionary<string, string>()
+                    {
+                         { "Name", item.Description },
+                    };
+
+                    Util.Email.ReplaceTokens(body, tokens);
+
+                    Util.Email.SendFromDomino(
+                        item,
+                        Resources.EmailTemplates.UpdateAccountSubject,
+                        body.ToString());
+                }
 
                 formPanel.Visible = false;
                 messagePanel.Visible = true;
@@ -50,7 +72,7 @@ namespace Complex.Domino.Web.Auth
         {
             Util.Url.RedirectTo(ReturnUrl);
         }
-        
+
         private void CreateItem()
         {
             item = new Lib.User(DatabaseContext);

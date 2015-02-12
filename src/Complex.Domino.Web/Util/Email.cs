@@ -24,6 +24,19 @@ namespace Complex.Domino.Web.Util
             body.Replace("[$BaseUrl]", Url.GetAppUrl());
         }
 
+        public static void SendFromDomino(Lib.User user, string subject, string body)
+        {
+            SendFromDomino(user.Description, user.Email, subject, body);
+        }
+
+        public static void SendFromDomino(string toName, string toEmail, string subject, string body)
+        {
+            Send(
+                Lib.DominoConfiguration.Instance.EmailFromName,
+                    Lib.DominoConfiguration.Instance.EmailNoreplyAddress,
+                    toName, toEmail, subject, body);
+        }
+
         public static void Send(string fromName, string fromEmail, string toName, string toEmail, string subject, string body)
         {
             var smtp = new SmtpClient();

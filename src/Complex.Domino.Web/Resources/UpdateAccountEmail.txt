@@ -1,0 +1,6 @@
+Hello [$Name],
+
+Your Domino user account has been successfully updated.
+
+===============================================================
+Domino
