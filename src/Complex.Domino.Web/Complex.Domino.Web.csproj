@@ -964,6 +964,7 @@
     <Content Include="packages.config" />
     <Content Include="Files\Download.ashx" />
     <Content Include="Scripts\CodeMirror\mode\livescript\livescript.ls" />
+    <Content Include="Student\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
