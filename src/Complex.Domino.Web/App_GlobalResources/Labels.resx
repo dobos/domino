@@ -478,4 +478,7 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to Domino!</value>
   </data>
+  <data name="UpdateUserAccountSuccess" xml:space="preserve">
+    <value>Your user account has been successfully updated.</value>
+  </data>
 </root>

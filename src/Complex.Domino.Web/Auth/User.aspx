@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auth/Auth.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="Complex.Domino.Web.Auth.User" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <asp:Panel runat="server" DefaultButton="Ok">
-        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, UpdateUserAccount %>" /></h1>
+    <h1>
+        <asp:Label runat="server" Text="<%$ Resources:Labels, UpdateUserAccount %>" /></h1>
+    <asp:Panel runat="server" DefaultButton="Ok" ID="formPanel">
         <div class="frame">
             <table class="form">
                 <tr>
@@ -48,6 +49,17 @@
             <asp:LinkButton runat="server" ID="Cancel" OnClick="Cancel_Click" CausesValidation="false">
                 <asp:Image runat="server" SkinID="CancelButton" />
                 <p><asp:Label runat="server" Text="<%$ Resources:Labels, Cancel %>" /></p>
+            </asp:LinkButton>
+        </toolbar>
+    </asp:Panel>
+    <asp:Panel runat="server" DefaultButton="Ok" ID="messagePanel" Visible="false">
+        <div class="frame">
+            <asp:Label runat="server" Text="<%$ Resources:Labels, UpdateUserAccountSuccess %>" />
+        </div>
+        <toolbar class="form">
+            <asp:LinkButton runat="server" OnClick="Cancel_Click">
+                <asp:Image runat="server" SkinID="OkButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
             </asp:LinkButton>
         </toolbar>
     </asp:Panel>

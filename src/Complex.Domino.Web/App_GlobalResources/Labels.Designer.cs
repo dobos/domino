@@ -999,6 +999,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your user account has been successfully updated..
+        /// </summary>
+        internal static string UpdateUserAccountSuccess {
+            get {
+                return ResourceManager.GetString("UpdateUserAccountSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload.
         /// </summary>
         internal static string Upload {

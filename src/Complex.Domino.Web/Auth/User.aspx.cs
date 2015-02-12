@@ -41,7 +41,8 @@ namespace Complex.Domino.Web.Auth
                 SaveForm();
                 item.Save();
 
-                Util.Url.RedirectTo(ReturnUrl);
+                formPanel.Visible = false;
+                messagePanel.Visible = true;
             }
         }
 

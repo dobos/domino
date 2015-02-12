@@ -478,4 +478,7 @@
   <data name="Welcome" xml:space="preserve">
     <value>Üdvözöl a Domino!</value>
   </data>
+  <data name="UpdateUserAccountSuccess" xml:space="preserve">
+    <value>A felhasználó adatainak módosítása sikerült.</value>
+  </data>
 </root>
