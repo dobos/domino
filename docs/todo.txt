@@ -18,7 +18,16 @@ DOMINO TODO
    file browser: file sizes
    login page: reset password link position
 
-   Welcome szöveg
+++ Welcome szöveg
+
+   Auth pages:
+   
+   intro on user details page
+   report page on details page
+   info email on user details changed
+   report on password change
+   password change info email
+   report page on sign off
    
    Admin:
    

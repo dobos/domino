@@ -94,13 +94,13 @@ namespace Complex.Domino.Web.Auth {
         protected global::System.Web.UI.WebControls.CheckBox Remember;
         
         /// <summary>
-        /// signInDetailsPanel control.
+        /// Ok control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel signInDetailsPanel;
+        protected global::System.Web.UI.WebControls.LinkButton Ok;
         
         /// <summary>
         /// ResetLink control.
@@ -110,14 +110,5 @@ namespace Complex.Domino.Web.Auth {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink ResetLink;
-        
-        /// <summary>
-        /// Ok control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Ok;
     }
 }

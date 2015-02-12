@@ -2,9 +2,12 @@
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <asp:Panel runat="server" DefaultButton="Ok">
-        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, SignInFormLabel %>" /></h1>
+        <h1>
+            <asp:Label runat="server" Text="<%$ Resources:Labels, SignInFormLabel %>" /></h1>
         <asp:Panel runat="server" ID="signInIntroPanel">
-            <p><asp:Literal runat="server" Text="<%$ Resources:Labels, SignInIntro %>" /></p>
+            <p>
+                <asp:Literal runat="server" Text="<%$ Resources:Labels, SignInIntro %>" />
+            </p>
         </asp:Panel>
         <div class="frame">
             <table class="form">
@@ -45,19 +48,16 @@
                     <td class="error"></td>
                 </tr>
             </table>
-            <asp:Panel runat="server" ID="signInDetailsPanel">
-                <ul>
-                    <li>
-                        <asp:HyperLink runat="server" ID="ResetLink" Text="<%$ Resources:Labels, PasswordReset %>" />
-                    </li>
-                </ul>
-            </asp:Panel>
         </div>
         <toolbar class="form">
             <asp:LinkButton runat="Server" ID="Ok" OnClick="Ok_Click">
                 <asp:Image runat="server" SkinID="SignInButton" />
                     <p><asp:Label runat="server" Text="<%$ Resources:Labels, SignIn %>" /></p>
             </asp:LinkButton>
+            <asp:HyperLink runat="server" ID="ResetLink">
+                <asp:Image runat="server" SkinID="SignInButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, PasswordReset %>" /></p>
+            </asp:HyperLink>
         </toolbar>
     </asp:Panel>
 </asp:Content>
