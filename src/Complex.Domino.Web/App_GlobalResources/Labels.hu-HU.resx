@@ -484,4 +484,7 @@
   <data name="ChangePasswordSuccess" xml:space="preserve">
     <value>A Domino jelszavad megváltoztatása sikerült.</value>
   </data>
+  <data name="SignOutSuccess" xml:space="preserve">
+    <value>Sikeresen kijelentkeztél a Dominóból.</value>
+  </data>
 </root>

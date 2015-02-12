@@ -927,6 +927,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully signed out from Domino..
+        /// </summary>
+        internal static string SignOutSuccess {
+            get {
+                return ResourceManager.GetString("SignOutSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start date.
         /// </summary>
         internal static string StartDate {

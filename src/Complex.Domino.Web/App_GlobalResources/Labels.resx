@@ -484,4 +484,7 @@
   <data name="ChangePasswordSuccess" xml:space="preserve">
     <value>Your Domino password has been successfully changed.</value>
   </data>
+  <data name="SignOutSuccess" xml:space="preserve">
+    <value>Successfully signed out from Domino.</value>
+  </data>
 </root>

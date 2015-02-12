@@ -26,7 +26,10 @@ namespace Complex.Domino.Web.Auth
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
+        }
 
+        protected void Ok_Click(object sender, EventArgs e)
+        {
             Util.Url.RedirectTo("~");
         }
     }
