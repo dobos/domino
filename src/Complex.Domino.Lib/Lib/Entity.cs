@@ -199,11 +199,21 @@ namespace Complex.Domino.Lib
 
         public void Save()
         {
-            var access = GetAccess();
+            Save(true);
+        }
+
+        protected void Save(bool checkAccess)
+        {
+            Access access = null;
+
+            if (checkAccess)
+            {
+                access = GetAccess();
+            }
 
             if (IsExisting)
             {
-                if (!access.Update)
+                if (checkAccess && !access.Update)
                 {
                     throw Error.AccessDenied();
                 }
@@ -216,8 +226,7 @@ namespace Complex.Domino.Lib
             }
             else
             {
-                // TODO: add access control call
-                if (!access.Create)
+                if (checkAccess && !access.Create)
                 {
                     throw Error.AccessDenied();
                 }
