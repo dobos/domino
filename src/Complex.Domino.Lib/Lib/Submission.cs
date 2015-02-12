@@ -45,6 +45,7 @@ namespace Complex.Domino.Lib
         public int CourseID
         {
             get { return courseID; }
+            set { courseID = value; }
         }
 
         public string CourseName

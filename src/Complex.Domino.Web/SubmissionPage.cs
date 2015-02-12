@@ -46,10 +46,11 @@ namespace Complex.Domino.Web
         {
             base.CreateItem();
 
-            Item.AssignmentID = this.AssignmentID;
-
             assignment = new Lib.Assignment(DatabaseContext);
-            assignment.Load(Item.AssignmentID);
+            assignment.Load(this.AssignmentID);
+
+            Item.AssignmentID = assignment.ID;
+            Item.CourseID = assignment.CourseID;
 
             // If the submission already exists we can take the student from
             // it.
