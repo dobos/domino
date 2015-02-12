@@ -35,11 +35,17 @@ namespace Complex.Domino.Web.Controls
 
         public void UpdateForm(Lib.Entity item)
         {
+            var ro = !item.IsExisting && !item.Access.Create || item.IsExisting && !item.Access.Update;
+
             Name.Text = item.Name;
             Description.Text = item.Description;
             ReadOnly.Checked = item.ReadOnly;
             Hidden.Checked = item.Hidden;
             Comments.Text = item.Comments;
+
+            Name.ReadOnly = ro;
+            Description.ReadOnly = ro;
+            Comments.ReadOnly = ro;
         }
 
         public void SaveForm(Lib.Entity item)

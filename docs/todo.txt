@@ -17,6 +17,7 @@ DOMINO TODO
    file browser: edit
    file browser: file sizes
    login page: reset password link position
+   do not allow duplicate email
 
 ++ Welcome szöveg
 
@@ -71,9 +72,11 @@ DOMINO TODO
 ++ submission: comment font
    submission: take default comment from resource
 ++ submission: confirmation page for users
-   submission: confirmation e-mail
-   submission: readonly comment when viewing
+++ submission: confirmation e-mail
+++ submission: readonly comment when viewing
 ++ submission form title: new/edit
 ++ submission list: highlight replies
 ++ submissions still in wrong order
+   submission: enforce time limit
    limit submission file types (later by assignment, now by hard-coded list)
+   disallow empty submission
