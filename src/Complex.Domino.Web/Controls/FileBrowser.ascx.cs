@@ -100,7 +100,7 @@ namespace Complex.Domino.Web.Controls
                 {
                     var name = (LinkButton)e.Item.FindControl("name");
 
-                    var relpath = MakePathRelative(BasePath, di.FullName);
+                    var relpath = Util.Path.MakeRelative(BasePath, di.FullName);
 
                     if (relpath == String.Empty)
                     {
@@ -151,12 +151,12 @@ namespace Complex.Domino.Web.Controls
                     }
 
                     view.Visible = !dir;
-                    view.NavigateUrl = Files.View.GetUrl(Path.Combine(PrefixPath, MakePathRelative(basePath, fi.FullName)));
+                    view.NavigateUrl = Files.View.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
 
 
                     // TODO: filter editing based on file type
                     edit.Visible = !dir && AllowEdit;
-                    edit.NavigateUrl = Files.Edit.GetUrl(Path.Combine(PrefixPath, MakePathRelative(basePath, fi.FullName)));
+                    edit.NavigateUrl = Files.Edit.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
 
 
                     delete.Visible = AllowDelete;
@@ -433,26 +433,6 @@ namespace Complex.Domino.Web.Controls
                 fileList.DataSource = GetFiles();
                 fileList.DataBind();
             }
-        }
-
-        private string MakePathRelative(string basePath, string path)
-        {
-            basePath = Path.GetFullPath(basePath);
-            path = Path.GetFullPath(path);
-
-            if (!path.StartsWith(basePath, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new ArgumentException("Path is outside base directory");  // TODO
-            }
-
-            if (path.Length < basePath.Length)
-            {
-                throw new ArgumentException("Cannot reference directory outside base path");    // TODO
-            }
-
-            var relpath = path.Substring(basePath.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-
-            return relpath;
         }
 
         private bool VerifyUploadedFile(string filename, out bool archive, out string archiveExtension)
