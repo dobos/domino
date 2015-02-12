@@ -67,6 +67,9 @@ namespace Complex.Domino.Web.Student
                 formLabel.Text = Resources.Labels.NewSubmission;
             }
 
+            createdDate.Text = Util.DateTime.FormatFancy(Item.CreatedDate);
+            createdDateRow.Visible = Item.IsExisting;
+
             cancelLabel.Text = Item.IsExisting ?
                 Resources.Labels.Ok :
                 Resources.Labels.Cancel;

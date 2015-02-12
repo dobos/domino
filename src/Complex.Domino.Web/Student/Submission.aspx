@@ -46,6 +46,14 @@
                         <asp:Label runat="server" ID="assignmentDescription" />
                     </td>
                 </tr>
+                <tr runat="server" id="createdDateRow">
+                    <td class="label">
+                        <asp:Label runat="server" ID="createdDateLabel" Text="<%$ Resources:Labels, SubmissionDate %>" />:
+                    </td>
+                    <td class="field">
+                        <asp:Label runat="server" ID="createdDate" />
+                    </td>
+                </tr>
             </table>
         </div>
         <h2><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h2>

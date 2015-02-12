@@ -87,6 +87,6 @@ DOMINO TODO
    submission: enforce time limit
    limit submission file types (later by assignment, now by hard-coded list)
    disallow empty submission
-   reply in title
+++ reply in title
    submission date
-   <h1>-><h2> uploaded files
+++ <h1>-><h2> uploaded files
