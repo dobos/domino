@@ -113,7 +113,7 @@ namespace Complex.Domino.Web.Student
 
             Util.Email.SendFromDomino(
                 DatabaseContext.User,
-                Resources.EmailTemplates.ChangePasswordSubject,
+                Resources.EmailTemplates.SubmissionSubject,
                 body.ToString());
         }
     }
