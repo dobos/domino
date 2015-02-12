@@ -57,8 +57,8 @@ DOMINO TODO
    
    Student:
    
-   need opening page? merge / with Student/
-   magyar szövegek a student/ oldalon
+++ need opening page? merge / with Student/
+++ magyar szövegek a student/ oldalon
    submission: comment font
    submission: take default comment from resource
    submission: confirmation page for users

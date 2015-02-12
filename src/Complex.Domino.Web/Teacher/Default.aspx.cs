@@ -9,6 +9,11 @@ namespace Complex.Domino.Web.Teacher
 {
     public partial class Default : PageBase
     {
+        public static string GetUrl()
+        {
+            return "~/Teacher";
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             NameLabel.Text = String.Format(Resources.Labels.Hello, DatabaseContext.User.Description);
