@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Complex.Domino.Web.Admin {
+namespace Complex.Domino.Web.Teacher {
     
     
     public partial class Default {

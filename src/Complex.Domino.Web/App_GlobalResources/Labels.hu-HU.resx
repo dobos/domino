@@ -469,4 +469,13 @@
   <data name="NewAssignmentDetails" xml:space="preserve">
     <value>új feladat kitűzése</value>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Helló {0}!</value>
+  </data>
+  <data name="SignInFormDetails" xml:space="preserve">
+    <value>a Donimo használatához regisztrált felhasználónak kell lenned</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Üdvözöl a Domino!</value>
+  </data>
 </root>

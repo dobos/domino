@@ -11,7 +11,7 @@ namespace Complex.Domino.Web.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            NameLabel.Text = String.Format(Resources.Labels.Hello, DatabaseContext.User.Description);
         }
     }
 }

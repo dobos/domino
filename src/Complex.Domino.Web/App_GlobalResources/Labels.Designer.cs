@@ -394,6 +394,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hello {0},.
+        /// </summary>
+        internal static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hidden.
         /// </summary>
         internal static string Hidden {
@@ -873,6 +882,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to you need to be a registered user to use Domino.
+        /// </summary>
+        internal static string SignInFormDetails {
+            get {
+                return ResourceManager.GetString("SignInFormDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in to Domino.
         /// </summary>
         internal static string SignInFormLabel {
@@ -1112,6 +1130,15 @@ namespace Resources {
         internal static string WebPage {
             get {
                 return ResourceManager.GetString("WebPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Domino!.
+        /// </summary>
+        internal static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
     }

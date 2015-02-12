@@ -469,4 +469,13 @@
   <data name="NewAssignmentDetails" xml:space="preserve">
     <value>create a new assignment</value>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello {0},</value>
+  </data>
+  <data name="SignInFormDetails" xml:space="preserve">
+    <value>you need to be a registered user to use Domino</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome to Domino!</value>
+  </data>
 </root>
