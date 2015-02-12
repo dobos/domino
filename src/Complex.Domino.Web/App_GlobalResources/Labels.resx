@@ -487,4 +487,7 @@
   <data name="SignOutSuccess" xml:space="preserve">
     <value>Successfully signed out from Domino.</value>
   </data>
+  <data name="SubmissionSuccess" xml:space="preserve">
+    <value>Your uploaded files have been successfully submitted.</value>
+  </data>
 </root>

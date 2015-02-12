@@ -999,6 +999,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your uploaded files have been successfully submitted..
+        /// </summary>
+        internal static string SubmissionSuccess {
+            get {
+                return ResourceManager.GetString("SubmissionSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         internal static string Submit {

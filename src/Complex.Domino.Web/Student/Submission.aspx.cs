@@ -72,5 +72,15 @@ namespace Complex.Domino.Web.Student
             Item.StudentID = DatabaseContext.User.ID;
             Item.Name = commit.Hash;
         }
+
+        protected override void OnOkClick()
+        {
+            SaveForm();
+            Item.Save();
+
+            emptyPanel.Visible = false;
+            filesPanel.Visible = false;
+            messagePanel.Visible = true;
+        }
     }
 }

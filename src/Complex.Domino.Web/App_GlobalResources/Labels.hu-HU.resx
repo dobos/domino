@@ -487,4 +487,7 @@
   <data name="SignOutSuccess" xml:space="preserve">
     <value>Sikeresen kijelentkeztél a Dominóból.</value>
   </data>
+  <data name="SubmissionSuccess" xml:space="preserve">
+    <value>A feltöltött fájlok beküldése sikerült.</value>
+  </data>
 </root>

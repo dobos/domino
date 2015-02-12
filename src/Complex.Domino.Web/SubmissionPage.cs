@@ -10,6 +10,7 @@ namespace Complex.Domino.Web
     {
         protected Panel emptyPanel;
         protected Panel filesPanel;
+        protected Panel messagePanel;
         protected Label formLabel;
         protected Label cancelLabel;
         protected LinkButton ok;
@@ -159,6 +160,6 @@ namespace Complex.Domino.Web
             filesPanel.Visible = true;
         }
 
-        
+
     }
 }

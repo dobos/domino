@@ -80,7 +80,7 @@ namespace Complex.Domino.Web
             base.OnPreRender(e);
         }
 
-        protected virtual void Ok_Click(object sender, EventArgs e)
+        protected void Ok_Click(object sender, EventArgs e)
         {
             if (IsValid)
             {
@@ -88,7 +88,7 @@ namespace Complex.Domino.Web
             }
         }
 
-        protected virtual void Cancel_Click(object sender, EventArgs e)
+        protected void Cancel_Click(object sender, EventArgs e)
         {
             OnCancelClick();
         }

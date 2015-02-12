@@ -48,7 +48,7 @@
                 </tr>
             </table>
         </div>
-        <h2><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h2>
+        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h1>
         <domino:filebrowser runat="server" id="fileBrowser" AllowSelection="false"
             AllowDownload="false" AllowEdit="false" />
         <div class="frame">
@@ -63,6 +63,18 @@
             <asp:LinkButton runat="server" ID="cancel" OnClick="Cancel_Click" CausesValidation="false">
                 <asp:Image runat="server" SkinID="CancelButton" />
                 <p><asp:Label runat="server" ID="cancelLabel" /></p>
+            </asp:LinkButton>
+        </toolbar>
+    </asp:Panel>
+    <asp:Panel runat="server" DefaultButton="Ok" ID="messagePanel" Visible="false">
+        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, Submission %>" /></h1>
+        <div class="frame">
+            <asp:Label runat="server" Text="<%$ Resources:Labels, SubmissionSuccess %>" />
+        </div>
+        <toolbar class="form">
+            <asp:LinkButton runat="server" OnClick="Cancel_Click">
+                <asp:Image runat="server" SkinID="OkButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
             </asp:LinkButton>
         </toolbar>
     </asp:Panel>
