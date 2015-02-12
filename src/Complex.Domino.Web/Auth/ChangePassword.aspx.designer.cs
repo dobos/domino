@@ -13,6 +13,15 @@ namespace Complex.Domino.Web.Auth {
     public partial class ChangePassword {
         
         /// <summary>
+        /// formPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel formPanel;
+        
+        /// <summary>
         /// changeIntroPanel control.
         /// </summary>
         /// <remarks>
@@ -155,5 +164,14 @@ namespace Complex.Domino.Web.Auth {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Cancel;
+        
+        /// <summary>
+        /// messagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel messagePanel;
     }
 }

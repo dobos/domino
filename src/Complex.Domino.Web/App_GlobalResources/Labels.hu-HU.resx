@@ -481,4 +481,7 @@
   <data name="UpdateUserAccountSuccess" xml:space="preserve">
     <value>A felhasználó adatainak módosítása sikerült.</value>
   </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>A Domino jelszavad megváltoztatása sikerült.</value>
+  </data>
 </root>

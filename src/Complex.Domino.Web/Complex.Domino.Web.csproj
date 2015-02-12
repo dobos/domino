@@ -172,6 +172,8 @@
     <Resource Include="Resources\ResetPasswordEmail.hu-HU.txt" />
     <Resource Include="Resources\UpdateAccountEmail.txt" />
     <Resource Include="Resources\UpdateAccountEmail.hu-HU.txt" />
+    <Resource Include="Resources\ChangePasswordEmail.hu-HU.txt" />
+    <Resource Include="Resources\ChangePasswordEmail.txt" />
     <Content Include="Resources\ResetPasswordResults.hu-HU.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />

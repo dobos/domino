@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.Security;
+using System.Text;
 using Complex.Domino.Lib;
 
 namespace Complex.Domino.Web.Auth
@@ -58,9 +59,9 @@ namespace Complex.Domino.Web.Auth
         {
             if (IsValid)
             {
-                item.SetPassword(PasswordNew.Text);
-                item.ActivationCode = String.Empty;
-                item.Save();
+                item.ResetPassword(PasswordNew.Text);
+
+                SendEmail();
 
                 if (ActivationCode != null)
                 {
@@ -68,9 +69,28 @@ namespace Complex.Domino.Web.Auth
                 }
                 else
                 {
-                    Util.Url.RedirectTo(ReturnUrl);
+                    formPanel.Visible = false;
+                    messagePanel.Visible = true;
                 }
             }
+        }
+
+        private void SendEmail()
+        {
+            var body = new StringBuilder(Resources.EmailTemplates.ChangePassword);
+
+            var tokens = new Dictionary<string, string>()
+                {
+                     { "Name", item.Description },
+                     { "DateTime", DateTime.Now.ToString() }
+                };
+
+            Util.Email.ReplaceTokens(body, tokens);
+
+            Util.Email.SendFromDomino(
+                item,
+                Resources.EmailTemplates.ChangePasswordSubject,
+                body.ToString());
         }
 
         protected void Cancel_Click(object sender, EventArgs e)

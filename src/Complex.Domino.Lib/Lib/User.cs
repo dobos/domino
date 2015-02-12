@@ -268,6 +268,14 @@ WHERE (Email = @NameOrEmail OR Name = @NameOrEmail) AND
             }
         }
 
+        public void ResetPassword(string password)
+        {
+            SetPassword(password);
+            activationCode = String.Empty;
+
+            Save(false);
+        }
+
         public void ResetPassword()
         {
             GeneratePassword();        // Reset password so user can't log on anymore with old one

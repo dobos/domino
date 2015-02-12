@@ -63,6 +63,30 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello [$Name],
         ///
+        ///Your Domino password was changed at [$DateTime]. If you didn&apos;t
+        ///change the password, please notify the administrator.
+        ///
+        ///===============================================================
+        ///Domino.
+        /// </summary>
+        internal static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domino password changed.
+        /// </summary>
+        internal static string ChangePasswordSubject {
+            get {
+                return ResourceManager.GetString("ChangePasswordSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello [$Name],
+        ///
         ///You have requested a password reset for your Domino account.
         ///
         ///To reset your password, please click on the link below.

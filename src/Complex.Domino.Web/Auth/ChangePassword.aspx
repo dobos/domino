@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auth/Auth.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="Complex.Domino.Web.Auth.ChangePassword" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">
-    <asp:Panel runat="server" DefaultButton="Ok">
-        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, ChangePassword %>" /></h1>
+    <h1>
+        <asp:Label runat="server" Text="<%$ Resources:Labels, ChangePassword %>" /></h1>
+    <asp:Panel runat="server" DefaultButton="Ok" ID="formPanel">
         <asp:Panel runat="server" ID="changeIntroPanel">
-            <p><asp:Literal runat="server" Text="<%$ Resources:Labels, ChangePasswordIntro %>" /></p>
+            <p>
+                <asp:Literal runat="server" Text="<%$ Resources:Labels, ChangePasswordIntro %>" />
+            </p>
         </asp:Panel>
         <div class="frame">
             <table class="form">
@@ -65,6 +68,17 @@
             <asp:LinkButton runat="server" ID="Cancel" OnClick="Cancel_Click" CausesValidation="false">
                 <asp:Image runat="server" SkinID="CancelButton" />
                 <p><asp:Label runat="server" Text="<%$ Resources:Labels, Cancel %>" /></p>
+            </asp:LinkButton>
+        </toolbar>
+    </asp:Panel>
+    <asp:Panel runat="server" ID="messagePanel" Visible="false">
+        <div class="frame">
+            <asp:Label runat="server" Text="<%$ Resources:Labels, ChangePasswordSuccess %>" />
+        </div>
+        <toolbar class="form">
+            <asp:LinkButton runat="server" OnClick="Cancel_Click">
+                <asp:Image runat="server" SkinID="OkButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
             </asp:LinkButton>
         </toolbar>
     </asp:Panel>
