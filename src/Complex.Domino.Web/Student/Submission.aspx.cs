@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
+using System.IO;
 
 namespace Complex.Domino.Web.Student
 {
@@ -78,9 +80,41 @@ namespace Complex.Domino.Web.Student
             SaveForm();
             Item.Save();
 
+            SendEmail();
+
             emptyPanel.Visible = false;
             filesPanel.Visible = false;
             messagePanel.Visible = true;
+        }
+
+        private void SendEmail()
+        {
+            // Get file list
+            var filelist = new StringBuilder();
+            var path = GitHelper.GetAssignmentPath();
+            var files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                filelist.AppendLine(Util.Path.MakeRelative(path, files[i]));
+            }
+
+            var body = new StringBuilder(Resources.EmailTemplates.Submission);
+
+            var tokens = new Dictionary<string, string>()
+                {
+                     { "Name", DatabaseContext.User.Description },
+                     { "DateTime", DateTime.Now.ToString() },
+                     { "Assignment", Assignment.Description },
+                     { "Files", filelist.ToString() },
+                };
+
+            Util.Email.ReplaceTokens(body, tokens);
+
+            Util.Email.SendFromDomino(
+                DatabaseContext.User,
+                Resources.EmailTemplates.ChangePasswordSubject,
+                body.ToString());
         }
     }
 }

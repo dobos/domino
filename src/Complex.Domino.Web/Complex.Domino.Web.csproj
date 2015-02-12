@@ -174,6 +174,8 @@
     <Resource Include="Resources\UpdateAccountEmail.hu-HU.txt" />
     <Resource Include="Resources\ChangePasswordEmail.hu-HU.txt" />
     <Resource Include="Resources\ChangePasswordEmail.txt" />
+    <Resource Include="Resources\SubmissionEmail.txt" />
+    <Resource Include="Resources\SubmissionEmail.hu-HU.txt" />
     <Content Include="Resources\ResetPasswordResults.hu-HU.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
@@ -962,6 +964,7 @@
     <Compile Include="Util\DateTime.cs" />
     <Compile Include="Util\Email.cs" />
     <Compile Include="Util\Enum.cs" />
+    <Compile Include="Util\Path.cs" />
     <Compile Include="Util\Url.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,9 @@
+Üdv [$Name],
+
+A megoldásod az alábbi feladatra [$DateTime]-kor sikeresen megérkezett:
+[$Assignment]. A következõ fájlokat tartalmazza:
+
+[$Files]
+
+===============================================================
+Domino

@@ -71,6 +71,12 @@
   <data name="ResetPasswordSubject" xml:space="preserve">
     <value>Domino password reset</value>
   </data>
+  <data name="Submission" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubmissionEmail.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-2</value>
+  </data>
+  <data name="SubmissionSubject" xml:space="preserve">
+    <value>Domino submission received</value>
+  </data>
   <data name="UpdateAccount" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UpdateAccountEmail.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-2</value>
   </data>

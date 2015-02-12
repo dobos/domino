@@ -24,10 +24,10 @@ DOMINO TODO
    
    intro on user details page
 ++ report page on details page
-   info email on user details changed
-   report on password change
-   password change info email
-   report page on sign off
+++ info email on user details changed
+++ report on password change
+++ password change info email
+++ report page on sign off
    
    Admin:
    
@@ -68,12 +68,12 @@ DOMINO TODO
    
 ++ need opening page? merge / with Student/
 ++ magyar szövegek a student/ oldalon
-   submission: comment font
+++ submission: comment font
    submission: take default comment from resource
-   submission: confirmation page for users
+++ submission: confirmation page for users
    submission: confirmation e-mail
    submission: readonly comment when viewing
-   submission form title: new/edit
+++ submission form title: new/edit
 ++ submission list: highlight replies
 ++ submissions still in wrong order
    limit submission file types (later by assignment, now by hard-coded list)

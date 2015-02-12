@@ -63,6 +63,9 @@ namespace Complex.Domino.Web.Auth
                         body.ToString());
                 }
 
+                // Make sure cached identity is refreshed
+                SetUser(item);
+
                 formPanel.Visible = false;
                 messagePanel.Visible = true;
             }

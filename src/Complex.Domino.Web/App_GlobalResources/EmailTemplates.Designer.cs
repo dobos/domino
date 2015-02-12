@@ -114,6 +114,32 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello [$Name],
         ///
+        ///Your submission to [$Assignment] has been received.
+        ///It contains the following files.
+        ///
+        ///[$Files]
+        ///
+        ///===============================================================
+        ///Domino.
+        /// </summary>
+        internal static string Submission {
+            get {
+                return ResourceManager.GetString("Submission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domino submission received.
+        /// </summary>
+        internal static string SubmissionSubject {
+            get {
+                return ResourceManager.GetString("SubmissionSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello [$Name],
+        ///
         ///Your Domino user account has been successfully updated.
         ///
         ///===============================================================

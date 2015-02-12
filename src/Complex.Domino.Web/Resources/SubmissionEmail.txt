@@ -1,0 +1,9 @@
+Hello [$Name],
+
+Your submission to [$Assignment] was received at [$DateTime].
+It contains the following files.
+
+[$Files]
+
+===============================================================
+Domino
