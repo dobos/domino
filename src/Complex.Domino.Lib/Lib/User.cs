@@ -268,6 +268,14 @@ WHERE (Email = @NameOrEmail OR Name = @NameOrEmail) AND
             }
         }
 
+        public void ResetPassword()
+        {
+            GeneratePassword();        // Reset password so user can't log on anymore with old one
+            GenerateActivationCode();  // Generate a long activation code to send in e-mail
+
+            Save(false);                // Override access control
+        }
+
         #endregion
         #region Role functions
 
@@ -337,7 +345,7 @@ WHERE UserID = @UserID";
             }
         }
 
-        
+
 
         public bool IsInAdminRole()
         {
@@ -394,7 +402,7 @@ WHERE UserID = @UserID";
                 // Check if teacher of student
                 foreach (var courseId in this.Roles.Keys)
                 {
-                    if (Context.User.Roles.ContainsKey(courseId) && 
+                    if (Context.User.Roles.ContainsKey(courseId) &&
                         Context.User.Roles[courseId].RoleType == UserRoleType.Teacher)
                     {
                         return new Access(false, true, false, false);

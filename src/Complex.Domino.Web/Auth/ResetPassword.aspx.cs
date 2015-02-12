@@ -30,7 +30,7 @@ namespace Complex.Domino.Web.Auth
                 var uf = new UserFactory(DatabaseContext);
                 item = uf.LoadByEmail(Email.Text);
 
-                args.IsValid = item.ReadOnly;
+                args.IsValid = item.Enabled;
             }
             catch (SecurityException)
             {
@@ -42,8 +42,7 @@ namespace Complex.Domino.Web.Auth
         {
             if (IsValid)
             {
-                item.GenerateActivationCode();
-                item.Save();
+                item.ResetPassword();
 
                 var body = new StringBuilder(Resources.EmailTemplates.ResetPassword);
 
