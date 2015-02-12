@@ -3,20 +3,21 @@ DOMINO TODO
 
    Common:
    
-   ACCESS CONTROL
+++ ACCESS CONTROL
    
    dátum mezõk mindenütt
    fájlméret mezõ a feltöltõnél
    full name could be nicer
    footer
    sign in cookie time-out
+   machine key?
    highlight required fields
    error column css
 ++ git exception trim trailing newline
 ++ file browser: view in new windows
    file browser: edit
    file browser: file sizes
-   login page: reset password link position
+++ login page: reset password link position
    do not allow duplicate email
 
 ++ Welcome szöveg
@@ -52,8 +53,8 @@ DOMINO TODO
    
    semester list: make nicer, add links or just remove the whole thing
    course form: disable name edit, visibility and enabled edit
-   add new assignment form
-   assignment form: disable name etc. editing
++  add new assignment form
++  assignment form: disable name etc. editing
 +  spreadsheet: could use nicer design
 ++ rationalize teacher menu
 ++ add student page to view email
@@ -64,6 +65,12 @@ DOMINO TODO
 ++ implement reply
 ++ reply off by default
    new assignment icon
+   new assignment form read only set incorrectly when creating new
+   do not allow reply when already a reply
+   do not allow mark as read only when already a reply
+   file editor
+   zip donwload
+   grades and comments from spreadsheet
    
    Student:
    
@@ -80,3 +87,6 @@ DOMINO TODO
    submission: enforce time limit
    limit submission file types (later by assignment, now by hard-coded list)
    disallow empty submission
+   reply in title
+   submission date
+   <h1>-><h2> uploaded files
