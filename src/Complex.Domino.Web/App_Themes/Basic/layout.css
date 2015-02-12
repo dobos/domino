@@ -23,7 +23,7 @@ table#layout {
 td#layoutLogo {
     background-color: #000000;
     height: 24px;
-    width: 300px;
+    width: 240px;
     padding: 0px;
     padding-top: 4px;
     vertical-align: central;
@@ -44,7 +44,7 @@ td#layoutLeft {
     background-color: #999966;
     color: #FFFFFF;
     height: 100%;
-    width: 300px;
+    width: 250px;
     vertical-align: top;
     padding-top: 48px;
 }
