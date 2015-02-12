@@ -104,6 +104,11 @@ namespace Complex.Domino.Lib
             set { readDate = value; }
         }
 
+        public bool IsReply
+        {
+            get { return teacherID > 0; }
+        }
+
         public bool IsRead
         {
             get { return readDate != DateTime.MinValue; }

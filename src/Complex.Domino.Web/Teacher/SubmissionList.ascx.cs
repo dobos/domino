@@ -58,13 +58,13 @@ namespace Complex.Domino.Web.Teacher
                 var label = (Label)e.Item.FindControl("createdDateLabel");
 
                 // mark unread submissions by students
-                if (!submission.IsRead && submission.TeacherID == -1)
+                if (!submission.IsRead && !submission.IsReply)
                 {
                     link.CssClass += " unread";
                 }
 
                 // mark submissions by teacher
-                if (submission.TeacherID > 0)
+                if (submission.IsReply)
                 {
                     link.CssClass += " reply";
                     label.Text = Resources.Labels.ReplyDate;

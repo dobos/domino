@@ -48,7 +48,7 @@
                 </tr>
             </table>
         </div>
-        <h1><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h1>
+        <h2><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h2>
         <domino:filebrowser runat="server" id="fileBrowser" AllowSelection="false"
             AllowDownload="false" AllowEdit="false" />
         <div class="frame">

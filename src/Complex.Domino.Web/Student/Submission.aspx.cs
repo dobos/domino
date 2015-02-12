@@ -43,8 +43,8 @@ namespace Complex.Domino.Web.Student
         {
             base.CreateItem();
 
-            // If this is a reply by a teacher, mark it as read
-            if (Item.TeacherID > 0)
+            // If this is a reply by a teacher, mark it as read automatically
+            if (Item.IsReply)
             {
                 Item.MarkRead();
             }
@@ -54,9 +54,18 @@ namespace Complex.Domino.Web.Student
         {
             base.UpdateForm();
 
-            formLabel.Text = Item.IsExisting ?
-                Resources.Labels.Submission :
-                Resources.Labels.NewSubmission;
+            if (Item.IsReply)
+            {
+                formLabel.Text = Resources.Labels.Reply;
+            }
+            else if (Item.IsExisting)
+            {
+                formLabel.Text = Resources.Labels.Submission;
+            }
+            else
+            {
+                formLabel.Text = Resources.Labels.NewSubmission;
+            }
 
             cancelLabel.Text = Item.IsExisting ?
                 Resources.Labels.Ok :
