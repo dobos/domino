@@ -179,19 +179,27 @@ namespace Complex.Domino.Lib
 
         public void Load()
         {
-            Load(this.id);
+            Load(this.id, true);
         }
 
         public void Load(int id)
         {
+            Load(id, true);
+        }
+
+        protected void Load(int id, bool checkAccess)
+        {
             OnLoad(id);
 
             // Check access
-            var access = GetAccess();
-
-            if (!access.Read)
+            if (checkAccess)
             {
-                throw Error.AccessDenied();
+                var access = GetAccess();
+
+                if (!access.Read)
+                {
+                    throw Error.AccessDenied();
+                }
             }
         }
 
