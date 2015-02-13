@@ -29,11 +29,14 @@ namespace Complex.Domino.Web.Files
             if (type != null)
             {
                 context.Response.ContentType = type.MimeType;
+                context.Response.AppendHeader("Content-Disposition", "inline;filename=" + Path.GetFileName(filename));
             }
             else
             {
                 context.Response.ContentType = System.Net.Mime.MediaTypeNames.Application.Octet;
+                context.Response.AppendHeader("Content-Disposition", "attachment;filename=" + Path.GetFileName(filename));
             }
+
 
             var path = Path.Combine(DominoConfiguration.Instance.ScratchPath, guid, filename);
 

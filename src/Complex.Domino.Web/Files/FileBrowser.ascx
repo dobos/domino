@@ -65,9 +65,6 @@
                                 <asp:HyperLink runat="server" ID="view" Target="_blank">
                                     <asp:Image runat="server" SkinID="ViewButton" />
                                 </asp:HyperLink>
-                                <asp:HyperLink runat="server" ID="edit" CommandName="edit" Target="_blank">
-                                    <asp:Image runat="server" SkinID="EditButton" />
-                                </asp:HyperLink>
                                 <asp:LinkButton runat="server" ID="delete" CommandName="delete">
                                     <asp:Image runat="server" SkinID="DelsmlButton" />
                                 </asp:LinkButton>

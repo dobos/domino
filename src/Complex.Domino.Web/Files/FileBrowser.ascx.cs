@@ -87,7 +87,7 @@ namespace Complex.Domino.Web.Files
         protected void Page_Load(object sender, EventArgs e)
         {
             uploadPanel.Visible = AllowUpload;
-            
+
         }
 
         protected void directoryList_ItemCreated(object sender, ListViewItemEventArgs e)
@@ -137,7 +137,6 @@ namespace Complex.Domino.Web.Files
                     var name = (LinkButton)e.Item.FindControl("name");
                     var size = (Label)e.Item.FindControl("size");
                     var view = (HyperLink)e.Item.FindControl("view");
-                    var edit = (HyperLink)e.Item.FindControl("edit");
                     var delete = (LinkButton)e.Item.FindControl("delete");
 
                     select.Visible = AllowSelection;
@@ -145,41 +144,39 @@ namespace Complex.Domino.Web.Files
                     name.Text = fi.Name;
                     name.CommandArgument = fi.Name;
 
-                    if ((fi.Attributes & FileAttributes.Directory) == 0)
+                    if (!dir)
                     {
                         size.Text = fi.Length.ToString();
-                    }
-
-                    // Figure out file type
-                    var extension = Path.GetExtension(fi.Name);
-                    var type = FileTypes.GetFileTypeByExtension(extension);
-                    var filepar = Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName));
-
-                    if (type != null && type.Category == FileCategory.Code)
-                    {
-                        view.Visible = !dir && !AllowEdit;
-                        edit.Visible = !dir && AllowEdit;
-
-                        view.NavigateUrl = Files.TextEditor.GetUrl(filepar, false);
-                        view.NavigateUrl = Files.TextEditor.GetUrl(filepar, true);
-                    }
-                    else if (type != null && type.Category == FileCategory.Image)
-                    {
                         view.Visible = true;
-                        edit.Visible = false;
 
-                        view.NavigateUrl = Files.ImageViewer.GetUrl(filepar);
-                    }
-                    else if (type != null && type.Category == FileCategory.Document)
-                    {
-                        throw new NotImplementedException();
+                        // Figure out file type
+                        var extension = Path.GetExtension(fi.Name);
+                        var type = FileTypes.GetFileTypeByExtension(extension);
+                        var filepar = Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName));
+
+                        if (type != null && type.Category == FileCategory.Code)
+                        {
+                            view.NavigateUrl = Files.TextEditor.GetUrl(filepar, AllowEdit);
+                        }
+                        else if (type != null && type.Category == FileCategory.Image)
+                        {
+                            view.NavigateUrl = Files.ImageViewer.GetUrl(filepar);
+                        }
+                        else if (type != null && type.Category == FileCategory.Document)
+                        {
+                            // TODO: in case of a separate doc viewer is implemented...
+                            view.NavigateUrl = Files.Download.GetUrl(filepar);
+                        }
+                        else
+                        {
+                            // Download file
+                            view.NavigateUrl = Files.Download.GetUrl(filepar);
+                        }
                     }
                     else
                     {
-                        view.Visible = true;
-                        edit.Visible = false;
-
-                        view.NavigateUrl = Files.Download.GetUrl(filepar);
+                        view.Visible = false;
+                        size.Visible = false;
                     }
 
                     delete.Visible = AllowDelete;
