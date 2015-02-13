@@ -15,7 +15,7 @@ DOMINO TODO
    error column css
 ++ git exception trim trailing newline
 ++ file browser: view in new windows
-   file browser: edit
+++ file browser: edit
    file browser: file sizes
 ++ login page: reset password link position
    do not allow duplicate email
@@ -69,7 +69,7 @@ DOMINO TODO
    new assignment form read only set incorrectly when creating new
    do not allow reply when already a reply
    do not allow mark as read only when already a reply
-   file editor
+++ file editor
    zip download
    grades and comments from spreadsheet
    
@@ -78,7 +78,7 @@ DOMINO TODO
 ++ need opening page? merge / with Student/
 ++ magyar szövegek a student/ oldalon
 ++ submission: comment font
-   submission: take default comment from resource
+-- submission: take default comment from resource
 ++ submission: confirmation page for users
 ++ submission: confirmation e-mail
 ++ submission: readonly comment when viewing

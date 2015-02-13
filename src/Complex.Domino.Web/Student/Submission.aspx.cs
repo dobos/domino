@@ -65,6 +65,8 @@ namespace Complex.Domino.Web.Student
             else
             {
                 formLabel.Text = Resources.Labels.NewSubmission;
+                fileBrowser.AllowEdit = true;
+                fileBrowser.AllowDelete = true;
             }
 
             createdDate.Text = Util.DateTime.FormatFancy(Item.CreatedDate);
