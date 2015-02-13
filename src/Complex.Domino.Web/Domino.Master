@@ -14,9 +14,7 @@
         <asp:ScriptManager runat="server" />
         <table id="layout">
             <tr>
-                <td id="layoutLogo">
-                    <asp:Image runat="server" SkinID="DominoLogo" />
-                </td>
+                <td id="layoutLogo"><asp:Image runat="server" SkinID="DominoLogo" /></td>
                 <td id="layoutTop">
                     <asp:ContentPlaceHolder runat="server" ID="header" />
                 </td>
@@ -30,8 +28,7 @@
                 <td id="layoutRight">
                     <div id="contentTop"></div>
                     <div id="contentMain">
-                        <asp:ContentPlaceHolder ID="main" runat="server">
-                        </asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="main" runat="server" />
                     </div>
                     <div id="contentBottom"></div>
                 </td>

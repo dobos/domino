@@ -11,6 +11,7 @@
         border-radius: 8px;
         padding: 4px;
         text-decoration: none;
+        background-color: #FFFFFF;
         color: #000000;
     }
 
@@ -55,6 +56,14 @@
     toolbar.button {
         display: inline-block;
         margin-bottom: 0px;
+    }
+
+    toolbar.editor {
+        border: 0px;
+        background-color: #999966;
+        border-bottom: 1px solid #000000;
+        padding: 8px;
+        margin: 0px;
     }
 
 .fullbar {
@@ -125,16 +134,16 @@ a.reply {
     color: #FFFFFF;
 }
 
-    grade > h1 {
-        font-size: 22px;
-        margin-top: 2px;
-        margin-bottom: 0px;
-    }
+grade > h1 {
+    font-size: 22px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
 
-    grade > p {
-        font-size: 12px;
-        margin-top: -10px;
-    }
+grade > p {
+    font-size: 12px;
+    margin-top: -10px;
+}
 
 
 div.placeholder {

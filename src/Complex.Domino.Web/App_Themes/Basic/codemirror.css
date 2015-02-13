@@ -2,6 +2,8 @@
 {
   font-family: 'Consolas', 'Lucida Console', monospace;
   line-height: 1.5;
+  height: 100%;
+  width: 100%;
 }
 
 .cm-s-default .cm-keyword {color: #00F;}

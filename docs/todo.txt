@@ -5,7 +5,7 @@ DOMINO TODO
    
 ++ ACCESS CONTROL
    
-   dátum mezõk mindenütt
+   dátum mezõk mindenütt (DateTimeBox, DateTimeLabel)
    fájlméret mezõ a feltöltõnél
    full name could be nicer
    footer
@@ -19,6 +19,7 @@ DOMINO TODO
    file browser: file sizes
 ++ login page: reset password link position
    do not allow duplicate email
+   error page
 
 ++ Welcome szöveg
 
@@ -69,7 +70,7 @@ DOMINO TODO
    do not allow reply when already a reply
    do not allow mark as read only when already a reply
    file editor
-   zip donwload
+   zip download
    grades and comments from spreadsheet
    
    Student:
@@ -88,5 +89,5 @@ DOMINO TODO
    limit submission file types (later by assignment, now by hard-coded list)
    disallow empty submission
 ++ reply in title
-   submission date
+++ submission date
 ++ <h1>-><h2> uploaded files

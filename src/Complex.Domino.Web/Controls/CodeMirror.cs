@@ -110,7 +110,7 @@ namespace Complex.Domino.Web.Controls
                 var link = new System.Web.UI.HtmlControls.HtmlLink();
                 link.Href = "~/Scripts/CodeMirror/lib/codemirror.css";
                 link.Attributes.Add("rel", "stylesheet");
-                Page.Header.Controls.Add(link);
+                Page.Header.Controls.AddAt(0, link);
 
                 Page.ClientScript.RegisterOnSubmitStatement(this.GetType(), "",
                     String.Format(
