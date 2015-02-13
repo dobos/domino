@@ -35,10 +35,7 @@ namespace Complex.Domino.Web.Files
                 context.Response.ContentType = System.Net.Mime.MediaTypeNames.Application.Octet;
             }
 
-            var path = Path.Combine(
-                DominoConfiguration.Instance.ScratchPath,
-                guid,
-                filename);
+            var path = Path.Combine(DominoConfiguration.Instance.ScratchPath, guid, filename);
 
             // Copy file to the output
 

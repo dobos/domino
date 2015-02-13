@@ -21,6 +21,7 @@ namespace Complex.Domino.Web
         public const string RequestAssignmentID = "AssignmentID";
         public const string RequestSubmissionID = "SubmissionID";
         public const string RequestFile = "File";
+        public const string RequestEdit = "Edit";
         public const string RequestActivationCode = "Code";
         public const string RequestMode = "Mode";
         public const string RequestRole = "Role";

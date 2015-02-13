@@ -10,24 +10,15 @@
 namespace Complex.Domino.Web.Files {
     
     
-    public partial class TextEditor {
+    public partial class ImageViewer {
         
         /// <summary>
-        /// Save control.
+        /// ImageView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Save;
-        
-        /// <summary>
-        /// CodeView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Complex.Domino.Web.Controls.CodeMirror CodeView;
+        protected global::System.Web.UI.WebControls.Image ImageView;
     }
 }

@@ -150,6 +150,7 @@
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Files\FileBrowser.ascx" />
+    <Content Include="Files\ImageViewer.aspx" />
     <Content Include="Files\TextEditor.aspx" />
     <Content Include="Global.asax" />
     <Content Include="App_Themes\Basic\layout.skin" />
@@ -714,6 +715,16 @@
       <DependentUpon>FileBrowser.ascx</DependentUpon>
     </Compile>
     <Compile Include="Files\FileBrowserEventArgs.cs" />
+    <Compile Include="Files\FilePageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\ImageViewer.aspx.cs">
+      <DependentUpon>ImageViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\ImageViewer.aspx.designer.cs">
+      <DependentUpon>ImageViewer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Files\TextEditor.aspx.cs">
       <DependentUpon>TextEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

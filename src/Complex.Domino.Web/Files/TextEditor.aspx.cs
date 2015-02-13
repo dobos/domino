@@ -9,61 +9,48 @@ using Complex.Domino.Lib;
 
 namespace Complex.Domino.Web.Files
 {
-    public partial class TextEditor : PageBase
+    public partial class TextEditor : FilePageBase
     {
-        public static string GetUrl(string fileName)
+        public static string GetUrl(string fileName, bool edit)
         {
-            return String.Format("~/Files/TextEditor.aspx?file={0}", HttpUtility.UrlEncode(fileName.Replace('\\', '/')));
-        }
+            var url = "~/Files/TextEditor.aspx";
 
-        protected string FileName
-        {
-            get { return Request.QueryString[Constants.RequestFile].Replace('/', '\\'); }
-        }
+            var par = "";
 
-        protected string FullPath
-        {
-            get
+            if (edit)
             {
-                var guid = (string)Session[Constants.SessionGuid];
-                var path = Path.Combine(DominoConfiguration.Instance.ScratchPath, guid, FileName);
-
-                return path;
+                par += "&edit=true";
             }
+
+            if (fileName != null)
+            {
+                par += String.Format("&file={0}", HttpUtility.UrlEncode(fileName.Replace('\\', '/')));
+            }
+
+            if (par.Length > 0)
+            {
+                url += "?" + par.Substring(1);
+            }
+
+            return url;
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected bool Edit
         {
-            if (!IsPostBack)
+            get { return Request.QueryString[Constants.RequestEdit] == "true"; }
+        }
+
+        protected override void UpdateForm(FileType fileType, string filename)
+        {
+            if (fileType == null || fileType.Category != FileCategory.Code)
             {
-
-                // TODO: this is just a quick solution, fix this later
-                // take file types from assignment
-
-                var filename = this.FileName;
-                var extension = Path.GetExtension(filename);
-                var type = FileTypes.GetFileTypeByExtension(extension);
-
-                if (type != null)
-                {
-                    switch (type.Category)
-                    {
-                        case FileCategory.Image:
-                            ImageView.ImageUrl = Download.GetUrl(filename);
-                            ImagePanel.Visible = true;
-                            break;
-                        case FileCategory.Code:
-                            CodePanel.Visible = true;
-                            CodeView.Text = File.ReadAllText(FullPath);
-                            CodeView.Mode = type.MimeType;
-                            break;
-                        default:
-                            DownloadLink.NavigateUrl = Download.GetUrl(filename);
-                            DownloadPanel.Visible = true;
-                            break;
-                    }
-                }
+                throw new InvalidOperationException();
             }
+
+            CodeView.Text = File.ReadAllText(FullPath);
+            CodeView.Mode = fileType.MimeType;
+
+            Save.Visible = Edit;
         }
 
         protected void Save_Click(object sender, EventArgs e)

@@ -150,14 +150,37 @@ namespace Complex.Domino.Web.Files
                         size.Text = fi.Length.ToString();
                     }
 
-                    view.Visible = !dir;
-                    view.NavigateUrl = Files.TextEditor.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
+                    // Figure out file type
+                    var extension = Path.GetExtension(fi.Name);
+                    var type = FileTypes.GetFileTypeByExtension(extension);
+                    var filepar = Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName));
 
+                    if (type != null && type.Category == FileCategory.Code)
+                    {
+                        view.Visible = !dir && !AllowEdit;
+                        edit.Visible = !dir && AllowEdit;
 
-                    // TODO: filter editing based on file type
-                    edit.Visible = !dir && AllowEdit;
-                    edit.NavigateUrl = Files.TextEditor.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
+                        view.NavigateUrl = Files.TextEditor.GetUrl(filepar, false);
+                        view.NavigateUrl = Files.TextEditor.GetUrl(filepar, true);
+                    }
+                    else if (type != null && type.Category == FileCategory.Image)
+                    {
+                        view.Visible = true;
+                        edit.Visible = false;
 
+                        view.NavigateUrl = Files.ImageViewer.GetUrl(filepar);
+                    }
+                    else if (type != null && type.Category == FileCategory.Document)
+                    {
+                        throw new NotImplementedException();
+                    }
+                    else
+                    {
+                        view.Visible = true;
+                        edit.Visible = false;
+
+                        view.NavigateUrl = Files.Download.GetUrl(filepar);
+                    }
 
                     delete.Visible = AllowDelete;
                     delete.CommandArgument = fi.Name;
