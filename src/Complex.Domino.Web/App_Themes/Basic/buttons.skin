@@ -13,4 +13,5 @@
 <asp:Image runat="server" SkinID="DelsmlButton" ImageUrl="Buttons/Delsml.png" />
 <asp:Image runat="server" SkinID="SignInButton" ImageUrl="Buttons/SignIn.png" />
 <asp:Image runat="server" SkinID="ImportButton" ImageUrl="Buttons/Import.png" />
+<asp:Image runat="server" SkinID="SaveButton" ImageUrl="Buttons/Save.png" />
 
