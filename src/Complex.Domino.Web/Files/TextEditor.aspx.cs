@@ -9,11 +9,11 @@ using Complex.Domino.Lib;
 
 namespace Complex.Domino.Web.Files
 {
-    public partial class View : PageBase
+    public partial class TextEditor : PageBase
     {
         public static string GetUrl(string fileName)
         {
-            return String.Format("~/Files/View.aspx?file={0}", HttpUtility.UrlEncode(fileName.Replace('\\', '/')));
+            return String.Format("~/Files/TextEditor.aspx?file={0}", HttpUtility.UrlEncode(fileName.Replace('\\', '/')));
         }
 
         protected string FileName

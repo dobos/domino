@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 
-namespace Complex.Domino.Web.Controls
+namespace Complex.Domino.Web.Files
 {
     public partial class FileBrowser : System.Web.UI.UserControl
     {
@@ -151,12 +151,12 @@ namespace Complex.Domino.Web.Controls
                     }
 
                     view.Visible = !dir;
-                    view.NavigateUrl = Files.View.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
+                    view.NavigateUrl = Files.TextEditor.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
 
 
                     // TODO: filter editing based on file type
                     edit.Visible = !dir && AllowEdit;
-                    edit.NavigateUrl = Files.Edit.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
+                    edit.NavigateUrl = Files.TextEditor.GetUrl(Path.Combine(PrefixPath, Util.Path.MakeRelative(basePath, fi.FullName)));
 
 
                     delete.Visible = AllowDelete;

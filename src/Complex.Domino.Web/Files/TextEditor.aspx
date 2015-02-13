@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Files/Files.master" AutoEventWireup="true" CodeBehind="View.aspx.cs" Inherits="Complex.Domino.Web.Files.View"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Files/Files.master" AutoEventWireup="true" CodeBehind="View.aspx.cs" Inherits="Complex.Domino.Web.Files.TextEditor"
     ValidateRequest="false" %>
 
 <asp:Content ContentPlaceHolderID="main" runat="server">

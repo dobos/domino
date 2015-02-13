@@ -17,7 +17,7 @@ namespace Complex.Domino.Web
         protected Label semesterDescription;
         protected Label courseDescription;
         protected Label assignmentDescription;
-        protected Controls.FileBrowser fileBrowser;
+        protected Files.FileBrowser fileBrowser;
 
         private Lib.Assignment assignment;
         private Lib.User student;

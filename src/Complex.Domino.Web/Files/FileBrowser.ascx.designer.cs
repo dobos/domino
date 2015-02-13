@@ -10,69 +10,96 @@
 namespace Complex.Domino.Web.Files {
     
     
-    public partial class View {
+    public partial class FileBrowser {
         
         /// <summary>
-        /// ImagePanel control.
+        /// DirectoryLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ImagePanel;
+        protected global::System.Web.UI.WebControls.Label DirectoryLabel;
         
         /// <summary>
-        /// ImageView control.
+        /// directoryList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageView;
+        protected global::System.Web.UI.WebControls.ListView directoryList;
         
         /// <summary>
-        /// CodePanel control.
+        /// uploadPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel CodePanel;
+        protected global::System.Web.UI.WebControls.Panel uploadPanel;
         
         /// <summary>
-        /// Save control.
+        /// UploadFileLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Save;
+        protected global::System.Web.UI.WebControls.Label UploadFileLabel;
         
         /// <summary>
-        /// CodeView control.
+        /// UploadedFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Complex.Domino.Web.Controls.CodeMirror CodeView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile UploadedFile;
         
         /// <summary>
-        /// DownloadPanel control.
+        /// Upload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel DownloadPanel;
+        protected global::System.Web.UI.WebControls.LinkButton Upload;
         
         /// <summary>
-        /// DownloadLink control.
+        /// fileList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink DownloadLink;
+        protected global::Complex.Domino.Web.Controls.MultiSelectListView fileList;
+        
+        /// <summary>
+        /// ButtonsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ButtonsPanel;
+        
+        /// <summary>
+        /// Download control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Download;
+        
+        /// <summary>
+        /// Delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Delete;
     }
 }

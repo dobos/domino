@@ -33,6 +33,8 @@ namespace Complex.Domino.Web.Files
 
             new FileType() { Extension=".java", MimeType="text/x-java-source", Category = FileCategory.Code },
 
+            new FileType() { Extension=".m", MimeType="text/text/x-octave", Category = FileCategory.Code },
+
             new FileType() { Extension=".pdf", MimeType="application/x-pdf", Category = FileCategory.Document },
         };
 

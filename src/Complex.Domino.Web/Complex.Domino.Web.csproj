@@ -144,14 +144,13 @@
     </Content>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
     <Content Include="Controls\EntityForm.ascx" />
-    <Content Include="Controls\FileBrowser.ascx" />
     <Content Include="Controls\Menu.ascx" />
     <EmbeddedResource Include="Controls\MultiSelectGridView.js" />
     <EmbeddedResource Include="Controls\MultiSelectListView.js" />
     <Content Include="Controls\UserStatus.ascx" />
     <Content Include="Default.aspx" />
-    <Content Include="Files\Edit.aspx" />
-    <Content Include="Files\View.aspx" />
+    <Content Include="Files\FileBrowser.ascx" />
+    <Content Include="Files\TextEditor.aspx" />
     <Content Include="Global.asax" />
     <Content Include="App_Themes\Basic\layout.skin" />
     <Content Include="App_GlobalResources\Labels.resx">
@@ -687,14 +686,6 @@
     <Compile Include="Controls\EntityForm.ascx.designer.cs">
       <DependentUpon>EntityForm.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FileBrowser.ascx.cs">
-      <DependentUpon>FileBrowser.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\FileBrowser.ascx.designer.cs">
-      <DependentUpon>FileBrowser.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\FileBrowserEventArgs.cs" />
     <Compile Include="Controls\IntArrayConverter.cs" />
     <Compile Include="Controls\EnumField.cs" />
     <Compile Include="Controls\Menu.ascx.cs">
@@ -715,12 +706,20 @@
     <Compile Include="Controls\UserStatus.ascx.designer.cs">
       <DependentUpon>UserStatus.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Files\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
+    <Compile Include="Files\FileBrowser.ascx.cs">
+      <DependentUpon>FileBrowser.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Files\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
+    <Compile Include="Files\FileBrowser.ascx.designer.cs">
+      <DependentUpon>FileBrowser.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileBrowserEventArgs.cs" />
+    <Compile Include="Files\TextEditor.aspx.cs">
+      <DependentUpon>TextEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\TextEditor.aspx.designer.cs">
+      <DependentUpon>TextEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\AssignmentList.ascx.cs">
       <DependentUpon>AssignmentList.ascx</DependentUpon>
@@ -890,13 +889,6 @@
     </Compile>
     <Compile Include="Files\FileCategory.cs" />
     <Compile Include="Files\FileTypes.cs" />
-    <Compile Include="Files\View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Files\View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Files\Files.master.cs">
       <DependentUpon>Files.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
