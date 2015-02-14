@@ -258,14 +258,8 @@ namespace Complex.Domino.Git
 
             args.Append("checkout");
 
-            if (newBranch)
-            {
-                args.Append("-b", branch);
-            }
-            else
-            {
-                args.Append(branch);
-            }
+            args.AppendIfTrue(newBranch, "-b");
+            args.Append(branch);
 
             GitWrapper.Call(this, args);
         }
