@@ -29,15 +29,23 @@
                 <td class="label">
                     <asp:Label runat="server" ID="UploadFileLabel" Text="<%$ Resources:Labels, UploadFile %>" />:
                 </td>
-                <td class="field" style="text-align: right">
+                <td class="field">
                     <input type="file" runat="server" id="UploadedFile" />
+                </td>
+                <td>
                     <toolbar class="button" style="margin-left: 8px;">
-                        <asp:LinkButton runat="server" ID="Upload" OnClick="Upload_Click">
+                        <asp:LinkButton runat="server" ID="Upload" OnClick="Upload_Click" ValidationGroup="Upload">
                             <asp:Image runat="server" SkinID="UploadButton" />
                             <p><asp:Label runat="server" Text="<%$ Resources:Labels, Upload %>" /></p>
                         </asp:LinkButton>
                     </toolbar>
                 </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="field"><asp:RequiredFieldValidator id="UploadedFileRequiredValidator" runat="server" ErrorMessage="<%$ Resources:Errors, Required %>"
+                       ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" /><asp:RegularExpressionValidator id="UploadedFileValidator" runat="server" ErrorMessage="<%$ Resources:Errors, InvalidExtension %>"
+                        ValidationExpression="^.+(.zip|.ZIP)$" ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" /></td>
             </tr>
         </table>
     </asp:Panel>

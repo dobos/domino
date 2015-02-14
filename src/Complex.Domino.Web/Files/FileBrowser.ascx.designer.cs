@@ -67,6 +67,24 @@ namespace Complex.Domino.Web.Files {
         protected global::System.Web.UI.WebControls.LinkButton Upload;
         
         /// <summary>
+        /// UploadedFileRequiredValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator UploadedFileRequiredValidator;
+        
+        /// <summary>
+        /// UploadedFileValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator UploadedFileValidator;
+        
+        /// <summary>
         /// fileList control.
         /// </summary>
         /// <remarks>

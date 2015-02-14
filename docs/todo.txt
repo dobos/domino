@@ -23,6 +23,7 @@ DOMINO TODO
    test chrome
    test mozilla
    test opera
+   auto login if user holds valid token
 
 ++ Welcome szöveg
 
@@ -93,7 +94,7 @@ DOMINO TODO
 ++ submission list: highlight replies
 ++ submissions still in wrong order
    submission: enforce time limit
-   limit submission file types (later by assignment, now by hard-coded list)
+++ limit submission file types (later by assignment, now by hard-coded list)
    disallow empty submission
 ++ reply in title
 ++ submission date

@@ -7,7 +7,7 @@ namespace Complex.Domino.Web.Files
 {
     public class FileTypes
     {
-        private static readonly FileType[] types = new FileType[]
+        internal static readonly FileType[] Types = new FileType[]
         {
             new FileType() { Extension=".gif", MimeType="image/gif", Category = FileCategory.Image },
             new FileType() { Extension=".bmp", MimeType="image/bmp", Category = FileCategory.Image },
@@ -38,23 +38,23 @@ namespace Complex.Domino.Web.Files
             new FileType() { Extension=".pdf", MimeType="application/x-pdf", Category = FileCategory.Document },
         };
 
-        private static readonly Dictionary<string, FileType> fileTypesByExtension;
+        internal static readonly Dictionary<string, FileType> FileTypesByExtension;
 
         static FileTypes()
         {
-            fileTypesByExtension = new Dictionary<string, FileType>(StringComparer.InvariantCultureIgnoreCase);
+            FileTypesByExtension = new Dictionary<string, FileType>(StringComparer.InvariantCultureIgnoreCase);
 
-            for (int i = 0; i < types.Length; i++)
+            for (int i = 0; i < Types.Length; i++)
             {
-                fileTypesByExtension.Add(types[i].Extension, types[i]);
+                FileTypesByExtension.Add(Types[i].Extension, Types[i]);
             }
         }
 
         public static FileType GetFileTypeByExtension(string extension)
         {
-            if (fileTypesByExtension.ContainsKey(extension))
+            if (FileTypesByExtension.ContainsKey(extension))
             {
-                return fileTypesByExtension[extension];
+                return FileTypesByExtension[extension];
             }
             else
             {

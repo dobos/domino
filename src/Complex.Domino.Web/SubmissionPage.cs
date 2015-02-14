@@ -48,6 +48,20 @@ namespace Complex.Domino.Web
             get { return gitHelper; }
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            var ext = "";
+
+            foreach (var type in Files.FileTypes.Types)
+            {
+                ext += "|" + type.Extension;
+            }
+
+            fileBrowser.AllowedExtensions = ext.TrimStart('|');
+        }
+
         protected override void CreateItem()
         {
             base.CreateItem();
@@ -145,7 +159,7 @@ namespace Complex.Domino.Web
                 // Teachers should commit into a new branch
                 branch = String.Format("teacher_{0:yyMMddhhmmss}", DateTime.Now);
             }
-            
+
             var commit = GitHelper.CommitSubmission(comments, branch);
 
             return commit;

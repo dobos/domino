@@ -120,6 +120,9 @@
   <data name="ConfirmationNoMatch" xml:space="preserve">
     <value>nem stimmel</value>
   </data>
+  <data name="InvalidExtension" xml:space="preserve">
+    <value>érvénytelen fájltípus</value>
+  </data>
   <data name="InvalidFormat" xml:space="preserve">
     <value>hibás formátum</value>
   </data>

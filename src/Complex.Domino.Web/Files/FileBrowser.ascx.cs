@@ -86,8 +86,25 @@ namespace Complex.Domino.Web.Files
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            uploadPanel.Visible = AllowUpload;
+            if (!IsPostBack)
+            {
+                uploadPanel.Visible = AllowUpload;
 
+                // Valid file types
+                var ext = "";
+                
+                if (!String.IsNullOrWhiteSpace(AllowedExtensions))
+                {
+                    ext += "|" + AllowedExtensions.Replace(".", "\\.");
+                }
+
+                if (!String.IsNullOrWhiteSpace(AllowedArchiveExtensions))
+                {
+                    ext += "|" + AllowedArchiveExtensions.Replace(".", "\\.");
+                }
+
+                UploadedFileValidator.ValidationExpression = @"^.+(?i:" + ext.TrimStart('|') + @")$";
+            }
         }
 
         protected void directoryList_ItemCreated(object sender, ListViewItemEventArgs e)
@@ -230,7 +247,7 @@ namespace Complex.Domino.Web.Files
 
         protected void Upload_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(UploadedFile.PostedFile.FileName))
+            if (Page.IsValid)
             {
                 var filename = Path.GetFileName(UploadedFile.PostedFile.FileName);
 
