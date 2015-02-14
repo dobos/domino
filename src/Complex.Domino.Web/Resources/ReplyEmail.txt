@@ -1,0 +1,10 @@
+Hello [$Name],
+
+A new reply to your submission at [$DateTime] was sent.
+
+To view the reply, follow the link below.
+
+[$BaseUrl][$Url]
+
+===============================================================
+Domino

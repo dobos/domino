@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -116,7 +117,22 @@ namespace Complex.Domino.Web.Teacher
 
         private void SendEmail()
         {
-            // TODO: implement
+            var body = new StringBuilder(Resources.EmailTemplates.Reply);
+
+            var tokens = new Dictionary<string, string>()
+                {
+                     { "Name", Student.Description },
+                     { "DateTime", Item.CreatedDate.ToString() },
+                     { "Assignment", Assignment.Description },
+                     { "Url", VirtualPathUtility.ToAbsolute(Web.Student.Submission.GetUrl(replySubmission.AssignmentID, replySubmission.ID)) }
+                };
+
+            Util.Email.ReplaceTokens(body, tokens);
+
+            Util.Email.SendFromDomino(
+                Student,
+                Resources.EmailTemplates.ReplySubject,
+                body.ToString());
         }
 
         protected void SendReply_CheckedChanged(object sender, EventArgs e)

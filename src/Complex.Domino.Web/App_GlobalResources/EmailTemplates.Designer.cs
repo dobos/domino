@@ -87,6 +87,33 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello [$Name],
         ///
+        ///A new reply to your submission at [$DateTime] was sent.
+        ///
+        ///To view the reply, follow the link below.
+        ///
+        ///[$BaseUrl][$Url]
+        ///
+        ///===============================================================
+        ///Domino.
+        /// </summary>
+        internal static string Reply {
+            get {
+                return ResourceManager.GetString("Reply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reply to a submission received.
+        /// </summary>
+        internal static string ReplySubject {
+            get {
+                return ResourceManager.GetString("ReplySubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello [$Name],
+        ///
         ///You have requested a password reset for your Domino account.
         ///
         ///To reset your password, please click on the link below.
@@ -114,7 +141,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello [$Name],
         ///
-        ///Your submission to [$Assignment] has been received.
+        ///Your submission to [$Assignment] was received at [$DateTime].
         ///It contains the following files.
         ///
         ///[$Files]
@@ -129,7 +156,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Domino submission received.
+        ///   Looks up a localized string similar to New submission received.
         /// </summary>
         internal static string SubmissionSubject {
             get {

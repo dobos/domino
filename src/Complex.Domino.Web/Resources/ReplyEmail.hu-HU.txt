@@ -1,0 +1,9 @@
+Üdv [$Name],
+
+Egy [$DateTime]-kor beküldött megoldásodra válasz érkezett.
+A válasz az alábbi címen tekinthetõ meg:
+
+[$BaseUrl][$Url]
+
+===============================================================
+Domino

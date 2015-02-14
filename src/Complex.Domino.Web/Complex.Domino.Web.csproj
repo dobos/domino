@@ -177,6 +177,8 @@
     <Resource Include="Resources\SubmissionEmail.txt" />
     <Resource Include="Resources\SubmissionEmail.hu-HU.txt" />
     <Content Include="Resources\ResetPasswordResults.hu-HU.txt" />
+    <Resource Include="Resources\ReplyEmail.txt" />
+    <Resource Include="Resources\ReplyEmail.hu-HU.txt" />
     <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
     <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
     <Content Include="Scripts\CodeMirror\addon\dialog\dialog.css" />
