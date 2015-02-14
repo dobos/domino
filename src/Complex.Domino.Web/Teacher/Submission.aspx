@@ -32,7 +32,7 @@
                         <asp:HyperLink runat="server" ID="studentDescription" Target="_blank" />
                     </td>
                 </tr>
-                <tr>
+                <tr runat="server" id="createdDateRow">
                     <td class="label">
                         <asp:Label runat="server" ID="createdDateLabel" Text="<%$ Resources:Labels, SubmissionDate %>" />:
                     </td>

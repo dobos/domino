@@ -56,21 +56,22 @@ namespace Complex.Domino.Web.Student
 
             if (Item.IsReply)
             {
+                // This is a reply by a teacher
                 formLabel.Text = Resources.Labels.Reply;
             }
             else if (Item.IsExisting)
             {
+                // This is an existing submission by the student
                 formLabel.Text = Resources.Labels.Submission;
             }
             else
             {
+                //  This is a new submission
                 formLabel.Text = Resources.Labels.NewSubmission;
-                fileBrowser.AllowEdit = true;
-                fileBrowser.AllowDelete = true;
             }
 
-            createdDate.Text = Util.DateTime.FormatFancy(Item.CreatedDate);
-            createdDateRow.Visible = Item.IsExisting;
+            fileBrowser.AllowEdit = !Item.IsExisting;
+            fileBrowser.AllowDelete = !Item.IsExisting;
 
             cancelLabel.Text = Item.IsExisting ?
                 Resources.Labels.Ok :

@@ -197,7 +197,7 @@ namespace Complex.Domino.Lib
             git.Fetch(true);
 
             // First try to check out the master branch. If it fails,
-            // there are changes in the current repo that might need to
+            // there are changes in the current repo that might need to be
             // merged but couldn't be done automatically. In this case
             // we simply reset and throw away changes.
             try
@@ -279,12 +279,19 @@ namespace Complex.Domino.Lib
         /// Commits a submission and pushed it to origin
         /// </summary>
         /// <returns></returns>
-        public Git.Commit CommitSubmission(string commitMessage)
+        public Git.Commit CommitSubmission(string commitMessage, string branch)
         {
             var scratchdir = GetScratchPath();
             var git = CreateGit(scratchdir);
 
             var dir = GetAssignmentPath();
+
+            // If it has to go into a separate branch, switch to it
+            // This functionality is used when teachers send replies.
+            if (branch != null)
+            {
+                git.CheckOut(branch, true);
+            }
 
             // Add all/remove all files that have changed under assignment
             // directory in the working tree of the student
@@ -322,7 +329,7 @@ namespace Complex.Domino.Lib
 
             // Check-out branch but also reset it, in case it was checked out
             // already but has changed.
-
+            git.Pull();
             git.CheckOut(submission.Name);
             git.Reset(submission.Name, true);
         }

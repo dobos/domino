@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Complex.Domino.Web
 {
@@ -18,7 +19,11 @@ namespace Complex.Domino.Web
         protected Label courseDescription;
         protected Label assignmentDescription;
         protected Files.FileBrowser fileBrowser;
+        protected HtmlTableRow createdDateRow;
+        protected Label createdDate;
 
+        private Lib.Semester semester;
+        private Lib.Course course;
         private Lib.Assignment assignment;
         private Lib.User student;
         private Lib.GitHelper gitHelper;
@@ -50,25 +55,29 @@ namespace Complex.Domino.Web
             assignment = new Lib.Assignment(DatabaseContext);
             assignment.Load(this.AssignmentID);
 
+            semester = new Lib.Semester(DatabaseContext);
+            semester.Load(assignment.SemesterID);
+
+            course = new Lib.Course(DatabaseContext);
+            course.Load(assignment.CourseID);
+
             Item.AssignmentID = assignment.ID;
             Item.CourseID = assignment.CourseID;
 
-            // If the submission already exists we can take the student from
-            // it.
+            // If the submission already exists we can take the student from it.
             // TODO: need to extend logic in case of reply by teacher
 
-            if (Item.IsExisting)
+            if (!Item.IsExisting)
             {
-                student = new Lib.User(DatabaseContext);
-                student.Load(Item.StudentID);
+                // This is a new submission by a student
+                student = DatabaseContext.User;
             }
             else
             {
-                // TODO: add reply-to logic here
-                student = DatabaseContext.User;
+                // This is an existing submission
+                student = new Lib.User(DatabaseContext);
+                student.Load(Item.StudentID);
             }
-
-            // Initialize the git helper class with current session info
 
             gitHelper = new Lib.GitHelper()
             {
@@ -87,30 +96,14 @@ namespace Complex.Domino.Web
         {
             base.UpdateForm();
 
-            var semester = new Lib.Semester(DatabaseContext);
-            semester.Load(assignment.SemesterID);
-
-            var course = new Lib.Course(DatabaseContext);
-            course.Load(assignment.CourseID);
-
             semesterDescription.Text = semester.Description;
             courseDescription.Text = course.Description;
             assignmentDescription.Text = assignment.Description;
 
-            fileBrowser.AllowDelete = !Item.IsExisting;
-            fileBrowser.AllowUpload = !Item.IsExisting;
-
-            if (Item.IsExisting)
+            if (!Item.IsExisting)
             {
-                // Check out the current submission to view files
-                // TODO: might need to be replace with smarter solution
-                // that read file contents from git directly
-                gitHelper.CheckOutSubmission();
+                // This is a new submission by a student
 
-                SwitchViewToFiles();
-            }
-            else
-            {
                 // Make sure the git repo is checked out, the assigment exists
                 // and it is the tip of the branch
                 gitHelper.EnsureAssignmentExists();
@@ -122,6 +115,17 @@ namespace Complex.Domino.Web
                     SwitchViewToFiles();
                 }
             }
+            else
+            {
+                // This is an existing submission, the git repo
+                // needs to be checked out at a given commit
+                gitHelper.CheckOutSubmission();
+
+                SwitchViewToFiles();
+            }
+
+            createdDate.Text = Util.DateTime.FormatFancy(Item.CreatedDate);
+            createdDateRow.Visible = Item.IsExisting;
         }
 
         protected Git.Commit CommitSubmission(Lib.Submission submission)
@@ -134,20 +138,17 @@ namespace Complex.Domino.Web
             }
 
             // Commit changes into git
-            var commit = GitHelper.CommitSubmission(comments);
+            string branch = null;
+
+            if (submission.TeacherID > 0)
+            {
+                // Teachers should commit into a new branch
+                branch = String.Format("teacher_{0:yyMMddhhmmss}", DateTime.Now);
+            }
+            
+            var commit = GitHelper.CommitSubmission(comments, branch);
 
             return commit;
-        }
-
-        protected void NewSubmissionKeep_Click(object sender, EventArgs e)
-        {
-            SwitchViewToFiles();
-        }
-
-        protected void NewSubmissionEmpty_Click(object sender, EventArgs e)
-        {
-            gitHelper.EmptyAssignment();
-            SwitchViewToFiles();
         }
 
         private void SwitchViewToFiles()
@@ -160,6 +161,16 @@ namespace Complex.Domino.Web
             filesPanel.Visible = true;
         }
 
+        protected void NewSubmissionKeep_Click(object sender, EventArgs e)
+        {
+            SwitchViewToFiles();
+        }
+
+        protected void NewSubmissionEmpty_Click(object sender, EventArgs e)
+        {
+            gitHelper.EmptyAssignment();
+            SwitchViewToFiles();
+        }
 
     }
 }

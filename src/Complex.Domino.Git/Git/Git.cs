@@ -240,14 +240,32 @@ namespace Complex.Domino.Git
 
         public void Pull()
         {
+            var args = new Arguments();
+
+            args.Append("pull");
+
+            GitWrapper.Call(this, args);
         }
 
         public void CheckOut(string branch)
         {
+            CheckOut(branch, false);
+        }
+
+        public void CheckOut(string branch, bool newBranch)
+        {
             var args = new Arguments();
 
             args.Append("checkout");
-            args.Append(branch);
+
+            if (newBranch)
+            {
+                args.Append("-b", branch);
+            }
+            else
+            {
+                args.Append(branch);
+            }
 
             GitWrapper.Call(this, args);
         }

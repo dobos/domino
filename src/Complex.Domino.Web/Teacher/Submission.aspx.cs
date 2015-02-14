@@ -52,7 +52,6 @@ namespace Complex.Domino.Web.Teacher
         {
             base.UpdateForm();
 
-            createdDate.Text = Util.DateTime.FormatFancy(Item.CreatedDate);
             studentName.Text = Student.Name;
             studentName.NavigateUrl = Teacher.Student.GetUrl(Student.ID);
             studentDescription.Text = Student.Description;
@@ -70,6 +69,8 @@ namespace Complex.Domino.Web.Teacher
 
             if (sendReply.Checked)
             {
+                // This is a reply by a teacher
+
                 replySubmission = new Lib.Submission(Item);
 
                 replySubmission.ID = -1;       // Reset, so a new submission will be created
@@ -108,7 +109,14 @@ namespace Complex.Domino.Web.Teacher
 
             assignmentGrade.Save();
 
+            SendEmail();
+
             OnRedirect();
+        }
+
+        private void SendEmail()
+        {
+            // TODO: implement
         }
 
         protected void SendReply_CheckedChanged(object sender, EventArgs e)

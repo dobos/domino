@@ -58,15 +58,6 @@ namespace Complex.Domino.Web.Student {
         protected global::System.Web.UI.WebControls.Label AssignmentLabel;
         
         /// <summary>
-        /// createdDateRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow createdDateRow;
-        
-        /// <summary>
         /// createdDateLabel control.
         /// </summary>
         /// <remarks>
@@ -74,15 +65,6 @@ namespace Complex.Domino.Web.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label createdDateLabel;
-        
-        /// <summary>
-        /// createdDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label createdDate;
         
         /// <summary>
         /// cancel control.
