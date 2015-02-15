@@ -211,6 +211,29 @@ WHERE ID = @ID";
             return Convert.ToBase64String(hash);
         }
 
+        public void SignIn(string username)
+        {
+            string sql = @"
+SELECT *
+FROM [User]
+WHERE (Name = @Username) AND
+      Enabled = 1";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = username;
+
+                try
+                {
+                    Context.ExecuteCommandSingleObject(cmd, this);
+                }
+                catch (NoResultsException ex)
+                {
+                    throw Error.InvalidUsernameOrPassword(ex);
+                }
+            }
+        }
+
         public void SignIn(string nameOrEmail, string password)
         {
             var hash = User.HashPassword(password);

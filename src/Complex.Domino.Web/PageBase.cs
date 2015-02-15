@@ -102,7 +102,7 @@ namespace Complex.Domino.Web
                 if (this.User.Identity.IsAuthenticated && Session[Constants.SessionUser] == null)
                 {
                     var u = new User(DatabaseContext);
-                    u.Load(this.User.Identity.Name);
+                    u.SignIn(this.User.Identity.Name);
 
                     if (!u.Enabled)
                     {
