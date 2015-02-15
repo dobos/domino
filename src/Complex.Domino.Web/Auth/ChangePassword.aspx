@@ -11,7 +11,7 @@
         </asp:Panel>
         <div class="frame">
             <table class="form">
-                <tr runat="server" id="OldPasswordRow">
+                <tr runat="server" id="OldPasswordRow" class="required">
                     <td class="label">
                         <asp:Label runat="server" ID="OldPasswordLabel" Text="<%$ Resources:Labels, OldPassword %>" />:
                     </td>
@@ -27,7 +27,7 @@
                             OnServerValidate="PasswordValidator_ServerValidate" />
                     </td>
                 </tr>
-                <tr>
+                <tr class="required">
                     <td class="label">
                         <asp:Label runat="server" ID="PasswordNewLabel" Text="<%$ Resources:Labels, NewPassword %>" />:
                     </td>
@@ -43,7 +43,7 @@
                             OnServerValidate="PasswordComplexityValidator_ServerValidate" />
                     </td>
                 </tr>
-                <tr>
+                <tr class="required">
                     <td class="label">
                         <asp:Label runat="server" ID="PasswordConfirmLabel" Text="<%$ Resources:Labels, Confirmation %>" />:
                     </td>
@@ -54,7 +54,7 @@
                         <asp:RequiredFieldValidator ID="PasswordConfirmRequiredValidator" runat="server" Display="Dynamic"
                             ErrorMessage="<%$ Resources:Errors, Required %>" ControlToValidate="PasswordConfirm" />
                         <asp:CustomValidator runat="server" ID="PasswordConfirmValidator" Display="Dynamic"
-                            ErrorMessage="" ControlToValidate="PasswordConfirm"
+                            ErrorMessage="<%$ Resources:Errors, ConfirmationNoMatch %>" ControlToValidate="PasswordConfirm"
                             OnServerValidate="PasswordConfirmValidator_ServerValidate" />
                     </td>
                 </tr>

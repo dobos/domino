@@ -123,7 +123,7 @@ namespace Complex.Domino.Web.Auth
 
         protected void PasswordConfirmValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            args.IsValid = PasswordNew.Text == PasswordConfirm.Text;
+            args.IsValid = StringComparer.InvariantCulture.Compare(PasswordNew.Text, PasswordConfirm.Text) == 0;
         }
     }
 }

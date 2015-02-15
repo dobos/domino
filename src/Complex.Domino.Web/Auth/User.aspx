@@ -24,9 +24,9 @@
                     </td>
                     <td class="error"></td>
                 </tr>
-                <tr>
+                <tr class="required">
                     <td class="label">
-                        <asp:Label runat="server" ID="EmailLabel" CssClass="required" Text="<%$ Resources:Labels, Email %>" />
+                        <asp:Label runat="server" ID="EmailLabel" Text="<%$ Resources:Labels, Email %>" />
                     </td>
                     <td class="field">
                         <asp:TextBox ID="Email" runat="server" ValidationGroup="User" />

@@ -8,7 +8,7 @@
         </asp:Panel>
         <div class="frame">
             <table class="form">
-                <tr>
+                <tr class="required">
                     <td class="label">
                         <asp:Label runat="server" ID="EmailLabel" Text="<%$ Resources:Labels, Email %>" />:
                     </td>

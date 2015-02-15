@@ -4,6 +4,7 @@
     table.form > tbody > tr {
     }
 
+
         table.form > tbody > tr > td {
             height: 32px;
             vertical-align: middle;
@@ -39,10 +40,10 @@
         height: 100px;
     }
 
-
         table.form td.field > input[type='text']:hover,
         table.form td.field > input[type='file']:hover,
         table.form td.field > input[type='password']:hover,
+        table.form td.field > field:hover,
         table.form td.field > select:hover,
         table.form td.field > textarea:hover {
             border: 1px solid #000000;
@@ -54,6 +55,15 @@
         table.form td.field > textarea[readonly='readonly']:hover {
             border: 1px solid #C0C0C0;
         }
+
+    table.form > tbody > tr.required > td.field > input {
+        background-color: #f2f2cc;
+    }
+
+    table.form > tbody > tr > td.error {
+        padding-left: 8px;
+        color: #FF0000;
+    }
 
     table.form > tfoot > tr > td {
         padding-top: 26px;

@@ -11,7 +11,7 @@
         </asp:Panel>
         <div class="frame">
             <table class="form">
-                <tr>
+                <tr class="required">
                     <td class="label">
                         <asp:Label runat="server" ID="UsernameLabel" Text="<%$ Resources:Labels, UserName %>" />:
                     </td>
@@ -23,7 +23,7 @@
                             ErrorMessage="<%$ Resources:Errors, Required %>" ControlToValidate="Username" />
                     </td>
                 </tr>
-                <tr>
+                <tr class="required">
                     <td class="label">
                         <asp:Label runat="server" ID="PasswordLabel" Text="<%$ Resources:Labels, Password %>" />
                     </td>
@@ -43,7 +43,9 @@
                     <td class="label">&nbsp;
                     </td>
                     <td class="field">
+                        <field>
                         <asp:CheckBox ID="Remember" runat="server" Text="<%$ Resources:Labels, RememberMe %>" />
+                            </field>
                     </td>
                     <td class="error"></td>
                 </tr>
