@@ -11,7 +11,14 @@
 </head>
 <body>
     <form id="theForm" runat="server">
-        <asp:ScriptManager runat="server" />
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="jquery-validation" />
+                <asp:ScriptReference Name="jquery-validation-unobtrusive" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
+            </Scripts>
+            </asp:ScriptManager>
         <table id="layout">
             <tr>
                 <td id="layoutLogo"><asp:Image runat="server" SkinID="DominoLogo" /></td>

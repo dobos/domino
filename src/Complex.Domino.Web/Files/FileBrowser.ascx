@@ -29,23 +29,23 @@
                 <td class="label">
                     <asp:Label runat="server" ID="UploadFileLabel" Text="<%$ Resources:Labels, UploadFile %>" />:
                 </td>
-                <td class="field">
-                    <input type="file" runat="server" id="UploadedFile" />
+                <td class="field" colspan="2">
+                    <input type="file" runat="server" id="UploadedFile" style="width: 442px"/>
                 </td>
-                <td>
-                    <toolbar class="button" style="margin-left: 8px;">
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td class="error"><asp:RequiredFieldValidator id="UploadedFileRequiredValidator" runat="server" ErrorMessage="<%$ Resources:Errors, Required %>"
+                       ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" /><asp:RegularExpressionValidator id="UploadedFileValidator" runat="server" ErrorMessage="<%$ Resources:Errors, InvalidExtension %>"
+                        ValidationExpression="^.+(.zip|.ZIP)$" ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" /></td>
+                <td class="field" style="text-align: right">
+                    <toolbar class="button">
                         <asp:LinkButton runat="server" ID="Upload" OnClick="Upload_Click" ValidationGroup="Upload">
                             <asp:Image runat="server" SkinID="UploadButton" />
                             <p><asp:Label runat="server" Text="<%$ Resources:Labels, Upload %>" /></p>
                         </asp:LinkButton>
                     </toolbar>
                 </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td class="field"><asp:RequiredFieldValidator id="UploadedFileRequiredValidator" runat="server" ErrorMessage="<%$ Resources:Errors, Required %>"
-                       ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" /><asp:RegularExpressionValidator id="UploadedFileValidator" runat="server" ErrorMessage="<%$ Resources:Errors, InvalidExtension %>"
-                        ValidationExpression="^.+(.zip|.ZIP)$" ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" /></td>
             </tr>
         </table>
     </asp:Panel>

@@ -16,10 +16,10 @@ namespace Complex.Domino.Web
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery",
                 new ScriptResourceDefinition
                 {
-                    Path = "~/Scripts/jquery-1.4.4.min.js",
-                    DebugPath = "~/Scripts/jquery-1.4.4.js",
-                    CdnPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js",
-                    CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js"
+                    Path = "~/Scripts/jquery-1.8.0.min.js",
+                    DebugPath = "~/Scripts/jquery-1.8.0.js",
+                    CdnPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js",
+                    CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"
                 });
 
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery-validation",
@@ -29,6 +29,13 @@ namespace Complex.Domino.Web
                     DebugPath = "~/Scripts/jquery.validate.js",
                     CdnPath = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js",
                     CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"
+                });
+
+            ScriptManager.ScriptResourceMapping.AddDefinition("jquery-validation-unobtrusive",
+                new ScriptResourceDefinition
+                {
+                    Path = "~/Scripts/jquery.validate.unobtrusive.min.js",
+                    DebugPath = "~/Scripts/jquery.validate.unobtrusive.js",
                 });
 
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery-ui",

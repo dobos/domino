@@ -95,15 +95,15 @@ namespace Complex.Domino.Web.Files
                 
                 if (!String.IsNullOrWhiteSpace(AllowedExtensions))
                 {
-                    ext += "|" + AllowedExtensions.Replace(".", "\\.");
+                    ext += "|" + Util.Regex.ExtensionToCaseInsensitive(AllowedExtensions);
                 }
 
                 if (!String.IsNullOrWhiteSpace(AllowedArchiveExtensions))
                 {
-                    ext += "|" + AllowedArchiveExtensions.Replace(".", "\\.");
+                    ext += "|" + Util.Regex.ExtensionToCaseInsensitive(AllowedArchiveExtensions);
                 }
 
-                UploadedFileValidator.ValidationExpression = @"^.+(?i:" + ext.TrimStart('|') + @")$";
+                UploadedFileValidator.ValidationExpression = @"^.+(" + ext.TrimStart('|') + @")$";
             }
         }
 

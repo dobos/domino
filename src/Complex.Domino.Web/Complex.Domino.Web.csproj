@@ -441,9 +441,9 @@
     <Content Include="Scripts\CodeMirror\theme\xq-light.css" />
     <Content Include="Scripts\jquery-1.11.2\jquery.js" />
     <Content Include="Scripts\jquery-1.11.2\jquery.min.js" />
-    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.4.js" />
-    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.2\external\jquery\jquery.js" />
     <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -469,8 +469,12 @@
     <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.theme.css" />
     <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.theme.min.css" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Student\AssignmentList.ascx" />
     <Content Include="Student\Assignments.aspx" />
     <Content Include="Student\Assignment.aspx" />
@@ -976,6 +980,7 @@
     <Compile Include="Util\Email.cs" />
     <Compile Include="Util\Enum.cs" />
     <Compile Include="Util\Path.cs" />
+    <Compile Include="Util\Regex.cs" />
     <Compile Include="Util\Url.cs" />
   </ItemGroup>
   <ItemGroup>
