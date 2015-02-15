@@ -7,12 +7,12 @@ DOMINO TODO
    
    dátum mezõk mindenütt (DateTimeBox, DateTimeLabel)
    full name could be nicer
-   footer
++  footer
    sign in cookie time-out
    auto login if user holds valid token
    machine key?
-   highlight required fields
-   error column css
++  highlight required fields
++  error column css
 ++ git exception trim trailing newline
 ++ file browser: view in new windows
 ++ file browser: edit

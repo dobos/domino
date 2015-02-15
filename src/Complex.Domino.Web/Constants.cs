@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Complex.Domino.Web
 {
-    static class Constants
+    public static class Constants
     {
         public const string ReturnUrl = "ReturnUrl";
         public const string OriginalReferer = "OriginalReferer";
@@ -25,5 +25,9 @@ namespace Complex.Domino.Web
         public const string RequestActivationCode = "Code";
         public const string RequestMode = "Mode";
         public const string RequestRole = "Role";
+
+        public const string ApplicationCopyright = "Complex.Domino.Web.ApplicationCopyright";
+        public const string ApplicationDominoVersion = "Complex.Domino.Web.ApplicationDominoVersion";
+        public const string ApplicationGitVersion = "Complex.Domino.Web.ApplicationGitVersion";
     }
 }

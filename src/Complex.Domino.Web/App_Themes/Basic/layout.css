@@ -60,12 +60,33 @@ td#layoutRight {
     padding: 0px;
 }
 
-div#layoutBottom {
+table#layoutBottom {
+    border: 0px;
+    border-collapse: collapse;
     background-color: #000000;
     color: #FFFFFF;
     width: 100%;
     height: 150px;
 }
+
+    table#layoutBottom td {
+        vertical-align: top;
+        padding: 12px;
+    }
+
+    table#layoutBottom td.left {
+        width: 33%;
+    }
+
+    table#layoutBottom td.middle {
+        width: 34%;
+        text-align: center;
+    }
+
+    table#layoutBottom td.right {
+        width: 33%;
+        text-align: right;
+    }
 
 /* content */
 

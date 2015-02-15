@@ -264,6 +264,15 @@ namespace Complex.Domino.Git
             GitWrapper.Call(this, args);
         }
 
+        public string GetVersion()
+        {
+            var args = new Arguments();
+
+            args.Append("--version");
+
+            return GitWrapper.Call(this, args).Substring(12);
+        }
+
         #endregion
     }
 }

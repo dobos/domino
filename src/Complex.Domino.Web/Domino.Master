@@ -41,11 +41,16 @@
                 </td>
             </tr>
         </table>
-        <div id="layoutBottom">
-            <div id="contentFooter">
-                footer comes here
-            </div>
-        </div>
+        <table id="layoutBottom">
+            <tr>
+                <td class="left"></td>
+                <td class="middle"><%= Application[Complex.Domino.Web.Constants.ApplicationCopyright] %></td>
+                <td class="right">
+                    Domino version: <%= Application[Complex.Domino.Web.Constants.ApplicationDominoVersion] %><br />
+                    Git version: <%= Application[Complex.Domino.Web.Constants.ApplicationGitVersion] %>
+                </td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

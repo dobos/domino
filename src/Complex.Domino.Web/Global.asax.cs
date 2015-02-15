@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.UI;
+using System.Reflection;
 
 namespace Complex.Domino.Web
 {
@@ -48,6 +49,12 @@ namespace Complex.Domino.Web
                 });
 
             CleanUpScratch(null);
+
+            Application[Constants.ApplicationDominoVersion] = typeof(Lib.Course).Assembly.GetName().Version.ToString();
+            Application[Constants.ApplicationCopyright] = typeof(Lib.Course).Assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+            
+            var git = new Complex.Domino.Git.Git();
+            Application[Constants.ApplicationGitVersion] = git.GetVersion();
         }
 
         protected void Session_Start(object sender, EventArgs e)
