@@ -315,6 +315,11 @@ WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType
                 if (IsUserDuplicate(users[i].Name, out user))
                 {
                     // Copy imported properties
+                    if (!String.IsNullOrWhiteSpace(users[i].Description))
+                    {
+                        user.Description = users[i].Description;
+                    }
+
                     if (!String.IsNullOrWhiteSpace(users[i].Email))
                     {
                         user.Email = users[i].Email;
