@@ -177,7 +177,7 @@ namespace Complex.Domino.Web.Files
 
                     if (!dir)
                     {
-                        size.Text = fi.Length.ToString();
+                        size.Text = Util.FileSize.FormatFancy(fi.Length);
                         view.Visible = true;
 
                         // Figure out file type

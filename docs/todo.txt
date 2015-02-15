@@ -6,24 +6,23 @@ DOMINO TODO
 ++ ACCESS CONTROL
    
    dátum mezõk mindenütt (DateTimeBox, DateTimeLabel)
-   fájlméret mezõ a feltöltõnél
    full name could be nicer
    footer
    sign in cookie time-out
+   auto login if user holds valid token
    machine key?
    highlight required fields
    error column css
 ++ git exception trim trailing newline
 ++ file browser: view in new windows
 ++ file browser: edit
-   file browser: file sizes
+++ file browser: file sizes
 ++ login page: reset password link position
    do not allow duplicate email
    error page
    test chrome
    test mozilla
    test opera
-   auto login if user holds valid token
 
 ++ Welcome szöveg
 

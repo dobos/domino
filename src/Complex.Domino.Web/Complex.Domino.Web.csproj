@@ -979,6 +979,7 @@
     <Compile Include="Util\DateTime.cs" />
     <Compile Include="Util\Email.cs" />
     <Compile Include="Util\Enum.cs" />
+    <Compile Include="Util\FileSize.cs" />
     <Compile Include="Util\Path.cs" />
     <Compile Include="Util\Regex.cs" />
     <Compile Include="Util\Url.cs" />
