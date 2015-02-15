@@ -74,7 +74,7 @@ SELECT COUNT(*) FROM {0} AS entities
         public IEnumerable<T> Find(int max, int from, string orderBy)
         {
             // Prevent any injection attacks
-            if (!OrderByRegex.Match(orderBy).Success)
+            if (!String.IsNullOrWhiteSpace(orderBy) && !OrderByRegex.Match(orderBy).Success)
             {
                 Error.AccessDenied();
             }
