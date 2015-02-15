@@ -36,6 +36,7 @@ namespace Complex.Domino.Web.Files
             new FileType() { Extension=".m", MimeType="text/text/x-octave", Category = FileCategory.Code },
 
             new FileType() { Extension=".pdf", MimeType="application/x-pdf", Category = FileCategory.Document },
+            new FileType() { Extension=".rtf", MimeType="application/x-rtf", Category = FileCategory.Document },
         };
 
         internal static readonly Dictionary<string, FileType> FileTypesByExtension;
