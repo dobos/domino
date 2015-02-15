@@ -10,7 +10,12 @@ namespace Complex.Domino.Web.Files
 {
     public partial class FileBrowser : System.Web.UI.UserControl
     {
+        #region Private member variables
+
         private string basePath;
+
+        #endregion
+        #region Properties
 
         public string BasePath
         {
@@ -83,6 +88,15 @@ namespace Complex.Domino.Web.Files
             get { return (bool)(ViewState["AllowEdit"] ?? true); }
             set { ViewState["AllowEdit"] = value; }
         }
+
+        public bool AllowEmptyFileList
+        {
+            get { return (bool)(ViewState["AllowEmptyFileList"] ?? true); }
+            set { ViewState["AllowEmptyFileList"] = value; }
+        }
+
+        #endregion
+        #region Event handlers
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -280,6 +294,17 @@ namespace Complex.Domino.Web.Files
         {
 
         }
+
+        protected void EmptyValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            // Test if base path contains any files
+
+            var count = Directory.GetFiles(BasePath, "*.*", SearchOption.AllDirectories).Length;
+
+            args.IsValid = AllowEmptyFileList || count > 0;
+        }
+
+        #endregion
 
         private void ExtractArchive(string archiveExtension, Stream input)
         {

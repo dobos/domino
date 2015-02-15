@@ -58,7 +58,7 @@
         </div>
         <h3><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h3>
         <domino:filebrowser runat="server" id="fileBrowser" AllowSelection="false"
-            AllowDownload="false" AllowEdit="false" />
+            AllowDownload="false" AllowEdit="false" AllowEmptyFileList="false" />
         <div class="frame">
         <domino:EntityForm runat="server" id="entityForm"
             NameVisible="false" DescriptionVisible="false" OptionsVisible="false" />

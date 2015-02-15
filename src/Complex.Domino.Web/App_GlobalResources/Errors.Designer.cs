@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to empty file list is not allowed.
+        /// </summary>
+        internal static string EmptyFileList {
+            get {
+                return ResourceManager.GetString("EmptyFileList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to invalid file extension.
         /// </summary>
         internal static string InvalidExtension {

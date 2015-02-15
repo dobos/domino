@@ -120,6 +120,9 @@
   <data name="ConfirmationNoMatch" xml:space="preserve">
     <value>no match</value>
   </data>
+  <data name="EmptyFileList" xml:space="preserve">
+    <value>empty file list is not allowed</value>
+  </data>
   <data name="InvalidExtension" xml:space="preserve">
     <value>invalid file extension</value>
   </data>
