@@ -221,7 +221,7 @@ WHERE (Name = @Username) AND
 
             using (var cmd = Context.CreateCommand(sql))
             {
-                cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = username;
+                cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
 
                 try
                 {
