@@ -55,7 +55,7 @@ namespace Complex.Domino.Lib
             {
                 if (!line.StartsWith("#"))
                 {
-                    current = line.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                    current = line.Split(new char[] { '\t' });
                     return true;
                 }
             }

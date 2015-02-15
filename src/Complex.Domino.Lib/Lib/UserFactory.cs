@@ -279,12 +279,12 @@ WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType
 
                 if (line.Length >= 2)
                 {
-                    user.Name = line[1];            // user name
                     user.Description = line[0];     // name
-
+                    user.Name = line[1];            // user name
+                    
                     if (line.Length >= 3)
                     {
-                        user.Email = line[2];
+                        user.Email = line[2] ?? String.Empty;
                     }
                     else
                     {
@@ -293,11 +293,9 @@ WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType
 
                     if (line.Length >= 4)
                     {
+                        // Use the activation code field to store passwords
+                        // temporarily
                         user.ActivationCode = line[3];
-                    }
-                    else
-                    {
-                        user.GeneratePassword();
                     }
 
                     users.Add(user);
@@ -316,6 +314,17 @@ WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType
 
                 if (IsUserDuplicate(users[i].Name, out user))
                 {
+                    // Copy imported properties
+                    if (!String.IsNullOrWhiteSpace(users[i].Email))
+                    {
+                        user.Email = users[i].Email;
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(users[i].ActivationCode))
+                    {
+                        user.ActivationCode = users[i].ActivationCode;
+                    }
+
                     users.RemoveAt(i);
                     duplicates.Add(user);
                 }

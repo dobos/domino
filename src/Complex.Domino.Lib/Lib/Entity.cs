@@ -12,6 +12,8 @@ namespace Complex.Domino.Lib
     public abstract class Entity : ContextObject, IDatabaseTableObject
     {
         private bool isLoaded;
+
+        [NonSerialized]
         private Access access;
 
         private int id;

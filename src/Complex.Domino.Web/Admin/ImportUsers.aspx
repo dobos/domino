@@ -55,6 +55,8 @@
                 <Columns>
                     <asp:BoundField HeaderText="<%$ Resources:Labels, UserName %>" DataField="Name" />
                     <asp:BoundField HeaderText="<%$ Resources:Labels, Name %>" DataField="Description" />
+                    <asp:BoundField HeaderText="<%$ Resources:Labels, Email %>" DataField="Email" />
+                    <asp:BoundField HeaderText="<%$ Resources:Labels, Password %>" DataField="ActivationCode" />
                 </Columns>
                 <EmptyDataTemplate>
                     <p><asp:Label runat="server" Text="<%$ Resources:Labels, NoUsers %>" /></p>

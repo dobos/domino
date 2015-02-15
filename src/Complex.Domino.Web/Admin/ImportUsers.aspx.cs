@@ -57,17 +57,21 @@ namespace Complex.Domino.Web.Admin
                 if (importPanel.Visible)
                 {
                     var uf = new Lib.UserFactory(DatabaseContext);
-                    var reader = new StreamReader(File.FileContent, Encoding.Default, true);
+                    var reader = new StreamReader(File.FileContent, Encoding.UTF8, true);
                     var txt = new Lib.TextFileReader(reader);
 
                     List<Lib.User> users, duplicates;
                     uf.Import(txt, out users);
+                    uf.FindUserDuplicates(users, out duplicates);
 
                     foreach (var user in users)
                     {
-                        
+                        // Generate password for new users
+                        if (String.IsNullOrWhiteSpace(user.ActivationCode))
+                        {
+                            user.GeneratePassword();
+                        }
                     }
-                    uf.FindUserDuplicates(users, out duplicates);
 
                     Users = users;
                     Duplicates = duplicates;
@@ -102,10 +106,26 @@ namespace Complex.Domino.Web.Admin
             foreach (var user in Users)
             {
                 // Generate password hash
-                user.SetPassword(user.ActivationCode);
-                user.ActivationCode = String.Empty;
+                if (!String.IsNullOrWhiteSpace(user.ActivationCode))
+                {
+                    user.SetPassword(user.ActivationCode);
+                    user.ActivationCode = String.Empty;
+                }
 
                 // Save user
+                user.Context = DatabaseContext;
+                user.Save();
+            }
+
+            foreach (var user in Duplicates)
+            {
+                // Generate password hash
+                if (!String.IsNullOrWhiteSpace(user.ActivationCode))
+                {
+                    user.SetPassword(user.ActivationCode);
+                    user.ActivationCode = String.Empty;
+                }
+
                 user.Context = DatabaseContext;
                 user.Save();
             }
