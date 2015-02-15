@@ -14,16 +14,15 @@
         <asp:ScriptManager runat="server" />
         <table id="layout">
             <tr>
-                <td id="layoutLogo"><asp:Image runat="server" SkinID="DominoLogo" /></td>
+                <td id="layoutLogo">
+                    <asp:Image runat="server" SkinID="DominoLogo" /></td>
                 <td id="layoutTop">
                     <domino:userstatus runat="server" id="UserStatus" />
                 </td>
             </tr>
             <tr>
                 <td id="layoutRight" colspan="2">
-                    <div id="editorMain">
-                        <asp:ContentPlaceHolder runat="server" ID="main" />
-                    </div>
+                    <asp:ContentPlaceHolder runat="server" ID="main" />
                 </td>
             </tr>
         </table>
