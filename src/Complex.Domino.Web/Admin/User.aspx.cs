@@ -95,7 +95,7 @@ namespace Complex.Domino.Web.Admin
             {
                 UserID = Item.ID,
                 CourseID = int.Parse(Course.SelectedValue),
-                RoleType = (Lib.UserRoleType)Enum.Parse(typeof(Lib.UserRoleType), RoleType.SelectedValue),
+                RoleType = (Lib.UserRoleType)Int32.Parse(RoleType.SelectedValue),
             };
 
             Item.AddRole(role);

@@ -66,10 +66,10 @@
                     </td>
                     <td class="field">
                         <asp:DropDownList runat="server" ID="RoleType" ValidationGroup="AddRole">
-                            <asp:ListItem Value="Unknown" Text="<%$ Resources:Labels, SelectRole %>" />
-                            <asp:ListItem Value="Student" Text="<%$ Resources:Roles, Student %>" />
-                            <asp:ListItem Value="Teacher" Text="<%$ Resources:Roles, Teacher %>" />
-                            <asp:ListItem Value="Admin" Text="<%$ Resources:Roles, Admin %>" />
+                            <asp:ListItem Value="-1" Text="<%$ Resources:Labels, SelectRole %>" />
+                            <asp:ListItem Value="3" Text="<%$ Resources:Roles, Student %>" />
+                            <asp:ListItem Value="2" Text="<%$ Resources:Roles, Teacher %>" />
+                            <asp:ListItem Value="1" Text="<%$ Resources:Roles, Admin %>" />
                         </asp:DropDownList>
                     </td>
                     <td class="error">
