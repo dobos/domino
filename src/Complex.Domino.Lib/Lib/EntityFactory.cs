@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,6 +12,8 @@ namespace Complex.Domino.Lib
     public abstract class EntityFactory<T> : ContextObject
         where T : IDatabaseTableObject, new()
     {
+        private static readonly Regex OrderByRegex = new Regex(@"[a-z]+\s*(asc|desc){0,1}", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
         private string name;
         private bool? readOnly;
         private bool? hidden;
@@ -70,6 +73,12 @@ SELECT COUNT(*) FROM {0} AS entities
 
         public IEnumerable<T> Find(int max, int from, string orderBy)
         {
+            // Prevent any injection attacks
+            if (!OrderByRegex.Match(orderBy).Success)
+            {
+                Error.AccessDenied();
+            }
+
             using (var cmd = Context.CreateCommand())
             {
                 string sql = @"

@@ -97,7 +97,7 @@ namespace Complex.Domino.Web
 
             if (!bypassAuthentication)
             {
-                // If the user hold a valid cookie but the session is new
+                // If the user holds a valid cookie but the session is new
                 // we need to look up user details from the database
                 if (this.User.Identity.IsAuthenticated && Session[Constants.SessionUser] == null)
                 {
