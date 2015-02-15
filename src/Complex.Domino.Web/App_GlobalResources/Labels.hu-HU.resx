@@ -490,4 +490,16 @@
   <data name="SubmissionSuccess" xml:space="preserve">
     <value>A feltöltött fájlok beküldése sikerült.</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="ErrorIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ErrorIntro.hu-HU.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>Hibaüzenet</value>
+  </data>
+  <data name="ExceptionType" xml:space="preserve">
+    <value>Hiba típusa</value>
+  </data>
 </root>

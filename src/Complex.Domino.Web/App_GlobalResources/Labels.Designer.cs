@@ -340,6 +340,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured during the processing of the request. You can submit a detailed error report by filling in the following form..
+        /// </summary>
+        internal static string ErrorIntro {
+            get {
+                return ResourceManager.GetString("ErrorIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Evaluate submission.
         /// </summary>
         internal static string EvaluateSubmission {
@@ -354,6 +372,24 @@ namespace Resources {
         internal static string Evaluation {
             get {
                 return ResourceManager.GetString("Evaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error message.
+        /// </summary>
+        internal static string ExceptionMessage {
+            get {
+                return ResourceManager.GetString("ExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error type.
+        /// </summary>
+        internal static string ExceptionType {
+            get {
+                return ResourceManager.GetString("ExceptionType", resourceCulture);
             }
         }
         

@@ -1,0 +1,24 @@
+﻿Domino Error Report
+
+An error has occured while processing the request.
+
+Time:
+[$DateTime]
+
+URL:
+[$ExceptionUrl]
+
+Exception:
+[$ExceptionType]
+
+Exception message:
+[$ExceptionMessage]
+
+User comments:
+[$Comments]
+
+Stack trace:
+[$StackTrace]
+
+===============================================================
+Domino

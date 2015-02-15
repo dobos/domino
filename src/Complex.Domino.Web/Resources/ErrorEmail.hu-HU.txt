@@ -1,0 +1,24 @@
+﻿Domino Hibajelentés
+
+A kérés végrehajtása során hiba történt.
+
+Időpont:
+[$DateTime]
+
+URL:
+[$ExceptionUrl]
+
+Kivétel:
+[$ExceptionType]
+
+Kivétel üzenete:
+[$ExceptionMessage]
+
+Felhasználó megjegyzései:
+[$Comments]
+
+Verem:
+[$StackTrace]
+
+===============================================================
+Domino

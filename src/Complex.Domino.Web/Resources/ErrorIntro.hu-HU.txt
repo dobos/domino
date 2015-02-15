@@ -1,0 +1,1 @@
+﻿Hiba történt a kérés feldolgozása közben. Az alábbi űrlap kitöltésével részletes hibajelentést küldhetsz.

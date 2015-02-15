@@ -11,6 +11,7 @@ namespace Complex.Domino.Web
         public const string OriginalReferer = "OriginalReferer";
 
         public const string SessionException = "Complex.Domino.Web.SessionException";
+        public const string SessionExceptionUrl = "Complex.Domino.Web.SessionExceptionUrl";
         public const string SessionUser = "Complex.Domino.Web.SessionUser";
         public const string SessionGuid = "Complex.Domino.Web.SessionGuid";
 

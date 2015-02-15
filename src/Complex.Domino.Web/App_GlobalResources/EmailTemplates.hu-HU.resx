@@ -148,4 +148,10 @@
   <data name="UpdateAccountSubject" xml:space="preserve">
     <value>Domino felhasználói fiók módosítása</value>
   </data>
+<data name="Error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ErrorEmail.hu-HU.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-2</value>
+  </data>
+  <data name="ErrorSubject" xml:space="preserve">
+    <value>Domino hibajelentés</value>
+  </data>
 </root>

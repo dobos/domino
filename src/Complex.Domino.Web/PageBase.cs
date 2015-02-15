@@ -126,15 +126,16 @@ namespace Complex.Domino.Web
 
             // Save exception to session for future use
             Session[Constants.SessionException] = ex;
+            Session[Constants.SessionExceptionUrl] = Request.Url.ToString();
 
             if (databaseContext != null)
             {
                 databaseContext.RollbackTransaction();
             }
 
-            // Server.ClearError();
+            Server.ClearError();
 
-            base.OnError(e);
+            Response.Redirect(Web.Error.GetUrl());
         }
 
         protected override void OnUnload(EventArgs e)

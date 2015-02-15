@@ -85,6 +85,44 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Domino Error Report
+        ///
+        ///An error has occured while processing the request.
+        ///
+        ///URL:
+        ///[$ExceptionUrl]
+        ///
+        ///Exception:
+        ///[$ExceptionType]
+        ///
+        ///Exception message:
+        ///[$ExceptionMessage]
+        ///
+        ///User message:
+        ///[$Message]
+        ///
+        ///Stack trace:
+        ///[$StackTrace]
+        ///
+        ///===============================================================
+        ///Domino.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domino error report.
+        /// </summary>
+        internal static string ErrorSubject {
+            get {
+                return ResourceManager.GetString("ErrorSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello [$Name],
         ///
         ///A new reply to your submission at [$DateTime] was sent.

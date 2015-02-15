@@ -19,7 +19,7 @@ DOMINO TODO
 ++ file browser: file sizes
 ++ login page: reset password link position
    do not allow duplicate email
-   error page
+++ error page
    test chrome
    test mozilla
    test opera

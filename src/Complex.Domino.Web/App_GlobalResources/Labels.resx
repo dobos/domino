@@ -490,4 +490,16 @@
   <data name="SubmissionSuccess" xml:space="preserve">
     <value>Your uploaded files have been successfully submitted.</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ErrorIntro.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>Error message</value>
+  </data>
+  <data name="ExceptionType" xml:space="preserve">
+    <value>Error type</value>
+  </data>
 </root>
