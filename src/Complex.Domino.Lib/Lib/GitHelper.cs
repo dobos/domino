@@ -67,6 +67,17 @@ namespace Complex.Domino.Lib
 
         private Git.Git CreateGit(string repoPath)
         {
+            // Validate settings
+            if (String.IsNullOrWhiteSpace(author.Name))
+            {
+                throw Error.InvalidUserName(author.Name);
+            }
+
+            if (String.IsNullOrWhiteSpace(author.Email))
+            {
+                throw Error.InvalidUserEmail();
+            }
+
             var git = new Git.Git(repoPath)
             {
                 Author = new Git.User()

@@ -29,6 +29,12 @@ namespace Complex.Domino.Lib
             return new ArgumentException(ErrorMessages.InvalidUserID);
         }
 
+        public static ArgumentException InvalidUserName(string input)
+        {
+            var message = String.Format(ErrorMessages.InvalidUserName, input);
+            return new ArgumentException(message);
+        }
+
         public static SecurityException InvalidUserEmail()
         {
             return new SecurityException(ErrorMessages.InvalidUserEmail);

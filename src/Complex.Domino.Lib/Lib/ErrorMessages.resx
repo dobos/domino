@@ -129,6 +129,9 @@
   <data name="InvalidUserID" xml:space="preserve">
     <value>Invalid user ID.</value>
   </data>
+  <data name="InvalidUserName" xml:space="preserve">
+    <value>Invalid user name: '{0}'.</value>
+  </data>
   <data name="InvalidUsernameOrPassword" xml:space="preserve">
     <value>Invalid username or password.</value>
   </data>

@@ -97,6 +97,15 @@ namespace Complex.Domino.Lib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid user name: &apos;{0}&apos;..
+        /// </summary>
+        internal static string InvalidUserName {
+            get {
+                return ResourceManager.GetString("InvalidUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password..
         /// </summary>
         internal static string InvalidUsernameOrPassword {
