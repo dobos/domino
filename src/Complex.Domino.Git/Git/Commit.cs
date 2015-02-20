@@ -119,7 +119,7 @@ namespace Complex.Domino.Git
 
             if (!m.Success)
             {
-                throw new ArgumentException(ExceptionMessages.WrongAuthorFormat, "text");
+                throw Error.InvalidAuthorFormat(text, "text");
             }
 
             user = new User()

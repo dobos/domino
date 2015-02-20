@@ -101,3 +101,4 @@ DOMINO TODO
 ++ submission date
 ++ <h1>-><h2> uploaded files
    comments formatted <pre> or html
+   verify name and email before commit

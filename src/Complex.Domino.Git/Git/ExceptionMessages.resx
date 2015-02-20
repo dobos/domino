@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WrongAuthorFormat" xml:space="preserve">
-    <value>Author string is in wrong format. Should be 'A U Thor &lt;author@domain.com&gt;'.</value>
+    <value>Author string '{0}' is in wrong format. Should be 'A U Thor &lt;author@domain.com&gt;'.</value>
   </data>
 </root>
