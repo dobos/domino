@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web
 {
-    public partial class Error : System.Web.UI.Page
+    public partial class Error : PageBase
     {
         public static string GetUrl()
         {
@@ -68,6 +68,11 @@ namespace Complex.Domino.Web
                 tokens.Add("ExceptionType", exception.GetType().FullName);
                 tokens.Add("ExceptionMessage", exception.Message);
                 tokens.Add("StackTrace", exception.StackTrace);
+            }
+
+            if (DatabaseContext.User != null)
+            {
+                tokens.Add("User", DatabaseContext.User.Name);
             }
 
             Util.Email.ReplaceTokens(body, tokens);

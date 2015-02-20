@@ -2,20 +2,20 @@
 
 An error has occured while processing the request.
 
-Time:
-[$DateTime]
+Time: [$DateTime]
+
+User: [$User]
+
+User comments:
+[$Comments]
 
 URL:
 [$ExceptionUrl]
 
-Exception:
-[$ExceptionType]
+Exception: [$ExceptionType]
 
 Exception message:
 [$ExceptionMessage]
-
-User comments:
-[$Comments]
 
 Stack trace:
 [$StackTrace]

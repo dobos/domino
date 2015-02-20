@@ -2,20 +2,20 @@
 
 A kérés végrehajtása során hiba történt.
 
-Időpont:
-[$DateTime]
+Időpont: [$DateTime]
+
+Felhasználó: [$User]
+
+Felhasználó megjegyzései:
+[$Comments]
 
 URL:
 [$ExceptionUrl]
 
-Kivétel:
-[$ExceptionType]
+Kivétel: [$ExceptionType]
 
 Kivétel üzenete:
 [$ExceptionMessage]
-
-Felhasználó megjegyzései:
-[$Comments]
 
 Verem:
 [$StackTrace]

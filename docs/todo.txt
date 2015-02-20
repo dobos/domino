@@ -52,6 +52,7 @@ DOMINO TODO
    user form: move roles above buttons
    user form: require password when new user is created
    user form: rename ok to save when new user is created
+   add to admin role bug, always set course to -1
    
    Teacher:
    
@@ -79,6 +80,7 @@ DOMINO TODO
    spreadsheet: make first green if any unread
    spreadsheet: make last green only if last is unread
    spreadsheet: comments with small tick instead of bold
+   html code on assignment page (add HTML editor)
    
    Student:
    
@@ -98,3 +100,4 @@ DOMINO TODO
 ++ reply in title
 ++ submission date
 ++ <h1>-><h2> uploaded files
+   comments formatted <pre> or html
