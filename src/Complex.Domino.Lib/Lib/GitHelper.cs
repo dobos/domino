@@ -130,13 +130,13 @@ namespace Complex.Domino.Lib
         public bool IsRepoInitialized()
         {
             var dir = GetRepoPath();
-            return IsGitDirectoryInitialized(dir);
+            return IsRepoInitialized(dir);
         }
 
         public bool IsScratchInitialized()
         {
             var dir = GetScratchPath();
-            return IsGitDirectoryInitialized(dir);
+            return IsRepoInitialized(dir);
         }
 
         public bool IsAssignmentInitialized()
@@ -145,7 +145,7 @@ namespace Complex.Domino.Lib
             return Directory.Exists(dir);
         }
 
-        private bool IsGitDirectoryInitialized(string dir)
+        private bool IsRepoInitialized(string dir)
         {
             if (!Directory.Exists(dir))
             {
@@ -211,6 +211,7 @@ namespace Complex.Domino.Lib
             // there are changes in the current repo that might need to be
             // merged but couldn't be done automatically. In this case
             // we simply reset and throw away changes.
+
             try
             {
                 git.CheckOut("master");
@@ -239,18 +240,26 @@ namespace Complex.Domino.Lib
 
                 InitializeScratch();
 
-                var scratchdir = GetScratchPath();
-                var git = CreateGit(scratchdir);
-
-                // TODO: take text from resource
-
-                File.WriteAllText(
-                    Path.Combine(scratchdir, "README.md"),
-                    String.Format("Personal Domino repository of {0}.", author.Name));
-
-                git.Add("README.md", false);
-                git.Commit("Initialized personal Domino repo", null, false);
+                CreateInitialCommit();
             }
+        }
+
+        private void CreateInitialCommit()
+        {
+            var scratchdir = GetScratchPath();
+            var git = CreateGit(scratchdir);
+
+            // TODO: take text from resource
+
+            File.WriteAllText(
+                Path.Combine(scratchdir, "README.md"),
+                String.Format("Personal Domino repository of {0}.", author.Name));
+
+            git.Add("README.md", false);
+            git.Commit("Initialized personal Domino repo", null, false);
+
+            // Push initial commit, otherwise it won't work
+            git.Push("origin", true);
         }
 
         public void EnsureScratchExists()
