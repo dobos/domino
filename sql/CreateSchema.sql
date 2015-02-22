@@ -310,3 +310,113 @@ CREATE TABLE [dbo].[Submission]
 )
 
 GO
+
+
+
+CREATE TABLE [dbo].[Plugin]
+(
+	[ID] int IDENTITY(1,1) NOT NULL,
+
+	[SemesterID] int NULL,
+	[CourseID] int NULL,
+	[AssignmentID] int NULL,
+
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
+	[Hidden] bit NOT NULL,
+	[ReadOnly] bit NOT NULL,
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
+	[Comments] nvarchar(max) NOT NULL,
+
+	[PluginType] varchar(250),
+
+	CONSTRAINT [PK_Plugin] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	),
+
+	CONSTRAINT [FK_Plugin_Semester] FOREIGN KEY
+	(
+		CourseID
+	)
+	REFERENCES [dbo].[Semester]
+	(
+		ID
+	),
+
+	CONSTRAINT [FK_Plugin_Course] FOREIGN KEY
+	(
+		CourseID
+	)
+	REFERENCES [dbo].[Course]
+	(
+		ID
+	),
+
+	CONSTRAINT [FK_Plugin_Assignment] FOREIGN KEY
+	(
+		AssignmentID
+	)
+	REFERENCES [dbo].[Assignment]
+	(
+		ID
+	)
+)
+
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Plugin] ON [dbo].[Plugin]
+(
+	[SemesterID] ASC,
+	[CourseID] ASC,
+	[AssignmentID] ASC,
+	[PluginType] ASC
+);
+
+GO
+
+
+CREATE TABLE [dbo].[File]
+(
+	[ID] int IDENTITY(1,1) NOT NULL,
+
+	[PluginID] int NULL,
+
+	[Name] nvarchar(50) NOT NULL,
+	[Description] nvarchar(250) NOT NULL,
+	[Hidden] bit NOT NULL,
+	[ReadOnly] bit NOT NULL,
+	[CreatedDate] datetime NOT NULL,
+	[ModifiedDate] datetime NOT NULL,
+	[Comments] nvarchar(max) NOT NULL,
+
+	[MimeType] varchar(50) NOT NULL,
+	[Blob] varbinary(max) NULL,
+
+	CONSTRAINT [PK_File] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	),
+
+	CONSTRAINT [FK_File_Plugin] FOREIGN KEY
+	(
+		PluginID
+	)
+	REFERENCES [dbo].[Plugin]
+	(
+		ID
+	)
+)
+
+CREATE NONCLUSTERED INDEX [IX_File] ON [dbo].[File]
+(
+	[PluginID] ASC,
+	[ID] ASC
+)
+INCLUDE
+(
+	[Name], [Hidden], [ReadOnly]
+);
+
+
+GO

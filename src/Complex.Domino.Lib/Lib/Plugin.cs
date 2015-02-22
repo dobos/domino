@@ -9,13 +9,13 @@ using System.Data.SqlClient;
 namespace Complex.Domino.Lib
 {
     [Serializable]
-    public class File : Entity, IDatabaseTableObject
+    public class Plugin : Entity, IDatabaseTableObject
     {
         private int semesterID;
         private int courseID;
         private int assignmentID;
-        private int pluginID;
-        private string mimeType;
+
+        private string pluginType;
 
         public int SemesterID
         {
@@ -35,36 +35,30 @@ namespace Complex.Domino.Lib
             set { assignmentID = value; }
         }
 
-        public int PluginID
+        public string PluginType
         {
-            get { return pluginID; }
-            set { pluginID = value; }
+            get { return pluginType; }
+            set { pluginType = value; }
         }
 
-        public string MimeType
-        {
-            get { return mimeType; }
-            set { mimeType = value; }
-        }
-
-        public File()
+        public Plugin()
         {
             InitializeMembers();
         }
 
-        public File(Context context)
+        public Plugin(Context context)
             : base(context)
         {
             InitializeMembers();
         }
-        
+
         private void InitializeMembers()
         {
             this.semesterID = -1;
             this.courseID = -1;
             this.assignmentID = -1;
-            this.pluginID = -1;
-            this.mimeType = null;
+
+            this.pluginType = null;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -72,8 +66,7 @@ namespace Complex.Domino.Lib
             this.semesterID = reader.GetInt32("SemesterID");
             this.courseID = reader.GetInt32("CourseID");
             this.assignmentID = reader.GetInt32("AssignmentID");
-            this.pluginID = reader.GetInt32("PluginID");
-            this.mimeType = reader.GetString("MimeType");
+            this.pluginType = reader.GetString("PluginType");
 
             base.LoadFromDataReader(reader);
         }
@@ -81,12 +74,9 @@ namespace Complex.Domino.Lib
         protected override void OnLoad(int id)
         {
             var sql = @"
-SELECT f.ID, f.PluginID, p.SemesterID, p.CourseID, p.AssignmentID,
-       f.Name, f.Description, f.Hidden, f.ReadOnly, f.CreatedDate, f.ModifiedDate, f.Comments,
-       f.MimeType
-FROM [File] f
-INNER JOIN [Plugin] p ON p.ID = f.PluginID
-WHERE f.ID = @ID";
+SELECT p.*
+FROM [Plugin] p
+WHERE p.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
             {
@@ -99,10 +89,10 @@ WHERE f.ID = @ID";
         protected override void OnCreate(string columns, string values)
         {
             var sql = @"
-INSERT [File]
-    (PluginID, MimeType, Blob, {0})
+INSERT [Plugin]
+    (SemesterID, CourseID, AssignmentID, PluginType, {0})
 VALUES
-    (@PluginID, @MimeType, NULL, {1})
+    (@SemesterID, @CourseID, @AssignmentID, @PluginType, {1})
 
 SELECT @@IDENTITY
 ";
@@ -119,10 +109,11 @@ SELECT @@IDENTITY
         protected override void OnModify(string columns)
         {
             var sql = @"
-UPDATE [File]
-SET Plugin = @PluginID,
-    CouignmentID = @AssignmentID,
-    MimeType = @MimeType,
+UPDATE [Plugin]
+SET SemesterID = @SemesterID,
+    CourseID = @CourseID,
+    AssignmentID = @AssignmentID,
+    PluginType = @PluginType,
     {0}
 WHERE ID = @ID";
 
@@ -139,13 +130,15 @@ WHERE ID = @ID";
         {
             base.AppendCreateModifyCommandParameters(cmd);
 
-            cmd.Parameters.Add("@PluginID", SqlDbType.Int).Value = pluginID > 0 ? (object)pluginID : DBNull.Value;
-            cmd.Parameters.Add("@MimeType", SqlDbType.VarChar).Value = mimeType;
+            cmd.Parameters.Add("@SemesterID", SqlDbType.Int).Value = semesterID > 0 ? (object)semesterID : DBNull.Value;
+            cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseID > 0 ? (object)courseID : DBNull.Value;
+            cmd.Parameters.Add("@AssignmentID", SqlDbType.Int).Value = assignmentID > 0 ? (object)assignmentID : DBNull.Value;
+            cmd.Parameters.Add("@PluginType", SqlDbType.VarChar).Value = pluginType;
         }
 
         protected override void OnDelete(int id)
         {
-            var sql = "DELETE [File] WHERE ID = @ID";
+            var sql = "DELETE Plugin WHERE ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
             {

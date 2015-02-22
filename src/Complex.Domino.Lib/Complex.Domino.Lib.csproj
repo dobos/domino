@@ -52,6 +52,7 @@
     <Compile Include="Lib\CourseGrade.cs" />
     <Compile Include="Lib\DominoRoleProvider.cs" />
     <Compile Include="Lib\Installer.cs" />
+    <Compile Include="Lib\Plugin.cs" />
     <Compile Include="Lib\SpreadsheetFactory.cs" />
     <Compile Include="Lib\SqlScripts.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -59,6 +60,7 @@
       <DependentUpon>SqlScripts.resx</DependentUpon>
     </Compile>
     <Compile Include="Lib\File.cs" />
+    <Compile Include="Lib\PluginFactory.cs" />
     <Compile Include="Lib\TextFileReader.cs" />
     <Compile Include="Lib\DominoConfiguration.cs" />
     <Compile Include="Lib\GitHelper.cs" />
