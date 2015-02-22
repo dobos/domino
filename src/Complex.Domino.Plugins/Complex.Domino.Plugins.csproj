@@ -58,13 +58,13 @@
       <DependentUpon>BuildControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Plugins\Downloads.cs" />
-    <Compile Include="Plugins\IAssignmentPlugin.cs" />
-    <Compile Include="Plugins\IPlugin.cs" />
     <Compile Include="Plugins\Labels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Labels.resx</DependentUpon>
     </Compile>
+    <Compile Include="Plugins\PluginBase.cs" />
+    <Compile Include="Plugins\PluginControlBase.cs" />
     <Compile Include="Plugins\PluginManager.cs" />
     <Compile Include="Plugins\PluginVirtualFile.cs" />
     <Compile Include="Plugins\PluginVirtualPathProvider.cs" />

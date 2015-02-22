@@ -33,15 +33,15 @@ namespace Complex.Domino.Plugins
             return pf;
         }
 
-        public virtual IEnumerable<IPlugin> EnumeratePlugins()
+        public virtual IEnumerable<PluginBase> EnumeratePlugins()
         {
             yield return new Downloads();
             yield return new Build();
         }
 
-        public IPlugin GetPlugin(string pluginType)
+        public PluginBase GetPlugin(string pluginType)
         {
-            return (IPlugin)Activator.CreateInstance(Type.GetType(pluginType));
+            return (PluginBase)Activator.CreateInstance(Type.GetType(pluginType));
         }
 
         public virtual void RegisterPlugins()

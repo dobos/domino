@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace Complex.Domino.Plugins
 {
-    public class Downloads : IPlugin
+    public class Downloads : PluginBase
     {
-        public string Description
+        public override string Description
         {
             get { return "Downloads"; }
         }
 
-        public Type ControlType
+        public override Type ControlType
         {
             get { return typeof(DownloadsControl); }
         }
 
-        public string ControlFileName
+        public override string ControlFileName
         {
             get { return "~/Plugins/DownloadsControl.ascx"; }
         }
 
-        public void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
+        public override void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
         {
             vpp.RegisterVirtualPath(ControlFileName, typeof(Complex.Domino.Plugins.DownloadsControl).FullName + ".ascx");
         }

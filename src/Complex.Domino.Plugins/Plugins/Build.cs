@@ -7,31 +7,31 @@ using Complex.Domino.Lib;
 
 namespace Complex.Domino.Plugins
 {
-    public class Build : IAssignmentPlugin
+    public class Build : PluginBase
     {
         public static BuildConfiguration Configuration
         {
             get { return null; }
         }
 
-        public string CommandLine { get; set; }
-
-        public string Description
+        public override string Description
         {
             get { return "Build"; }
         }
 
-        public Type ControlType
+        public override Type ControlType
         {
             get { return typeof(BuildControl); }
         }
 
-        public string ControlFileName
+        public override string ControlFileName
         {
             get { return "~/Plugins/BuildControl.ascx"; }
         }
 
-        public void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
+        public string CommandLine { get; set; }
+
+        public override void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
         {
             vpp.RegisterVirtualPath(ControlFileName, typeof(Complex.Domino.Plugins.BuildControl).FullName + ".ascx");
         }
