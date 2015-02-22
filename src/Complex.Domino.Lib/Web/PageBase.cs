@@ -135,7 +135,7 @@ namespace Complex.Domino.Web
 
             Server.ClearError();
 
-            Response.Redirect(Web.Error.GetUrl());
+            Response.Redirect("~/Error.aspx");
         }
 
         protected override void OnUnload(EventArgs e)

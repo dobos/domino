@@ -5,7 +5,7 @@ using System.Web;
 using System.Text;
 using System.Net.Mail;
 
-namespace Complex.Domino.Web.Util
+namespace Complex.Domino.Util
 {
     public static class Email
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace Complex.Domino.Web.Util
+namespace Complex.Domino.Util
 {
     public static class Regex
     {

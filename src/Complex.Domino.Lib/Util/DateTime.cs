@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Complex.Domino.Web.Util
+namespace Complex.Domino.Util
 {
     public static class DateTime
     {
@@ -17,15 +17,15 @@ namespace Complex.Domino.Web.Util
 
             if (value.Date == today)
             {
-                date = Resources.DateTime.Today;
+                date = DateTimeLabels.Today;
             }
             else if (value.Date.AddDays(1) == today)
             {
-                date = Resources.DateTime.Yesterday;
+                date = DateTimeLabels.Yesterday;
             }
             else if (value.Date.AddDays(-1) == today)
             {
-                date = Resources.DateTime.Tomorrow;
+                date = DateTimeLabels.Tomorrow;
             }
             else
             {

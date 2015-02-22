@@ -187,7 +187,7 @@ namespace Complex.Domino.Web.Teacher
 
                     var a = new HyperLink()
                     {
-                        Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat),
+                        Text = s.CreatedDate.ToString(Util.DateTimeLabels.MonthDayFormat),
                         Target = "_blank",
                     };
 
@@ -234,7 +234,7 @@ namespace Complex.Domino.Web.Teacher
 
                     var a = new HyperLink()
                     {
-                        Text = s.CreatedDate.ToString(Resources.DateTime.MonthDayFormat),
+                        Text = s.CreatedDate.ToString(Util.DateTimeLabels.MonthDayFormat),
                         NavigateUrl = Teacher.Submission.GetUrl(assignment.ID, s.ID),
                         Target = "_blank",
                     };

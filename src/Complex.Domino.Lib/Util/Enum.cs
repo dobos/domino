@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Reflection;
 
-namespace Complex.Domino.Web.Util
+namespace Complex.Domino.Util
 {
     public static class Enum
     {
