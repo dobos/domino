@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SqlScripts.resx</DependentUpon>
     </Compile>
+    <Compile Include="Lib\File.cs" />
     <Compile Include="Lib\TextFileReader.cs" />
     <Compile Include="Lib\DominoConfiguration.cs" />
     <Compile Include="Lib\GitHelper.cs" />

@@ -163,7 +163,7 @@ namespace Complex.Domino.Lib
             // Or a file named "HEAD" if it's a bare repo
             temp = Path.Combine(dir, "HEAD");
 
-            if (File.Exists(temp))
+            if (System.IO.File.Exists(temp))
             {
                 return true;
             }
@@ -251,7 +251,7 @@ namespace Complex.Domino.Lib
 
             // TODO: take text from resource
 
-            File.WriteAllText(
+            System.IO.File.WriteAllText(
                 Path.Combine(scratchdir, "README.md"),
                 String.Format("Personal Domino repository of {0}.", author.Name));
 
@@ -321,12 +321,12 @@ namespace Complex.Domino.Lib
 
             var msgpath = Path.Combine(scratchdir, dir, "___commit_message");
 
-            File.WriteAllText(msgpath, commitMessage);
+            System.IO.File.WriteAllText(msgpath, commitMessage);
 
             // Commit changes
             git.Commit(commitMessage, msgpath, true);
 
-            File.Delete(msgpath);
+            System.IO.File.Delete(msgpath);
 
             // Try to simply push the commit to origin
 

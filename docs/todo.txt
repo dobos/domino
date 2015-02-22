@@ -81,6 +81,7 @@ DOMINO TODO
    spreadsheet: make last green only if last is unread
    spreadsheet: comments with small tick instead of bold
    html code on assignment page (add HTML editor)
+   null expression when only marking submission read but no reply
    
    Student:
    
@@ -101,4 +102,5 @@ DOMINO TODO
 ++ submission date
 ++ <h1>-><h2> uploaded files
    comments formatted <pre> or html
-   verify name and email before commit
+++ verify name and email before commit
+   limit frequency of submissions to avoid duplicates
