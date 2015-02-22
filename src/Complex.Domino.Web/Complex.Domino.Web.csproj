@@ -1025,6 +1025,10 @@
       <Project>{a8a66b45-583a-4995-8c8f-a8a54a44d62a}</Project>
       <Name>Complex.Domino.Lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Complex.Domino.Plugins\Complex.Domino.Plugins.csproj">
+      <Project>{6801225b-ae35-41f8-aa18-8151e28c8450}</Project>
+      <Name>Complex.Domino.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

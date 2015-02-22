@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.UI;
 using System.Reflection;
+using Complex.Domino.Plugins;
 
 namespace Complex.Domino.Web
 {
@@ -47,6 +48,9 @@ namespace Complex.Domino.Web
                     CdnPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.min.js",
                     CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.js",
                 });
+
+            var pf = PluginFactory.Create(null);
+            pf.RegisterPlugins();
 
             CleanUpScratch(null);
 
