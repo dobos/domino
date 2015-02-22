@@ -494,6 +494,7 @@
     <Content Include="Teacher\AssignmentList.ascx" />
     <Content Include="Teacher\Assignments.aspx" />
     <Content Include="Teacher\Default.aspx" />
+    <Content Include="Teacher\PluginList.ascx" />
     <Content Include="Teacher\Student.aspx" />
     <Content Include="Teacher\Students.aspx" />
     <Content Include="Teacher\Submission.aspx" />
@@ -814,6 +815,13 @@
     </Compile>
     <Compile Include="Teacher\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\PluginList.ascx.cs">
+      <DependentUpon>PluginList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\PluginList.ascx.designer.cs">
+      <DependentUpon>PluginList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\Student.aspx.cs">
       <DependentUpon>Student.aspx</DependentUpon>

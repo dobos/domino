@@ -35,12 +35,6 @@ namespace Complex.Domino.Lib
             set { assignmentID = value; }
         }
 
-        public string PluginType
-        {
-            get { return pluginType; }
-            set { pluginType = value; }
-        }
-
         public Plugin()
         {
             InitializeMembers();
@@ -57,8 +51,6 @@ namespace Complex.Domino.Lib
             this.semesterID = -1;
             this.courseID = -1;
             this.assignmentID = -1;
-
-            this.pluginType = null;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -66,7 +58,6 @@ namespace Complex.Domino.Lib
             this.semesterID = reader.GetInt32("SemesterID");
             this.courseID = reader.GetInt32("CourseID");
             this.assignmentID = reader.GetInt32("AssignmentID");
-            this.pluginType = reader.GetString("PluginType");
 
             base.LoadFromDataReader(reader);
         }
@@ -90,9 +81,9 @@ WHERE p.ID = @ID";
         {
             var sql = @"
 INSERT [Plugin]
-    (SemesterID, CourseID, AssignmentID, PluginType, {0})
+    (SemesterID, CourseID, AssignmentID, {0})
 VALUES
-    (@SemesterID, @CourseID, @AssignmentID, @PluginType, {1})
+    (@SemesterID, @CourseID, @AssignmentID, {1})
 
 SELECT @@IDENTITY
 ";
@@ -113,7 +104,6 @@ UPDATE [Plugin]
 SET SemesterID = @SemesterID,
     CourseID = @CourseID,
     AssignmentID = @AssignmentID,
-    PluginType = @PluginType,
     {0}
 WHERE ID = @ID";
 
@@ -133,7 +123,6 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@SemesterID", SqlDbType.Int).Value = semesterID > 0 ? (object)semesterID : DBNull.Value;
             cmd.Parameters.Add("@CourseID", SqlDbType.Int).Value = courseID > 0 ? (object)courseID : DBNull.Value;
             cmd.Parameters.Add("@AssignmentID", SqlDbType.Int).Value = assignmentID > 0 ? (object)assignmentID : DBNull.Value;
-            cmd.Parameters.Add("@PluginType", SqlDbType.VarChar).Value = pluginType;
         }
 
         protected override void OnDelete(int id)

@@ -49,7 +49,7 @@ namespace Complex.Domino.Web
                     CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.js",
                 });
 
-            var pf = PluginFactory.Create(null);
+            var pf = PluginManager.Create(null);
             pf.RegisterPlugins();
 
             CleanUpScratch(null);

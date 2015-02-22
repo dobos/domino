@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Complex.Domino.Web.Controls
+namespace Complex.Domino.Plugins
 {
-    public partial class Downloads : System.Web.UI.UserControl
+    public partial class DownloadsControl : System.Web.UI.UserControl
     {
        
     }

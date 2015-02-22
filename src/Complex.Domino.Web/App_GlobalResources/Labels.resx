@@ -502,4 +502,13 @@
   <data name="ExceptionType" xml:space="preserve">
     <value>Error type</value>
   </data>
+  <data name="AddPlugin" xml:space="preserve">
+    <value>Add plug-in</value>
+  </data>
+  <data name="Plugin" xml:space="preserve">
+    <value>Plug-in</value>
+  </data>
+  <data name="SelectPlugin" xml:space="preserve">
+    <value>(select plug-in)</value>
+  </data>
 </root>

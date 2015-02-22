@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Teacher/Teacher.master" AutoEventWireup="true" CodeBehind="Assignment.aspx.cs" Inherits="Complex.Domino.Web.Teacher.Assignment" %>
 
+<%@ Register Src="~/Teacher/PluginList.ascx" TagPrefix="domino" TagName="PluginList" %>
+
+
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <h1>
         <asp:Label runat="server" ID="TitleLabel" /></h1>
@@ -81,6 +84,7 @@
             </tr>
         </table>
     </div>
+    <domino:PluginList runat="server" ID="Plugins" />
     <toolbar class="form">
         <asp:LinkButton runat="Server" ID="Ok" OnClick="Ok_Click" ValidationGroup="Entity">
             <asp:Image runat="server" SkinID="OkButton" />

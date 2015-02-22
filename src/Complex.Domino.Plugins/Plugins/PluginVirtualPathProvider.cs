@@ -15,6 +15,7 @@ namespace Complex.Domino.Plugins
 
         public PluginVirtualPathProvider()
         {
+            InitializeMembers();
         }
 
         private void InitializeMembers()
@@ -46,6 +47,20 @@ namespace Complex.Domino.Plugins
             return base.GetFile(virtualPath);
         }
 
+        public override System.Web.Caching.CacheDependency GetCacheDependency(string virtualPath, System.Collections.IEnumerable virtualPathDependencies, DateTime utcStart)
+        {
+            var apprelpath = VirtualPathUtility.ToAppRelative(virtualPath);
+
+            if (virtualFiles.ContainsKey(apprelpath))
+            {
+                return null;
+            }
+            else
+            {
+                return base.GetCacheDependency(virtualPath, virtualPathDependencies, utcStart);
+            }
+        }
+        
         public void RegisterVirtualPath(string appRelativePath, string embeddedResourceName)
         {
             virtualFiles.Add(appRelativePath, embeddedResourceName);

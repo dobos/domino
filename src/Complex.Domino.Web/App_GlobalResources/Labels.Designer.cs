@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add plug-in.
+        /// </summary>
+        internal static string AddPlugin {
+            get {
+                return ResourceManager.GetString("AddPlugin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add role.
         /// </summary>
         internal static string AddRole {
@@ -765,6 +774,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plug-in.
+        /// </summary>
+        internal static string Plugin {
+            get {
+                return ResourceManager.GetString("Plugin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Read only.
         /// </summary>
         internal static string ReadOnly {
@@ -869,6 +887,15 @@ namespace Resources {
         internal static string SelectGradeType {
             get {
                 return ResourceManager.GetString("SelectGradeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (select plug-in).
+        /// </summary>
+        internal static string SelectPlugin {
+            get {
+                return ResourceManager.GetString("SelectPlugin", resourceCulture);
             }
         }
         

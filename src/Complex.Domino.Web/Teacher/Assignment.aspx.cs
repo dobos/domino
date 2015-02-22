@@ -9,7 +9,7 @@ namespace Complex.Domino.Web.Teacher
 {
     public partial class Assignment : EntityPage<Lib.Assignment>
     {
-        public static string GetUrl(int courseId,  int assignmentId)
+        public static string GetUrl(int courseId, int assignmentId)
         {
             var par = "";
 
@@ -61,6 +61,11 @@ namespace Complex.Domino.Web.Teacher
             Url.Text = Item.Url;
             GradeType.SelectedValue = Item.GradeType.ToString();
             GradeWeight.Text = Item.GradeWeight.ToString();
+
+            Plugins.Visible = Item.IsExisting;
+            Plugins.SemesterID = Item.SemesterID;
+            Plugins.CourseID = Item.CourseID;
+            Plugins.AssignmentID = Item.ID;
         }
 
         protected override void SaveForm()
@@ -74,6 +79,20 @@ namespace Complex.Domino.Web.Teacher
             Item.Url = Url.Text;
             Item.GradeType = (Lib.GradeType)Enum.Parse(typeof(Lib.GradeType), GradeType.SelectedValue);
             Item.GradeWeight = double.Parse(GradeWeight.Text);
+        }
+
+        protected override void OnOkClick()
+        {
+            if (Item.IsExisting)
+            {
+                base.OnOkClick();
+            }
+            else
+            {
+                SaveForm();
+                Item.Save();
+                UpdateForm();
+            }
         }
     }
 }

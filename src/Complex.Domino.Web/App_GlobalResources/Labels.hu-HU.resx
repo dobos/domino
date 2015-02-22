@@ -502,4 +502,13 @@
   <data name="ExceptionType" xml:space="preserve">
     <value>Hiba típusa</value>
   </data>
+  <data name="AddPlugin" xml:space="preserve">
+    <value>Hozzáad</value>
+  </data>
+  <data name="Plugin" xml:space="preserve">
+    <value>Bővítmény</value>
+  </data>
+  <data name="SelectPlugin" xml:space="preserve">
+    <value>(válassz egy bővítményt)</value>
+  </data>
 </root>

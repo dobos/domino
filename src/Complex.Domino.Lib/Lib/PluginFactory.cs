@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Complex.Domino.Lib
 {
-    public class PluginFactory : EntityFactory<Submission>
+    public class PluginFactory : EntityFactory<Plugin>
     {
         private int semesterID;
         private int courseID;
@@ -57,7 +57,7 @@ FROM [Plugin] p)
         {
             base.AppendWhereCriteria(sb, cmd);
 
-            AppendWhereCriterion(sb, "SemesterID = @SemesterID)");
+            AppendWhereCriterion(sb, "SemesterID = @SemesterID");
             cmd.Parameters.Add("@SemesterID", System.Data.SqlDbType.Int).Value = semesterID > 0 ? (object)semesterID : DBNull.Value;
 
             AppendWhereCriterion(sb, "CourseID = @CourseID");

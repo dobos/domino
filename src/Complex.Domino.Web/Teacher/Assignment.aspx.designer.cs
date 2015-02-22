@@ -148,6 +148,15 @@ namespace Complex.Domino.Web.Teacher {
         protected global::System.Web.UI.WebControls.TextBox GradeWeight;
         
         /// <summary>
+        /// Plugins control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Complex.Domino.Web.Teacher.PluginList Plugins;
+        
+        /// <summary>
         /// Ok control.
         /// </summary>
         /// <remarks>

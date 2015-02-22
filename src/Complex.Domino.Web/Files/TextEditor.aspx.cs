@@ -47,7 +47,7 @@ namespace Complex.Domino.Web.Files
                 throw new InvalidOperationException();
             }
 
-            CodeView.Text = File.ReadAllText(FullPath);
+            CodeView.Text = System.IO.File.ReadAllText(FullPath);
             CodeView.Mode = fileType.MimeType;
 
             Save.Visible = Edit;
@@ -55,7 +55,7 @@ namespace Complex.Domino.Web.Files
 
         protected void Save_Click(object sender, EventArgs e)
         {
-            File.WriteAllText(FullPath, CodeView.Text);
+            System.IO.File.WriteAllText(FullPath, CodeView.Text);
         }
 
     }
