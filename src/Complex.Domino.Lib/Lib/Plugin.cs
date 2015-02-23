@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using Complex.Domino.Plugins;
 
 namespace Complex.Domino.Lib
 {
@@ -51,6 +52,8 @@ namespace Complex.Domino.Lib
             this.semesterID = -1;
             this.courseID = -1;
             this.assignmentID = -1;
+
+            this.Name = GetType().FullName;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)

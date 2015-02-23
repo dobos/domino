@@ -14,9 +14,19 @@ namespace Complex.Domino.Plugins
             get { return null; }
         }
 
+        private string commandLine;
+
+        public string CommandLine
+        {
+            get { return commandLine; }
+            set { commandLine = value; }
+        }
+
         public override string Description
         {
-            get { return "Build"; }
+            get {
+                return "Build"; // TODO: use resource
+            }
         }
 
         public override Type ControlType
@@ -29,11 +39,26 @@ namespace Complex.Domino.Plugins
             get { return "~/Plugins/BuildControl.ascx"; }
         }
 
-        public string CommandLine { get; set; }
-
-        public override void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
+        public Build()
         {
-            vpp.RegisterVirtualPath(ControlFileName, typeof(Complex.Domino.Plugins.BuildControl).FullName + ".ascx");
+            InitializeMembers();
+        }
+
+        public Build(Context context)
+            : base(context)
+        {
+            InitializeMembers();
+        }
+
+        public Build(Plugin instance)
+            : base(instance)
+        {
+            InitializeMembers();
+        }
+
+        private void InitializeMembers()
+        {
+            this.commandLine = null;
         }
     }
 }

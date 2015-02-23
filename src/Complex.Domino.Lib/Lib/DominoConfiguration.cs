@@ -13,7 +13,7 @@ namespace Complex.Domino.Lib
         {
             get
             {
-                return (DominoConfiguration)ConfigurationManager.GetSection("domino");
+                return (DominoConfiguration)ConfigurationManager.GetSection("complex.domino/domino");
             }
         }
 

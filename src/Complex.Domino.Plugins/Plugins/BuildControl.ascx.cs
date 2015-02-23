@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Plugins
 {
-    public partial class BuildControl : System.Web.UI.UserControl
+    public partial class BuildControl : PluginControlBase
     {
        
     }

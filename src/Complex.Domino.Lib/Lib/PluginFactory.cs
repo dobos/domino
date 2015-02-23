@@ -45,18 +45,11 @@ namespace Complex.Domino.Lib
 
         protected override string GetTableQuery()
         {
-            var from = @"
-(SELECT p.*
-FROM [Plugin] p)
-";
-
-            return from;
+            return "Plugin";
         }
 
         protected override void AppendWhereCriteria(StringBuilder sb, System.Data.SqlClient.SqlCommand cmd)
         {
-            base.AppendWhereCriteria(sb, cmd);
-
             AppendWhereCriterion(sb, "SemesterID = @SemesterID");
             cmd.Parameters.Add("@SemesterID", System.Data.SqlDbType.Int).Value = semesterID > 0 ? (object)semesterID : DBNull.Value;
 
@@ -65,11 +58,6 @@ FROM [Plugin] p)
 
             AppendWhereCriterion(sb, "AssignmentID = @AssignmentID");
             cmd.Parameters.Add("@AssignmentID", System.Data.SqlDbType.Int).Value = assignmentID > 0 ? (object)assignmentID : DBNull.Value;
-        }
-
-        protected override string GetDefaultOrderBy()
-        {
-            return "ID DESC";
         }
     }
 }

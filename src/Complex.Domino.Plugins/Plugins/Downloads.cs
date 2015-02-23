@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Complex.Domino.Lib;
 
 namespace Complex.Domino.Plugins
 {
@@ -10,7 +11,10 @@ namespace Complex.Domino.Plugins
     {
         public override string Description
         {
-            get { return "Downloads"; }
+            get
+            {
+                return "Downloads"; // TODO: use resource
+            }
         }
 
         public override Type ControlType
@@ -23,9 +27,25 @@ namespace Complex.Domino.Plugins
             get { return "~/Plugins/DownloadsControl.ascx"; }
         }
 
-        public override void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
+        public Downloads()
         {
-            vpp.RegisterVirtualPath(ControlFileName, typeof(Complex.Domino.Plugins.DownloadsControl).FullName + ".ascx");
+            InitializeMembers();
+        }
+
+        public Downloads(Context context)
+            : base(context)
+        {
+            InitializeMembers();
+        }
+
+        public Downloads(Plugin instance)
+            : base(instance)
+        {
+            InitializeMembers();
+        }
+
+        private void InitializeMembers()
+        {
         }
     }
 }

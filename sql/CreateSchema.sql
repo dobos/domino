@@ -321,15 +321,13 @@ CREATE TABLE [dbo].[Plugin]
 	[CourseID] int NULL,
 	[AssignmentID] int NULL,
 
-	[Name] nvarchar(50) NOT NULL,
+	[Name] nvarchar(250) NOT NULL,
 	[Description] nvarchar(250) NOT NULL,
 	[Hidden] bit NOT NULL,
 	[ReadOnly] bit NOT NULL,
 	[CreatedDate] datetime NOT NULL,
 	[ModifiedDate] datetime NOT NULL,
 	[Comments] nvarchar(max) NOT NULL,
-
-	[PluginType] varchar(250),
 
 	CONSTRAINT [PK_Plugin] PRIMARY KEY CLUSTERED 
 	(
@@ -370,7 +368,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Plugin] ON [dbo].[Plugin]
 	[SemesterID] ASC,
 	[CourseID] ASC,
 	[AssignmentID] ASC,
-	[PluginType] ASC
+	[Name] ASC
 );
 
 GO

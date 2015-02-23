@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,16 +59,18 @@
       <DependentUpon>BuildControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Plugins\Downloads.cs" />
+    <Compile Include="Plugins\FileList.ascx.cs">
+      <DependentUpon>FileList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plugins\FileList.ascx.designer.cs">
+      <DependentUpon>FileList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Plugins\Labels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Labels.resx</DependentUpon>
     </Compile>
-    <Compile Include="Plugins\PluginBase.cs" />
-    <Compile Include="Plugins\PluginControlBase.cs" />
-    <Compile Include="Plugins\PluginManager.cs" />
-    <Compile Include="Plugins\PluginVirtualFile.cs" />
-    <Compile Include="Plugins\PluginVirtualPathProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +92,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Labels.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugins\FileList.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
