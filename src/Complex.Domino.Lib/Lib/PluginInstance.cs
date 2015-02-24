@@ -10,7 +10,7 @@ using Complex.Domino.Plugins;
 namespace Complex.Domino.Lib
 {
     [Serializable]
-    public class Plugin : Entity, IDatabaseTableObject
+    public class PluginInstance : Entity, IDatabaseTableObject
     {
         private int semesterID;
         private int courseID;
@@ -36,12 +36,12 @@ namespace Complex.Domino.Lib
             set { assignmentID = value; }
         }
 
-        public Plugin()
+        public PluginInstance()
         {
             InitializeMembers();
         }
 
-        public Plugin(Context context)
+        public PluginInstance(Context context)
             : base(context)
         {
             InitializeMembers();
@@ -69,7 +69,7 @@ namespace Complex.Domino.Lib
         {
             var sql = @"
 SELECT p.*
-FROM [Plugin] p
+FROM [PluginInstance] p
 WHERE p.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
@@ -83,7 +83,7 @@ WHERE p.ID = @ID";
         protected override void OnCreate(string columns, string values)
         {
             var sql = @"
-INSERT [Plugin]
+INSERT [PluginInstance]
     (SemesterID, CourseID, AssignmentID, {0})
 VALUES
     (@SemesterID, @CourseID, @AssignmentID, {1})
@@ -103,7 +103,7 @@ SELECT @@IDENTITY
         protected override void OnModify(string columns)
         {
             var sql = @"
-UPDATE [Plugin]
+UPDATE [PluginInstance]
 SET SemesterID = @SemesterID,
     CourseID = @CourseID,
     AssignmentID = @AssignmentID,
@@ -130,7 +130,7 @@ WHERE ID = @ID";
 
         protected override void OnDelete(int id)
         {
-            var sql = "DELETE Plugin WHERE ID = @ID";
+            var sql = "DELETE PluginInstance WHERE ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
             {

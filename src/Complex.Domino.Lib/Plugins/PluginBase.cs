@@ -9,9 +9,9 @@ namespace Complex.Domino.Plugins
 {
     public abstract class PluginBase : ContextObject
     {
-        private Plugin instance;
+        private PluginInstance instance;
 
-        public Plugin Instance
+        public PluginInstance Instance
         {
             get { return instance; }
         }
@@ -44,7 +44,7 @@ namespace Complex.Domino.Plugins
             InitializeMembers();
         }
 
-        protected PluginBase(Plugin instance)
+        protected PluginBase(PluginInstance instance)
             :base(instance.Context)
         {
             this.instance = instance;
@@ -52,7 +52,7 @@ namespace Complex.Domino.Plugins
 
         private void InitializeMembers()
         {
-            instance = new Plugin(Context)
+            instance = new PluginInstance(Context)
             {
                 Name = TypeName,
                 Description = Description

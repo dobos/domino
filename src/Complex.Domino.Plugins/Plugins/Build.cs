@@ -50,7 +50,7 @@ namespace Complex.Domino.Plugins
             InitializeMembers();
         }
 
-        public Build(Plugin instance)
+        public Build(PluginInstance instance)
             : base(instance)
         {
             InitializeMembers();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Complex.Domino.Lib
 {
-    public class PluginFactory : EntityFactory<Plugin>
+    public class PluginInstanceFactory : EntityFactory<PluginInstance>
     {
         private int semesterID;
         private int courseID;
@@ -30,7 +30,7 @@ namespace Complex.Domino.Lib
             set { assignmentID = value; }
         }
 
-        public PluginFactory(Context context)
+        public PluginInstanceFactory(Context context)
             : base(context)
         {
             InitializeMembers();
@@ -45,7 +45,7 @@ namespace Complex.Domino.Lib
 
         protected override string GetTableQuery()
         {
-            return "Plugin";
+            return "PluginInstance";
         }
 
         protected override void AppendWhereCriteria(StringBuilder sb, System.Data.SqlClient.SqlCommand cmd)

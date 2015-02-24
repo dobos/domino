@@ -38,7 +38,7 @@ namespace Complex.Domino.Plugins
             InitializeMembers();
         }
 
-        public Downloads(Plugin instance)
+        public Downloads(PluginInstance instance)
             : base(instance)
         {
             InitializeMembers();

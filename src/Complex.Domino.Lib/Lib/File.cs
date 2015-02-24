@@ -14,7 +14,7 @@ namespace Complex.Domino.Lib
         private int semesterID;
         private int courseID;
         private int assignmentID;
-        private int pluginID;
+        private int pluginInstanceID;
         private string mimeType;
 
         public int SemesterID
@@ -35,10 +35,10 @@ namespace Complex.Domino.Lib
             set { assignmentID = value; }
         }
 
-        public int PluginID
+        public int PluginInstanceID
         {
-            get { return pluginID; }
-            set { pluginID = value; }
+            get { return pluginInstanceID; }
+            set { pluginInstanceID = value; }
         }
 
         public string MimeType
@@ -63,7 +63,7 @@ namespace Complex.Domino.Lib
             this.semesterID = -1;
             this.courseID = -1;
             this.assignmentID = -1;
-            this.pluginID = -1;
+            this.pluginInstanceID = -1;
             this.mimeType = null;
         }
 
@@ -72,7 +72,7 @@ namespace Complex.Domino.Lib
             this.semesterID = reader.GetInt32("SemesterID");
             this.courseID = reader.GetInt32("CourseID");
             this.assignmentID = reader.GetInt32("AssignmentID");
-            this.pluginID = reader.GetInt32("PluginID");
+            this.pluginInstanceID = reader.GetInt32("PluginInstanceID");
             this.mimeType = reader.GetString("MimeType");
 
             base.LoadFromDataReader(reader);
@@ -81,11 +81,11 @@ namespace Complex.Domino.Lib
         protected override void OnLoad(int id)
         {
             var sql = @"
-SELECT f.ID, f.PluginID, p.SemesterID, p.CourseID, p.AssignmentID,
+SELECT f.ID, f.PluginInstanceID, p.SemesterID, p.CourseID, p.AssignmentID,
        f.Name, f.Description, f.Hidden, f.ReadOnly, f.CreatedDate, f.ModifiedDate, f.Comments,
        f.MimeType
 FROM [File] f
-INNER JOIN [Plugin] p ON p.ID = f.PluginID
+INNER JOIN [PluginInstance] p ON p.ID = f.PluginInstanceID
 WHERE f.ID = @ID";
 
             using (var cmd = Context.CreateCommand(sql))
@@ -100,9 +100,9 @@ WHERE f.ID = @ID";
         {
             var sql = @"
 INSERT [File]
-    (PluginID, MimeType, Blob, {0})
+    (PluginInstanceID, MimeType, Blob, {0})
 VALUES
-    (@PluginID, @MimeType, NULL, {1})
+    (@PluginInstanceID, @MimeType, NULL, {1})
 
 SELECT @@IDENTITY
 ";
@@ -120,8 +120,7 @@ SELECT @@IDENTITY
         {
             var sql = @"
 UPDATE [File]
-SET Plugin = @PluginID,
-    CouignmentID = @AssignmentID,
+SET PluginInstanceID = @PluginInstanceID,
     MimeType = @MimeType,
     {0}
 WHERE ID = @ID";
@@ -139,7 +138,7 @@ WHERE ID = @ID";
         {
             base.AppendCreateModifyCommandParameters(cmd);
 
-            cmd.Parameters.Add("@PluginID", SqlDbType.Int).Value = pluginID > 0 ? (object)pluginID : DBNull.Value;
+            cmd.Parameters.Add("@PluginInstanceID", SqlDbType.Int).Value = pluginInstanceID > 0 ? (object)pluginInstanceID : DBNull.Value;
             cmd.Parameters.Add("@MimeType", SqlDbType.VarChar).Value = mimeType;
         }
 

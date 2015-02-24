@@ -75,7 +75,7 @@ namespace Complex.Domino.Web.Teacher
             // Load plugins associated with entity and create controls
             pluginsPlaceholder.Controls.Clear();
 
-            var pf = new PluginFactory(DatabaseContext)
+            var pf = new PluginInstanceFactory(DatabaseContext)
             {
                 SemesterID = SemesterID,
                 CourseID = CourseID,
