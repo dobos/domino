@@ -47,6 +47,17 @@ namespace Complex.Domino.Web.Teacher
 
             assignmentGrade = new Lib.AssignmentGrade(DatabaseContext);
             assignmentGrade.Load(Item.AssignmentID, Item.StudentID);
+
+            if (Item.IsExisting)
+            {
+                Plugins.Visible = true;
+
+                Plugins.SemesterID = Item.SemesterID;
+                Plugins.CourseID = Item.CourseID;
+                Plugins.AssignmentID = Item.ID;
+
+                Plugins.CreatePluginControls();
+            }
         }
 
         protected override void UpdateForm()

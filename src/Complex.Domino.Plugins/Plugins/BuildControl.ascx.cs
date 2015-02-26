@@ -13,6 +13,9 @@ namespace Complex.Domino.Plugins
         protected override void UpdateForm()
         {
             commandLine.Text = Plugin.CommandLine;
+
+            adminView.Visible = Mode == PluginMode.Edit && (View == PluginView.Admin || View == PluginView.Teacher);
+            publicView.Visible = Mode == PluginMode.View && (View == PluginView.Admin || View == PluginView.Teacher);
         }
 
         public override void SaveForm()

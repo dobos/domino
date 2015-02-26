@@ -84,7 +84,7 @@
             </tr>
         </table>
     </div>
-    <domino:PluginList runat="server" ID="Plugins" />
+    <domino:PluginList runat="server" ID="Plugins" Mode="Edit" View="Teacher" Visible="false" />
     <toolbar class="form">
         <asp:LinkButton runat="Server" ID="Ok" OnClick="Ok_Click" ValidationGroup="Entity">
             <asp:Image runat="server" SkinID="OkButton" />

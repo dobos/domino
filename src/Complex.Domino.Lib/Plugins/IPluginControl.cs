@@ -10,6 +10,10 @@ namespace Complex.Domino.Plugins
     {
         PluginBase Plugin { get; set; }
 
+        PluginView View { get; set; }
+
+        PluginMode Mode { get; set; }
+
         void SaveForm();
     }
 }

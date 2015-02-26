@@ -72,11 +72,11 @@ namespace Complex.Domino.Plugins
             vpp.RegisterVirtualPath(ControlFileName, cname + ".ascx, " + aname);
         }
 
-        public System.Web.UI.Control LoadControl(System.Web.UI.UserControl parent)
+        public IPluginControl LoadControl(System.Web.UI.UserControl parent)
         {
-            var control = parent.LoadControl(ControlFileName);
+            var control = (IPluginControl)parent.LoadControl(ControlFileName);
 
-            ((IPluginControl)control).Plugin = this;
+            control.Plugin = this;
 
             return control;
         }

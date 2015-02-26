@@ -47,10 +47,10 @@ namespace Complex.Domino.Web.Teacher
             course = new Lib.Course(DatabaseContext);
             course.Load(CourseID);
 
-            Plugins.Visible = Item.IsExisting;
-
-            if (Plugins.Visible)
+            if (Item.IsExisting)
             {
+                Plugins.Visible = true;
+
                 Plugins.SemesterID = Item.SemesterID;
                 Plugins.CourseID = Item.CourseID;
                 Plugins.AssignmentID = Item.ID;

@@ -10,11 +10,25 @@ namespace Complex.Domino.Plugins
         where T : PluginBase
     {
         private T plugin;
+        private PluginView view;
+        private PluginMode mode;
 
         public T Plugin
         {
             get { return plugin; }
             set { plugin = value; }
+        }
+
+        public PluginView View
+        {
+            get { return (PluginView)ViewState["View"]; }
+            set { ViewState["View"] = value; }
+        }
+
+        public PluginMode Mode
+        {
+            get { return (PluginMode)ViewState["Mode"]; }
+            set { ViewState["Mode"] = value; }
         }
 
         PluginBase IPluginControl.Plugin

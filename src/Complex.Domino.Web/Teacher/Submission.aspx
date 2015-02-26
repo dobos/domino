@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/Teacher.master" AutoEventWireup="true" CodeBehind="Submission.aspx.cs" Inherits="Complex.Domino.Web.Teacher.Submission" %>
 
+<%@ Register Src="~/Teacher/PluginList.ascx" TagPrefix="domino" TagName="PluginList" %>
+
 <asp:Content ContentPlaceHolderID="main" runat="server">
     <asp:Panel runat="server" ID="filesPanel" Visible="false">
         <h1>
@@ -50,6 +52,7 @@
             <asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h2>
         <domino:filebrowser runat="server" id="fileBrowser" allowselection="true"
             allowdownload="true" AllowDelete="true" allowedit="true" />
+        <domino:PluginList runat="server" ID="Plugins" Mode="View" View="Teacher" Visible="false" />
         <h2>
             <asp:Label runat="server" Text="<%$ Resources:Labels, Evaluation %>" /></h2>
         <div class="frame">

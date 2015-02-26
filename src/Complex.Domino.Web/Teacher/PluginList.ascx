@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PluginList.ascx.cs" Inherits="Complex.Domino.Web.Teacher.PluginList" %>
 <div class="frame">
-    <table class="form">
+    <table class="form" runat="server" id="addPluginForm" visible="false">
         <tr>
             <td class="label">
                 <asp:Label runat="server" Text="<%$ Resources:Labels, AddPlugin %>" />:

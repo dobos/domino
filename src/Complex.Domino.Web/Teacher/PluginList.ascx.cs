@@ -29,6 +29,18 @@ namespace Complex.Domino.Web.Teacher
             set { ViewState["AssignmentID"] = value; }
         }
 
+        public PluginMode Mode
+        {
+            get { return (PluginMode)ViewState["Mode"]; }
+            set { ViewState["Mode"] = value; }
+        }
+
+        public PluginView View
+        {
+            get { return (PluginView)ViewState["View"]; }
+            set { ViewState["View"] = value; }
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             if (!IsPostBack)
@@ -37,11 +49,6 @@ namespace Complex.Domino.Web.Teacher
             }
 
             base.OnLoad(e);
-        }
-
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            
         }
 
         protected void PluginType_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,22 +81,32 @@ namespace Complex.Domino.Web.Teacher
                 pi.Context = DatabaseContext;       // TODO: this could be set by the factory...
 
                 var pp = pi.GetPlugin();
-                var control = pp.LoadControl(this);
-                control.ID = "pluginControl";
-                ph.Controls.Add(control);
+                var pc = pp.LoadControl(this);
+                var cc = (Control)pc;
+
+                cc.ID = "pluginControl";
+                pc.Mode = this.Mode;
+                pc.View = this.View;
+
+                ph.Controls.Add(cc);
             }
         }
 
         private void RefreshPluginList()
         {
-            var pm = new PluginManager(DatabaseContext);
-
-            PluginType.Items.Clear();
-            PluginType.Items.Add(new ListItem(Resources.Labels.SelectPlugin, ""));
-
-            foreach (var plugin in pm.EnumeratePlugins())
+            if (Mode == PluginMode.Edit)
             {
-                PluginType.Items.Add(new ListItem(plugin.Description, plugin.TypeName));
+                addPluginForm.Visible = true;
+
+                var pm = new PluginManager(DatabaseContext);
+
+                PluginType.Items.Clear();
+                PluginType.Items.Add(new ListItem(Resources.Labels.SelectPlugin, ""));
+
+                foreach (var plugin in pm.EnumeratePlugins())
+                {
+                    PluginType.Items.Add(new ListItem(plugin.Description, plugin.TypeName));
+                }
             }
         }
 
