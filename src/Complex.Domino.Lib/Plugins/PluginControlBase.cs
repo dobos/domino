@@ -42,9 +42,9 @@ namespace Complex.Domino.Plugins
                 UpdateForm();
             }
         }
-
+        
         protected abstract void UpdateForm();
 
-        protected abstract void SaveForm();
+        public abstract void SaveForm();
     }
 }

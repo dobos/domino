@@ -29,23 +29,27 @@ namespace Complex.Domino.Web.Teacher
             set { ViewState["AssignmentID"] = value; }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             if (!IsPostBack)
             {
                 RefreshPluginList();
             }
+
+            base.OnLoad(e);
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            CreatePluginControls();
+            
         }
 
         protected void PluginType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(PluginType.SelectedValue))
             {
+                // TODO: test if this type of plugin already exists
+
                 var pm = new PluginManager(DatabaseContext);
 
                 var pp = pm.GetPlugin(PluginType.SelectedValue);
@@ -55,6 +59,24 @@ namespace Complex.Domino.Web.Teacher
                 pp.Instance.AssignmentID = AssignmentID;
 
                 pp.Save();
+
+                CreatePluginControls();
+            }
+        }
+
+        protected void Plugins_ItemCreated(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem && e.Item.DataItem != null)
+            {
+                var ph = e.Item.FindControl("pluginControlPlaceholder");
+
+                var pi = (PluginInstance)e.Item.DataItem;
+                pi.Context = DatabaseContext;       // TODO: this could be set by the factory...
+
+                var pp = pi.GetPlugin();
+                var control = pp.LoadControl(this);
+                control.ID = "pluginControl";
+                ph.Controls.Add(control);
             }
         }
 
@@ -71,7 +93,7 @@ namespace Complex.Domino.Web.Teacher
             }
         }
 
-        private void CreatePluginControls()
+        public void CreatePluginControls()
         {
             var pf = new PluginInstanceFactory(DatabaseContext)
             {
@@ -84,18 +106,20 @@ namespace Complex.Domino.Web.Teacher
             plugins.DataBind();
         }
 
-        protected void Plugins_ItemCreated(object sender, ListViewItemEventArgs e)
+        public void Save()
         {
-            if (e.Item.ItemType == ListViewItemType.DataItem && e.Item.DataItem != null)
+            foreach (var item in plugins.Items)
             {
-                var ph = e.Item.FindControl("pluginControlPlaceholder");
-                
-                var pi = (PluginInstance)e.Item.DataItem;
-                pi.Context = DatabaseContext;       // TODO: this could be set by the factory...
+                if (item.ItemType == ListViewItemType.DataItem)
+                {
+                    var ph = item.FindControl("pluginControlPlaceholder");
+                    var control = (IPluginControl)ph.FindControl("pluginControl");
 
-                var pp = pi.GetPlugin();
-                ph.Controls.Add(pp.LoadControl(this));
+                    control.SaveForm();
+                    control.Plugin.Save();
+                }
             }
         }
+
     }
 }

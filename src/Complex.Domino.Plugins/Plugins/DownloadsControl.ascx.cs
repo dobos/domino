@@ -13,7 +13,7 @@ namespace Complex.Domino.Plugins
         {   
         }
 
-        protected override void SaveForm()
+        public override void SaveForm()
         {
         }
     }

@@ -9,5 +9,7 @@ namespace Complex.Domino.Plugins
     public interface IPluginControl
     {
         PluginBase Plugin { get; set; }
+
+        void SaveForm();
     }
 }

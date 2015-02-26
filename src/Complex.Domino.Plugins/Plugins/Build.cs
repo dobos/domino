@@ -60,7 +60,7 @@ namespace Complex.Domino.Plugins
 
         private void InitializeMembers()
         {
-            this.commandLine = null;
+            this.commandLine = String.Empty;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)

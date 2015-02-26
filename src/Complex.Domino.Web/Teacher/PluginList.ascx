@@ -12,7 +12,7 @@
             </td>
         </tr>
     </table>
-    <asp:ListView runat="server" ID="plugins" OnItemCreated="Plugins_ItemCreated" >
+    <asp:ListView runat="server" ID="plugins" OnItemCreated="Plugins_ItemCreated">
         <LayoutTemplate>
             <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
         </LayoutTemplate>

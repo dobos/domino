@@ -15,7 +15,7 @@ namespace Complex.Domino.Plugins
             commandLine.Text = Plugin.CommandLine;
         }
 
-        protected override void SaveForm()
+        public override void SaveForm()
         {
             Plugin.CommandLine = commandLine.Text;
         }

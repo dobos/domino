@@ -46,6 +46,17 @@ namespace Complex.Domino.Web.Teacher
 
             course = new Lib.Course(DatabaseContext);
             course.Load(CourseID);
+
+            Plugins.Visible = Item.IsExisting;
+
+            if (Plugins.Visible)
+            {
+                Plugins.SemesterID = Item.SemesterID;
+                Plugins.CourseID = Item.CourseID;
+                Plugins.AssignmentID = Item.ID;
+
+                Plugins.CreatePluginControls();
+            }
         }
 
         protected override void UpdateForm()
@@ -61,11 +72,6 @@ namespace Complex.Domino.Web.Teacher
             Url.Text = Item.Url;
             GradeType.SelectedValue = Item.GradeType.ToString();
             GradeWeight.Text = Item.GradeWeight.ToString();
-
-            Plugins.Visible = Item.IsExisting;
-            Plugins.SemesterID = Item.SemesterID;
-            Plugins.CourseID = Item.CourseID;
-            Plugins.AssignmentID = Item.ID;
         }
 
         protected override void SaveForm()
@@ -85,12 +91,17 @@ namespace Complex.Domino.Web.Teacher
         {
             if (Item.IsExisting)
             {
-                base.OnOkClick();
+                SaveForm();
+                Item.Save();
+                Plugins.Save();
+
+                OnRedirect();
             }
             else
             {
                 SaveForm();
                 Item.Save();
+
                 UpdateForm();
             }
         }
