@@ -41,6 +41,20 @@ namespace Complex.Domino.Lib
             o.LoadFromDataReader(reader);
         }
 
+        public static bool TryAsSingleObject<T>(this SqlDataReader reader, T o)
+            where T : IDatabaseTableObject
+        {
+            if (reader.Read())
+            {
+                o.LoadFromDataReader(reader);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static int GetInt32(this SqlDataReader reader, string key)
         {
             var o = reader.GetOrdinal(key);

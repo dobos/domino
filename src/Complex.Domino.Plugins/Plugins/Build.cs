@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 using Complex.Domino.Lib;
 
 namespace Complex.Domino.Plugins
@@ -29,12 +31,12 @@ namespace Complex.Domino.Plugins
             }
         }
 
-        public override Type ControlType
+        protected override Type ControlType
         {
             get { return typeof(BuildControl); }
         }
 
-        public override string ControlFileName
+        protected override string ControlFileName
         {
             get { return "~/Plugins/BuildControl.ascx"; }
         }
@@ -59,6 +61,73 @@ namespace Complex.Domino.Plugins
         private void InitializeMembers()
         {
             this.commandLine = null;
+        }
+
+        public override void LoadFromDataReader(SqlDataReader reader)
+        {
+            this.commandLine = reader.GetString("CommandLine");
+        }
+
+        protected override void OnLoad(int id)
+        {
+            var sql = @"
+SELECT *
+FROM [Plugin_Build]
+WHERE ID = @ID
+";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+                Context.TryExecuteCommandSingleObject(cmd, this);
+            }
+        }
+
+        protected override void OnCreate()
+        {
+            var sql = @"
+INSERT [Plugin_Build]
+    (ID, CommandLine)
+VALUES
+    (@ID, @CommandLine)
+";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                AppendCreateModifyParameters(cmd);
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
+
+        protected override void OnModify()
+        {
+            var sql = @"
+UPDATE [Plugin_Build]
+SET CommandLine = @CommandLine
+WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                AppendCreateModifyParameters(cmd);
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
+
+        protected override void OnDelete(int id)
+        {
+            var sql = "DELETE [Plugin_Build] WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
+
+        private void AppendCreateModifyParameters(SqlCommand cmd)
+        {
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Instance.ID;
+            cmd.Parameters.Add("@CommandLine", SqlDbType.NVarChar).Value = commandLine;
         }
     }
 }

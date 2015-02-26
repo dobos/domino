@@ -86,6 +86,7 @@
     <Compile Include="Lib\User.cs" />
     <Compile Include="Lib\UserFactory.cs" />
     <Compile Include="Lib\UserRole.cs" />
+    <Compile Include="Plugins\IPluginControl.cs" />
     <Compile Include="Plugins\PluginBase.cs" />
     <Compile Include="Plugins\PluginControlBase.cs">
       <SubType>ASPXCodeBehind</SubType>

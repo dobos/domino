@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Data;
+using System.Data.SqlClient;
 using Complex.Domino.Lib;
 
 namespace Complex.Domino.Plugins
 {
-    public abstract class PluginBase : ContextObject
+    public abstract class PluginBase : ContextObject, IDatabaseTableObject
     {
         private PluginInstance instance;
 
@@ -27,9 +30,9 @@ namespace Complex.Domino.Plugins
             }
         }
 
-        public abstract Type ControlType { get; }
+        protected abstract Type ControlType { get; }
 
-        public abstract string ControlFileName { get; }
+        protected abstract string ControlFileName { get; }
 
         public abstract string Description { get; }
 
@@ -59,6 +62,8 @@ namespace Complex.Domino.Plugins
             };
         }
 
+        public abstract void LoadFromDataReader(SqlDataReader reader);
+
         public virtual void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
         {
             var cname = ControlType.FullName;
@@ -67,12 +72,23 @@ namespace Complex.Domino.Plugins
             vpp.RegisterVirtualPath(ControlFileName, cname + ".ascx, " + aname);
         }
 
+        public System.Web.UI.Control LoadControl(System.Web.UI.UserControl parent)
+        {
+            var control = parent.LoadControl(ControlFileName);
+
+            ((IPluginControl)control).Plugin = this;
+
+            return control;
+        }
+
         public void Load()
         {
+            Load(instance.ID);
         }
 
         public void Load(int id)
         {
+            OnLoad(id);
         }
 
         public void Save()
@@ -81,12 +97,32 @@ namespace Complex.Domino.Plugins
 
             instance.Save();
 
-            if (isExisting)
+            if (!isExisting)
             {
+                OnCreate();
             }
             else
             {
+                OnModify();
             }
         }
+
+        public void Delete()
+        {
+            Delete(instance.ID);
+        }
+
+        public void Delete(int id)
+        {
+            OnDelete(id);
+        }
+
+        protected abstract void OnLoad(int id);
+
+        protected abstract void OnCreate();
+
+        protected abstract void OnModify();
+
+        protected abstract void OnDelete(int id);
     }
 }

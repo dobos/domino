@@ -161,5 +161,15 @@ WHERE ID = @ID";
 
             return Access.None;
         }
+
+        public PluginBase GetPlugin()
+        {
+            var type = Type.GetType(Name);
+            var plugin = (PluginBase)Activator.CreateInstance(type, this);
+            
+            plugin.Load();
+
+            return plugin;
+        }
     }
 }

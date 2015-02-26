@@ -42,17 +42,20 @@ namespace Complex.Domino.Web.Teacher
             CreatePluginControls();
         }
 
-        protected void AddPlugin_Click(object sender, EventArgs e)
+        protected void PluginType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var pm = new PluginManager(DatabaseContext);
+            if (!String.IsNullOrEmpty(PluginType.SelectedValue))
+            {
+                var pm = new PluginManager(DatabaseContext);
 
-            var pp = pm.GetPlugin(PluginType.SelectedValue);
+                var pp = pm.GetPlugin(PluginType.SelectedValue);
 
-            pp.Instance.SemesterID = SemesterID;
-            pp.Instance.CourseID = CourseID;
-            pp.Instance.AssignmentID = AssignmentID;
+                pp.Instance.SemesterID = SemesterID;
+                pp.Instance.CourseID = CourseID;
+                pp.Instance.AssignmentID = AssignmentID;
 
-            pp.Save();
+                pp.Save();
+            }
         }
 
         private void RefreshPluginList()
@@ -70,11 +73,6 @@ namespace Complex.Domino.Web.Teacher
 
         private void CreatePluginControls()
         {
-            var pm = new PluginManager(DatabaseContext);
-
-            // Load plugins associated with entity and create controls
-            pluginsPlaceholder.Controls.Clear();
-
             var pf = new PluginInstanceFactory(DatabaseContext)
             {
                 SemesterID = SemesterID,
@@ -82,12 +80,21 @@ namespace Complex.Domino.Web.Teacher
                 AssignmentID = AssignmentID,
             };
 
-            foreach (var plugin in pf.Find())
-            {
-                var pp = pm.GetPlugin(plugin);
-                var control = LoadControl(pp.ControlFileName);
+            plugins.DataSource = pf.Find();
+            plugins.DataBind();
+        }
 
-                pluginsPlaceholder.Controls.Add(control);
+        protected void Plugins_ItemCreated(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem && e.Item.DataItem != null)
+            {
+                var ph = e.Item.FindControl("pluginControlPlaceholder");
+                
+                var pi = (PluginInstance)e.Item.DataItem;
+                pi.Context = DatabaseContext;       // TODO: this could be set by the factory...
+
+                var pp = pi.GetPlugin();
+                ph.Controls.Add(pp.LoadControl(this));
             }
         }
     }

@@ -249,6 +249,17 @@ namespace Complex.Domino.Lib
             }
         }
 
+        public bool TryExecuteCommandSingleObject<T>(SqlCommand cmd, T o)
+            where T : IDatabaseTableObject
+        {
+            PrepareCommand(cmd);
+
+            using (var dr = cmd.ExecuteReader(CommandBehavior.SingleRow))
+            {
+                return dr.TryAsSingleObject<T>(o);
+            }
+        }
+
         public void ExecuteCommandNonQuery(SqlCommand cmd)
         {
             PrepareCommand(cmd);

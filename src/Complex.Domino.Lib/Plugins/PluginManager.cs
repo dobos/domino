@@ -50,14 +50,6 @@ namespace Complex.Domino.Plugins
             return plugin;
         }
 
-        public PluginBase GetPlugin(PluginInstance instance)
-        {
-            var type = Type.GetType(instance.Name);
-            var plugin = (PluginBase)Activator.CreateInstance(type, instance);
-
-            return plugin;
-        }
-
         public virtual void RegisterPlugins()
         {
             var vpp = new PluginVirtualPathProvider();

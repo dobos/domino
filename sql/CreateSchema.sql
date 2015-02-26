@@ -313,7 +313,7 @@ GO
 
 
 
-CREATE TABLE [dbo].[Plugin]
+CREATE TABLE [dbo].[PluginInstance]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
 
@@ -363,7 +363,7 @@ CREATE TABLE [dbo].[Plugin]
 )
 
 
-CREATE UNIQUE NONCLUSTERED INDEX [IX_Plugin] ON [dbo].[Plugin]
+CREATE UNIQUE NONCLUSTERED INDEX [IX_PluginInstance] ON [dbo].[PluginInstance]
 (
 	[SemesterID] ASC,
 	[CourseID] ASC,
@@ -378,7 +378,7 @@ CREATE TABLE [dbo].[File]
 (
 	[ID] int IDENTITY(1,1) NOT NULL,
 
-	[PluginID] int NULL,
+	[PluginInstanceID] int NULL,
 
 	[Name] nvarchar(50) NOT NULL,
 	[Description] nvarchar(250) NOT NULL,
@@ -396,11 +396,11 @@ CREATE TABLE [dbo].[File]
 		[ID] ASC
 	),
 
-	CONSTRAINT [FK_File_Plugin] FOREIGN KEY
+	CONSTRAINT [FK_File_PluginInstance] FOREIGN KEY
 	(
-		PluginID
+		PluginInstanceID
 	)
-	REFERENCES [dbo].[Plugin]
+	REFERENCES [dbo].[PluginInstance]
 	(
 		ID
 	)
@@ -408,7 +408,7 @@ CREATE TABLE [dbo].[File]
 
 CREATE NONCLUSTERED INDEX [IX_File] ON [dbo].[File]
 (
-	[PluginID] ASC,
+	[PluginInstanceID] ASC,
 	[ID] ASC
 )
 INCLUDE
@@ -418,3 +418,10 @@ INCLUDE
 
 
 GO
+
+
+CREATE TABLE [dbo].[Plugin_Build]
+(
+	[ID] int NOT NULL,
+	CommandLine nvarchar(1024)
+)

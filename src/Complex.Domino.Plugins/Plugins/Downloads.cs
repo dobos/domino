@@ -17,12 +17,12 @@ namespace Complex.Domino.Plugins
             }
         }
 
-        public override Type ControlType
+        protected override Type ControlType
         {
             get { return typeof(DownloadsControl); }
         }
 
-        public override string ControlFileName
+        protected override string ControlFileName
         {
             get { return "~/Plugins/DownloadsControl.ascx"; }
         }
@@ -45,6 +45,26 @@ namespace Complex.Domino.Plugins
         }
 
         private void InitializeMembers()
+        {
+        }
+
+        public override void LoadFromDataReader(System.Data.SqlClient.SqlDataReader reader)
+        {
+        }
+
+        protected override void OnLoad(int id)
+        {
+        }
+
+        protected override void OnCreate()
+        {
+        }
+
+        protected override void OnModify()
+        {
+        }
+
+        protected override void OnDelete(int id)
         {
         }
     }

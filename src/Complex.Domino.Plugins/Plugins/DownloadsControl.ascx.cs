@@ -7,8 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Plugins
 {
-    public partial class DownloadsControl : PluginControlBase
+    public partial class DownloadsControl : PluginControlBase<Downloads>
     {
-       
+        protected override void UpdateForm()
+        {   
+        }
+
+        protected override void SaveForm()
+        {
+        }
     }
 }

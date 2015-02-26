@@ -7,8 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Plugins
 {
-    public partial class BuildControl : PluginControlBase
+    public partial class BuildControl : PluginControlBase<Build>
     {
-       
+
+        protected override void UpdateForm()
+        {
+            commandLine.Text = Plugin.CommandLine;
+        }
+
+        protected override void SaveForm()
+        {
+            Plugin.CommandLine = commandLine.Text;
+        }
     }
 }

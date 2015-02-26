@@ -6,35 +6,21 @@ using System.Threading.Tasks;
 
 namespace Complex.Domino.Plugins
 {
-    public abstract class PluginControlBase : Web.UserControlBase
+    public abstract class PluginControlBase<T> : Web.UserControlBase, IPluginControl
+        where T : PluginBase
     {
-        private int id;
-        private int semesterID;
-        private int courseID;
-        private int assignmentID;
+        private T plugin;
 
-        public int ID
+        public T Plugin
         {
-            get { return id; }
-            set { id = value; }
+            get { return plugin; }
+            set { plugin = value; }
         }
 
-        public int SemesterID
+        PluginBase IPluginControl.Plugin
         {
-            get { return semesterID; }
-            set { semesterID = value; }
-        }
-
-        public int CourseID
-        {
-            get { return courseID; }
-            set { courseID = value; }
-        }
-
-        public int AssignmentID
-        {
-            get { return assignmentID; }
-            set { assignmentID = value; }
+            get { return plugin; }
+            set { plugin = (T)value; }
         }
 
         protected PluginControlBase()
@@ -44,10 +30,21 @@ namespace Complex.Domino.Plugins
 
         private void InitializeMembers()
         {
-            this.id = -1;
-            this.semesterID = -1;
-            this.courseID = -1;
-            this.assignmentID = -1;
+            this.plugin = null;
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            if (!IsPostBack)
+            {
+                UpdateForm();
+            }
+        }
+
+        protected abstract void UpdateForm();
+
+        protected abstract void SaveForm();
     }
 }
