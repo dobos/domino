@@ -115,6 +115,12 @@ SELECT * FROM q
         {
             var sb = new StringBuilder();
 
+            if (!String.IsNullOrWhiteSpace(name))
+            {
+                AppendWhereCriterion(sb, "Name = @Name");
+                cmd.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = name;
+            }
+
             AppendWhereCriteria(sb, cmd);
 
             if (sb.Length > 0)
