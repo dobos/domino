@@ -54,7 +54,8 @@ namespace Complex.Domino.Web.Teacher
 
                 Plugins.SemesterID = Item.SemesterID;
                 Plugins.CourseID = Item.CourseID;
-                Plugins.AssignmentID = Item.ID;
+                Plugins.AssignmentID = Item.AssignmentID;
+                Plugins.SubmissionID = Item.ID;
 
                 Plugins.CreatePluginControls();
             }

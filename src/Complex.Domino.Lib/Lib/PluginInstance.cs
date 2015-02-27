@@ -15,6 +15,7 @@ namespace Complex.Domino.Lib
         private int semesterID;
         private int courseID;
         private int assignmentID;
+        private int submissionID;
 
         private string pluginType;
 
@@ -36,6 +37,12 @@ namespace Complex.Domino.Lib
             set { assignmentID = value; }
         }
 
+        public int SubmissionID
+        {
+            get { return submissionID; }
+            set { submissionID = value; }
+        }
+
         public PluginInstance()
         {
             InitializeMembers();
@@ -52,6 +59,7 @@ namespace Complex.Domino.Lib
             this.semesterID = -1;
             this.courseID = -1;
             this.assignmentID = -1;
+            this.submissionID = -1;
 
             this.Name = GetType().FullName;
         }

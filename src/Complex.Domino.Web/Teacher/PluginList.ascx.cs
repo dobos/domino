@@ -29,6 +29,12 @@ namespace Complex.Domino.Web.Teacher
             set { ViewState["AssignmentID"] = value; }
         }
 
+        public int SubmissionID
+        {
+            get { return (int)(ViewState["SubmissionID"] ?? -1); }
+            set { ViewState["SubmissionID"] = value; }
+        }
+
         public PluginMode Mode
         {
             get { return (PluginMode)ViewState["Mode"]; }
@@ -78,7 +84,10 @@ namespace Complex.Domino.Web.Teacher
                 var ph = e.Item.FindControl("pluginControlPlaceholder");
 
                 var pi = (PluginInstance)e.Item.DataItem;
-                pi.Context = DatabaseContext;       // TODO: this could be set by the factory...
+
+                // TODO: this could be set by the factory...
+                pi.Context = DatabaseContext;       
+                pi.SubmissionID = this.SubmissionID;
 
                 var pp = pi.GetPlugin();
                 var pc = pp.LoadControl(this);
