@@ -23,6 +23,9 @@ DOMINO TODO
    test chrome
    test mozilla
    test opera
+   
+   resources in plugins
+   skins in plugins
 
 ++ Welcome szöveg
 

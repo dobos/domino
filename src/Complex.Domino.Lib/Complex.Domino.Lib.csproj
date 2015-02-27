@@ -115,6 +115,12 @@
     <Compile Include="Util\Url.cs" />
     <Compile Include="Web\ApplicationBase.cs" />
     <Compile Include="Web\Constants.cs" />
+    <Compile Include="Web\EntityFormBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\EntityPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Web\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

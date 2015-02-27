@@ -902,9 +902,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EntityPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Files\Download.ashx.cs">
       <DependentUpon>Download.ashx</DependentUpon>
     </Compile>

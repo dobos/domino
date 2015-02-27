@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Complex.Domino.Web.Controls
 {
-    public partial class EntityForm : System.Web.UI.UserControl
+    public partial class EntityForm : EntityFormBase
     {
         public bool NameVisible
         {
@@ -33,7 +33,7 @@ namespace Complex.Domino.Web.Controls
             set { CommentsRow.Visible = value; }
         }
 
-        public void UpdateForm(Lib.Entity item)
+        public override void UpdateForm(Lib.Entity item)
         {
             var ro = !item.IsExisting && !item.Access.Create || item.IsExisting && !item.Access.Update;
 
@@ -48,7 +48,7 @@ namespace Complex.Domino.Web.Controls
             Comments.ReadOnly = ro;
         }
 
-        public void SaveForm(Lib.Entity item)
+        public override void SaveForm(Lib.Entity item)
         {
             item.Name = Name.Text;
             item.Description = Description.Text;

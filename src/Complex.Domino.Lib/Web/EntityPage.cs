@@ -11,7 +11,7 @@ namespace Complex.Domino.Web
         where T : Lib.Entity, new()
     {
         private T item;
-        protected Controls.EntityForm entityForm;
+        protected EntityFormBase entityForm;
 
         protected new int ID
         {
