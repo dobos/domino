@@ -64,12 +64,17 @@ namespace Complex.Domino.Plugins
 
         public abstract void LoadFromDataReader(SqlDataReader reader);
 
+        protected string GetResourceName(Type type, string extension)
+        {
+            var cname = type.FullName;
+            var aname = type.Assembly.GetName().Name;
+
+            return cname + extension + ", " + aname;
+        }
+
         public virtual void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
         {
-            var cname = ControlType.FullName;
-            var aname = ControlType.Assembly.GetName().Name;
-
-            vpp.RegisterVirtualPath(ControlFileName, cname + ".ascx, " + aname);
+            vpp.RegisterVirtualPath(ControlFileName, GetResourceName(ControlType, ".ascx"));
         }
 
         public IPluginControl LoadControl(System.Web.UI.UserControl parent)

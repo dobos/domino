@@ -12,6 +12,7 @@ namespace Complex.Domino.Lib
         private int courseID;
         private int assignmentID;
 
+
         public int SemesterID
         {
             get { return semesterID; }

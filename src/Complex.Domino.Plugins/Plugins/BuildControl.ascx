@@ -10,8 +10,8 @@
         </tr>
     </table>
 </asp:Panel>
-<asp:Panel runat="server" ID="publicView" Visible="false">
-    <asp:HyperLink runat="server">
+<asp:Panel runat="server" ID="executeView" Visible="false">
+    <asp:HyperLink runat="server" ID="executeLink" Target="_blank">
             Build program
     </asp:HyperLink>
 </asp:Panel>

@@ -38,7 +38,7 @@ namespace Complex.Domino.Plugins
 
         protected override string ControlFileName
         {
-            get { return "~/Plugins/BuildControl.ascx"; }
+            get { return BuildControl.GetUrl(); }
         }
 
         public Build()
@@ -128,6 +128,20 @@ WHERE ID = @ID";
         {
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Instance.ID;
             cmd.Parameters.Add("@CommandLine", SqlDbType.NVarChar).Value = commandLine;
+        }
+
+        public override void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
+        {
+            base.RegisterVirtualPaths(vpp);
+
+            vpp.RegisterVirtualPath(
+                BuildPage.GetUrl(),
+                GetResourceName(typeof(BuildPage), ".aspx"));
+        }
+
+        public void Execute()
+        {
+
         }
     }
 }
