@@ -441,3 +441,26 @@ CREATE TABLE [dbo].[Plugin_Build]
 )
 
 GO
+
+
+CREATE TABLE [dbo].[Plugin_Execute]
+(
+	[ID] int NOT NULL,
+	CommandLine nvarchar(1024),
+
+	CONSTRAINT [PK_Plugin_Execute] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	),
+
+	CONSTRAINT [FK_Plugin_Execute_PluginInstance] FOREIGN KEY
+	(
+		ID
+	)
+	REFERENCES [dbo].[PluginInstance]
+	(
+		ID
+	)
+)
+
+GO

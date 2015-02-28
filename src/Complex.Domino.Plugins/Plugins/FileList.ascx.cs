@@ -24,6 +24,12 @@ namespace Complex.Domino.Plugins
             set { plugin = value; }
         }
 
+        public string ValidationGroup
+        {
+            get { return (string)ViewState["ValidationGroup"]; }
+            set { ViewState["ValidationGroup"] = value; }
+        }
+
         private void RefreshFileList()
         {
             Plugin.Instance.LoadFiles();
@@ -34,6 +40,9 @@ namespace Complex.Domino.Plugins
         protected void Page_Load(object sender, EventArgs e)
         {
             RefreshFileList();
+
+            UploadedFileRequiredValidator.ValidationGroup += ValidationGroup;
+            upload.ValidationGroup += ValidationGroup;
         }
 
         protected void Upload_Click(object sender, EventArgs e)

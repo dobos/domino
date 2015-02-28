@@ -43,6 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Plugins\ExecuteControl.ascx.cs">
+      <DependentUpon>ExecuteControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plugins\ExecuteControl.ascx.designer.cs">
+      <DependentUpon>ExecuteControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\ExecuteConfiguration.cs" />
+    <Compile Include="Plugins\Execute.cs" />
     <Compile Include="Plugins\Build.cs" />
     <Compile Include="Plugins\BuildConfiguration.cs" />
     <Compile Include="Plugins\DownloadsControl.ascx.cs">
@@ -97,6 +106,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Plugins\FileList.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Plugins\ExecuteControl.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </EmbeddedResource>
   </ItemGroup>

@@ -2,4 +2,4 @@
 
 <%@ Register Src="~/Plugins/FileList.ascx" TagPrefix="domino" TagName="FileList" %>
 
-<domino:FileList runat="server" ID="fileList" />
+<domino:FileList runat="server" ID="fileList" ValidationGroup="DownloadsPlugin" />

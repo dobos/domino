@@ -141,7 +141,7 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@CommandLine", SqlDbType.NVarChar).Value = commandLine;
         }
 
-        public void Execute(string workingDirectory)
+        public void Run(string workingDirectory)
         {
             var cm = commandLine.Trim();
 

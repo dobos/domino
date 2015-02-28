@@ -64,7 +64,7 @@ namespace Complex.Domino.Plugins
                 Submission = submission,
             };
 
-            Plugin.Execute(gitHelper.GetAssignmentPath());
+            Plugin.Run(gitHelper.GetAssignmentPath());
             output.Text = Plugin.Console;
             console.Visible = true;
         }

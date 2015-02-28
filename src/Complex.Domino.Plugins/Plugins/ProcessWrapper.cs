@@ -80,7 +80,7 @@ namespace Complex.Domino.Plugins
                 StartInfo = new ProcessStartInfo()
                 {
                     WorkingDirectory = workingDirectory,
-                    FileName = filename,
+                    FileName = System.IO.Path.Combine(workingDirectory, filename),
                     Arguments = arguments,
 
                     RedirectStandardInput = true,
