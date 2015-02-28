@@ -109,6 +109,7 @@ namespace Complex.Domino.Web.Teacher
             if (sendReply.Checked)
             {
                 replySubmission.Save();
+                SendEmail();
             }
 
             if (markRead.Checked)
@@ -121,9 +122,6 @@ namespace Complex.Domino.Web.Teacher
             }
 
             assignmentGrade.Save();
-
-            SendEmail();
-
             OnRedirect();
         }
 
