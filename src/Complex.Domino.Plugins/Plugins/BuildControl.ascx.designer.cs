@@ -13,15 +13,6 @@ namespace Complex.Domino.Plugins {
     public partial class BuildControl {
         
         /// <summary>
-        /// adminView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel adminView;
-        
-        /// <summary>
         /// commandLine control.
         /// </summary>
         /// <remarks>
@@ -31,21 +22,30 @@ namespace Complex.Domino.Plugins {
         protected global::System.Web.UI.WebControls.TextBox commandLine;
         
         /// <summary>
-        /// executeView control.
+        /// ok control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel executeView;
+        protected global::System.Web.UI.WebControls.LinkButton ok;
         
         /// <summary>
-        /// executeLink control.
+        /// console control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink executeLink;
+        protected global::System.Web.UI.WebControls.Panel console;
+        
+        /// <summary>
+        /// output control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal output;
     }
 }

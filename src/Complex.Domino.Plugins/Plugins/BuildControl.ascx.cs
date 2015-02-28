@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Complex.Domino.Lib;
 
 namespace Complex.Domino.Plugins
 {
@@ -14,18 +15,53 @@ namespace Complex.Domino.Plugins
             return "~/Plugins/BuildControl.ascx";
         }
 
+        private Assignment assignment;
+        private Submission submission;
+        private User student;
+
+        protected override void CreateItem()
+        {
+            base.CreateItem();
+
+            assignment = new Assignment(DatabaseContext);
+            assignment.Load(Plugin.Instance.AssignmentID);
+
+            submission = new Submission(DatabaseContext);
+            submission.Load(Plugin.Instance.SubmissionID);
+
+            student = new User(DatabaseContext);
+            student.Load(submission.StudentID);
+        }
+
         protected override void UpdateForm()
         {
             commandLine.Text = Plugin.CommandLine;
-            executeLink.NavigateUrl = BuildPage.GetUrl(this.Plugin.Instance.SubmissionID);
-
-            adminView.Visible = Mode == PluginMode.Edit && (View == PluginView.Admin || View == PluginView.Teacher);
-            executeView.Visible = Mode == PluginMode.View && (View == PluginView.Admin || View == PluginView.Teacher);
         }
 
         public override void SaveForm()
         {
             Plugin.CommandLine = commandLine.Text;
+        }
+
+        protected void Ok_Click(object sender, EventArgs e)
+        {
+            Execute();
+        }
+
+        private void Execute()
+        {
+            var gitHelper = new Lib.GitHelper()
+            {
+                SessionGuid = SessionGuid,
+                Author = DatabaseContext.User,
+                Student = student,
+                Assignment = assignment,
+                Submission = submission,
+            };
+
+            Plugin.Execute(gitHelper.GetAssignmentPath());
+            output.Text = Plugin.Console;
+            console.Visible = true;
         }
     }
 }

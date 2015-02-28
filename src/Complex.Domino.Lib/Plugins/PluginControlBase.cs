@@ -51,10 +51,16 @@ namespace Complex.Domino.Plugins
         {
             base.OnLoad(e);
 
+            CreateItem();
+
             if (!IsPostBack)
             {
                 UpdateForm();
             }
+        }
+
+        protected virtual void CreateItem()
+        {
         }
         
         protected abstract void UpdateForm();
