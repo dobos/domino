@@ -783,6 +783,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plug-ins.
+        /// </summary>
+        internal static string Plugins {
+            get {
+                return ResourceManager.GetString("Plugins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Read only.
         /// </summary>
         internal static string ReadOnly {

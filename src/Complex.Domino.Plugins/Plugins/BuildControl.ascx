@@ -3,9 +3,12 @@
 
 <table class="form">
     <tr>
-        <td class="label"></td>
-        <td class="field">
-            <asp:TextBox runat="server" ID="commandLine" /></td>
+        <td class="label">
+            <asp:Label runat="server" ID="commandLineLabel" Text="Command-line" />:
+        </td>
+        <td class="field wide">
+            <asp:TextBox runat="server" ID="commandLine" />
+        </td>
     </tr>
 </table>
 <toolbar class="form">
@@ -15,7 +18,7 @@
     </asp:LinkButton>
 </toolbar>
 <asp:Panel runat="server" ID="console" Visible="false">
-<asp:Label runat="server" Text="Build output" />:
+    <asp:Label runat="server" Text="Build output" />:
     <console>
 <asp:Literal runat="server" ID="output" />
     </console>

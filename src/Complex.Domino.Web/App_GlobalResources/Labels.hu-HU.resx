@@ -511,4 +511,7 @@
   <data name="SelectPlugin" xml:space="preserve">
     <value>(válassz egy bővítményt)</value>
   </data>
+  <data name="Plugins" xml:space="preserve">
+    <value>Bővítmények</value>
+  </data>
 </root>

@@ -13,13 +13,13 @@ namespace Complex.Domino.Web.Teacher {
     public partial class PluginList {
         
         /// <summary>
-        /// addPluginForm control.
+        /// addPluginPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable addPluginForm;
+        protected global::System.Web.UI.WebControls.Panel addPluginPanel;
         
         /// <summary>
         /// PluginType control.

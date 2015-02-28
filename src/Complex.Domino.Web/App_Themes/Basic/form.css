@@ -35,6 +35,11 @@
         overflow: hidden;
     }
 
+    table.form td.wide > input[type='text']
+    {
+        width: 444px;
+    }
+
     table.form td.field > textarea {
         width: 590px;
         height: 100px;
@@ -77,19 +82,6 @@
             margin-left: 12px;
             margin-right: 12px;
         }
-
-div.frame {
-    width: 600px;
-    background-color: #FFFFFF;
-    border: 1px solid #808080;
-    border-radius: 8px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-}
 
 list {
     display: block;

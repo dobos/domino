@@ -124,7 +124,7 @@ namespace Complex.Domino.Web.Teacher
         {
             if (Mode == PluginMode.Edit)
             {
-                addPluginForm.Visible = true;
+                addPluginPanel.Visible = true;
 
                 var pm = new PluginManager(DatabaseContext);
 
