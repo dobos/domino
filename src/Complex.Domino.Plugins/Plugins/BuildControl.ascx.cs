@@ -23,19 +23,24 @@ namespace Complex.Domino.Plugins
         {
             base.CreateItem();
 
-            assignment = new Assignment(DatabaseContext);
-            assignment.Load(Plugin.Instance.AssignmentID);
+            if (Mode == PluginMode.View && Plugin.Instance.SubmissionID > 0)
+            {
+                assignment = new Assignment(DatabaseContext);
+                assignment.Load(Plugin.Instance.AssignmentID);
 
-            submission = new Submission(DatabaseContext);
-            submission.Load(Plugin.Instance.SubmissionID);
+                submission = new Submission(DatabaseContext);
+                submission.Load(Plugin.Instance.SubmissionID);
 
-            student = new User(DatabaseContext);
-            student.Load(submission.StudentID);
+                student = new User(DatabaseContext);
+                student.Load(submission.StudentID);
+            }
         }
 
         protected override void UpdateForm()
         {
             commandLine.Text = Plugin.CommandLine;
+
+            ok.Visible = Mode == PluginMode.View && Plugin.Instance.SubmissionID > 0;
         }
 
         public override void SaveForm()
