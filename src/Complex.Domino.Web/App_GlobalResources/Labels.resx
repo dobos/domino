@@ -514,4 +514,7 @@
   <data name="Plugins" xml:space="preserve">
     <value>Plug-ins</value>
   </data>
+  <data name="Execute" xml:space="preserve">
+    <value>Execute</value>
+  </data>
 </root>

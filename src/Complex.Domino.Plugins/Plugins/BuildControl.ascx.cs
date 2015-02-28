@@ -40,7 +40,7 @@ namespace Complex.Domino.Plugins
         {
             commandLine.Text = Plugin.CommandLine;
 
-            ok.Visible = Mode == PluginMode.View && Plugin.Instance.SubmissionID > 0;
+            executeRow.Visible = Mode == PluginMode.View && Plugin.Instance.SubmissionID > 0;
         }
 
         public override void SaveForm()

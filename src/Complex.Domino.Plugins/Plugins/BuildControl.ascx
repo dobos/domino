@@ -6,17 +6,23 @@
         <td class="label">
             <asp:Label runat="server" ID="commandLineLabel" Text="Command-line" />:
         </td>
-        <td class="field wide">
+        <td class="field wide" colspan="2">
             <asp:TextBox runat="server" ID="commandLine" />
         </td>
     </tr>
+    <tr runat="server" id="executeRow">
+        <td class="label"></td>
+        <td class="error"></td>
+        <td class="field" style="text-align: right">
+            <toolbar class="button">
+                <asp:LinkButton runat="server" ID="ok" OnClick="Ok_Click">
+                    <asp:Image runat="server" SkinID="OkButton" />
+                    <p><asp:Label runat="server" Text="<%$ Resources:Labels, Execute %>" /></p>
+                </asp:LinkButton>
+            </toolbar>
+        </td>
+    </tr>
 </table>
-<toolbar class="form">
-    <asp:LinkButton runat="server" ID="ok" OnClick="Ok_Click">
-        <asp:Image runat="server" SkinID="OkButton" />
-        <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
-    </asp:LinkButton>
-</toolbar>
 <asp:Panel runat="server" ID="console" Visible="false">
     <asp:Label runat="server" Text="Build output" />:
     <console>

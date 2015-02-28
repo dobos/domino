@@ -42,7 +42,9 @@ namespace Complex.Domino.Plugins
         {
             commandLine.Text = Plugin.CommandLine;
 
-            ok.Visible = Mode == PluginMode.View && Plugin.Instance.SubmissionID > 0;
+            executeRow.Visible = Mode == PluginMode.View && Plugin.Instance.SubmissionID > 0; ;
+            fileList.AllowUpload = Mode == PluginMode.Edit;
+            fileList.AllowDelete = Mode == PluginMode.Edit;
         }
 
         public override void SaveForm()

@@ -514,4 +514,7 @@
   <data name="Plugins" xml:space="preserve">
     <value>Bővítmények</value>
   </data>
+  <data name="Execute" xml:space="preserve">
+    <value>Futtatás</value>
+  </data>
 </root>

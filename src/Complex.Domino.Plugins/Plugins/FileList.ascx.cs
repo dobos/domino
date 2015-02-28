@@ -24,6 +24,24 @@ namespace Complex.Domino.Plugins
             set { plugin = value; }
         }
 
+        public bool AllowUpload
+        {
+            get { return (bool)(ViewState["AllowUpload"] ?? true); }
+            set { ViewState["AllowUpload"] = value; }
+        }
+
+        public bool AllowDownload
+        {
+            get { return (bool)(ViewState["AllowDownload"] ?? true); }
+            set { ViewState["AllowDownload"] = value; }
+        }
+
+        public bool AllowDelete
+        {
+            get { return (bool)(ViewState["AllowDelete"] ?? true); }
+            set { ViewState["AllowDelete"] = value; }
+        }
+
         public string ValidationGroup
         {
             get { return (string)ViewState["ValidationGroup"]; }
@@ -43,6 +61,8 @@ namespace Complex.Domino.Plugins
 
             UploadedFileRequiredValidator.ValidationGroup += ValidationGroup;
             upload.ValidationGroup += ValidationGroup;
+
+            uploadPanel.Visible = AllowUpload;
         }
 
         protected void Upload_Click(object sender, EventArgs e)
@@ -82,6 +102,9 @@ namespace Complex.Domino.Plugins
 
                     name.Text = file.Name;
                     delete.CommandArgument = file.ID.ToString();
+
+                    view.Visible = AllowDownload;
+                    delete.Visible = AllowDelete;
                 }
             }
         }

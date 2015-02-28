@@ -403,6 +403,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execute.
+        /// </summary>
+        internal static string Execute {
+            get {
+                return ResourceManager.GetString("Execute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First.
         /// </summary>
         internal static string First {

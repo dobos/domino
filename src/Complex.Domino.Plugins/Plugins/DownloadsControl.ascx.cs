@@ -19,7 +19,8 @@ namespace Complex.Domino.Plugins
 
         protected override void UpdateForm()
         {
-            
+            fileList.AllowUpload = Mode == PluginMode.Edit;
+            fileList.AllowDelete = Mode == PluginMode.Edit;
         }
 
         public override void SaveForm()
