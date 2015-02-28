@@ -81,24 +81,43 @@ namespace Complex.Domino.Web.Teacher
         {
             if (e.Item.ItemType == ListViewItemType.DataItem && e.Item.DataItem != null)
             {
-                var ph = e.Item.FindControl("pluginControlPlaceholder");
-
-                var pi = (PluginInstance)e.Item.DataItem;
+                var instance = (PluginInstance)e.Item.DataItem;
 
                 // TODO: this could be set by the factory...
-                pi.Context = DatabaseContext;       
-                pi.SubmissionID = this.SubmissionID;
+                instance.Context = DatabaseContext;
+                instance.SubmissionID = this.SubmissionID;
 
-                var pp = pi.GetPlugin();
-                var pc = pp.LoadControl(this);
-                var cc = (Control)pc;
+                // Update controls
 
-                cc.ID = "pluginControl";
-                pc.Mode = this.Mode;
-                pc.View = this.View;
+                var pluginControlPlaceholder = e.Item.FindControl("pluginControlPlaceholder");
+                var delete = (LinkButton)e.Item.FindControl("delete");
+                var description = (Label)e.Item.FindControl("description");
 
-                ph.Controls.Add(cc);
+                description.Text = instance.Description;
+                delete.Visible = Mode == PluginMode.Edit;
+
+                // Create plugin control
+
+                var plugin = instance.GetPlugin();
+                var pluginControl = plugin.LoadControl(this);
+                var control = (Control)pluginControl;
+
+                control.ID = "pluginControl";
+                pluginControl.Mode = this.Mode;
+                pluginControl.View = this.View;
+
+                pluginControlPlaceholder.Controls.Add(control);
             }
+        }
+
+        protected void Plugins_ItemDeleting(object sender, ListViewDeleteEventArgs e)
+        {
+            var instance = new PluginInstance(DatabaseContext);
+            instance.Load((int)e.Keys[0]);
+
+            instance.Delete();
+
+            CreatePluginControls();
         }
 
         private void RefreshPluginList()

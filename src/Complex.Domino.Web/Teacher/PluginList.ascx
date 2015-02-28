@@ -12,14 +12,14 @@
             </td>
         </tr>
     </table>
-    <asp:ListView runat="server" ID="plugins" OnItemCreated="Plugins_ItemCreated">
+    <asp:ListView runat="server" ID="plugins" OnItemCreated="Plugins_ItemCreated" OnItemDeleting="Plugins_ItemDeleting" DataKeyNames="ID">
         <LayoutTemplate>
             <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
         </LayoutTemplate>
         <ItemTemplate>
             <div class="frame">
-                <%# Eval("Description") %>
-                remove
+                <asp:Label runat="server" ID="description" />
+                <asp:LinkButton runat="server" ID="delete" Text="<%$ Resources:Labels, Delete %>" CommandName="delete" />
                 <asp:PlaceHolder runat="server" ID="pluginControlPlaceholder" />
             </div>
         </ItemTemplate>

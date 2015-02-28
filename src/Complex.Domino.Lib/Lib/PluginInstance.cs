@@ -174,7 +174,7 @@ WHERE ID = @ID";
                 if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Teacher)
                 {
                     // Teacher
-                    return new Access(true, true, true, false);
+                    return new Access(true, true, true, true);
                 }
                 else if (Context.User.Roles[this.courseID].RoleType == UserRoleType.Student)
                 {
