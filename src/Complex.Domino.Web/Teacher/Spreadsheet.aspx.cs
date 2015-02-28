@@ -188,7 +188,7 @@ namespace Complex.Domino.Web.Teacher
                     var a = new HyperLink()
                     {
                         Text = s.CreatedDate.ToString(Util.DateTimeLabels.MonthDayFormat),
-                        Target = "_blank",
+                        //Target = "_blank",
                     };
 
                     // If this is the only submission, point link to it directly,
@@ -236,7 +236,7 @@ namespace Complex.Domino.Web.Teacher
                     {
                         Text = s.CreatedDate.ToString(Util.DateTimeLabels.MonthDayFormat),
                         NavigateUrl = Teacher.Submission.GetUrl(assignment.ID, s.ID),
-                        Target = "_blank",
+                        //Target = "_blank",
                     };
 
                     td[1].Controls.Add(a);
