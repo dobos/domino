@@ -11,7 +11,7 @@
 </head>
 <body>
     <form id="theForm" runat="server">
-        <asp:ScriptManager runat="server">
+        <asp:ScriptManager runat="server" ScriptMode="Release">
             <Scripts>
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="jquery-validation" />
