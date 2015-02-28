@@ -24,6 +24,18 @@ namespace Complex.Domino.Plugins
             set { plugin = value; }
         }
 
+        private void RefreshFileList()
+        {
+            Plugin.Instance.LoadFiles();
+            fileList.DataSource = Plugin.Instance.Files.Values;
+            fileList.DataBind();
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            RefreshFileList();
+        }
+
         protected void Upload_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -42,7 +54,37 @@ namespace Complex.Domino.Plugins
 
                 // TODO: save data
                 file.WriteData(UploadedFile.PostedFile.InputStream);
+
+                RefreshFileList();
             }
+        }
+
+        protected void FileList_ItemCreated(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                var file = (Lib.File)e.Item.DataItem;
+
+                if (file != null)
+                {
+                    var name = (Label)e.Item.FindControl("name");
+                    var view = (HyperLink)e.Item.FindControl("view");
+                    var delete = (LinkButton)e.Item.FindControl("delete");
+
+                    name.Text = file.Name;
+                    delete.CommandArgument = file.ID.ToString();
+                }
+            }
+        }
+
+        protected void FileList_ItemDeleting(object sender, ListViewDeleteEventArgs e)
+        {
+            var file = new Lib.File(DatabaseContext);
+            file.Load((int)e.Keys[0]);
+
+            file.Delete();
+
+            RefreshFileList();
         }
     }
 }

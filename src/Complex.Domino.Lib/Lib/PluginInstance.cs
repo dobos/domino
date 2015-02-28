@@ -17,7 +17,8 @@ namespace Complex.Domino.Lib
         private int assignmentID;
         private int submissionID;
 
-        private string pluginType;
+        private Dictionary<int, File> files;
+
 
         public int SemesterID
         {
@@ -43,6 +44,19 @@ namespace Complex.Domino.Lib
             set { submissionID = value; }
         }
 
+        public Dictionary<int, File> Files
+        {
+            get
+            {
+                if (files == null && IsExisting)
+                {
+                    LoadFiles();
+                }
+
+                return files;
+            }
+        }
+
         public PluginInstance()
         {
             InitializeMembers();
@@ -60,6 +74,8 @@ namespace Complex.Domino.Lib
             this.courseID = -1;
             this.assignmentID = -1;
             this.submissionID = -1;
+
+            this.files = null;
 
             this.Name = GetType().FullName;
         }
@@ -168,6 +184,31 @@ WHERE ID = @ID";
             }
 
             return Access.None;
+        }
+
+        public void LoadFiles()
+        {
+            this.files = new Dictionary<int, File>();
+
+            string sql = @"
+SELECT f.ID, f.PluginInstanceID, 
+       pi.SemesterID, pi.CourseID, pi.AssignmentID,
+       f.Name, f.Description, 
+       f.Hidden, f.ReadOnly, f.CreatedDate, f.ModifiedDate,
+	   f.Comments, f.MimeType
+FROM [File] f
+INNER JOIN [PluginInstance] pi ON pi.ID = f.PluginInstanceID
+WHERE f.PluginInstanceID = @ID
+";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.ID;
+                foreach (var file in Context.ExecuteCommandReader<File>(cmd))
+                {
+                    files.Add(file.ID, file);
+                }
+            }
         }
 
         public PluginBase GetPlugin()
