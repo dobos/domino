@@ -53,6 +53,12 @@ namespace Complex.Domino.Web.Files
             set { ViewState["AllowedExtensions"] = value; }
         }
 
+        public bool HideDisallowedExtensions
+        {
+            get { return (bool)(ViewState["HideDisallowedExtensions"] ?? true); }
+            set { ViewState["HideDisallowedExtensions"] = value; }
+        }
+
         public string AllowedArchiveExtensions
         {
             get { return (string)ViewState["AllowedArchiveExtensions"] ?? ".zip|.tar.gz|.tar.bz2"; }
@@ -83,6 +89,12 @@ namespace Complex.Domino.Web.Files
             set { ViewState["AllowDelete"] = value; }
         }
 
+        public bool AllowCleanUp
+        {
+            get { return (bool)(ViewState["AllowCleanUp"] ?? false); }
+            set { ViewState["AllowCleanUp"] = value; }
+        }
+
         public bool AllowEdit
         {
             get { return (bool)(ViewState["AllowEdit"] ?? true); }
@@ -102,7 +114,9 @@ namespace Complex.Domino.Web.Files
         {
             if (!IsPostBack)
             {
+                // TODO: move to UpdateForm?
                 uploadPanel.Visible = AllowUpload;
+                CleanUp.Visible = AllowCleanUp;
 
                 // Valid file types
                 var ext = "";
@@ -295,6 +309,13 @@ namespace Complex.Domino.Web.Files
 
         }
 
+        protected void CleanUp_Click(object sender, EventArgs e)
+        {
+            var git = new Git.Git(BasePath);
+
+            git.Clean(true, true);
+        }
+
         protected void EmptyValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
             // Test if base path contains any files
@@ -446,7 +467,8 @@ namespace Complex.Domino.Web.Files
                 }
 
                 // Filter out files with invalid extension
-                if ((fi.Attributes & FileAttributes.Directory) == 0 &&
+                if (HideDisallowedExtensions &&
+                    (fi.Attributes & FileAttributes.Directory) == 0 &&
                     extensions.Count > 0 &&
                     !extensions.Contains(fi.Extension))
                 {

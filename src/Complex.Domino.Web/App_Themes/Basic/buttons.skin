@@ -8,6 +8,7 @@
 <asp:Image runat="server" SkinID="UploadButton" ImageUrl="Buttons/Upload.png" />
 <asp:Image runat="server" SkinID="DownloadButton" ImageUrl="Buttons/Download.png" />
 <asp:Image runat="server" SkinID="DeleteButton" ImageUrl="Buttons/Delete.png" />
+<asp:Image runat="server" SkinID="CleanUpButton" ImageUrl="Buttons/Delete.png" />
 <asp:Image runat="server" SkinID="ViewButton" ImageUrl="Buttons/View.png" />
 <asp:Image runat="server" SkinID="EditButton" ImageUrl="Buttons/Edit.png" />
 <asp:Image runat="server" SkinID="DelsmlButton" ImageUrl="Buttons/Delsml.png" />

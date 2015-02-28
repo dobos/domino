@@ -151,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clean up.
+        /// </summary>
+        internal static string CleanUp {
+            get {
+                return ResourceManager.GetString("CleanUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comments.
         /// </summary>
         internal static string Comments {

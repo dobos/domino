@@ -517,4 +517,7 @@
   <data name="Execute" xml:space="preserve">
     <value>Futtatás</value>
   </data>
+  <data name="CleanUp" xml:space="preserve">
+    <value>Takarítás</value>
+  </data>
 </root>

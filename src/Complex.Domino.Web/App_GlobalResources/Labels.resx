@@ -517,4 +517,7 @@
   <data name="Execute" xml:space="preserve">
     <value>Execute</value>
   </data>
+  <data name="CleanUp" xml:space="preserve">
+    <value>Clean up</value>
+  </data>
 </root>

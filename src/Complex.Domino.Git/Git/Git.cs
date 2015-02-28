@@ -264,6 +264,17 @@ namespace Complex.Domino.Git
             GitWrapper.Call(this, args);
         }
 
+        public void Clean(bool removeDirectories, bool force)
+        {
+            var args = new Arguments();
+
+            args.Append("clean");
+            args.AppendIfTrue(removeDirectories, "-d");
+            args.AppendIfTrue(force, "--force");
+
+            GitWrapper.Call(this, args);
+        }
+
         public string GetVersion()
         {
             var args = new Arguments();
