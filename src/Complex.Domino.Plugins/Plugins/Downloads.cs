@@ -52,6 +52,13 @@ namespace Complex.Domino.Plugins
         {
         }
 
+        public override void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
+        {
+            base.RegisterVirtualPaths(vpp);
+
+            vpp.RegisterVirtualPath(FileList.GetUrl(), GetResourceName(typeof(FileList), ".ascx"));
+        }
+
         protected override void OnLoad(int id)
         {
         }

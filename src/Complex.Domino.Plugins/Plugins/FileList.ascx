@@ -1,7 +1,7 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FileList.ascx.cs" Inherits="Complex.Domino.Web.FileList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FileList.ascx.cs" Inherits="Complex.Domino.Plugins.FileList" %>
 
 <asp:Panel runat="server" ID="uploadPanel">
-    <table class="form">
+    <table class="form" runat="server" id="uploadForm">
         <tr>
             <td class="label">
                 <asp:Label runat="server" ID="UploadFileLabel" Text="<%$ Resources:Labels, UploadFile %>" />:
@@ -15,23 +15,19 @@
             <td class="error">
                 <asp:RequiredFieldValidator ID="UploadedFileRequiredValidator" runat="server" ErrorMessage="<%$ Resources:Errors, Required %>"
                     ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" />
-                <asp:RegularExpressionValidator ID="UploadedFileValidator" runat="server" ErrorMessage="<%$ Resources:Errors, InvalidExtension %>"
-                    ValidationExpression="^.+(.zip|.ZIP)$" ControlToValidate="UploadedFile" Display="Dynamic" ValidationGroup="Upload" />
-                <asp:CustomValidator runat="server" Display="Dynamic" ID="EmptyValidator"
-                    OnServerValidate="EmptyValidator_ServerValidate" ErrorMessage="<%$ Resources:Errors, EmptyFileList %>" />
             </td>
             <td class="field" style="text-align: right">
                 <toolbar class="button">
-                        <asp:LinkButton runat="server" ID="Upload" OnClick="Upload_Click" ValidationGroup="Upload">
-                            <asp:Image runat="server" SkinID="UploadButton" />
-                            <p><asp:Label runat="server" Text="<%$ Resources:Labels, Upload %>" /></p>
-                        </asp:LinkButton>
-                    </toolbar>
+                <asp:LinkButton runat="server" ID="upload" OnClick="Upload_Click" ValidationGroup="Upload">
+                    <asp:Image runat="server" SkinID="UploadButton" />
+                    <p><asp:Label runat="server" Text="<%$ Resources:Labels, Upload %>" /></p>
+                </asp:LinkButton>
+            </toolbar>
             </td>
         </tr>
     </table>
 </asp:Panel>
-<asp:Panel runat="server" ID="fileListPanel">
+<%--<asp:Panel runat="server" ID="fileListPanel">
     <asp:ListView runat="server" ID="fileList">
         <LayoutTemplate>
             <table>
@@ -62,7 +58,7 @@
             </tr>
         </ItemTemplate>
         <EmptyItemTemplate>
-            <%--<asp:Label runat="server" Text="<%$ Resources:Labels, NoFiles %>" />--%>
+            <asp:Label runat="server" Text="<%$ Resources:Labels, NoFiles %>" />
         </EmptyItemTemplate>
     </asp:ListView>
-</asp:Panel>
+</asp:Panel>--%>
