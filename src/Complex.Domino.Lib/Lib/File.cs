@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using System.IO;
 
 namespace Complex.Domino.Lib
 {
@@ -174,6 +176,43 @@ WHERE ID = @ID";
             }
 
             return Access.None;
+        }
+
+        public void WriteData(Stream infile)
+        {
+            var bytes = new SqlBytes(infile);
+
+            var sql = @"
+UPDATE [File] 
+SET Blob = @Blob
+WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.ID;
+                cmd.Parameters.Add("@Blob", SqlDbType.VarBinary).Value = bytes;
+                Context.ExecuteCommandNonQuery(cmd);
+            }
+        }
+
+        public Stream ReadData()
+        {
+            var sql = @"
+SELECT Blob 
+FROM [File] 
+WHERE ID = @ID";
+
+            using (var cmd = Context.CreateCommand(sql))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.ID;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    dr.Read();
+
+                    return dr.GetSqlBytes(0).Stream;
+                }
+            }
         }
     }
 }
