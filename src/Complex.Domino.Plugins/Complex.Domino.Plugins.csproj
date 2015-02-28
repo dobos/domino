@@ -45,13 +45,6 @@
   <ItemGroup>
     <Compile Include="Plugins\Build.cs" />
     <Compile Include="Plugins\BuildConfiguration.cs" />
-    <Compile Include="Plugins\BuildPage.aspx.cs">
-      <DependentUpon>BuildPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plugins\BuildPage.aspx.designer.cs">
-      <DependentUpon>BuildPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Plugins\DownloadsControl.ascx.cs">
       <DependentUpon>DownloadsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -103,9 +96,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Plugins\BuildPage.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </EmbeddedResource>
     <Content Include="Plugins\FileList.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>

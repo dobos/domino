@@ -141,15 +141,6 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@CommandLine", SqlDbType.NVarChar).Value = commandLine;
         }
 
-        public override void RegisterVirtualPaths(PluginVirtualPathProvider vpp)
-        {
-            base.RegisterVirtualPaths(vpp);
-
-            vpp.RegisterVirtualPath(
-                BuildPage.GetUrl(),
-                GetResourceName(typeof(BuildPage), ".aspx"));
-        }
-
         public void Execute(string workingDirectory)
         {
             var cm = commandLine.Trim();
