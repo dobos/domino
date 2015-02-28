@@ -73,6 +73,7 @@
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="App_Themes\Basic\codemirror.css" />
+    <Content Include="App_Themes\Basic\console.css" />
     <Content Include="App_Themes\Basic\FileIcons\Unknown.png" />
     <Content Include="App_Themes\Basic\fonts.css" />
     <Content Include="App_Themes\Basic\form.css" />

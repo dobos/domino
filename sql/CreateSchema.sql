@@ -423,5 +423,21 @@ GO
 CREATE TABLE [dbo].[Plugin_Build]
 (
 	[ID] int NOT NULL,
-	CommandLine nvarchar(1024)
+	CommandLine nvarchar(1024),
+
+	CONSTRAINT [PK_Plugin_Build] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	),
+
+	CONSTRAINT [FK_Plugin_Build_PluginInstance] FOREIGN KEY
+	(
+		ID
+	)
+	REFERENCES [dbo].[PluginInstance]
+	(
+		ID
+	)
 )
+
+GO

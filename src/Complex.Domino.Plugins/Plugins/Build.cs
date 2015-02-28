@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
+using System.Diagnostics;
 using Complex.Domino.Lib;
 
 namespace Complex.Domino.Plugins
@@ -13,10 +16,11 @@ namespace Complex.Domino.Plugins
     {
         public static BuildConfiguration Configuration
         {
-            get { return null; }
+            get { return (BuildConfiguration)ConfigurationManager.GetSection("complex.domino/plugins/build"); }
         }
 
         private string commandLine;
+        private string console;
 
         public string CommandLine
         {
@@ -24,9 +28,15 @@ namespace Complex.Domino.Plugins
             set { commandLine = value; }
         }
 
+        public string Console
+        {
+            get { return console; }
+        }
+
         public override string Description
         {
-            get {
+            get
+            {
                 return "Build"; // TODO: use resource
             }
         }
@@ -61,6 +71,7 @@ namespace Complex.Domino.Plugins
         private void InitializeMembers()
         {
             this.commandLine = String.Empty;
+            this.console = null;
         }
 
         public override void LoadFromDataReader(SqlDataReader reader)
@@ -139,9 +150,25 @@ WHERE ID = @ID";
                 GetResourceName(typeof(BuildPage), ".aspx"));
         }
 
-        public void Execute()
+        public void Execute(string workingDirectory)
         {
+            var cm = commandLine.Trim();
 
+            cm = cm.Replace("[$cc]", Configuration.CompilerC);
+            cm = cm.Replace("[$cpp]", Configuration.CompilerCpp);
+            cm = cm.Replace("[$java]", Configuration.CompilerJava);
+
+            using (var w = new ProcessWrapper())
+            {
+                w.WorkingDirectory = workingDirectory;
+                w.Command = cm;
+                w.Path = Configuration.Path;
+
+                w.Call();
+
+                console = w.Console;
+            }
         }
+
     }
 }

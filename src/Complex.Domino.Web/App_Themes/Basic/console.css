@@ -1,0 +1,24 @@
+﻿console {
+    display: block;
+    background-color: #000000;
+    color: white;
+    padding: 5px;
+    border: 1px solid #808080;
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+    console pre {
+        font-size: 12px;
+        font-family: Consolas, 'Lucida Console', 'Courier New', monospace;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+        console pre.stdout {
+        }
+
+        console pre.stderr {
+            color: #FF0000;
+        }

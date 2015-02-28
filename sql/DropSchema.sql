@@ -12,6 +12,11 @@ DROP TABLE [dbo].[GradeType]
 
 GO
 
+IF OBJECT_ID(N'Plugin_Build', N'U') IS NOT NULL
+DROP TABLE [dbo].[Plugin_Build]
+
+GO
+
 IF OBJECT_ID (N'Submission', N'U') IS NOT NULL
 DROP TABLE [dbo].[Submission]
 
@@ -19,6 +24,11 @@ GO
 
 IF OBJECT_ID (N'AssignmentGrade', N'U') IS NOT NULL
 DROP TABLE [dbo].[AssignmentGrade]
+
+GO
+
+IF OBJECT_ID(N'PluginInstance', N'U') IS NOT NULL
+DROP TABLE [dbo].[PluginInstance]
 
 GO
 

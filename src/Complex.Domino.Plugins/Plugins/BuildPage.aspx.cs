@@ -21,7 +21,14 @@ namespace Complex.Domino.Plugins
             return String.Format("~/Plugins/BuildPage.aspx?ID={0}", submissionID);
         }
 
+        private Assignment assignment;
+        private User student;
         private Build plugin;
+
+        protected Assignment Assignment
+        {
+            get { return assignment; }
+        }
 
         protected Build Plugin
         {
@@ -31,6 +38,12 @@ namespace Complex.Domino.Plugins
         protected override void CreateItem()
         {
             base.CreateItem();
+
+            assignment = new Assignment(DatabaseContext);
+            assignment.Load(Item.AssignmentID);
+
+            student = new User(DatabaseContext);
+            student.Load(Item.StudentID);
 
             var pf = new PluginInstanceFactory(DatabaseContext)
             {
@@ -57,7 +70,17 @@ namespace Complex.Domino.Plugins
 
         protected void Ok_Click(object sender, EventArgs e)
         {
-            
+            var gitHelper = new Lib.GitHelper()
+            {
+                SessionGuid = SessionGuid,
+                Author = DatabaseContext.User,
+                Student = student,
+                Assignment = assignment,
+                Submission = Item,
+            };
+
+            plugin.Execute(gitHelper.GetAssignmentPath());
+            output.Text = plugin.Console;
         }
     }
 }

@@ -13,7 +13,8 @@
             <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
         </asp:LinkButton>
     </toolbar>
-    <div class="frame">
-        <pre><asp:Literal runat="server" ID="Output" /></pre>
-    </div>
+    <h2><asp:Label runat="server" Text="Build output" /></h2>
+    <console>
+<asp:Literal runat="server" ID="output" />
+    </console>
 </asp:Content>
