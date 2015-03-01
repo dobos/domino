@@ -210,7 +210,7 @@ namespace Complex.Domino.Lib
             cmd.CommandTimeout = 30;        // TODO: from settings
         }
 
-        public IEnumerable<T> ExecuteCommandReader<T>(SqlCommand cmd)
+        public IEnumerable<T> ExecuteCommandAsEnumerable<T>(SqlCommand cmd)
             where T : IDatabaseTableObject, new()
         {
             PrepareCommand(cmd);
@@ -220,7 +220,7 @@ namespace Complex.Domino.Lib
             return dr.AsEnumerable<T>();
         }
 
-        public T ExecuteCommandSingleObject<T>(SqlCommand cmd)
+        public T ExecuteCommandAsSingleObject<T>(SqlCommand cmd)
             where T : IDatabaseTableObject, new()
         {
             PrepareCommand(cmd);
@@ -238,7 +238,7 @@ namespace Complex.Domino.Lib
             }
         }
 
-        public void ExecuteCommandSingleObject<T>(SqlCommand cmd, T o)
+        public void ExecuteCommandAsSingleObject<T>(SqlCommand cmd, T o)
             where T : IDatabaseTableObject
         {
             PrepareCommand(cmd);
@@ -249,7 +249,7 @@ namespace Complex.Domino.Lib
             }
         }
 
-        public bool TryExecuteCommandSingleObject<T>(SqlCommand cmd, T o)
+        public bool TryExecuteCommandAsSingleObject<T>(SqlCommand cmd, T o)
             where T : IDatabaseTableObject
         {
             PrepareCommand(cmd);
@@ -258,6 +258,13 @@ namespace Complex.Domino.Lib
             {
                 return dr.TryAsSingleObject<T>(o);
             }
+        }
+
+        public SqlDataReader ExecuteCommandReader(SqlCommand cmd)
+        {
+            PrepareCommand(cmd);
+
+            return cmd.ExecuteReader();
         }
 
         public void ExecuteCommandNonQuery(SqlCommand cmd)

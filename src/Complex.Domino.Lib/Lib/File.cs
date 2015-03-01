@@ -94,7 +94,7 @@ WHERE f.ID = @ID";
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
-                Context.ExecuteCommandSingleObject(cmd, this);
+                Context.ExecuteCommandAsSingleObject(cmd, this);
             }
         }
 
@@ -206,7 +206,7 @@ WHERE ID = @ID";
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.ID;
 
-                using (var dr = cmd.ExecuteReader())
+                using (var dr = Context.ExecuteCommandReader(cmd))
                 {
                     dr.Read();
 

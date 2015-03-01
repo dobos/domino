@@ -147,7 +147,7 @@ WHERE Email = @Email";
                 try
                 {
                     var user = new User(Context);
-                    Context.ExecuteCommandSingleObject(cmd, user);
+                    Context.ExecuteCommandAsSingleObject(cmd, user);
 
                     return user;
                 }
@@ -172,7 +172,7 @@ WHERE ActivationCode = @ActivationCode";
                 try
                 {
                     var user = new User(Context);
-                    Context.ExecuteCommandSingleObject(cmd, user);
+                    Context.ExecuteCommandAsSingleObject(cmd, user);
 
                     return user;
                 }
@@ -202,7 +202,7 @@ WHERE Name = @Name";
                 try
                 {
                     user = new User(Context);
-                    Context.ExecuteCommandSingleObject(cmd, user);
+                    Context.ExecuteCommandAsSingleObject(cmd, user);
                     return true;
                 }
                 catch (NoResultsException)

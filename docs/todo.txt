@@ -107,3 +107,9 @@ DOMINO TODO
    comments formatted <pre> or html
 ++ verify name and email before commit
    limit frequency of submissions to avoid duplicates
+   
+   
+   Hibák
+   
+   Valamiért még mindig létre jöhet üres repo (no push on first create)
+   Ha e-mail nélkül próbál feltölteni, nem jön létre repo (üres könyvtár), de utána már nem inicializál

@@ -188,7 +188,7 @@ ORDER BY u.rn, a.rn, s.rn
                     submissions[i] = new List<Submission>[assignments.Count];
                 }
 
-                foreach (var submission in Context.ExecuteCommandReader<Submission>(cmd))
+                foreach (var submission in Context.ExecuteCommandAsEnumerable<Submission>(cmd))
                 {
                     var si = studentIds[submission.StudentID];
                     var ai = assignmentIds[submission.AssignmentID];
@@ -254,7 +254,7 @@ ORDER BY uu.rn
                     assignmentGrades[i] = new AssignmentGrade[assignments.Count];
                 }
 
-                foreach (var grade in Context.ExecuteCommandReader<AssignmentGrade>(cmd))
+                foreach (var grade in Context.ExecuteCommandAsEnumerable<AssignmentGrade>(cmd))
                 {
                     var si = studentIds[grade.StudentId];
                     var ai = assignmentIds[grade.AssignmentId];
@@ -315,7 +315,7 @@ ORDER BY uu.rn
                     assignmentGrades[i] = new AssignmentGrade[assignments.Count];
                 }
 
-                foreach (var grade in Context.ExecuteCommandReader<AssignmentGrade>(cmd))
+                foreach (var grade in Context.ExecuteCommandAsEnumerable<AssignmentGrade>(cmd))
                 {
                     var si = studentIds[grade.StudentId];
                     var ai = assignmentIds[grade.AssignmentId];

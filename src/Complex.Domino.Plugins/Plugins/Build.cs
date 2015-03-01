@@ -90,7 +90,7 @@ WHERE ID = @ID
             using (var cmd = Context.CreateCommand(sql))
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
-                Context.TryExecuteCommandSingleObject(cmd, this);
+                Context.TryExecuteCommandAsSingleObject(cmd, this);
             }
         }
 

@@ -100,7 +100,7 @@ WHERE AssignmentID = @AssignmentID AND StudentID = @StudentID
 
                 try
                 {
-                    Context.ExecuteCommandSingleObject(cmd, this);
+                    Context.ExecuteCommandAsSingleObject(cmd, this);
                 }
                 catch (NoResultsException)
                 {

@@ -105,7 +105,7 @@ SELECT * FROM q
                 cmd.Parameters.Add("@from", SqlDbType.Int).Value = from;
                 cmd.Parameters.Add("@to", SqlDbType.Int).Value = from + max;
 
-                return Context.ExecuteCommandReader<T>(cmd);
+                return Context.ExecuteCommandAsEnumerable<T>(cmd);
             }
         }
 

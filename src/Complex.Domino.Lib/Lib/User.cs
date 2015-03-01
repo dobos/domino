@@ -109,7 +109,7 @@ WHERE ID = @ID";
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
-                Context.ExecuteCommandSingleObject(cmd, this);
+                Context.ExecuteCommandAsSingleObject(cmd, this);
             }
         }
 
@@ -124,7 +124,7 @@ WHERE Name = @Name";
             {
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
 
-                Context.ExecuteCommandSingleObject(cmd, this);
+                Context.ExecuteCommandAsSingleObject(cmd, this);
             }
         }
 
@@ -225,7 +225,7 @@ WHERE (Name = @Username) AND
 
                 try
                 {
-                    Context.ExecuteCommandSingleObject(cmd, this);
+                    Context.ExecuteCommandAsSingleObject(cmd, this);
                 }
                 catch (NoResultsException ex)
                 {
@@ -252,7 +252,7 @@ WHERE (Email = @NameOrEmail OR Name = @NameOrEmail) AND
 
                 try
                 {
-                    Context.ExecuteCommandSingleObject(cmd, this);
+                    Context.ExecuteCommandAsSingleObject(cmd, this);
                 }
                 catch (NoResultsException ex)
                 {
@@ -325,7 +325,7 @@ WHERE UserID = @UserID";
             {
                 cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = ID;
 
-                foreach (var role in Context.ExecuteCommandReader<UserRole>(cmd))
+                foreach (var role in Context.ExecuteCommandAsEnumerable<UserRole>(cmd))
                 {
                     roles.Add(role.CourseID, role);
                 }

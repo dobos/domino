@@ -100,7 +100,7 @@ WHERE p.ID = @ID";
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
-                Context.ExecuteCommandSingleObject(cmd, this);
+                Context.ExecuteCommandAsSingleObject(cmd, this);
             }
         }
 
@@ -204,7 +204,7 @@ WHERE f.PluginInstanceID = @ID
             using (var cmd = Context.CreateCommand(sql))
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.ID;
-                foreach (var file in Context.ExecuteCommandReader<File>(cmd))
+                foreach (var file in Context.ExecuteCommandAsEnumerable<File>(cmd))
                 {
                     files.Add(file.ID, file);
                 }

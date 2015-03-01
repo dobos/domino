@@ -209,7 +209,7 @@ WHERE s.ID = @ID";
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
-                Context.ExecuteCommandSingleObject(cmd, this);
+                Context.ExecuteCommandAsSingleObject(cmd, this);
             }
         }
 
