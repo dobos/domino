@@ -89,10 +89,10 @@ namespace Complex.Domino.Web.Files
             set { ViewState["AllowDelete"] = value; }
         }
 
-        public bool AllowCleanUp
+        public bool AllowReset
         {
-            get { return (bool)(ViewState["AllowCleanUp"] ?? false); }
-            set { ViewState["AllowCleanUp"] = value; }
+            get { return (bool)(ViewState["AllowReset"] ?? false); }
+            set { ViewState["AllowReset"] = value; }
         }
 
         public bool AllowEdit
@@ -116,7 +116,7 @@ namespace Complex.Domino.Web.Files
             {
                 // TODO: move to UpdateForm?
                 uploadPanel.Visible = AllowUpload;
-                CleanUp.Visible = AllowCleanUp;
+                Reset.Visible = AllowReset;
 
                 // Valid file types
                 var ext = "";
@@ -309,11 +309,12 @@ namespace Complex.Domino.Web.Files
 
         }
 
-        protected void CleanUp_Click(object sender, EventArgs e)
+        protected void Reset_Click(object sender, EventArgs e)
         {
             var git = new Git.Git(BasePath);
 
             git.Clean(true, true);
+            git.Reset(null, true);
         }
 
         protected void EmptyValidator_ServerValidate(object source, ServerValidateEventArgs args)

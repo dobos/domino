@@ -130,12 +130,12 @@ namespace Complex.Domino.Web.Files {
         protected global::System.Web.UI.WebControls.LinkButton Delete;
         
         /// <summary>
-        /// CleanUp control.
+        /// Reset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CleanUp;
+        protected global::System.Web.UI.WebControls.LinkButton Reset;
     }
 }

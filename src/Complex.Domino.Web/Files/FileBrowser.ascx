@@ -101,9 +101,9 @@
             <asp:Image runat="server" SkinID="DeleteButton" />
             <p><asp:Label runat="server" Text="<%$ Resources:Labels, Delete %>" /></p>
         </asp:LinkButton>
-        <asp:LinkButton runat="server" ID="CleanUp" OnClick="CleanUp_Click">
-            <asp:Image runat="server" SkinID="CleanUp" />
-            <p><asp:Label runat="server" Text="<%$ Resources:Labels, CleanUp %>" /></p>
+        <asp:LinkButton runat="server" ID="Reset" OnClick="Reset_Click">
+            <asp:Image runat="server" SkinID="Reset" />
+            <p><asp:Label runat="server" Text="<%$ Resources:Labels, Reset %>" /></p>
         </asp:LinkButton>
     </toolbar>
 </div>

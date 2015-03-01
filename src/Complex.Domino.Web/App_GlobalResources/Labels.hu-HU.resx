@@ -518,6 +518,6 @@
     <value>Futtatás</value>
   </data>
   <data name="CleanUp" xml:space="preserve">
-    <value>Takarítás</value>
+    <value>Visszaállítás</value>
   </data>
 </root>

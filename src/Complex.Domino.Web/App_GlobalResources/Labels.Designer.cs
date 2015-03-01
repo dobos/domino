@@ -151,15 +151,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clean up.
-        /// </summary>
-        internal static string CleanUp {
-            get {
-                return ResourceManager.GetString("CleanUp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Comments.
         /// </summary>
         internal static string Comments {
@@ -842,6 +833,15 @@ namespace Resources {
         internal static string ReplyDate {
             get {
                 return ResourceManager.GetString("ReplyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         

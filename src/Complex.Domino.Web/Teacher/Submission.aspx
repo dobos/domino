@@ -51,7 +51,7 @@
         <h2>
             <asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h2>
         <domino:filebrowser runat="server" id="fileBrowser" allowselection="true"
-            allowdownload="true" AllowDelete="true" allowedit="true" AllowCleanUp="true" HideDisallowedExtensions="false" />
+            allowdownload="true" AllowDelete="true" allowedit="true" AllowReset="true" HideDisallowedExtensions="false" />
         <domino:PluginList runat="server" ID="Plugins" Mode="View" View="Teacher" Visible="false" />
         <h2>
             <asp:Label runat="server" Text="<%$ Resources:Labels, Evaluation %>" /></h2>
