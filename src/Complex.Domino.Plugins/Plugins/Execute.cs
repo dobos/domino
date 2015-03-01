@@ -90,7 +90,7 @@ WHERE ID = @ID
             using (var cmd = Context.CreateCommand(sql))
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
-                Context.TryExecuteCommandSingleObject(cmd, this);
+                Context.TryExecuteCommandAsSingleObject(cmd, this);
             }
         }
 
@@ -143,6 +143,29 @@ WHERE ID = @ID";
 
         public void Run(string workingDirectory)
         {
+            // Save files into working directory
+            var buffer = new byte[0x10000];     // 64k
+
+            foreach (var file in Instance.Files.Values)
+            {
+                file.Context = Instance.Context;    // TODO: do this in factory
+
+                using (var infile = file.ReadData())
+                {
+                    using (var outfile = new FileStream(Path.Combine(workingDirectory, file.Name), FileMode.Create, FileAccess.Write, FileShare.Read))
+                    {
+                        int res;
+
+                        while ((res = infile.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            outfile.Write(buffer, 0, res);
+                        }
+                    }
+                }
+            }
+
+
+            // Execute command
             var cm = commandLine.Trim();
 
             using (var w = new ProcessWrapper())
