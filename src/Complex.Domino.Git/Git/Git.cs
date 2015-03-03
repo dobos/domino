@@ -134,6 +134,7 @@ namespace Complex.Domino.Git
 
             args.Append("add");
             args.AppendIfTrue(all, "--all");
+            args.Append("--");
             args.Append(path);
 
             GitWrapper.Call(this, args);

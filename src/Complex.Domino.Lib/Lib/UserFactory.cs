@@ -279,12 +279,12 @@ WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType
 
                 if (line.Length >= 2)
                 {
-                    user.Description = line[0];     // name
-                    user.Name = line[1];            // user name
+                    user.Description = line[0].Trim();     // name
+                    user.Name = line[1].Trim();            // user name
                     
                     if (line.Length >= 3)
                     {
-                        user.Email = line[2] ?? String.Empty;
+                        user.Email = (line[2] ?? String.Empty).Trim();
                     }
                     else
                     {
@@ -295,7 +295,7 @@ WHERE UserID = @UserID AND CourseID = @CourseID AND UserRoleType = @UserRoleType
                     {
                         // Use the activation code field to store passwords
                         // temporarily
-                        user.ActivationCode = line[3];
+                        user.ActivationCode = line[3].Trim();
                     }
 
                     users.Add(user);

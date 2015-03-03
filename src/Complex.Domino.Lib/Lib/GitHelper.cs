@@ -82,8 +82,8 @@ namespace Complex.Domino.Lib
             {
                 Author = new Git.User()
                 {
-                    Name = author.Name,
-                    Email = String.Format(author.Email)
+                    Name = author.Name.Trim(),
+                    Email = String.Format(author.Email.Trim())
                 }
             };
 
@@ -96,7 +96,7 @@ namespace Complex.Domino.Lib
 
             return Path.Combine(
                 DominoConfiguration.Instance.RepositoriesPath,
-                student.Name);
+                student.Name.Trim());
         }
 
         public string GetScratchPath()
@@ -106,25 +106,25 @@ namespace Complex.Domino.Lib
             return Path.Combine(
                 DominoConfiguration.Instance.ScratchPath,
                 sessionGuid,
-                student.Name);
+                student.Name.Trim());
         }
 
         public string GetAssignmentPath()
         {
             return Path.Combine(
                 GetScratchPath(),
-                assignment.SemesterName,
-                assignment.CourseName,
-                assignment.Name);
+                assignment.SemesterName.Trim(),
+                assignment.CourseName.Trim(),
+                assignment.Name.Trim());
         }
 
         public string GetAssignmentPrefixPath()
         {
             return Path.Combine(
-                student.Name,
-                assignment.SemesterName,
-                assignment.CourseName,
-                assignment.Name);
+                student.Name.Trim(),
+                assignment.SemesterName.Trim(),
+                assignment.CourseName.Trim(),
+                assignment.Name.Trim());
         }
 
         public bool IsRepoInitialized()
@@ -194,8 +194,8 @@ namespace Complex.Domino.Lib
 
             // Set variables required for commit
             // These values will be overwritten at commit
-            git.Config("user.email", author.Email, false);
-            git.Config("user.name", author.Name, false);
+            git.Config("user.email", author.Email.Trim(), false);
+            git.Config("user.name", author.Name.Trim(), false);
         }
 
         public void CheckoutScratchTip()
@@ -253,7 +253,7 @@ namespace Complex.Domino.Lib
 
             System.IO.File.WriteAllText(
                 Path.Combine(scratchdir, "README.md"),
-                String.Format("Personal Domino repository of {0}.", author.Name));
+                String.Format("Personal Domino repository of {0}.", author.Name.Trim()));
 
             git.Add("README.md", false);
             git.Commit("Initialized personal Domino repo", null, false);

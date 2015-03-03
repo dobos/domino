@@ -14,6 +14,8 @@ namespace Complex.Domino.Git
     /// </summary>
     class GitWrapper : IDisposable
     {
+        private Git git;
+        private Arguments args;
         private Process process;
 
         public TextReader Out
@@ -35,7 +37,11 @@ namespace Complex.Domino.Git
 
         public static GitWrapper Start(Git git, Arguments args)
         {
-            var wrapper = new GitWrapper();
+            var wrapper = new GitWrapper()
+            {
+                git = git,
+                args = args
+            };
 
             var pinfo = new ProcessStartInfo()
             {
@@ -76,6 +82,7 @@ namespace Complex.Domino.Git
 
             if (!String.IsNullOrEmpty(error) && (error.Contains("error") || error.Contains("fatal")))
             {
+                error += "\r\nCommand: git " + args.ToString();
                 throw new GitException(error);
             }
         }
