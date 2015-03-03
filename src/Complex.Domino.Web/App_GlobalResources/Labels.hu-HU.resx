@@ -523,4 +523,7 @@
   <data name="SessionTimeout" xml:space="preserve">
     <value>A bejelentkezési időkorlát lejárt. Jelentkezz be újra.</value>
   </data>
+  <data name="Impersonate" xml:space="preserve">
+    <value>Megszemélyesítés</value>
+  </data>
 </root>

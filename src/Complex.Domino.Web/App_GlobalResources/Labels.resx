@@ -523,4 +523,7 @@
   <data name="SessionTimeout" xml:space="preserve">
     <value>Session time-out expired. Please log on again.</value>
   </data>
+  <data name="Impersonate" xml:space="preserve">
+    <value>Impersonate</value>
+  </data>
 </root>

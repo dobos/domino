@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace Complex.Domino.Web.Admin
 {
@@ -41,6 +42,8 @@ namespace Complex.Domino.Web.Admin
                 rolesPanel.Visible = true;
                 RefreshCourseList();
                 DeleteRole.OnClientClick = String.Format("return confirm('{0}');", Resources.Labels.ConfirmDeleteRole);
+
+                Impersonate.Visible = true;
             }
         }
 
@@ -122,6 +125,13 @@ namespace Complex.Domino.Web.Admin
 
             Item.LoadRoles();
             userRoleList.DataBind();
+        }
+
+        protected void Impersonate_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SetAuthCookie(Item.Name, false);
+            SetUser(Item);
+            Util.Url.RedirectTo("~/");
         }
     }
 }

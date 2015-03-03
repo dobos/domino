@@ -44,69 +44,60 @@
                 </tr>
             </table>
         </div>
-        <toolbar class="form">
-            <asp:LinkButton runat="Server" ID="Ok" OnClick="Ok_Click" ValidationGroup="Entity">
-                <asp:Image runat="server" SkinID="OkButton" />
-                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
-            </asp:LinkButton>
-            <asp:LinkButton runat="Server" ID="Cancel" OnClick="Cancel_Click" CausesValidation="False">
-                <asp:Image runat="server" SkinID="CancelButton" />
-                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Cancel %>" /></p>
-            </asp:LinkButton>
-        </toolbar>
-    </asp:Panel>
-    <asp:Panel runat="server" ID="rolesPanel" Visible="false">
-        <h2>
-            <asp:Label runat="server" Text="<%$ Resources:Labels, UserRoles %>" /></h2>
-        <div class="frame">
-            <table class="form">
-                <tr>
-                    <td class="label">
-                        <asp:Label runat="server" Text="<%$ Resources:Labels, Role %>" />:
-                    </td>
-                    <td class="field">
-                        <asp:DropDownList runat="server" ID="RoleType" ValidationGroup="AddRole">
-                            <asp:ListItem Value="-1" Text="<%$ Resources:Labels, SelectRole %>" />
-                            <asp:ListItem Value="3" Text="<%$ Resources:Roles, Student %>" />
-                            <asp:ListItem Value="2" Text="<%$ Resources:Roles, Teacher %>" />
-                            <asp:ListItem Value="1" Text="<%$ Resources:Roles, Admin %>" />
-                        </asp:DropDownList>
-                    </td>
-                    <td class="error">
-                        <asp:RangeValidator runat="server" ControlToValidate="RoleType"
-                            Display="Dynamic" MinimumValue="1" MaximumValue="2147483647" ValidationGroup="AddRole"
-                            ErrorMessage="<%$ Resources:Errors, SelectItem %>" Type="Integer" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label"><asp:Label runat="server" Text="<%$ Resources:Labels, Course %>" />:</td>
-                    <td class="field">
-                        <asp:DropDownList runat="server" ID="Course" AppendDataBoundItems="true"
-                            DataTextField="FullName" DataValueField="ID" ValidationGroup="AddRole">
-                            <asp:ListItem Value="-1" Text="<%$ Resources:Labels, SelectCourse %>" />
-                        </asp:DropDownList>
-                    </td>
-                    <td class="error">
-                        <asp:RangeValidator runat="server" ControlToValidate="Course"
-                            Display="Dynamic" MinimumValue="1" MaximumValue="2147483647" ValidationGroup="AddRole"
-                            ErrorMessage="<%$ Resources:Errors, SelectItem %>" Type="Integer" />
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <toolbar class="right">
+
+        <asp:Panel runat="server" ID="rolesPanel" Visible="false">
+            <h2>
+                <asp:Label runat="server" Text="<%$ Resources:Labels, UserRoles %>" /></h2>
+            <div class="frame">
+                <table class="form">
+                    <tr>
+                        <td class="label">
+                            <asp:Label runat="server" Text="<%$ Resources:Labels, Role %>" />:
+                        </td>
+                        <td class="field">
+                            <asp:DropDownList runat="server" ID="RoleType" ValidationGroup="AddRole">
+                                <asp:ListItem Value="-1" Text="<%$ Resources:Labels, SelectRole %>" />
+                                <asp:ListItem Value="3" Text="<%$ Resources:Roles, Student %>" />
+                                <asp:ListItem Value="2" Text="<%$ Resources:Roles, Teacher %>" />
+                                <asp:ListItem Value="1" Text="<%$ Resources:Roles, Admin %>" />
+                            </asp:DropDownList>
+                        </td>
+                        <td class="error">
+                            <asp:RangeValidator runat="server" ControlToValidate="RoleType"
+                                Display="Dynamic" MinimumValue="1" MaximumValue="2147483647" ValidationGroup="AddRole"
+                                ErrorMessage="<%$ Resources:Errors, SelectItem %>" Type="Integer" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <asp:Label runat="server" Text="<%$ Resources:Labels, Course %>" />:</td>
+                        <td class="field">
+                            <asp:DropDownList runat="server" ID="Course" AppendDataBoundItems="true"
+                                DataTextField="FullName" DataValueField="ID" ValidationGroup="AddRole">
+                                <asp:ListItem Value="-1" Text="<%$ Resources:Labels, SelectCourse %>" />
+                            </asp:DropDownList>
+                        </td>
+                        <td class="error">
+                            <asp:RangeValidator runat="server" ControlToValidate="Course"
+                                Display="Dynamic" MinimumValue="1" MaximumValue="2147483647" ValidationGroup="AddRole"
+                                ErrorMessage="<%$ Resources:Errors, SelectItem %>" Type="Integer" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <toolbar class="right">
                             <asp:LinkButton runat="Server" ID="AddRole" OnClick="AddRole_Click" ValidationGroup="AddRole">
                                 <asp:Image runat="server" SkinID="OkButton" />
                                 <p><asp:Label runat="server" Text="<%$ Resources:Labels, AddRole %>" /></p>
                             </asp:LinkButton>
                         </toolbar>
-                    </td>
-                    <td class="error"></td>
-                </tr>
-            </table>
-            <domino:multiselectgridview runat="server" id="userRoleList" autogeneratecolumns="false"
-                datakeynames="CourseID, RoleType" cssclass="grid">
+                        </td>
+                        <td class="error"></td>
+                    </tr>
+                </table>
+                <domino:multiselectgridview runat="server" id="userRoleList" autogeneratecolumns="false"
+                    datakeynames="CourseID, RoleType" cssclass="grid">
                 <Columns>
                     <domino:SelectionField ItemStyle-HorizontalAlign="Center" />
                     <asp:HyperLinkField
@@ -126,12 +117,27 @@
                     <p><asp:Label runat="server" Text="<%$ Resources:Labels, NoRoles %>" /></p>
                 </EmptyDataTemplate>
             </domino:multiselectgridview>
-            <toolbar class="right">
+                <toolbar class="right">
                 <asp:LinkButton runat="Server" ID="DeleteRole" ValidationGroup="DeleteRole" OnClick="DeleteRole_Click">
                     <asp:Image runat="server" SkinID="DeleteButton" />
                     <p><asp:Label runat="server" Text="<%$ Resources:Labels, DeleteRole %>" /></p>
                 </asp:LinkButton>
             </toolbar>
-        </div>
+            </div>
+        </asp:Panel>
+        <toolbar class="form">
+            <asp:LinkButton runat="Server" ID="Ok" OnClick="Ok_Click" ValidationGroup="Entity">
+                <asp:Image runat="server" SkinID="OkButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Ok %>" /></p>
+            </asp:LinkButton>
+            <asp:LinkButton runat="Server" ID="Cancel" OnClick="Cancel_Click" CausesValidation="False">
+                <asp:Image runat="server" SkinID="CancelButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Cancel %>" /></p>
+            </asp:LinkButton>
+            <asp:LinkButton runat="Server" ID="Impersonate" OnClick="Impersonate_Click" CausesValidation="False" Visible="False">
+                <asp:Image runat="server" SkinID="ImpersonateButton" />
+                <p><asp:Label runat="server" Text="<%$ Resources:Labels, Impersonate %>" /></p>
+            </asp:LinkButton>
+        </toolbar>
     </asp:Panel>
 </asp:Content>
