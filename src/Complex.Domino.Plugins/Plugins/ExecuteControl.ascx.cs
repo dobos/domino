@@ -72,7 +72,7 @@ namespace Complex.Domino.Plugins
 
             // TODO: save files to the directory
 
-            Plugin.Run(dir);
+            Plugin.Run(dir, commandLine.Text);
             output.Text = Plugin.Console;
             console.Visible = true;
         }

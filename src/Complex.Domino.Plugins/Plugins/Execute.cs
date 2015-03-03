@@ -141,7 +141,7 @@ WHERE ID = @ID";
             cmd.Parameters.Add("@CommandLine", SqlDbType.NVarChar).Value = commandLine;
         }
 
-        public void Run(string workingDirectory)
+        public void Run(string workingDirectory, string commandLine)
         {
             // Save files into working directory
             var buffer = new byte[0x10000];     // 64k
