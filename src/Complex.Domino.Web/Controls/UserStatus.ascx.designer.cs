@@ -40,6 +40,15 @@ namespace Complex.Domino.Web.Controls {
         protected global::System.Web.UI.WebControls.HyperLink Username;
         
         /// <summary>
+        /// Timeout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Timeout;
+        
+        /// <summary>
         /// SignOut control.
         /// </summary>
         /// <remarks>

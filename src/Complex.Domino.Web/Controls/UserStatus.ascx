@@ -3,6 +3,7 @@
     <asp:Label ID="UsernameLabel" runat="server" Text="<%$ Resources:Labels, User %>" />:
     <asp:HyperLink ID="Username" runat="server" />
     |
+    <asp:Literal runat="server" ID="Timeout">(<span id="timer"></span>)</asp:Literal>
     <asp:HyperLink ID="SignOut" runat="server" Text="<%$ Resources:Labels, SignOut %>" />
 </asp:Panel>
 <asp:Panel ID="anonymousPanel" runat="server" Visible="false">

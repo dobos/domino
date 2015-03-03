@@ -16,6 +16,7 @@
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="jquery-validation" />
                 <asp:ScriptReference Name="jquery-validation-unobtrusive" />
+                <asp:ScriptReference Name="timeout" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
             </Scripts>
             </asp:ScriptManager>

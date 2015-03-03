@@ -49,14 +49,21 @@ namespace Complex.Domino.Web
                     CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.js",
                 });
 
-                var pf = new PluginManager();
-                pf.RegisterPlugins();
+            ScriptManager.ScriptResourceMapping.AddDefinition("timeout",
+                new ScriptResourceDefinition
+                {
+                    Path = "~/Timeout.aspx",
+                    DebugPath = "~/Scripts/Timeout.aspx",
+                });
+
+            var pf = new PluginManager();
+            pf.RegisterPlugins();
 
             CleanUpScratch(null);
 
             Application[Constants.ApplicationDominoVersion] = typeof(Lib.Course).Assembly.GetName().Version.ToString();
             Application[Constants.ApplicationCopyright] = typeof(Lib.Course).Assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
-            
+
             var git = new Complex.Domino.Git.Git();
             Application[Constants.ApplicationGitVersion] = git.GetVersion();
         }

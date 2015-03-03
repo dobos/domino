@@ -520,4 +520,7 @@
   <data name="CleanUp" xml:space="preserve">
     <value>Visszaállítás</value>
   </data>
+  <data name="SessionTimeout" xml:space="preserve">
+    <value>A bejelentkezési időkorlát lejárt. Jelentkezz be újra.</value>
+  </data>
 </root>

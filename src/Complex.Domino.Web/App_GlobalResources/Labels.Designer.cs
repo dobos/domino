@@ -972,6 +972,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Session time-out expired. Please log on again..
+        /// </summary>
+        internal static string SessionTimeout {
+            get {
+                return ResourceManager.GetString("SessionTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in.
         /// </summary>
         internal static string SignIn {

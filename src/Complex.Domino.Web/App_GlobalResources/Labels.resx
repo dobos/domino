@@ -520,4 +520,7 @@
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="SessionTimeout" xml:space="preserve">
+    <value>Session time-out expired. Please log on again.</value>
+  </data>
 </root>

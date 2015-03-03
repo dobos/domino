@@ -474,6 +474,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Timeout.aspx" />
     <Content Include="Student\AssignmentList.ascx" />
     <Content Include="Student\Assignments.aspx" />
     <Content Include="Student\Assignment.aspx" />

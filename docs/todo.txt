@@ -113,3 +113,5 @@ DOMINO TODO
    
    Valamiért még mindig létre jöhet üres repo (no push on first create)
    Ha e-mail nélkül próbál feltölteni, nem jön létre repo (üres könyvtár), de utána már nem inicializál
+   Ha a program elmegy végtelen ciklusba, nem lövi le.
+   redirect stdin from a file
