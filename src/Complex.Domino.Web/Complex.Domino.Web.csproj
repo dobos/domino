@@ -474,6 +474,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Teacher\Search.aspx" />
     <Content Include="Timeout.aspx" />
     <Content Include="Student\AssignmentList.ascx" />
     <Content Include="Student\Assignments.aspx" />
@@ -806,6 +807,13 @@
     </Compile>
     <Compile Include="Teacher\PluginList.ascx.designer.cs">
       <DependentUpon>PluginList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\Student.aspx.cs">
       <DependentUpon>Student.aspx</DependentUpon>

@@ -52,8 +52,10 @@
     <Compile Include="Lib\CourseGrade.cs" />
     <Compile Include="Lib\DominoRoleProvider.cs" />
     <Compile Include="Lib\Installer.cs" />
+    <Compile Include="Lib\SearchMatch.cs" />
     <Compile Include="Lib\PluginInstance.cs" />
     <Compile Include="Lib\PluginInstanceFactory.cs" />
+    <Compile Include="Lib\Search.cs" />
     <Compile Include="Lib\SpreadsheetFactory.cs" />
     <Compile Include="Lib\SqlScripts.Designer.cs">
       <AutoGen>True</AutoGen>

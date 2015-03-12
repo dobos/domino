@@ -132,6 +132,9 @@
   <data name="Main" xml:space="preserve">
     <value>main</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>search</value>
+  </data>
   <data name="Semesters" xml:space="preserve">
     <value>semesters</value>
   </data>

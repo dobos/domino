@@ -68,24 +68,26 @@ namespace Complex.Domino.Lib
         private Git.Git CreateGit(string repoPath)
         {
             // Validate settings
-            if (String.IsNullOrWhiteSpace(author.Name))
+            if (author != null && String.IsNullOrWhiteSpace(author.Name))
             {
                 throw Error.InvalidUserName(author.Name);
             }
 
-            if (String.IsNullOrWhiteSpace(author.Email))
+            if (author != null && String.IsNullOrWhiteSpace(author.Email))
             {
                 throw Error.InvalidUserEmail();
             }
 
-            var git = new Git.Git(repoPath)
+            var git = new Git.Git(repoPath);
+
+            if (author != null)
             {
-                Author = new Git.User()
+                git.Author = new Git.User()
                 {
                     Name = author.Name.Trim(),
                     Email = String.Format(author.Email.Trim())
-                }
-            };
+                };
+            }
 
             return git;
         }
@@ -352,6 +354,15 @@ namespace Complex.Domino.Lib
             git.Pull();
             git.CheckOut(submission.Name);
             git.Reset(submission.Name, true);
+        }
+
+        public List<Git.Match> Search(string pattern)
+        {
+            var repodir = GetRepoPath();
+            var git = CreateGit(repodir);
+
+            // Execute search
+            return git.Grep(pattern, submission.Name, null);
         }
     }
 }

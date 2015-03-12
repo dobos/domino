@@ -32,6 +32,7 @@ namespace Complex.Domino.Web.Controls
                 TeacherCourses.NavigateUrl = Teacher.Courses.GetUrl();
                 TeacherAssignments.NavigateUrl = Teacher.Assignments.GetUrl();
                 TeacherStudents.NavigateUrl = Teacher.Students.GetUrl();
+                TeacherSearch.NavigateUrl = Teacher.Search.GetUrl();
 
                 // --- Student menu
 

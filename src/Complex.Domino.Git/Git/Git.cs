@@ -276,6 +276,44 @@ namespace Complex.Domino.Git
             GitWrapper.Call(this, args);
         }
 
+        public List<Match> Grep(string pattern, string revision, string path)
+        {
+            var matches = new List<Match>();
+            var args = new Arguments();
+
+            args.Append("--no-pager");  // turn off pager (less, vi etc.)
+            args.Append("grep");
+            args.Append("--no-color");
+            args.Append("--line-number");
+            args.Append(pattern);       // TODO: escaping
+            args.Append(revision);
+
+            if (path != null)
+            {
+                args.Append("--");
+                args.Append(path);
+            }
+
+            using (var w = GitWrapper.Start(this, args))
+            {
+                while (true)
+                {
+                    var match = new Match();
+
+                    if (match.Read(w.Out))
+                    {
+                        matches.Add(match);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return matches;
+        }
+
         public string GetVersion()
         {
             var args = new Arguments();

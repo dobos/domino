@@ -113,6 +113,7 @@ namespace Complex.Domino.Plugins
         {
             if (!process.HasExited)
             {
+                // TODO: add timeout
                 process.WaitForExit();
             }
 

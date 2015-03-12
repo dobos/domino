@@ -79,12 +79,13 @@ DOMINO TODO
 ++ file editor
    zip download
    grades and comments from spreadsheet
-   spreadsheet: open submission in same window
+++ spreadsheet: open submission in same window
    spreadsheet: make first green if any unread
    spreadsheet: make last green only if last is unread
    spreadsheet: comments with small tick instead of bold
    html code on assignment page (add HTML editor)
-   null expression when only marking submission read but no reply
+++ null expression when only marking submission read but no reply
+   finish search page
    
    Student:
    
@@ -115,3 +116,10 @@ DOMINO TODO
    Ha e-mail nélkül próbál feltölteni, nem jön létre repo (üres könyvtár), de utána már nem inicializál
    Ha a program elmegy végtelen ciklusba, nem lövi le.
    redirect stdin from a file
+   többfajta parancssor futtatásnál
+   
+   
+   git search
+   
+   git --no-pager grep --no-color -n matrix $(git rev-list --all)
+   git --no-pager show 8b6a9176fe62d808f4f0cc9208b1d14fe780e9f6:2014-15-2/fiznum2/1.feladat/mvteljes.c

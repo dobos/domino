@@ -75,8 +75,8 @@ namespace Complex.Domino.Git
             
             var error = process.StandardError.ReadToEnd().Trim();
 
+            // TODO: timeout from config
             process.WaitForExit(30000);
-            process.WaitForExit();
 
             process.Close();
 
