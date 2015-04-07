@@ -44,6 +44,8 @@ namespace Complex.Domino.Web.Teacher
         {
             base.CreateItem();
 
+            Item.CourseID = CourseID;
+
             course = new Lib.Course(DatabaseContext);
             course.Load(CourseID);
 
