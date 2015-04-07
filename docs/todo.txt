@@ -1,6 +1,18 @@
 DOMINO TODO
 ===========
 
+   plugin displays run button, even when just adding new plugin
+
+
+
+
+
+
+
+
+
+
+
    Common:
    
 ++ ACCESS CONTROL
