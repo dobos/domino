@@ -315,6 +315,7 @@
     <Content Include="Scripts\CodeMirror\mode\less\less.js" />
     <Content Include="Scripts\CodeMirror\mode\livescript\index.html" />
     <Content Include="Scripts\CodeMirror\mode\livescript\livescript.js" />
+    <Content Include="Scripts\CodeMirror\mode\livescript\livescript.ls" />
     <Content Include="Scripts\CodeMirror\mode\lua\index.html" />
     <Content Include="Scripts\CodeMirror\mode\lua\lua.js" />
     <Content Include="Scripts\CodeMirror\mode\markdown\index.html" />
@@ -438,36 +439,8 @@
     <Content Include="Scripts\CodeMirror\theme\vibrant-ink.css" />
     <Content Include="Scripts\CodeMirror\theme\xq-dark.css" />
     <Content Include="Scripts\CodeMirror\theme\xq-light.css" />
-    <Content Include="Scripts\jquery-1.11.2\jquery.js" />
-    <Content Include="Scripts\jquery-1.11.2\jquery.min.js" />
-    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
-    <Content Include="Scripts\jquery-ui-1.11.2\external\jquery\jquery.js" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_flat_10_000000_40x100.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_glass_100_f6f6f6_1x400.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_glass_100_fdf5ce_1x400.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-icons_222222_256x240.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-icons_228ef1_256x240.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-icons_ef8c08_256x240.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-icons_ffd27a_256x240.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Scripts\jquery-ui-1.11.2\index.html" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.css" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.js" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.min.css" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.min.js" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.structure.css" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.structure.min.css" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.theme.css" />
-    <Content Include="Scripts\jquery-ui-1.11.2\jquery-ui.theme.min.css" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -504,7 +477,9 @@
     <Content Include="Teacher\SubmissionList.ascx" />
     <Content Include="Teacher\Teacher.master" />
     <Content Include="Teacher\Web.config" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Admin.master.cs">
@@ -991,8 +966,9 @@
     <Content Include="Files\Files.master" />
     <Content Include="packages.config" />
     <Content Include="Files\Download.ashx" />
-    <Content Include="Scripts\CodeMirror\mode\livescript\livescript.ls" />
     <Content Include="Student\Web.config" />
+    <None Include="Scripts\jquery-1.8.0-vsdoc.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1018,6 +994,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_Themes\Basic\Buttons\" />
     <Folder Include="App_Themes\Basic\Icons\" />
+    <Folder Include="Scripts\jquery-1.11.2\" />
+    <Folder Include="Scripts\jquery-ui-1.11.2\external\jquery\" />
+    <Folder Include="Scripts\jquery-ui-1.11.2\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1051,6 +1030,15 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(SolutionDir)packages\CodeMirror.NuGet.3.20.01\content\Scripts\* $(ProjectDir)\Scripts\ /e /q /y
+xcopy $(SolutionDir)packages\jQuery.1.8.0\Content\Scripts\* $(ProjectDir)\Scripts\ /e /q /y
+xcopy $(SolutionDir)packages\jQuery.Validation.1.13.1\Content\Scripts\* $(ProjectDir)\Scripts\ /e /q /y
+xcopy $(SolutionDir)packages\Microsoft.jQuery.Unobtrusive.Ajax.3.2.3\Content\Scripts\* $(ProjectDir)\Scripts\ /e /q /y
+xcopy $(SolutionDir)packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\* $(ProjectDir)\Scripts\ /e /q /y
+xcopy $(SolutionDir)packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\* $(ProjectDir)\Scripts\ /e /q /y
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

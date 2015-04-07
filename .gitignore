@@ -5,6 +5,7 @@
 App_Data/Repos/
 App_Data/Scratch/
 data/
+packages/
 src/Complex.Domino.Web/Scripts
 
 
