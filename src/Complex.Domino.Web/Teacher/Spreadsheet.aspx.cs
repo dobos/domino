@@ -46,7 +46,7 @@ namespace Complex.Domino.Web.Teacher
 
 
             // TODO: move these into a single function on the factory class
-            sf.FindStudents(-1, -1, "Name");
+            sf.FindStudents(-1, -1, "Description");
             sf.FindAssignments();
             sf.FindSubmissions(-1, -1, "Name");
             sf.FindAssignmentGrades(-1, -1, "Name");
