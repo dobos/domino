@@ -326,7 +326,7 @@ namespace Complex.Domino.Lib
             System.IO.File.WriteAllText(msgpath, commitMessage);
 
             // Commit changes
-            git.Commit(commitMessage, msgpath, true);
+            git.Commit(null, msgpath, true);
 
             System.IO.File.Delete(msgpath);
 
