@@ -120,7 +120,7 @@ namespace Complex.Domino.Web
         {
             var ex = Server.GetLastError();
 
-#if DEBUG
+#if DEBUGBREAK
             System.Diagnostics.Debugger.Break();
 #endif
 
