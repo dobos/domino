@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
@@ -14,6 +15,8 @@ namespace Complex.Domino.Git
     /// </summary>
     class GitWrapper : IDisposable
     {
+        private static readonly Regex ErrorRegex = new Regex(@"(^error:|^fatal:)", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
         private Git git;
         private Arguments args;
         private Process process;
@@ -80,7 +83,7 @@ namespace Complex.Domino.Git
 
             process.Close();
 
-            if (!String.IsNullOrEmpty(error) && (error.Contains("error") || error.Contains("fatal")))
+            if (!String.IsNullOrEmpty(error) && ErrorRegex.Match(error).Success)
             {
                 error += "\r\nCommand: git " + args.ToString();
                 throw new GitException(error);
