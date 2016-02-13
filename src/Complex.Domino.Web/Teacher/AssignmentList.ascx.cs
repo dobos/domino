@@ -32,6 +32,15 @@ namespace Complex.Domino.Web.Teacher
             searchObject.CourseID = CourseID;
             searchObject.UserID = DatabaseContext.User.ID;
 
+            if (CourseID != -1)
+            {
+                searchObject.SemesterFilter = Lib.DateTimeFilter.All;
+            }
+            else
+            {
+                searchObject.SemesterFilter = Lib.DateTimeFilter.Active;
+            }
+
             e.ObjectInstance = searchObject;
         }
     }

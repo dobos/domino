@@ -49,6 +49,7 @@ namespace Complex.Domino.Web.Student
             gradeLabel.Text = Util.Enum.ToLocalized(typeof(Resources.Grades), Item.GradeType);
 
             NewSubmission.NavigateUrl = Submission.GetUrl(Item.ID);
+            NewSubmission.Visible = Item.StartDate <= DateTime.Now && DateTime.Now <= Item.EndDate;
 
             SubmissionList.CourseID = Item.CourseID;
             SubmissionList.AssignmentID = Item.ID;
