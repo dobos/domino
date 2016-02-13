@@ -24,6 +24,11 @@ namespace Complex.Domino.Git
                 args.Append(' ');
             }
 
+            if (!key.StartsWith("-"))
+            {
+                key = QuoteValue(key);
+            }
+
             args.Append(key);
 
             count++;
@@ -60,14 +65,14 @@ namespace Complex.Domino.Git
 
         private string QuoteValue(string value)
         {
-            if (value.IndexOf(' ') >= 0)
+            if (value.IndexOf(' ') >= 0 || value.IndexOf('\\') >= 0)
             {
-                return "\"" + value + "\"";
+                value = "\"" + value + "\"";
             }
-            else
-            {
-                return value;
-            }
+
+            value = value.Replace('\\', '/');
+
+            return value;
         }
 
         public override string ToString()
