@@ -311,7 +311,26 @@ CREATE TABLE [dbo].[Submission]
 
 GO
 
+CREATE INDEX IX_AssignmentID ON [dbo].[Submission]
+(
+	[AssignmentID]
+)
 
+GO
+
+CREATE INDEX IX_StudentID ON [dbo].[Submission]
+(
+	[StudentID]
+)
+
+GO
+
+CREATE INDEX IX_TeacherID ON [dbo].[Submission]
+(
+	[TeacherID]
+)
+
+GO
 
 CREATE TABLE [dbo].[PluginInstance]
 (

@@ -32,6 +32,11 @@ namespace Complex.Domino.Web.Teacher
             get { return int.Parse(Request.QueryString[Constants.RequestCourseID]); }
         }
 
+        protected int AssignmentID
+        {
+            get { return int.Parse(Request.QueryString[Constants.RequestAssignmentID] ?? "-1"); }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             RefreshForm();
@@ -42,6 +47,7 @@ namespace Complex.Domino.Web.Teacher
             var sf = new Lib.SpreadsheetFactory(DatabaseContext)
             {
                 CourseID = this.CourseID,
+                AssignmentID = this.AssignmentID,
             };
 
 
