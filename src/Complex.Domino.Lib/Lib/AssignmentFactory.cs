@@ -11,6 +11,9 @@ namespace Complex.Domino.Lib
         private int semesterID;
         private int courseID;
         private int userID;
+        private DateTimeFilter semesterFilter;
+        private DateTimeFilter courseFilter;
+        private DateTimeFilter assignmentFilter;
 
         public int SemesterID
         {
@@ -30,8 +33,26 @@ namespace Complex.Domino.Lib
             set { userID = value; }
         }
 
+        public DateTimeFilter SemesterFilter
+        {
+            get { return semesterFilter; }
+            set { semesterFilter = value; }
+        }
+
+        public DateTimeFilter CourseFilter
+        {
+            get { return courseFilter; }
+            set { courseFilter = value; }
+        }
+
+        public DateTimeFilter AssigmentFilter
+        {
+            get { return assignmentFilter; }
+            set { assignmentFilter = value; }
+        }
+
         public AssignmentFactory(Context context)
-            :base(context)
+            : base(context)
         {
             InitializeMembers();
         }
@@ -41,13 +62,17 @@ namespace Complex.Domino.Lib
             this.semesterID = -1;
             this.courseID = -1;
             this.userID = -1;
+            this.semesterFilter = DateTimeFilter.All;
+            this.courseFilter = DateTimeFilter.All;
+            this.assignmentFilter = DateTimeFilter.All;
         }
 
         protected override string GetTableQuery()
         {
             var from = @"
-(SELECT a.*, c.Name CourseName, c.Description CourseDescription,
-        s.ID SemesterID, s.Name SemesterName, s.Description SemesterDescription
+(SELECT a.*,
+        c.Name CourseName, c.Description CourseDescription, c.StartDate CourseStartDate, c.EndDate CourseEndDate,
+        s.ID SemesterID, s.Name SemesterName, s.Description SemesterDescription, s.StartDate SemesterStartDate, s.EndDate SemesterEndDate
 FROM Assignment a
 INNER JOIN Course c ON a.CourseID = c.ID
 INNER JOIN Semester s ON c.SemesterID = s.ID)
@@ -93,6 +118,10 @@ INNER JOIN UserRole r
                 AppendWhereCriterion(sb, "UserID = @UserID");
                 cmd.Parameters.Add("@UserID", System.Data.SqlDbType.Int).Value = userID;
             }
+
+            AppendDateTimeFilter(sb, "Semester", semesterFilter);
+            AppendDateTimeFilter(sb, "Course", courseFilter);
+            AppendDateTimeFilter(sb, "Assignment", assignmentFilter);
         }
     }
 }

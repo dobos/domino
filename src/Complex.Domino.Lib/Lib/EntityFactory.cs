@@ -17,6 +17,7 @@ namespace Complex.Domino.Lib
         private string name;
         private bool? readOnly;
         private bool? hidden;
+        private DateTime filterDate;
 
         public string Name
         {
@@ -36,6 +37,12 @@ namespace Complex.Domino.Lib
             set { hidden = value; }
         }
 
+        public DateTime FilterDate
+        {
+            get { return filterDate; }
+            set { filterDate = value; }
+        }
+
         public EntityFactory(Context context)
             : base(context)
         {
@@ -47,6 +54,7 @@ namespace Complex.Domino.Lib
             this.name = null;
             this.readOnly = null;
             this.hidden = false;
+            this.filterDate = DateTime.Now;
         }
 
         public int Count()
@@ -121,6 +129,8 @@ SELECT * FROM q
                 cmd.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = name;
             }
 
+            cmd.Parameters.Add("@filterDate", SqlDbType.DateTime).Value = filterDate;
+
             AppendWhereCriteria(sb, cmd);
 
             if (sb.Length > 0)
@@ -157,14 +167,49 @@ SELECT * FROM q
 
         protected void AppendWhereCriterion(StringBuilder sb, string criterion)
         {
+            AppendWhereCriterion(sb, criterion, "AND");
+        }
+
+        protected void AppendWhereCriterion(StringBuilder sb, string criterion, string op)
+        {
             if (sb.Length > 0)
             {
-                sb.Append(" AND ");
+                sb.Append(" ");
+                sb.Append(op);
+                sb.Append(" ");
             }
 
             sb.Append("(");
             sb.Append(criterion);
             sb.AppendLine(")");
+        }
+
+        protected void AppendDateTimeFilter(StringBuilder sb, string prefix, DateTimeFilter filter)
+        {
+            if (filter != DateTimeFilter.All)
+            {
+                var res = new StringBuilder();
+
+                if ((filter & DateTimeFilter.Active) != 0)
+                {
+                    AppendWhereCriterion(res, String.Format("{0}StartDate <= @filterDate AND @filterDate <= {0}EndDate", prefix));
+                }
+
+                if ((filter & DateTimeFilter.Expired) != 0)
+                {
+                    AppendWhereCriterion(res, String.Format("{0}EndDate < @filterDate", prefix));
+                }
+
+                if ((filter & DateTimeFilter.Future) != 0)
+                {
+                    AppendWhereCriterion(res, String.Format("@filterDate < {0}StartDate", prefix));
+                }
+
+                if (res.Length != 0)
+                {
+                    AppendWhereCriterion(sb, res.ToString());
+                }
+            }
         }
 
         protected virtual string GetDefaultOrderBy()

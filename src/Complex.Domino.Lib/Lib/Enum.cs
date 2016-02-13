@@ -21,4 +21,16 @@ namespace Complex.Domino.Lib
         Grade = 2,
         Points = 3
     }
+
+    [Flags]
+    public enum DateTimeFilter : int
+    {
+        None = 0,
+
+        Active = 0x01,
+        Expired = 0x02,
+        Future = 0x08,
+
+        All = Active | Expired | Future
+    }
 }
