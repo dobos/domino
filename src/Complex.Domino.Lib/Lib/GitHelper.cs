@@ -157,7 +157,7 @@ namespace Complex.Domino.Lib
             // If directory exists it still has to contain a .git folder
             var temp = Path.Combine(dir, ".git");
 
-            if (Directory.Exists(dir))
+            if (Directory.Exists(temp))
             {
                 return true;
             }
@@ -276,6 +276,7 @@ namespace Complex.Domino.Lib
 
         public void EnsureAssignmentExists()
         {
+            EnsureRepoExists();
             EnsureScratchExists();
             CheckoutScratchTip();
 
