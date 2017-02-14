@@ -23,7 +23,7 @@
                     <td class="label">
                         <asp:Label runat="server" Text="<%$ Resources:Labels, AddAsStudentTo %>" />:</td>
                     <td class="field">
-                        <asp:DropDownList runat="server" ID="Course" DataValueField="ID" DataTextField="Name" AppendDataBoundItems="true">
+                        <asp:DropDownList runat="server" ID="Course" DataValueField="ID" DataTextField="FullName" AppendDataBoundItems="true">
                             <asp:ListItem Value="-1" Text="<%$ Resources:Labels, DoNotAdd %>" />
                         </asp:DropDownList>
                     </td>
