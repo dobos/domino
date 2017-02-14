@@ -4,7 +4,7 @@
 }
 
     toolbar a {
-        display: inline-block;
+        display: inline-flex;
         min-width: 120px;
         height: 25px;
         border: 1px solid #C0C0C0;
@@ -13,6 +13,7 @@
         text-decoration: none;
         background-color: #FFFFFF;
         color: #000000;
+        white-space: nowrap;
     }
 
         toolbar a:hover {

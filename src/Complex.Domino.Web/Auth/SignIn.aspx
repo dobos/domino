@@ -53,12 +53,10 @@
         </div>
         <toolbar class="form">
             <asp:LinkButton runat="Server" ID="Ok" OnClick="Ok_Click">
-                <asp:Image runat="server" SkinID="SignInButton" />
-                    <p><asp:Label runat="server" Text="<%$ Resources:Labels, SignIn %>" /></p>
+                <asp:Image runat="server" SkinID="SignInButton" /><p><asp:Label runat="server" Text="<%$ Resources:Labels, SignIn %>" /></p>
             </asp:LinkButton>
             <asp:HyperLink runat="server" ID="ResetLink">
-                <asp:Image runat="server" SkinID="SignInButton" />
-                <p><asp:Label runat="server" Text="<%$ Resources:Labels, PasswordReset %>" /></p>
+                <asp:Image runat="server" SkinID="SignInButton" /><p><asp:Label runat="server" Text="<%$ Resources:Labels, PasswordReset %>" /></p>
             </asp:HyperLink>
         </toolbar>
     </asp:Panel>

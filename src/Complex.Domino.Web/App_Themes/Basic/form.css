@@ -22,6 +22,7 @@
     table.form td.field > input[type='text'],
     table.form td.field > input[type='file'],
     table.form td.field > input[type='password'],
+    table.form td.field > input[type='datetime-local'],
     table.form td.field > field,
     table.form td.field > select,
     table.form td.field > textarea {

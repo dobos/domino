@@ -27,7 +27,7 @@
                     <asp:Label runat="server" ID="StartDateLabel" Text="<%$ Resources:Labels, StartDate %>" />:
                 </td>
                 <td class="field">
-                    <asp:TextBox ID="StartDate" runat="server" TextMode="DateTimeLocal" />
+                    <asp:TextBox ID="StartDate" runat="server" />
                 </td>
                 <td class="error"></td>
             </tr>
@@ -36,7 +36,7 @@
                     <asp:Label runat="server" ID="EndDateSoftLabel" Text="<%$ Resources:Labels, EndDateSoft %>" />:
                 </td>
                 <td class="field">
-                    <asp:TextBox ID="EndDateSoft" runat="server" TextMode="DateTimeLocal" />
+                    <asp:TextBox ID="EndDateSoft" runat="server" />
                 </td>
                 <td class="error"></td>
             </tr>
