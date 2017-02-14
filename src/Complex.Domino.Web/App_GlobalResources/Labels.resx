@@ -529,4 +529,7 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="UploadAttention" xml:space="preserve">
+    <value>Don't forget to push 'Submit' after uploading files.</value>
+  </data>
 </root>

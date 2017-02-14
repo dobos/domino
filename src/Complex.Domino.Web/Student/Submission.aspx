@@ -57,6 +57,9 @@
             </table>
         </div>
         <h3><asp:Label runat="server" Text="<%$ Resources:Labels, UploadedFiles %>" /></h3>
+        <div class="frame" style="background-color: yellow">
+            <asp:Label runat="server" Text="<%$ Resources:Labels, UploadAttention %>" />
+        </div>
         <domino:filebrowser runat="server" id="fileBrowser" AllowSelection="false"
             AllowDownload="false" AllowEdit="false" AllowEmptyFileList="false" />
         <div class="frame">
