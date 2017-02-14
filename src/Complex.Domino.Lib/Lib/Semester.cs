@@ -95,7 +95,7 @@ SELECT @@IDENTITY
         {
             var sql = @"
 UPDATE [Semester]
-SET {0}
+SET {0},
     StartDate = @StartDate,
     EndDate = @EndDate
 WHERE ID = @ID";
