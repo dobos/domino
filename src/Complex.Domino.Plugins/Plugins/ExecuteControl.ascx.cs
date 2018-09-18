@@ -74,7 +74,25 @@ namespace Complex.Domino.Plugins
 
             Plugin.Run(dir, commandLine.Text);
             output.Text = Plugin.Console;
-            console.Visible = true;
+            outputPanel.Visible = true;
+
+            DisplayOutputFile(dir, "stdout.log", stdout, stdoutPanel);
+            DisplayOutputFile(dir, "stderr.log", stderr, stderrPanel);
+            DisplayOutputFile(dir, "debug.log", debug, debugPanel);
+        }
+
+        private void DisplayOutputFile(string dir, string filename, Literal text, Panel panel)
+        {
+            filename = System.IO.Path.Combine(dir, filename);
+            if (System.IO.File.Exists(filename))
+            {
+                text.Text = System.IO.File.ReadAllText(filename);
+                panel.Visible = true;
+            }
+            else
+            {
+                panel.Visible = false;
+            }
         }
     }
 }

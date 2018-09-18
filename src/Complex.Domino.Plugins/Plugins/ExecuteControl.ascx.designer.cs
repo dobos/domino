@@ -58,13 +58,13 @@ namespace Complex.Domino.Plugins {
         protected global::System.Web.UI.WebControls.LinkButton ok;
         
         /// <summary>
-        /// console control.
+        /// outputPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel console;
+        protected global::System.Web.UI.WebControls.Panel outputPanel;
         
         /// <summary>
         /// output control.
@@ -74,5 +74,59 @@ namespace Complex.Domino.Plugins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal output;
+        
+        /// <summary>
+        /// stdoutPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel stdoutPanel;
+        
+        /// <summary>
+        /// stdout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal stdout;
+        
+        /// <summary>
+        /// stderrPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel stderrPanel;
+        
+        /// <summary>
+        /// stderr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal stderr;
+        
+        /// <summary>
+        /// debugPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel debugPanel;
+        
+        /// <summary>
+        /// debug control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal debug;
     }
 }
