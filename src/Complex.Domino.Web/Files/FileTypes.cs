@@ -16,6 +16,7 @@ namespace Complex.Domino.Web.Files
             new FileType() { Extension=".png", MimeType="image/png", Category = FileCategory.Image },
 
             new FileType() { Extension=".txt", MimeType="text/plain", Category = FileCategory.Code },
+            new FileType() { Extension=".sh", MimeType="text/x-shellscript", Category = FileCategory.Code },
 
             new FileType() { Extension=".c", MimeType="text/x-c", Category = FileCategory.Code },
             new FileType() { Extension=".cc", MimeType="text/x-c", Category = FileCategory.Code },

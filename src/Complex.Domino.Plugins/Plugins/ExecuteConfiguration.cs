@@ -14,11 +14,15 @@ namespace Complex.Domino.Plugins
         private static readonly ConfigurationProperty propPath = new ConfigurationProperty(
             "path", typeof(string), null, ConfigurationPropertyOptions.None);
 
+        private static readonly ConfigurationProperty propBash = new ConfigurationProperty(
+            "bash", typeof(string), String.Empty, ConfigurationPropertyOptions.None);
+
         static ExecuteConfiguration()
         {
             properties = new ConfigurationPropertyCollection();
 
             properties.Add(propPath);
+            properties.Add(propBash);
         }
 
         [ConfigurationProperty("path")]
@@ -26,6 +30,13 @@ namespace Complex.Domino.Plugins
         {
             get { return (string)base[propPath]; }
             set { base[propPath] = value; }
+        }
+
+        [ConfigurationProperty("bash")]
+        public string Bash
+        {
+            get { return (string)base[propBash]; }
+            set { base[propBash] = value; }
         }
     }
 }

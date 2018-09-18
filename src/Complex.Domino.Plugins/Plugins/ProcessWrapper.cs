@@ -16,7 +16,6 @@ namespace Complex.Domino.Plugins
         private string command;
         private string path;
 
-        private AutoResetEvent evnt;
         private Process process;
 
         private StringBuilder console;
@@ -60,17 +59,12 @@ namespace Complex.Domino.Plugins
 
         public void Dispose()
         {
-            process.Close();
-            process = null;
-
-            evnt.Dispose();
-            evnt = null;
-
-            consoleHtmlOutput.Dispose();
-            consoleHtmlOutput = null;
-
-            consoleOutput.Dispose();
-            consoleOutput = null;
+            if (process != null)
+            {
+                WaitForExit();
+                process.Close();
+                process = null;
+            }
         }
 
         public void Call()
@@ -83,8 +77,6 @@ namespace Complex.Domino.Plugins
         {
             string filename, arguments;
             GetCommandLine(command, out filename, out arguments);
-
-            evnt = new AutoResetEvent(false);
 
             process = new Process()
             {
@@ -111,54 +103,30 @@ namespace Complex.Domino.Plugins
             consoleOutput = new StringWriter(console);
             consoleHtmlOutput = new HtmlTextWriter(consoleOutput, "");
 
-            process.EnableRaisingEvents = true;
-            process.Exited += new EventHandler(Process_Exited);
-
-            /*
             process.OutputDataReceived += new DataReceivedEventHandler(Process_OutputDataReceived);
             process.ErrorDataReceived += new DataReceivedEventHandler(Process_ErrorDataReceived);
-            */
-
-            /*
-            var t1 = new Task(() =>
-            {
-                string line;
-
-                while ((line = process.StandardOutput.ReadLine()) != null)
-                {
-                    WriteOutput(line, "stdout");
-                }
-            });*/
-
-            //t1.Start();
-
+            
             process.Start();
 
-            /*process.BeginOutputReadLine();
-            process.BeginErrorReadLine();*/
-
-            
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
         }
 
         public void WaitForExit()
         {
-            evnt.WaitOne();
-
-            string line;
-
-            while ((line = process.StandardOutput.ReadLine()) != null)
+            if (!process.HasExited)
             {
-                WriteOutput(line, "stdout");
+                process.WaitForExit();
             }
 
-            
-        }
+            process.Close();
+            process = null;
 
-        void Process_Exited(object sender, EventArgs e)
-        {
-            process.WaitForExit(-1);
-            process.WaitForExit();
-            evnt.Set();
+            consoleHtmlOutput.Dispose();
+            consoleHtmlOutput = null;
+
+            consoleOutput.Dispose();
+            consoleOutput = null;
         }
 
         void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -191,16 +159,31 @@ namespace Complex.Domino.Plugins
 
         private static void GetCommandLine(string command, out string filename, out string arguments)
         {
-            var idx = command.IndexOf(' ');
+            bool insideQuotes = false;
+            int idx = -1;
+
+            for (int i = 0; i < command.Length; i++)
+            {
+                if (command[i] == '"')
+                {
+                    insideQuotes = !insideQuotes;
+                }
+
+                if (!insideQuotes && command[i] == ' ')
+                {
+                    idx = i;
+                    break;
+                }
+            }
 
             if (idx < 0)
             {
-                filename = command;
+                filename = command.Trim('"');
                 arguments = String.Empty;
             }
             else
             {
-                filename = command.Substring(0, idx);
+                filename = command.Substring(0, idx).Trim('"');
                 arguments = command.Substring(idx + 1);
             }
         }
@@ -210,7 +193,7 @@ namespace Complex.Domino.Plugins
             // Append to path
             if (!String.IsNullOrWhiteSpace(path))
             {
-                path = path.Trim();
+                path = path.Trim('"').Trim();
 
                 if (!path.EndsWith(";"))
                 {

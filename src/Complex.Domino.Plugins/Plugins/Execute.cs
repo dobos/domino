@@ -168,6 +168,8 @@ WHERE ID = @ID";
             // Execute command
             var cm = commandLine.Trim();
 
+            cm = cm.Replace("[$bash]", Configuration.Bash);
+
             using (var w = new ProcessWrapper())
             {
                 w.WorkingDirectory = workingDirectory;
