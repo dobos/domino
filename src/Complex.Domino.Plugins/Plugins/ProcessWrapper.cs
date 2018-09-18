@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
@@ -15,6 +16,7 @@ namespace Complex.Domino.Plugins
         private string command;
         private string path;
 
+        private AutoResetEvent evnt;
         private Process process;
 
         private StringBuilder console;
@@ -58,10 +60,17 @@ namespace Complex.Domino.Plugins
 
         public void Dispose()
         {
-            if (process != null)
-            {
-                WaitForExit();
-            }
+            process.Close();
+            process = null;
+
+            evnt.Dispose();
+            evnt = null;
+
+            consoleHtmlOutput.Dispose();
+            consoleHtmlOutput = null;
+
+            consoleOutput.Dispose();
+            consoleOutput = null;
         }
 
         public void Call()
@@ -74,6 +83,8 @@ namespace Complex.Domino.Plugins
         {
             string filename, arguments;
             GetCommandLine(command, out filename, out arguments);
+
+            evnt = new AutoResetEvent(false);
 
             process = new Process()
             {
@@ -100,41 +111,70 @@ namespace Complex.Domino.Plugins
             consoleOutput = new StringWriter(console);
             consoleHtmlOutput = new HtmlTextWriter(consoleOutput, "");
 
+            process.EnableRaisingEvents = true;
+            process.Exited += new EventHandler(Process_Exited);
+
+            /*
             process.OutputDataReceived += new DataReceivedEventHandler(Process_OutputDataReceived);
             process.ErrorDataReceived += new DataReceivedEventHandler(Process_ErrorDataReceived);
+            */
+
+            /*
+            var t1 = new Task(() =>
+            {
+                string line;
+
+                while ((line = process.StandardOutput.ReadLine()) != null)
+                {
+                    WriteOutput(line, "stdout");
+                }
+            });*/
+
+            //t1.Start();
 
             process.Start();
 
-            process.BeginOutputReadLine();
-            process.BeginErrorReadLine();
+            /*process.BeginOutputReadLine();
+            process.BeginErrorReadLine();*/
+
+            
         }
 
         public void WaitForExit()
         {
-            if (!process.HasExited)
+            evnt.WaitOne();
+
+            string line;
+
+            while ((line = process.StandardOutput.ReadLine()) != null)
             {
-                // TODO: add timeout
-                process.WaitForExit();
+                WriteOutput(line, "stdout");
             }
 
-            process.Close();
-            process = null;
+            
+        }
 
-            consoleHtmlOutput.Dispose();
-            consoleHtmlOutput = null;
-
-            consoleOutput.Dispose();
-            consoleOutput = null;
+        void Process_Exited(object sender, EventArgs e)
+        {
+            process.WaitForExit(-1);
+            process.WaitForExit();
+            evnt.Set();
         }
 
         void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            WriteOutput(e.Data, "stdout");
+            if (e.Data != null)
+            {
+                WriteOutput(e.Data, "stdout");
+            }
         }
 
         void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            WriteOutput(e.Data, "stderr");
+            if (e.Data != null)
+            {
+                WriteOutput(e.Data, "stderr");
+            }
         }
 
         void WriteOutput(string line, string style)
