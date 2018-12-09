@@ -21,6 +21,8 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,6 +139,7 @@
       <LastGenOutput>Roles.hu-HU.designer.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="Controls\CodeMirror.js" />
+    <Content Include="Check.aspx" />
     <Content Include="Controls\EntityForm.ascx" />
     <Content Include="Controls\Menu.ascx" />
     <EmbeddedResource Include="Controls\MultiSelectGridView.js" />
@@ -653,6 +656,13 @@
     </Compile>
     <Compile Include="Auth\SignOut.aspx.designer.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Check.aspx.cs">
+      <DependentUpon>Check.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Check.aspx.designer.cs">
+      <DependentUpon>Check.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\CodeMirror.cs" />
     <Compile Include="Controls\DateTimeLabel.cs">
